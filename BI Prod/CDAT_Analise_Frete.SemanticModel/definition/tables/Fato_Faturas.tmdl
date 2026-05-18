@@ -1,0 +1,432 @@
+table Fato_Faturas
+	lineageTag: 83689285-8f77-4308-b25d-667b034e0294
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: year
+		rollingWindowPeriods: 1
+		incrementalGranularity: month
+		incrementalPeriods: 1
+		sourceExpression =
+			let
+			    Fonte = Sql.Database("PR-S188\DW", "Stage", [Query="WITH GW6_Filtrada AS (#(lf)    SELECT#(lf)        EMPRESA,#(lf)        GW6_EMIFAT,#(lf)        GW6_SERFAT,#(lf)        GW6_NRFAT,#(lf)        CAST(GW6_DTEMIS AS DATE) AS GW6_DTEMIS,#(lf)        CAST(GW6_DTVENC AS DATE) AS GW6_DTVENC,#(lf)        GW6_VLFATU,#(lf)        GW6_SITAPR,#(lf)        CAST(GW6_DTAPR AS DATE) AS GW6_DTAPR,#(lf)        GW6_HRAPR,#(lf)        GW6_USUAPR,#(lf)        GW6_SITFIN,#(lf)        CAST(GW6_DTFIN AS DATE) AS GW6_DTFIN,#(lf)        GW6_HRFIN,#(lf)        GW6_USUFIN,#(lf)        GW6_SITMLA,#(lf)        GW6_MOTMLA,#(lf)        GW6_USUIMP#(lf)    FROM [STAGE].[gfe].[GW6]#(lf)    WHERE GW6_DTFIN >= '2025-12-01'#(lf))#(lf)SELECT#(lf)    GW6.GW6_EMIFAT AS CodEmissorFatura,#(lf)    DE.NomeMatriz AS TranspFatura,#(lf)    GW6.GW6_SERFAT AS SerieFatura,#(lf)    GW6.GW6_NRFAT AS NumeroFatura,#(lf)    GW6.GW6_DTEMIS AS DataEmissaoFatura,#(lf)    GW6.GW6_VLFATU AS ValorFatura,#(lf)    GW6.GW6_DTVENC AS DataVencimento,#(lf)    GW6.GW6_SITAPR AS SitAprovação,#(lf)    GW6.GW6_DTAPR AS DataAprovação,#(lf)    GW6.GW6_HRAPR AS HoraAprovação,#(lf)    GW6.GW6_USUAPR AS UsuarioAprovação,#(lf)    GW6.GW6_SITFIN AS SitFinanceiro,#(lf)    GW6.GW6_DTFIN AS DataFinanceiro,#(lf)    GW6.GW6_HRFIN AS HoraFinanceiro,#(lf)    GW6.GW6_USUFIN AS UsuarioFinanceiro,#(lf)    GW6.GW6_SITMLA AS SitMLA,#(lf)    GW6.GW6_MOTMLA AS MotivoMLA,#(lf)    GW6.GW6_USUIMP AS UsuarioImportacaoGW6,#(lf)    GW3.GW3_EMISDF AS EmissorCTE,#(lf)    GW3.GW3_SERDF AS SerieCTE,#(lf)    GW3.GW3_NRDF AS NumCTE,#(lf)    CAST(GW3.GW3_DTEMIS AS DATE) AS DataEmissaoCTE,#(lf)    GW3.GW3_TPDF AS TipoCTE,#(lf)    GW3.GW3_SIT AS SitCTE,#(lf)    GW3.GW3_VLDF AS ValorCTE,    #(lf)    GW3.GW3_QTVOL AS QtdeVolumes,#(lf)    GW3.GW3_PESOR AS PesoCTE,#(lf)    GW3.GW3_USUIMP AS UsuarioImportacao,#(lf)    GW3.GW3_MOTBLQ AS MotivoBloqueio,#(lf)    CAST(GW3.GW3_DTBLQ AS DATE) AS DataBloqueio,#(lf)    GW3.GW3_USUBLQ AS UsuarioBloqueio,#(lf)    GW3.GW3_MOTAPR AS MotivoAprovacao,#(lf)    CAST(GW3.GW3_DTAPR AS DATE) AS DataAprovacaoCTE,#(lf)    GW3.GW3_USUAPR AS UsuarioAprovacaoCTE,#(lf)    GW3.GW3_VLDIV AS ValorDivergente,#(lf)    GW3.GW3_SITDIV AS SitDivergencia,  #(lf)    GWM.GWM_CDTPDC AS TipoDOC,#(lf)    GWM.GWM_SERDC AS SerieNotaFiscal,#(lf)    GWM.GWM_NRDC AS NumeroNotaFiscal,#(lf)    INF.[qtFaturada],#(lf)    GWM.GWM_ITEM AS CodItem,#(lf)    DI.DescItem AS DescItem,#(lf)    CASE #(lf)    WHEN UPPER(DI.DescItem) LIKE 'DISPLAY%' OR UPPER(DI.DescItem) LIKE 'TV%' THEN 'Display'#(lf)    ELSE 'Peças'#(lf)    END AS TipoItem,#(lf)#(lf)    GWM.GWM_CCFRET AS CentroCusto,#(lf)    gwm.GWM_SEQGW8,#(lf)    GWM.GWM_VLFRE1 AS ValorFreteNota#(lf)FROM GW6_Filtrada GW6#(lf)LEFT JOIN [STAGE].[gfe].[GW3] GW3#(lf)    ON GW6.EMPRESA     = GW3.EMPRESA#(lf)   AND GW6.GW6_EMIFAT  = GW3.GW3_EMIFAT#(lf)   AND GW6.GW6_SERFAT  = GW3.GW3_SERFAT#(lf)   AND GW6.GW6_NRFAT   = GW3.GW3_NRFAT#(lf)LEFT JOIN [STAGE].[gfe].[GWM] GWM#(lf)    ON GW3.EMPRESA     = GWM.EMPRESA#(lf)   AND GW3.GW3_FILIAL  = GWM.GWM_FILIAL#(lf)   AND GW3.GW3_SERDF   = GWM.GWM_SERDOC#(lf)   AND GW3.GW3_NRDF    = GWM.GWM_NRDOC   #(lf)   AND GWM_TPDOC='2'#(lf)LEFT JOIN [DW].[dbo].[Dim_Emitente] DE#(lf)    ON GW6.GW6_EMIFAT = DE.CodEmitente#(lf)LEFT JOIN (#(lf)    SELECT CodItem, MAX(DescItem) AS DescItem#(lf)    FROM [DW].[dbo].[Dim_Item]#(lf)    GROUP BY CodItem#(lf)) DI#(lf)    ON GWM.GWM_ITEM = DI.CodItem#(lf)LEFT JOIN [STAGE].[tot].[ItNotaFisc] INF#(lf)    ON GWM.GWM_ITEM = INF.[it-codigo]#(lf)   AND GWM.GWM_SERDC = INF.[serie]#(lf)   AND GWM.GWM_NRDC = INF.[nr-nota-fis]#(lf)"]),
+			    #"Duplicatas Removidas" = Table.Distinct(Fonte),
+			    #"Linhas Filtradas" = Table.SelectRows(#"Duplicatas Removidas", each [DataFinanceiro] > RangeStart and [DataFinanceiro] <= RangeEnd)
+			in
+			    #"Linhas Filtradas"
+
+	column TranspFatura
+		dataType: string
+		lineageTag: ddc7a5df-718e-4392-934a-945b89448055
+		summarizeBy: none
+		sourceColumn: TranspFatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieFatura
+		dataType: string
+		lineageTag: dd81ec0c-c462-4ae0-b9a8-0bbc154eeca5
+		summarizeBy: none
+		sourceColumn: SerieFatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroFatura
+		dataType: string
+		lineageTag: 271803cb-1ec3-4b61-b53e-dac1616aadac
+		summarizeBy: none
+		sourceColumn: NumeroFatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoFatura
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 17bb844d-e5cc-4df0-b3e7-ccc84f1d735b
+		summarizeBy: none
+		sourceColumn: DataEmissaoFatura
+
+		variation Variation
+			isDefault
+			relationship: 6a0e10d3-e43e-456d-b717-6ea13ba6a918
+			defaultHierarchy: LocalDateTable_f2f832be-708c-4493-8e02-d05f4cc45723.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorFatura
+		dataType: double
+		lineageTag: d65b0fd7-316a-411f-b76b-40a99b6c9b05
+		summarizeBy: sum
+		sourceColumn: ValorFatura
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataVencimento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4c268776-e443-44c7-8d17-331b603812cc
+		summarizeBy: none
+		sourceColumn: DataVencimento
+
+		variation Variation
+			isDefault
+			relationship: 0adbbd34-f9ab-4c9d-bd0c-7227b9a9d5fb
+			defaultHierarchy: LocalDateTable_cb364cc8-922b-4f04-bcb6-f11bc3501595.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitAprovação
+		dataType: string
+		lineageTag: 14f69c37-28b2-4359-bcda-a0e984790e77
+		summarizeBy: none
+		sourceColumn: SitAprovação
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAprovação
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9be35e23-2806-489c-adfa-cced4ffd6955
+		summarizeBy: none
+		sourceColumn: DataAprovação
+
+		variation Variation
+			isDefault
+			relationship: 6d7a2ae8-a508-4403-b1dc-3a3d3d0e3270
+			defaultHierarchy: LocalDateTable_bbe4ced1-204f-4261-8563-d011170059dc.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraAprovação
+		dataType: string
+		lineageTag: dfdf5211-3094-41a7-9b19-9f508f9ff825
+		summarizeBy: none
+		sourceColumn: HoraAprovação
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioAprovação
+		dataType: string
+		lineageTag: 09efab6e-2238-48de-ba9a-6f24208d991a
+		summarizeBy: none
+		sourceColumn: UsuarioAprovação
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitFinanceiro
+		dataType: string
+		lineageTag: 93200d58-1bad-4553-8a12-79842f4e21b8
+		summarizeBy: none
+		sourceColumn: SitFinanceiro
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFinanceiro
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1ac0276e-24a6-43e4-a5e0-92f6753823d5
+		summarizeBy: none
+		sourceColumn: DataFinanceiro
+
+		variation Variation
+			isDefault
+			relationship: f5d7b767-d002-48b4-9a7c-fb6eb0f4c561
+			defaultHierarchy: LocalDateTable_0e864fa1-a639-46f5-ae9c-3f7921e0e17e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraFinanceiro
+		dataType: string
+		lineageTag: 5cb0f180-5bc0-41f6-b7cc-960a52d3e979
+		summarizeBy: none
+		sourceColumn: HoraFinanceiro
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioFinanceiro
+		dataType: string
+		lineageTag: 570834e8-343a-4a6a-a509-0b28ba13f690
+		summarizeBy: none
+		sourceColumn: UsuarioFinanceiro
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitMLA
+		dataType: string
+		lineageTag: a6b92465-a203-4280-a955-d45951832254
+		summarizeBy: none
+		sourceColumn: SitMLA
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioImportacaoGW6
+		dataType: string
+		lineageTag: 2d89062c-13be-4e63-8c2b-6814c10a6ac6
+		summarizeBy: none
+		sourceColumn: UsuarioImportacaoGW6
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmissorCTE
+		dataType: string
+		lineageTag: ca6634bd-5b33-482e-83ca-705f5fcfca36
+		summarizeBy: none
+		sourceColumn: EmissorCTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieCTE
+		dataType: string
+		lineageTag: 008b74e1-3a4d-44dc-96db-e891205f5c08
+		summarizeBy: none
+		sourceColumn: SerieCTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumCTE
+		dataType: string
+		lineageTag: 76c84e4e-d3bb-453b-b649-e15cfbeb5b4c
+		summarizeBy: none
+		sourceColumn: NumCTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoCTE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e3d99280-26ee-49dc-94e3-45be3e64207d
+		summarizeBy: none
+		sourceColumn: DataEmissaoCTE
+
+		variation Variation
+			isDefault
+			relationship: f52b8142-ecb2-490b-8df9-d01a61d0c8e7
+			defaultHierarchy: LocalDateTable_9466f906-ae57-4426-9524-c405d2c6e30b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoCTE
+		dataType: string
+		lineageTag: fd2edc81-3626-463c-ae13-23168d1fa7fb
+		summarizeBy: none
+		sourceColumn: TipoCTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitCTE
+		dataType: string
+		lineageTag: 22c3ea4a-62f7-45e3-a695-088d6958d23d
+		summarizeBy: none
+		sourceColumn: SitCTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorCTE
+		dataType: double
+		lineageTag: a481b929-ce73-47b8-af14-c4a7b6b2b51b
+		summarizeBy: sum
+		sourceColumn: ValorCTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdeVolumes
+		dataType: double
+		lineageTag: 71bb4d0d-512c-445d-959c-8a764eb51ef1
+		summarizeBy: sum
+		sourceColumn: QtdeVolumes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PesoCTE
+		dataType: double
+		lineageTag: 9fa2e27a-f583-402b-a0d5-f30dbc976a04
+		summarizeBy: sum
+		sourceColumn: PesoCTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataBloqueio
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 18e79b38-700f-443d-a9f3-91fb37839c82
+		summarizeBy: none
+		sourceColumn: DataBloqueio
+
+		variation Variation
+			isDefault
+			relationship: ae18b8bc-446e-4303-a5bf-74b09a5d2bbf
+			defaultHierarchy: LocalDateTable_9531d896-ce1e-48e9-bd19-f509edf7d439.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioBloqueio
+		dataType: string
+		lineageTag: 9c389b25-414d-4cb5-8837-80c52c1e7163
+		summarizeBy: none
+		sourceColumn: UsuarioBloqueio
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAprovacaoCTE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8a65aec8-9e20-4fb6-853d-4faa6540bafb
+		summarizeBy: none
+		sourceColumn: DataAprovacaoCTE
+
+		variation Variation
+			isDefault
+			relationship: 91cd7e41-49f6-486f-8faf-986fd27211f5
+			defaultHierarchy: LocalDateTable_af4268f2-4f6e-4a02-bc4e-c87797a140f1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioAprovacaoCTE
+		dataType: string
+		lineageTag: 38b83fe5-f315-43f5-a49f-7ad0ebed1cbe
+		summarizeBy: none
+		sourceColumn: UsuarioAprovacaoCTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorDivergente
+		dataType: double
+		lineageTag: c9ce1e55-a1a8-41b8-b63c-a0bb5840efd3
+		summarizeBy: sum
+		sourceColumn: ValorDivergente
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SitDivergencia
+		dataType: string
+		lineageTag: 64762c12-58ff-4b3d-8b80-2bc2298d6b3c
+		summarizeBy: none
+		sourceColumn: SitDivergencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoDOC
+		dataType: string
+		lineageTag: 878b47f2-2a30-4431-a3ae-345887ab6612
+		summarizeBy: none
+		sourceColumn: TipoDOC
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: e95cf1da-212f-476f-9114-6c4a4b3b9da2
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNotaFiscal
+		dataType: string
+		lineageTag: 15d871a8-a485-404f-854a-211e50f2d074
+		summarizeBy: none
+		sourceColumn: NumeroNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 938fe71d-0570-4eda-92b0-57228d561057
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentroCusto
+		dataType: string
+		lineageTag: e9578133-c2c3-4a26-9b25-3e78f0312bdb
+		summarizeBy: none
+		sourceColumn: CentroCusto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorFreteNota
+		dataType: double
+		lineageTag: ab313daf-6a5e-4ef9-9e24-67fb4d00aa74
+		summarizeBy: sum
+		sourceColumn: ValorFreteNota
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CodEmissorFatura
+		dataType: string
+		lineageTag: a5b1fe2e-b8bf-4e46-a937-f24038631e8c
+		summarizeBy: none
+		sourceColumn: CodEmissorFatura
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioImportacao
+		dataType: string
+		lineageTag: 3835acb8-3a57-43d2-8fb4-09b57007f07d
+		summarizeBy: none
+		sourceColumn: UsuarioImportacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: cb98f329-7509-4962-95ad-2e1412175562
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtFaturada
+		dataType: double
+		formatString: 0
+		lineageTag: a9d7624c-8fc0-463b-97c7-6dd507f15e0a
+		summarizeBy: sum
+		sourceColumn: qtFaturada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column GWM_SEQGW8
+		dataType: string
+		lineageTag: 2abf0680-0723-422b-90c6-cd1def20fe14
+		summarizeBy: none
+		sourceColumn: GWM_SEQGW8
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoItem
+		dataType: string
+		lineageTag: 38eeb093-be72-4f50-acec-c971deddae0a
+		summarizeBy: none
+		sourceColumn: TipoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Faturas = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "Stage", [Query="WITH GW6_Filtrada AS (#(lf)    SELECT#(lf)        EMPRESA,#(lf)        GW6_EMIFAT,#(lf)        GW6_SERFAT,#(lf)        GW6_NRFAT,#(lf)        CAST(GW6_DTEMIS AS DATE) AS GW6_DTEMIS,#(lf)        CAST(GW6_DTVENC AS DATE) AS GW6_DTVENC,#(lf)        GW6_VLFATU,#(lf)        GW6_SITAPR,#(lf)        CAST(GW6_DTAPR AS DATE) AS GW6_DTAPR,#(lf)        GW6_HRAPR,#(lf)        GW6_USUAPR,#(lf)        GW6_SITFIN,#(lf)        CAST(GW6_DTFIN AS DATE) AS GW6_DTFIN,#(lf)        GW6_HRFIN,#(lf)        GW6_USUFIN,#(lf)        GW6_SITMLA,#(lf)        GW6_MOTMLA,#(lf)        GW6_USUIMP#(lf)    FROM [STAGE].[gfe].[GW6]#(lf)    WHERE GW6_DTFIN >= '2025-12-01'#(lf))#(lf)SELECT#(lf)    GW6.GW6_EMIFAT AS CodEmissorFatura,#(lf)    DE.NomeMatriz AS TranspFatura,#(lf)    GW6.GW6_SERFAT AS SerieFatura,#(lf)    GW6.GW6_NRFAT AS NumeroFatura,#(lf)    GW6.GW6_DTEMIS AS DataEmissaoFatura,#(lf)    GW6.GW6_VLFATU AS ValorFatura,#(lf)    GW6.GW6_DTVENC AS DataVencimento,#(lf)    GW6.GW6_SITAPR AS SitAprovação,#(lf)    GW6.GW6_DTAPR AS DataAprovação,#(lf)    GW6.GW6_HRAPR AS HoraAprovação,#(lf)    GW6.GW6_USUAPR AS UsuarioAprovação,#(lf)    GW6.GW6_SITFIN AS SitFinanceiro,#(lf)    GW6.GW6_DTFIN AS DataFinanceiro,#(lf)    GW6.GW6_HRFIN AS HoraFinanceiro,#(lf)    GW6.GW6_USUFIN AS UsuarioFinanceiro,#(lf)    GW6.GW6_SITMLA AS SitMLA,#(lf)    GW6.GW6_MOTMLA AS MotivoMLA,#(lf)    GW6.GW6_USUIMP AS UsuarioImportacaoGW6,#(lf)    GW3.GW3_EMISDF AS EmissorCTE,#(lf)    GW3.GW3_SERDF AS SerieCTE,#(lf)    GW3.GW3_NRDF AS NumCTE,#(lf)    CAST(GW3.GW3_DTEMIS AS DATE) AS DataEmissaoCTE,#(lf)    GW3.GW3_TPDF AS TipoCTE,#(lf)    GW3.GW3_SIT AS SitCTE,#(lf)    GW3.GW3_VLDF AS ValorCTE,    #(lf)    GW3.GW3_QTVOL AS QtdeVolumes,#(lf)    GW3.GW3_PESOR AS PesoCTE,#(lf)    GW3.GW3_USUIMP AS UsuarioImportacao,#(lf)    GW3.GW3_MOTBLQ AS MotivoBloqueio,#(lf)    CAST(GW3.GW3_DTBLQ AS DATE) AS DataBloqueio,#(lf)    GW3.GW3_USUBLQ AS UsuarioBloqueio,#(lf)    GW3.GW3_MOTAPR AS MotivoAprovacao,#(lf)    CAST(GW3.GW3_DTAPR AS DATE) AS DataAprovacaoCTE,#(lf)    GW3.GW3_USUAPR AS UsuarioAprovacaoCTE,#(lf)    GW3.GW3_VLDIV AS ValorDivergente,#(lf)    GW3.GW3_SITDIV AS SitDivergencia,  #(lf)    GWM.GWM_CDTPDC AS TipoDOC,#(lf)    GWM.GWM_SERDC AS SerieNotaFiscal,#(lf)    GWM.GWM_NRDC AS NumeroNotaFiscal,#(lf)    INF.[qtFaturada],#(lf)    GWM.GWM_ITEM AS CodItem,#(lf)    DI.DescItem AS DescItem,#(lf)    CASE #(lf)    WHEN UPPER(DI.DescItem) LIKE 'DISPLAY%' OR UPPER(DI.DescItem) LIKE 'TV%' THEN 'Display'#(lf)    ELSE 'Peças'#(lf)    END AS TipoItem,#(lf)#(lf)    GWM.GWM_CCFRET AS CentroCusto,#(lf)    gwm.GWM_SEQGW8,#(lf)    GWM.GWM_VLFRE1 AS ValorFreteNota#(lf)FROM GW6_Filtrada GW6#(lf)LEFT JOIN [STAGE].[gfe].[GW3] GW3#(lf)    ON GW6.EMPRESA     = GW3.EMPRESA#(lf)   AND GW6.GW6_EMIFAT  = GW3.GW3_EMIFAT#(lf)   AND GW6.GW6_SERFAT  = GW3.GW3_SERFAT#(lf)   AND GW6.GW6_NRFAT   = GW3.GW3_NRFAT#(lf)LEFT JOIN [STAGE].[gfe].[GWM] GWM#(lf)    ON GW3.EMPRESA     = GWM.EMPRESA#(lf)   AND GW3.GW3_FILIAL  = GWM.GWM_FILIAL#(lf)   AND GW3.GW3_SERDF   = GWM.GWM_SERDOC#(lf)   AND GW3.GW3_NRDF    = GWM.GWM_NRDOC   #(lf)   AND GWM_TPDOC='2'#(lf)LEFT JOIN [DW].[dbo].[Dim_Emitente] DE#(lf)    ON GW6.GW6_EMIFAT = DE.CodEmitente#(lf)LEFT JOIN (#(lf)    SELECT CodItem, MAX(DescItem) AS DescItem#(lf)    FROM [DW].[dbo].[Dim_Item]#(lf)    GROUP BY CodItem#(lf)) DI#(lf)    ON GWM.GWM_ITEM = DI.CodItem#(lf)LEFT JOIN [STAGE].[tot].[ItNotaFisc] INF#(lf)    ON GWM.GWM_ITEM = INF.[it-codigo]#(lf)   AND GWM.GWM_SERDC = INF.[serie]#(lf)   AND GWM.GWM_NRDC = INF.[nr-nota-fis]#(lf)"]),
+				    #"Duplicatas Removidas" = Table.Distinct(Fonte),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Duplicatas Removidas", each [DataFinanceiro] > RangeStart and [DataFinanceiro] <= RangeEnd)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,41 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup AUX
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup DIM
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup NOVO
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DIM_Deposito2","DIM_Estab","Server","Dim_Deposito","Dim_Item","Fato_Estoque","Fato_Movimento","Fato_PcPMaster2","Fato_Sapp"]
+
+annotation PBIDesktopVersion = 2.144.878.0 (25.06)+9cca29236de5114792f4d7188221f91ad4a5cc50
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Medidas
+ref table Date
+ref table DIM_Deposito2
+ref table DIM_Estab
+ref table Dim_Deposito
+ref table Dim_Item
+ref table Fato_Estoque
+ref table Fato_Movimento
+ref table Fato_PcPMaster2
+ref table Fato_Sapp
+
+ref cultureInfo en-US
+

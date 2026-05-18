@@ -1,0 +1,99 @@
+table dCalendario
+	lineageTag: ece30b35-2e10-4a55-91f1-71deed10ccac
+
+	column Calendario
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: beae9e15-6d93-45e7-8b35-39fe2361ff18
+		summarizeBy: none
+		sourceColumn: Calendario
+		sortByColumn: MesAno
+
+		variation Variation
+			isDefault
+			relationship: a41bb56f-c73f-411a-95c6-870e61f0ee05
+			defaultHierarchy: LocalDateTable_c2378660-fcbc-4756-834b-1f2d18a931c0.'Hierarquia de datas'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		dataType: string
+		lineageTag: 40d59462-501d-404d-a24c-64da66231623
+		summarizeBy: none
+		sourceColumn: DiaSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNome
+		dataType: string
+		lineageTag: 5495fd8d-64ba-4505-a434-0b662baed240
+		summarizeBy: none
+		sourceColumn: DiaSemanaNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaAno
+		dataType: string
+		lineageTag: b1f4ec4b-c00d-4f9f-b158-b75d7a6406fb
+		summarizeBy: none
+		sourceColumn: DiaSemanaAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: 1944b705-a360-4369-a872-ef39c63d5806
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNome
+		dataType: string
+		lineageTag: 5157edc8-f26c-4489-b24f-977566835800
+		summarizeBy: none
+		sourceColumn: MesNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: string
+		lineageTag: acbd5865-d477-40d7-9d9e-8a6885376179
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: string
+		lineageTag: 704a9443-c5a6-4977-b2e0-1dcdc7575ffa
+		summarizeBy: none
+		sourceColumn: MesAno
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaUtil
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a667233-1f4e-4fd2-b653-39d62a0b87eb
+		summarizeBy: sum
+		sourceColumn: DiaUtil
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="DECLARE @DataInicial DATE = DATEFROMPARTS(YEAR(GETDATE()) - 2, 1, 1);#(lf)DECLARE @DataFinal DATE = DATEFROMPARTS(YEAR(GETDATE()), 12, 31);#(lf)SELECT #(lf)#(tab)CAST(Data AS DATE) Calendario,#(lf)#(tab)DiaSemana,#(lf)#(tab)DiaSemanaNome,#(lf)#(tab)DiaSemanaAno,#(lf)#(tab)Mes,#(lf)#(tab)MesNome,#(lf)#(tab)Ano,#(lf)#(tab)MMYYYY MesAno,#(lf)#(tab)CAST(DiaUtil AS INT) AS DiaUtil#(lf)FROM dbo.Dim_Data#(lf)WHERE data BETWEEN @DataInicial AND @DataFinal;"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "364f0287057b9ab07c0e",
+  "position": {
+    "x": 1104.5635528330781,
+    "y": 50.964777947932618,
+    "z": 0,
+    "height": 213.66003062787138,
+    "width": 175.43644716692191
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabelas_Transportadoras"
+                    }
+                  },
+                  "Property": "Nome_Transportadora"
+                }
+              },
+              "queryRef": "Tabelas_Transportadoras.Nome_Transportadora",
+              "nativeQueryRef": "Nome_Transportadora"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8f9616f624cd605dc818",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Tabelas_Transportadoras"
+              }
+            },
+            "Property": "Nome_Transportadora"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

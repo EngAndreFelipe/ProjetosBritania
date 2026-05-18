@@ -1,0 +1,31 @@
+table Medidas
+	lineageTag: 456a4f84-56ab-45ab-9016-baae2e58efbf
+
+	measure ItensComMaisDe5Enderecos =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Agrupamento[Item]),
+			    FILTER(
+			        VALUES(Fato_Agrupamento[Item]),
+			        CALCULATE(SUM(Fato_Agrupamento[Total_Enderecos_Distintos])) >= 5
+			    )
+			)
+		formatString: 0
+		lineageTag: f7b227a3-647d-4ed8-95bf-b7deb1d726e0
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 38abae24-8d50-4b10-9331-e0d3d4958d2b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 1d0c3dc2b1f24c6480c6fb67beb03d52
+

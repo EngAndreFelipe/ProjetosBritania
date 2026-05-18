@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "5184f4c2dbd599147d3a",
+  "position": {
+    "x": 653.72128637059723,
+    "y": 278.34609494640125,
+    "z": 11000,
+    "height": 194.05819295558959,
+    "width": 618.43797856049,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Itens_Cobrados"
+                    }
+                  },
+                  "Property": "NomeMatrizTransportador"
+                }
+              },
+              "queryRef": "Fato_Itens_Cobrados.NomeMatrizTransportador",
+              "nativeQueryRef": "NomeMatrizTransportador"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "CustoUnit"
+                }
+              },
+              "queryRef": "Medidas.CustoUnit",
+              "nativeQueryRef": "CustoUnit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "TotalItemCobrado"
+                }
+              },
+              "queryRef": "Medidas.TotalItemCobrado",
+              "nativeQueryRef": "TotalItemCobrado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Soma VLFRE1 por NRDoc Distinto"
+                }
+              },
+              "queryRef": "Medidas.Soma VLFRE1 por NRDoc Distinto",
+              "nativeQueryRef": "Soma VLFRE1 por NRDoc Distinto"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Soma VLFRE1 por NRDoc Distinto"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

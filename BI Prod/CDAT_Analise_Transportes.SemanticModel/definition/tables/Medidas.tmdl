@@ -1,0 +1,315 @@
+table Medidas
+	lineageTag: 3d2f8923-e653-4c5c-b252-40986f9524f3
+
+	measure TotalCobradTransportadora = SUM(Fato_NotaCobranca[ValorCobrado])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: f80c1631-9ca2-4b1e-90c8-a8febe659bd5
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure TotalNFEntregues = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fato_AcompEntregas),
+			    Fato_AcompEntregas[Status] <> "Entrega Pendente"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 30ab06f7-ae01-4c19-be5d-4a0ae1892265
+
+	measure TotalNotasPendentes = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fato_AcompEntregas),
+			    Fato_AcompEntregas[Status] = "Entrega Pendente"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 4732119e-3263-4887-ae18-e013cbf44267
+
+	measure TotalNFAtraso = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fato_AcompEntregas),
+			    Fato_AcompEntregas[Status] = "Entregue Em Atraso"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5d802753-36d9-47ef-860b-138d07f23eda
+
+	measure TotalNFnoPrazo = ```
+			
+			CALCULATE(
+			    COUNTROWS(Fato_AcompEntregas),
+			    Fato_AcompEntregas[Status] = "Entregue No Prazo"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: b799a241-9230-4844-9a52-f11d3ed6c089
+
+	measure PorcNFAtraso = [TotalNFAtraso] / [TotalNFEntregues]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 13f152d3-caf6-4c35-b8e1-2aba7d3ce695
+
+	measure PorcNFnoPrazo = [TotalNFnoPrazo] / [TotalNFEntregues]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c2913d9f-e7c4-4ba0-882b-c45523742469
+
+	measure TotalNota = ```
+			CALCULATE(
+			    SUM(Fato_AcompEntregas[TotalNota]),
+			    Fato_AcompEntregas[DataEmissaoNotaFiscal] >= DATE(2025, 9, 4)
+			)
+			
+			```
+		lineageTag: f14a061b-e848-40b9-b7b2-45033e046ef2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PercCobrTransp = [TotalCobradTransportadora] / [TotalNota]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 622d4c5b-f0e4-4a1b-aefa-7ec54a1e70c2
+
+	measure QuantidadeFaturada = SUM(Fato_AnaliseEntrega[QtdeFaturada])
+		formatString: #,0
+		lineageTag: faf9c30c-b9fd-4d92-90e7-05243d521300
+
+	measure MediaTempoEntrega =
+			
+			CALCULATE(
+			    AVERAGEX(
+			        FILTER(
+			            Fato_AnaliseEntrega,
+			            NOT(ISBLANK(Fato_AnaliseEntrega[TempoEntrega])) &&
+			            Fato_AnaliseEntrega[TempoEntrega] > 0
+			        ),
+			        Fato_AnaliseEntrega[TempoEntrega]
+			    )
+			)
+		formatString: 0.00
+		lineageTag: a4c86639-4aa4-4bb1-b50e-6ce12d79ecd4
+
+	measure TotalNotasDistintas =
+			
+			COUNTROWS(
+			    SUMMARIZE(
+			        Fato_AnaliseEntrega,
+			        Fato_AnaliseEntrega[SerieNotaFiscal],
+			        Fato_AnaliseEntrega[NumeroNotaFiscal]
+			    )
+			)
+		formatString: #,0
+		lineageTag: 27b7acff-c3dd-4947-80e9-b241a8ee8b07
+
+	measure TotalFretePago =
+			
+			SUMX (
+			    DISTINCT (
+			        SELECTCOLUMNS (
+			            Fato_Faturas,
+			            "Nota", Fato_Faturas[NumeroNotaFiscal],
+			            "Serie", Fato_Faturas[SerieNotaFiscal],
+			            "VlFretePago", Fato_Faturas[VlFretePago]
+			        )
+			    ),
+			    [VlFretePago]
+			)
+		formatString: #,0
+		lineageTag: 958196be-f769-456c-8ea9-dee68732910c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Provisionamento = SUM(Fato_Provisionamento[VlFretePrevisto])
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: b3fa7982-1329-43f0-abd9-ca4094aa7e6a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Total_NFs_Sem_Pagamento = ```
+			
+			COUNTROWS(
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            Fato_Provisionamento,
+			            "NF", Fato_Provisionamento[NumeroNotaFiscal],
+			            "Serie", Fato_Provisionamento[SerieNotaFiscal]
+			        )
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5b47d23b-eb4c-451c-98bc-44b5684047f8
+
+	measure TotalItemCobrado = SUM(Fato_Itens_Cobrados[QtFaturadaItem])
+		formatString: 0
+		lineageTag: 02a0e9ff-5ac2-4357-a405-9d9a2f8073cd
+
+	measure TotalFretePagoItensCobr =
+			
+			SUMX (
+			    DISTINCT (
+			        SELECTCOLUMNS (
+			            Fato_Itens_Cobrados,
+			            "Nota", Fato_Itens_Cobrados[NumeroNotaFiscal],
+			            "Serie", Fato_Itens_Cobrados[SerieNotaFiscal],
+			            "VlFretePago", Fato_Itens_Cobrados[VlFretePago]
+			        )
+			    ),
+			    [VlFretePago]
+			)
+		lineageTag: 15adce94-c709-4322-b4db-85398cdc9a6e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Soma VlFretePago por NRDoc Distinto' =
+			
+			SUMX(
+			    SUMMARIZE(
+			        Fato_Itens_Cobrados,
+			        Fato_Itens_Cobrados[GWM_NRDOC],
+			        "FretePago", MAX(Fato_Itens_Cobrados[VlFretePago])
+			    ),
+			    [FretePago]
+			)
+		lineageTag: 65d51e09-fedf-43d1-8f30-93130f0c2f9d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Soma VLFRE1 por NRDoc Distinto' = ```
+			
+			SUMX(
+			    SUMMARIZE(
+			        Fato_Itens_Cobrados,
+			        Fato_Itens_Cobrados[GWM_NRDOC],
+			        "ValorFrete", SUM(Fato_Itens_Cobrados[GWM_VLFRE1])
+			    ),
+			    [ValorFrete]
+			)
+			
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: aef0b590-a8f8-479f-a7c8-42a51d3b8a84
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure CustoUnit = [Soma VLFRE1 por NRDoc Distinto]/[TotalItemCobrado]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 99117bec-79e7-4ecb-b067-e13d97f50ece
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure TotalNFExpedida = DISTINCTCOUNT(Fato_AcompEntregas[NumeroNotaFiscal])
+		formatString: 0
+		lineageTag: a6461b3c-5245-4957-97a4-f4b4656e7566
+
+	measure ProvCustPec = SUM(Fato_Provisionamento[VlFretePrevisto])/SUM(Fato_Provisionamento[QuantidadeFaturada])
+		lineageTag: a91b84a9-794b-4bb5-b01f-25156a4bae4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Frete Fixo Total' = ```
+			
+			VAR TabelaRotaUnica = 
+			    SUMMARIZE(
+			        'Tabelas_Transportadoras',
+			        'Tabelas_Transportadoras'[Cod_Transportadora],
+			        'Tabelas_Transportadoras'[Num_Tabela],
+			        'Tabelas_Transportadoras'[Num_Rota],
+			        'Tabelas_Transportadoras'[Cod_Faixa],
+			        'Tabelas_Transportadoras'[Cod_Componente]
+			    )
+			
+			RETURN
+			SUMX(
+			    TabelaRotaUnica,
+			    VAR Transp = 'Tabelas_Transportadoras'[Cod_Transportadora]
+			    VAR Comp = 'Tabelas_Transportadoras'[Cod_Componente]
+			    
+			    -- O CALCULATE(MAX(...)) aqui dentro é o que impede a soma pelas cidades
+			    RETURN
+			    SWITCH( TRUE(),
+			        -- REGRA TRANSPORTADORA 111957
+			        Transp = "111957" && Comp = "FRETE VOLUME", CALCULATE(MAX('Tabelas_Transportadoras'[Valor_Fixo])),
+			        Transp = "111957" && Comp = "PEDAGIO",      CALCULATE(MAX('Tabelas_Transportadoras'[Valor_Unitario])),
+			        
+			        -- REGRA GERAL (Demais Transportadoras)
+			        Transp <> "111957" && Comp = "FRETE UNIDADE", CALCULATE(MAX('Tabelas_Transportadoras'[Valor_Fixo])),
+			        Transp <> "111957" && Comp = "TAXA CTRC",     CALCULATE(MAX('Tabelas_Transportadoras'[Valor_Fixo])),
+			        Transp <> "111957" && Comp = "PEDAGIO",       CALCULATE(MAX('Tabelas_Transportadoras'[Valor_Fixo])),
+			        
+			        0
+			    )
+			)
+			```
+		lineageTag: 9653df64-dd6a-4750-b2d2-7393c5125f81
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Filtro Faixa Automatica' = ```
+			
+			-- Captura o que você digitou na caixinha
+			VAR PesoDigitado = [Valor Peso_Simulados] 
+			
+			-- Identifica a faixa de peso da linha atual
+			VAR FaixaDaLinha = SELECTEDVALUE('Tabelas_Transportadoras'[Limite_Peso_Faixa])
+			
+			-- Descobre qual é a menor faixa cadastrada que ainda suporta o peso digitado
+			VAR FaixaAlvo = 
+			    MINX(
+			        FILTER(
+			            ALL('Tabelas_Transportadoras'),
+			            'Tabelas_Transportadoras'[Limite_Peso_Faixa] >= PesoDigitado
+			        ),
+			        'Tabelas_Transportadoras'[Limite_Peso_Faixa]
+			    )
+			
+			RETURN
+			-- Se a faixa da linha for a faixa que o cálculo escolheu, retorna 1
+			IF(FaixaDaLinha = FaixaAlvo, 1, 0)
+			```
+		formatString: 0
+		lineageTag: 456a92e3-8208-44c3-95fd-276a0bf0e736
+
+	measure '% QtFaturada por TipoProduto' =
+			
+			DIVIDE(
+			    SUM(Fato_Itens_Cobrados[QtFaturadaItem]),
+			    CALCULATE(
+			        SUM(Fato_Itens_Cobrados[QtFaturadaItem]),
+			        ALL(Fato_Itens_Cobrados[TipoProduto])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e4522bf0-d416-40c8-9e93-38520e998fd7
+
+	measure NotasDistintas = DISTINCTCOUNT(Fato_AnaliseEntrega[NumeroNotaFiscal])
+		formatString: 0
+		lineageTag: 5f5c939d-d7a6-48f3-92dd-0c945235f722
+
+	measure PecasXNota = [QuantidadeFaturada]/[NotasDistintas]
+		formatString: 0
+		lineageTag: 74a32eab-0219-4dbe-b013-2bb0ce74a1b7
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 05b98572-897a-458e-88fb-54f4f8db29fc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 5cefd5fce58949738297edec952b1157
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

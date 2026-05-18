@@ -1,0 +1,196 @@
+table Dim_Endereco
+	lineageTag: d52ab234-463f-4b7f-a265-7df9066f50df
+
+	measure EnderecosContados = COALESCE(CALCULATE(DISTINCTCOUNT(Dim_Endereco[IdBox]),FILTER(Dim_Endereco, Dim_Endereco[StatusContagem] = "Contado")),0)
+		formatString: 0
+		lineageTag: 8e864101-b9a1-462f-9dae-0a5fd3937671
+
+	measure EnderecosNaoContados = COALESCE(CALCULATE(DISTINCTCOUNT(Dim_Endereco[IdBox]),FILTER(Dim_Endereco, Dim_Endereco[StatusContagem] = "Não Contado")),0)
+		formatString: 0
+		lineageTag: 2627e05b-a4d8-4714-843b-b4071ed21901
+
+	measure TotalEnderecos = COALESCE(DISTINCTCOUNT(Dim_Endereco[IdBox]),0)
+		formatString: 0
+		lineageTag: 412630fa-c9e6-4fe1-8406-5580ab1f9bdf
+
+	measure PercentualConcluido = DIVIDE(Dim_Endereco[EnderecosContados], [TotalEnderecos],0)
+		lineageTag: a71d1b2b-2597-4384-b413-7838b63b9949
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PercentualNaoConcluido = DIVIDE(Dim_Endereco[EnderecosNaoContados], [TotalEnderecos],0)
+		lineageTag: 316a6abf-75c1-47b2-b698-8a8b93fcd5fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure EnderecosNaoContadosRUA =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Dim_Endereco[IdBox]),
+			    FILTER(
+			        Dim_Endereco,
+			        Dim_Endereco[StatusContagem] = "Não Contado"
+			            && NOT(Dim_Endereco[Bloco] IN {"DRI","FAT","WWW"})
+			    )
+			)
+		formatString: 0
+		lineageTag: 98148155-8b20-4b63-ab65-991bceca370d
+
+	measure EnderecosContadosRUA =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Dim_Endereco[IdBox]),
+			    FILTER(
+			        Dim_Endereco,
+			        Dim_Endereco[StatusContagem] = "Contado"
+			            && NOT(Dim_Endereco[Bloco] IN {"DRI","FAT","WWW"})
+			    )
+			)
+		formatString: 0
+		lineageTag: 5ba6e208-faf3-46bb-af48-55abe02c63aa
+
+	measure EnderecosContadosINV = COALESCE(CALCULATE(COUNT(Dim_Endereco[IdBox]),FILTER(Dim_Endereco, Dim_Endereco[StatusContagemInv] = "Contado")),0)
+		formatString: 0
+		lineageTag: e3f5add0-189a-484e-99d5-d561048a18fa
+
+	measure EnderecosNaoContadosINV = COALESCE(CALCULATE(DISTINCTCOUNT(Dim_Endereco[IdBox]),FILTER(Dim_Endereco, Dim_Endereco[StatusContagemInv] = "Não Contado")),0)
+		formatString: 0
+		lineageTag: 369645ad-fc62-45dc-bc6b-2a8b01823fcf
+
+	measure PercentualConcluidoINV = DIVIDE(Dim_Endereco[EnderecosContadosINV], [TotalEnderecos],0)
+		lineageTag: 3fdc99ef-ca12-4c02-be70-e36cbcb9a8ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PercentualNaoConcluidoINV = DIVIDE(Dim_Endereco[EnderecosNaoContadosINV], [TotalEnderecos],0)
+		lineageTag: eb3971af-044b-4d0c-b4fa-b80cbfc970db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PercentualConcluidoINV_Rua =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [EnderecosContadosINV],
+			        ALLEXCEPT(Dim_Endereco, Dim_Endereco[Rua])
+			    ),
+			    CALCULATE(
+			        [TotalEnderecos],
+			        ALLEXCEPT(Dim_Endereco, Dim_Endereco[Rua])
+			    ),
+			    0
+			)
+		lineageTag: 2109ea39-fa2f-45f4-8e68-b3f1e7a8e007
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdBox
+		dataType: double
+		lineageTag: 84a3ff18-975d-4cf7-b20c-809b56910e55
+		summarizeBy: none
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bloco
+		dataType: string
+		lineageTag: 30c9a5f6-8668-42d2-b158-ffd122de0d1e
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: 2e4b525d-eb12-4a8a-abee-82773f82f39e
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: 55ffe934-2bb1-49b2-ae62-d19311321f34
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: 49c60680-f3b7-4138-adf4-116e4995a048
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoBox
+		dataType: string
+		lineageTag: f54f0b40-8cc9-462b-baba-4b6aa3515fb4
+		summarizeBy: none
+		sourceColumn: TipoBox
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusContagem = IF(COUNTROWS(FILTER(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[IdBox] = Dim_Endereco[IdBox])) > 0, "Contado", "Não Contado")
+		lineageTag: 39f8aa8a-005b-4dfc-b108-089c376c87c5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enderecos_Completo =
+			
+			COALESCE(Dim_Endereco[Bloco], "") & "/" &
+			COALESCE(Dim_Endereco[Rua], "") & "/" &
+			COALESCE(Dim_Endereco[Nivel], "") & "/" &
+			COALESCE(Dim_Endereco[Coluna], "")
+		lineageTag: 1f0464b1-298b-4613-8d07-6bcb762cd901
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusPrioridade = IF(COUNTROWS(FILTER(Dim_Prioridade, Dim_Prioridade[IdBox] = Dim_Endereco[IdBox])) > 0, "Prioridade", "Sem Prioridade")
+		lineageTag: 76cfbe61-e73c-4d1c-881e-73319c85dd55
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataContagem
+		type: calculated
+		lineageTag: da4360c1-577d-473d-826e-e3ed73c4fe85
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusContagemInv =
+			
+			IF (
+			    COUNTROWS (
+			        FILTER (
+			            Fato_InvSegundoCiclo,
+			            Fato_InvSegundoCiclo[IdBox] = Dim_Endereco[IdBox]
+			                && Fato_InvSegundoCiclo[EquipeContagem] = "INV-GERAL"
+			        )
+			    ) > 0,
+			    "Contado",
+			    "Não Contado"
+			)
+		lineageTag: e762f8db-3366-4642-bd83-55c40d3c4977
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Endereco = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "Stage", [Query="SELECT#(lf)    [id-box] AS IdBox,#(lf)    [cod-bloco] AS Bloco,#(lf)    [cod-rua] AS Rua,#(lf)    [cod-nivel] AS Nivel,#(lf)    [cod-coluna] AS Coluna,#(lf)    CASE #(lf)        WHEN [cdn-tipo-box] = 1 THEN 'Porta-Palete'#(lf)        WHEN [cdn-tipo-box] = 2 THEN 'Picking'#(lf)        ELSE 'Outro'#(lf)    END AS TipoBox#(lf)FROM STAGE.tot.wmbox#(lf)WHERE [cod-estabel] = '15'#(lf)  AND [cod-local] = 'aat'#(lf)  AND [cod-bloco] NOT IN ('SEP', 'DES', 'NAT', 'ODS', 'REC', 'ADT', 'TRN')#(lf)  AND [cdn-tipo-box] IN (1, 2);"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

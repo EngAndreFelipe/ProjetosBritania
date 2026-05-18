@@ -1,0 +1,5 @@
+relationship 0daf7373-754d-d059-33a2-0334cd48e218
+	toCardinality: many
+	fromColumn: Fato_Onda.StatusOnda
+	toColumn: Dim_Ordenacao_Status.StatusOnda
+

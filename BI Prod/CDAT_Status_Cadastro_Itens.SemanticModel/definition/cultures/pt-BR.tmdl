@@ -1,0 +1,2463 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "fato_cadastro": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fato cadastro": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Fato_Cadastro": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Item"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Descricao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.reservado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Reservado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "reservado": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.disponivel": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Disponivel"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "disponivel": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "status": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "position": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.data_alteracao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "DATA_ALTERACAO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data alteracao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DATA_ALTERACAO": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record alteracao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fato_cadastro.data_alteracao.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "VariationSource": "DATA_ALTERACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.data_alteracao.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "VariationSource": "DATA_ALTERACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data alteracao ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record alteracao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.data_alteracao.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "VariationSource": "DATA_ALTERACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data alteracao trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record alteracao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.data_alteracao.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "VariationSource": "DATA_ALTERACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data alteracao mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record alteracao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.data_alteracao.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "VariationSource": "DATA_ALTERACAO",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data alteracao dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record alteracao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.comprimento": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Comprimento"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "comprimento": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.largura": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Largura"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "largura": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.altura": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Altura"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "altura": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.peso_liquido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Peso_Liquido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "peso liquido": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Peso_Liquido": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.peso_bruto": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Peso_Bruto"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "peso bruto": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Peso_Bruto": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.status_peso": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Status_Peso"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "status peso": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Status_Peso": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "peso": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "category peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "importance peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "prestige peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "prominence peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "condition peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "class peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "grade peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "level peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "position peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "rank peso": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Endereço": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.caminho_imagem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "CaminhoImagem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "caminho imagem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CaminhoImagem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medida"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.column": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medida",
+			          "ConceptualProperty": "Column"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "column": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "pilaster": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "pier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "pillar": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "post": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "support": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "stake": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "pole": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "buttress": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "underpinning": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "contribution": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "medida.total_iten": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medida",
+			          "ConceptualProperty": "TotalItens"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total iten": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TotalItens": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate iten": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "overall iten": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "medida.itens_distintos_por_endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medida",
+			          "ConceptualProperty": "Itens Distintos por Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "itens distintos por endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Total Itens": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "medida.itens_cadastrados_por_endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medida",
+			          "ConceptualProperty": "Itens Cadastrados por Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "itens cadastrados por endereco": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.percentual_cadastrado_por_endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medida",
+			          "ConceptualProperty": "Percentual Cadastrado por Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "percentual cadastrado por endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Perc. Cadastro": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_cadastro.total_iten": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Cadastro",
+			          "ConceptualProperty": "TotalItens"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total iten": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TotalItens": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate iten": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "overall iten": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "fato_cadastro_data_alteracao_trimestre_has_fato_cadastro_data_alteracao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.trimestre": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.trimestre"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.mê": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_ano_has_fato_cadastro_data_alteracao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.ano": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.ano"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.trimestre": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.ano"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_hierarquia_de_data_has_fato_cadastro_data_alteracao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.dia": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_hierarquia_de_data_has_fato_cadastro_data_alteracao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.mê": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_hierarquia_de_data_has_fato_cadastro_data_alteracao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.trimestre": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_hierarquia_de_data_has_fato_cadastro_data_alteracao_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.ano": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_alteracaos_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_total_iten": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.total_iten": {
+			          "Target": {
+			            "Entity": "fato_cadastro.total_iten"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.total_iten"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_total_itens"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_medida_percentual_cadastrado_por_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "medida.percentual_cadastrado_por_endereco": {
+			          "Target": {
+			            "Entity": "medida.percentual_cadastrado_por_endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "medida.percentual_cadastrado_por_endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_percentual_cadastrado_por_endereco"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_medida_itens_cadastrados_por_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "medida.itens_cadastrados_por_endereco": {
+			          "Target": {
+			            "Entity": "medida.itens_cadastrados_por_endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "medida.itens_cadastrados_por_endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_itens_cadastrados_por_endereco"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_medida_itens_distintos_por_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "medida.itens_distintos_por_endereco": {
+			          "Target": {
+			            "Entity": "medida.itens_distintos_por_endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "medida.itens_distintos_por_endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_itens_distintos_por_endereco"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_medida_total_iten": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "medida.total_iten": {
+			          "Target": {
+			            "Entity": "medida.total_iten"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "medida.total_iten"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_total_iten"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_caminho_imagem": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.caminho_imagem": {
+			          "Target": {
+			            "Entity": "fato_cadastro.caminho_imagem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.caminho_imagem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_caminho_imagems"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.endereco": {
+			          "Target": {
+			            "Entity": "fato_cadastro.endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_enderecos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_status_peso": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.status_peso": {
+			          "Target": {
+			            "Entity": "fato_cadastro.status_peso"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.status_peso"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_status_pesos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_peso_bruto": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.peso_bruto": {
+			          "Target": {
+			            "Entity": "fato_cadastro.peso_bruto"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.peso_bruto"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_peso_brutos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_peso_liquido": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.peso_liquido": {
+			          "Target": {
+			            "Entity": "fato_cadastro.peso_liquido"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.peso_liquido"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_peso_liquidos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_altura": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.altura": {
+			          "Target": {
+			            "Entity": "fato_cadastro.altura"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.altura"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_alturas"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_largura": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.largura": {
+			          "Target": {
+			            "Entity": "fato_cadastro.largura"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.largura"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_larguras"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_comprimento": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.comprimento": {
+			          "Target": {
+			            "Entity": "fato_cadastro.comprimento"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.comprimento"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_comprimentos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_data_alteracao": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_data_alteracaos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_status": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.status": {
+			          "Target": {
+			            "Entity": "fato_cadastro.status"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.status"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_statuses"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_disponivel": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.disponivel": {
+			          "Target": {
+			            "Entity": "fato_cadastro.disponivel"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.disponivel"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_disponivels"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_reservado": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.reservado": {
+			          "Target": {
+			            "Entity": "fato_cadastro.reservado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.reservado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_reservados"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_total": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.total": {
+			          "Target": {
+			            "Entity": "fato_cadastro.total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_totals"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_descricao": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.descricao": {
+			          "Target": {
+			            "Entity": "fato_cadastro.descricao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.descricao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_descricaos"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_has_item": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro": {
+			          "Target": {
+			            "Entity": "fato_cadastro"
+			          }
+			        },
+			        "fato_cadastro.item": {
+			          "Target": {
+			            "Entity": "fato_cadastro.item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_cadastros_have_items"
+			        }
+			      ]
+			    },
+			    "fato_cadastro_data_alteracao_mê_has_fato_cadastro_data_alteracao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Cadastro"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_cadastro.data_alteracao.mê": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.mê"
+			          }
+			        },
+			        "fato_cadastro.data_alteracao.dia": {
+			          "Target": {
+			            "Entity": "fato_cadastro.data_alteracao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.dia"
+			            },
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_cadastro.data_alteracao.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_cadastro.data_alteracao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

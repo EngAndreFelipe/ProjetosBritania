@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "9c22cdcc2224d11a70b0",
+  "position": {
+    "x": 378.31546707503833,
+    "y": 65.666156202143952,
+    "z": 0,
+    "height": 98.989280245022982,
+    "width": 228.36140888208271,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "advancedSlicerVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Regioes"
+                    }
+                  },
+                  "Property": "TipoMunicipio"
+                }
+              },
+              "queryRef": "Dim_Regioes.TipoMunicipio",
+              "nativeQueryRef": "TipoMunicipio"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "068dc7340750dee968b9",
+  "position": {
+    "x": 718,
+    "y": 536,
+    "z": 7000,
+    "height": 184,
+    "width": 242,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Estado"
+                    }
+                  },
+                  "Property": "DescRegiao"
+                }
+              },
+              "queryRef": "Dim_Estado.DescRegiao",
+              "nativeQueryRef": "Região",
+              "active": true,
+              "displayName": "Região"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Soma VLFRE1 por NRDoc Distinto"
+                }
+              },
+              "queryRef": "Medidas.Soma VLFRE1 por NRDoc Distinto",
+              "nativeQueryRef": "Valor Frete",
+              "displayName": "Valor Frete"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Soma VLFRE1 por NRDoc Distinto"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

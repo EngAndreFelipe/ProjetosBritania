@@ -1,0 +1,64 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Tabelas DIM'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Parâmetros
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Tabelas Fato'
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation PBI_QueryOrder = ["Dim_Data","Dim_Usuarios","RangeStart","RangeEnd","Fato_Conferencia","Fato_Consolidacao_Entrada","Fato_Consolidacao_Saida","Fato_Ressup_Destino","Fato_Ressup_Origem"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_8a58c7de-455e-4f82-aa2f-1088acb2c645
+ref table RangeStart
+ref table LocalDateTable_0ca6e81c-aa21-4fa9-94da-91b9cf76d05d
+ref table RangeEnd
+ref table LocalDateTable_4a289b7a-fcd8-40bb-b369-d22a5506183c
+ref table Fato_Consolidacao_Entrada
+ref table Fato_Consolidacao_Saida
+ref table Medidas
+ref table Dim_Data
+ref table LocalDateTable_d840ba8d-8965-4643-b20e-d141b612b84d
+ref table LocalDateTable_e508ed71-53f5-4db9-a10e-62cfc8ed44b8
+ref table LocalDateTable_b0ebf346-94fd-42f8-b380-db82d5bd981e
+ref table LocalDateTable_6a43735c-9a8d-46ad-abb1-382846387bc7
+ref table LocalDateTable_91ed5506-2a06-4481-8aba-b066cf503f69
+ref table Dim_Usuarios
+ref table LocalDateTable_febeeb55-507c-441c-94cc-90d6907627bb
+ref table LocalDateTable_18ce056d-248e-4c76-b426-86afadb79ecb
+ref table Fato_Ressup_Destino
+ref table LocalDateTable_b03a93f2-e9eb-4889-b03d-7d59eebfa3c4
+ref table LocalDateTable_a1b6336c-e65a-48ca-acdc-c298c705075b
+ref table LocalDateTable_8ae40c25-35d0-43fe-a7f9-41713fc5230a
+ref table LocalDateTable_38ad8dca-53e6-4478-9c98-ca3a6a17fe07
+ref table LocalDateTable_8e8a30c2-e533-4d90-a817-53ef26eb8ef8
+ref table Fato_Ressup_Origem
+ref table LocalDateTable_5535e476-ea73-4a09-9e79-219aa2fb1a0d
+ref table LocalDateTable_96cda43c-b828-4592-88db-81257df757c9
+ref table LocalDateTable_dbd92d35-d0a2-4c17-adb8-de719ec1d488
+ref table LocalDateTable_363d7741-ab92-480b-b5f2-b0a31d3ccb75
+ref table LocalDateTable_9c1886cc-165a-4ca5-8bd3-c826c0b92ed1
+ref table Fato_Conferencia
+ref table LocalDateTable_6d72adc0-1d3d-404f-bdbe-2033a18a5818
+ref table LocalDateTable_26938c08-3f49-4b73-8b70-aaedf671caae
+ref table LocalDateTable_c794fc56-c0fb-451f-a543-d1a3a3635235
+ref table LocalDateTable_37c37537-7b15-45c4-a5b7-bb840d76fbd3
+ref table LocalDateTable_b8e19d96-48a5-4467-9c5b-a36dc82bc994
+
+ref cultureInfo pt-BR
+

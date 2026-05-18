@@ -1,0 +1,130 @@
+table Dim_Cancelados
+	lineageTag: 320930ec-f3ec-41f9-81ee-7a516ccd99db
+
+	measure HOJE = TODAY()
+		formatString: General Date
+		lineageTag: 1eb97a2d-1ec5-4e35-a22f-13c37e69c7e7
+
+	measure ContagemItensCancelados = COALESCE(CALCULATE(DISTINCTCOUNT(Dim_Cancelados[Código]), Dim_Cancelados[Status] = "Sem programação"),0)
+		formatString: 0
+		lineageTag: 0fd2288f-03d1-43ee-b5d4-76c0fb1dfd78
+
+	column Código
+		dataType: string
+		lineageTag: 84c6220f-a16a-4be9-8f55-f57a5ad7a5c6
+		summarizeBy: none
+		sourceColumn: Código
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 232f84d2-95e8-42fc-9e1f-3d3caf73dd61
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Curva
+		dataType: string
+		lineageTag: 1a5b8a6b-8bb3-4289-a4a7-498583137007
+		summarizeBy: none
+		sourceColumn: Curva
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Cancelado'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 86ce5d14-b6db-416a-b187-1a1742babe7f
+		summarizeBy: none
+		sourceColumn: Data Cancelado
+
+		variation Variation
+			isDefault
+			relationship: cbf446d3-c183-4083-a840-108a0d530e57
+			defaultHierarchy: LocalDateTable_af51884f-87e2-4b3c-a12f-3367a438e5e6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Status
+		dataType: string
+		lineageTag: 37861684-6968-4703-b8ed-015550c879ff
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasCancelados = [HOJE] - Dim_Cancelados[Data Cancelado]
+		dataType: int64
+		lineageTag: e6fe9076-7c92-420e-af57-9f74c2781fd5
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SaldoContabil = LOOKUPVALUE(Dim_AAT[Quantidade],Dim_AAT[Item],Dim_Cancelados[Código]) + LOOKUPVALUE(Dim_DCV[Quantidade],Dim_DCV[Item],Dim_Cancelados[Código])
+		formatString: 0
+		lineageTag: 61d91823-391a-44bf-bf86-e0e43df32ace
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoWMS = LOOKUPVALUE(Dim_WMS[Quantidade],Dim_WMS[Item],Dim_Cancelados[Código])
+		formatString: 0
+		lineageTag: 7f2cbc28-2f6c-468b-bde1-ccbc6fa33bf4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DivergenciaPecas = Dim_Cancelados[SaldoWMS] - Dim_Cancelados[SaldoContabil]
+		formatString: 0
+		lineageTag: 8e687af2-3768-4edb-8519-5e796cc787e5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustoPeca = RELATED(Dim_Precos[Custo])
+		lineageTag: bcee717d-8699-44e2-b174-f9b93c62e176
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DivergenciaValor = Dim_Cancelados[CustoPeca] * Dim_Cancelados[DivergenciaPecas]
+		lineageTag: d99ea527-7ca5-46b8-8a16-058814971816
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ChaveItem =
+			
+			Dim_Cancelados[Código] & "-" & FORMAT(Dim_Cancelados[Data Cancelado], "YYYYMMDD")
+		lineageTag: f99a51c8-4821-4d27-affc-75454e520d04
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Cancelados = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\bi at logistica",
+				    Fonte = Folder.Files(CaminhoBase),
+				    Relacao_Cancelados_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "\Cronograma_Inventario\",Name="Relacao_Cancelados.xlsx"]}[Content],
+				    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(#"Relacao_Cancelados_xlsx"),
+				    Cancelados_Table = #"Pasta de Trabalho Importada do Excel"{[Item="Cancelados",Kind="Table"]}[Data],
+				    #"Colunas Renomeadas" = Table.RenameColumns(Cancelados_Table,{{"Código Item", "Código"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

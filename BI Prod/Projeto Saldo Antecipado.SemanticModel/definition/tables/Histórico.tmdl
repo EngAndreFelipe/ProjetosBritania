@@ -1,0 +1,147 @@
+table Histórico
+	lineageTag: 33ffdd58-deb4-4437-822e-d16cae35798d
+
+	column IdEstab
+		dataType: string
+		lineageTag: 0ea48016-61d8-4360-b4b5-712ec9a6d0fd
+		summarizeBy: none
+		sourceColumn: IdEstab
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: 2be13956-5e8e-458c-ba72-499bab32e2ac
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNotaFiscal
+		dataType: string
+		lineageTag: 81f20aa0-d260-4424-8d17-32df83aa1374
+		summarizeBy: none
+		sourceColumn: NumeroNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataHoraAlteracao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 92738ba9-91a3-49f1-911c-ab29efb8367e
+		summarizeBy: none
+		sourceColumn: DataHoraAlteracao
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioAlteracao
+		dataType: string
+		lineageTag: bb9864b6-90f8-47ee-8276-cfcf5b34a1cc
+		summarizeBy: none
+		sourceColumn: UsuarioAlteracao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataProgramacaoEmbarque
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 83676ee9-3693-4d34-b311-932125004238
+		summarizeBy: none
+		sourceColumn: DataProgramacaoEmbarque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0800884e-a0b8-409d-894d-6be1fe925939
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataEntrega
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ef3cda1c-ff7b-4732-89ba-a17c1dd99889
+		summarizeBy: none
+		sourceColumn: DataEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataProgramacaoEntrega
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2677ea49-acca-4126-97cf-df9ae6114648
+		summarizeBy: none
+		sourceColumn: DataProgramacaoEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataReagenda
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f3a0896d-c10c-401a-988a-f4f3adba3105
+		summarizeBy: none
+		sourceColumn: DataReagenda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataSolicitacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1db52bd5-e692-4bfb-93f9-502736130834
+		summarizeBy: none
+		sourceColumn: DataSolicitacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CodigoMotivoSolicitacao
+		dataType: string
+		lineageTag: d4744527-e34c-446c-b36d-52c51d0ea357
+		summarizeBy: none
+		sourceColumn: CodigoMotivoSolicitacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescricaoMotivoSolicitacao
+		dataType: string
+		lineageTag: cad9d343-9cc8-474f-a9e0-49d16aea9f48
+		summarizeBy: none
+		sourceColumn: DescricaoMotivoSolicitacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column ObservacaoSolicitacao
+		dataType: string
+		lineageTag: ab0de198-5a6b-4241-912a-9a1e0ea47372
+		summarizeBy: none
+		sourceColumn: ObservacaoSolicitacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Histórico = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)#(tab)IdEstab,#(lf)#(tab)SerieNotaFiscal,#(lf)#(tab)NumeroNotaFiscal,#(lf)#(tab)DataHoraAlteracao,#(lf)#(tab)UsuarioAlteracao,#(lf)#(tab)DataProgramacaoEmbarque,#(lf)#(tab)DataSaida,#(lf)#(tab)DataEntrega,#(lf)#(tab)DataProgramacaoEntrega,#(lf)#(tab)DataReagenda,#(lf)#(tab)DataSolicitacao,#(lf)#(tab)CodigoMotivoSolicitacao,#(lf)#(tab)DescricaoMotivoSolicitacao,#(lf)#(tab)ObservacaoSolicitacao#(lf)FROM logistica.Fato_Faturamento_Historico_Datas#(lf)WHERE DataHoraAlteracao >= '2024-03-01 00:00:00'#(lf)AND DataSaida IS NULL"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"IdEstab", type text}, {"DataHoraAlteracao", type datetime}, {"DataProgramacaoEmbarque", type date}, {"DataSaida", type date}, {"DataEntrega", type date}, {"DataProgramacaoEntrega", type date}, {"DataReagenda", type date}, {"DataSolicitacao", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

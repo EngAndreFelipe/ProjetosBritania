@@ -1,0 +1,3 @@
+
+EVALUATE
+    CALCULATE(DISTINCTCOUNT(f_dwPDB381[Embarque]), f_dwPDB381[ChvBloqUnico_] <> BLANK(), f_dwPDB381[PedAlocado] = "NÃO")

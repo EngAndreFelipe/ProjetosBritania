@@ -1,0 +1,176 @@
+table Fato_ESWM9002
+	lineageTag: 771ac1e7-b542-40f4-9c32-8db71faa6932
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: month
+		rollingWindowPeriods: 12
+		incrementalGranularity: day
+		incrementalPeriods: 60
+		sourceExpression =
+			let
+			    Fonte = Value.NativeQuery(
+			        Sql.Database("PR-S188\DW", "DW"),
+			        "
+			        SELECT *
+			        FROM logistica.Fato_ESWM9022
+			        WHERE [Local] = 'AAT'
+			        ",
+			        null,
+			        [EnableFolding = true]
+			    ),
+			    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+			in
+			    #"Linhas Filtradas"
+
+	column Empresa
+		dataType: string
+		lineageTag: 46d03cf7-f7a5-41bd-a626-b7d748f08cb7
+		summarizeBy: none
+		sourceColumn: Empresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estab
+		dataType: string
+		lineageTag: 14f47ed6-ea37-4e40-80e7-230517daccc5
+		summarizeBy: none
+		sourceColumn: Estab
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: b23eabcb-0da4-4dd7-b0d6-5d0c54b2ec9b
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: b751c5c1-0085-4238-8bf2-80e39a3ce184
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: d1adecee-2801-483f-a014-552cc56dc08c
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classe
+		dataType: string
+		lineageTag: 73f47436-4cf7-40cb-af86-4749cbfa8fdc
+		summarizeBy: none
+		sourceColumn: Classe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: a94a175a-e51d-4920-91cc-e51ee94e1134
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Embalagem
+		dataType: string
+		lineageTag: edf3808d-af2e-4425-9867-b658ba944e26
+		summarizeBy: none
+		sourceColumn: Embalagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloq
+		dataType: string
+		lineageTag: 1ea62a15-e0ce-4b36-9af8-f3867b7abf7d
+		summarizeBy: none
+		sourceColumn: Bloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		formatString: 0
+		lineageTag: c2c3c32a-604e-45ab-8e3d-07845eeaf38d
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Reservado
+		dataType: double
+		lineageTag: ccc6ba1b-6088-4831-9ccc-8343934278d3
+		summarizeBy: sum
+		sourceColumn: Reservado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Disponivel
+		dataType: double
+		formatString: 0
+		lineageTag: 336a1f83-65f3-44d6-8dc6-8d2c0c84f0a8
+		summarizeBy: sum
+		sourceColumn: Disponivel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Pallet
+		dataType: int64
+		formatString: 0
+		lineageTag: dc64df56-46cd-410a-8f92-c538f33c77b8
+		summarizeBy: sum
+		sourceColumn: Pallet
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e8540c49-8ded-4b24-94d8-0417033b11c5
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: ce0bd7e4-4e04-4dcf-91d9-de60ab11bae0
+			defaultHierarchy: LocalDateTable_c42cf72f-acdf-4ef9-a2c5-794d7591f6c4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_ESWM9002 = m
+		mode: import
+		source =
+				let
+				    Fonte = Value.NativeQuery(
+				        Sql.Database("PR-S188\DW", "DW"),
+				        "
+				        SELECT *
+				        FROM logistica.Fato_ESWM9022
+				        WHERE [Local] = 'AAT'
+				        ",
+				        null,
+				        [EnableFolding = true]
+				    ),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_IsMQueryFoldable = True
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

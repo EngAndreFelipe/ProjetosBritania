@@ -1,0 +1,87 @@
+table d_Calendario
+	lineageTag: c1d36b05-6946-44b7-9945-81e8cbd241fe
+
+	column Calendario
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: dd652ebf-2b21-49d4-8b77-01964813bbc1
+		summarizeBy: none
+		sourceColumn: Calendario
+
+		variation Variation
+			isDefault
+			relationship: b113be57-0580-4c59-9d18-875f5b205349
+			defaultHierarchy: LocalDateTable_df97912d-175e-489b-a021-245a2f9bf09c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		dataType: string
+		lineageTag: b46e1503-fab3-4421-b407-e2b855df0a2c
+		summarizeBy: none
+		sourceColumn: DiaSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNome
+		dataType: string
+		lineageTag: b5aad839-1443-4afb-9771-12c47869880f
+		summarizeBy: none
+		sourceColumn: DiaSemanaNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaAno
+		dataType: string
+		lineageTag: b1971bee-d529-45aa-bca1-e2adc85abaca
+		summarizeBy: none
+		sourceColumn: DiaSemanaAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: e2405915-5c27-4839-a2cd-24a21b3afd6d
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNome
+		dataType: string
+		lineageTag: 092f875a-2fc8-4c84-af2e-aa266f3d2514
+		summarizeBy: none
+		sourceColumn: MesNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: string
+		lineageTag: 1ee7fcc9-05a1-4b1d-8b8f-985775a5cbc5
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: string
+		lineageTag: a8328098-b126-4e58-a362-23fc6934b28c
+		summarizeBy: none
+		sourceColumn: MesAno
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Calendario = m
+		mode: import
+		source = ```
+				let
+				    Calendario_ = 
+				        Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)#(tab)CAST(Data AS DATE) Calendario,#(lf)#(tab)DiaSemana,#(lf)#(tab)DiaSemanaNome,#(lf)#(tab)DiaSemanaAno,#(lf)#(tab)Mes,#(lf)#(tab)MesNome,#(lf)#(tab)Ano,#(lf)#(tab)MMYYYY MesAno#(lf)#(lf)FROM dbo.Dim_Data#(lf)WHERE Data >= DATEADD(DAY, 1, EOMONTH(DATEADD(MONTH, -4,CAST(GETDATE() AS DATE))))#(lf)"])
+				in
+				    Calendario_
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

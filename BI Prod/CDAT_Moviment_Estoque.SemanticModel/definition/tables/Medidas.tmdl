@@ -1,0 +1,27 @@
+table Medidas
+	lineageTag: f91ed095-b75d-41a6-9cd0-cd8e23c2709b
+
+	measure Total_Estoque_WMS = SUM(Fato_Estoque_WMS[Total])
+		formatString: #,0
+		lineageTag: e46f8ea1-b62e-49ee-8032-b62ec818f34d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 78578737-2bec-4fa4-8b97-6196d3d4d8d1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = bdbaec0f343f483da8a2c3ac299a2519
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

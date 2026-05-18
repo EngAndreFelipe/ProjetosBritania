@@ -1,0 +1,490 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "3fad37b61897d745a0e7",
+  "position": {
+    "x": 67.331670822942641,
+    "y": 121.19700748129675,
+    "z": 1000,
+    "height": 598.80299251870326,
+    "width": 1212.8678304239402,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "NumeroPedido"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.NumeroPedido",
+              "nativeQueryRef": "NumeroPedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "NumeroOS"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.NumeroOS",
+              "nativeQueryRef": "NumeroOS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "OS"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.OS",
+              "nativeQueryRef": "OS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "NomeMatrizTransportador"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.NomeMatrizTransportador",
+              "nativeQueryRef": "Transportadora",
+              "displayName": "Transportadora"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "SerieNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.SerieNotaFiscal",
+              "nativeQueryRef": "SerieNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "NumeroNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.NumeroNotaFiscal",
+              "nativeQueryRef": "NumeroNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "Cidade"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.Cidade",
+              "nativeQueryRef": "Cidade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "EstadoDestino"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.EstadoDestino",
+              "nativeQueryRef": "Estado",
+              "displayName": "Estado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "NomeMatriz"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.NomeMatriz",
+              "nativeQueryRef": "NomeMatriz"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "DataEmissaoNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.DataEmissaoNotaFiscal",
+              "nativeQueryRef": "Data Emissão",
+              "displayName": "Data Emissão",
+              "format": "d"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "DataSaida"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.DataSaida",
+              "nativeQueryRef": "Data Saida",
+              "displayName": "Data Saida",
+              "format": "d"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "CodItem"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.CodItem",
+              "nativeQueryRef": "CodItem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "DescItem"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.DescItem",
+              "nativeQueryRef": "DescItem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "QtdeFaturada"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.QtdeFaturada)",
+              "nativeQueryRef": "Qtde Faturada",
+              "displayName": "Qtde Faturada"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "QtVolumes"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.QtVolumes)",
+              "nativeQueryRef": "Qtde Volumes",
+              "displayName": "Qtde Volumes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "PesoBruto"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.PesoBruto)",
+              "nativeQueryRef": "PesoBruto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "PesoCubico"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.PesoCubico)",
+              "nativeQueryRef": "PesoCubico"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "TotalNota"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.TotalNota)",
+              "nativeQueryRef": "TotalNota"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "VlFretePrevisto"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.VlFretePrevisto)",
+              "nativeQueryRef": "Vl Frete Previsto",
+              "displayName": "Vl Frete Previsto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "VlFretePago"
+                }
+              },
+              "queryRef": "Sum(Fato_AnaliseEntrega.VlFretePago)",
+              "nativeQueryRef": "Vl Frete Pago",
+              "displayName": "Vl Frete Pago"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "TipoProduto"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.TipoProduto",
+              "nativeQueryRef": "Tipo Produto",
+              "displayName": "Tipo Produto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AnaliseEntrega"
+                    }
+                  },
+                  "Property": "Produto"
+                }
+              },
+              "queryRef": "Fato_AnaliseEntrega.Produto",
+              "nativeQueryRef": "Produto"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 7,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3e29254f3cab69cbe991",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_AnaliseEntrega"
+              }
+            },
+            "Property": "DataEntrega"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ]
+  }
+}

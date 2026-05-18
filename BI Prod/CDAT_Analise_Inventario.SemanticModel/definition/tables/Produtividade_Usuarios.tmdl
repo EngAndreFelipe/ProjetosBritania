@@ -1,0 +1,222 @@
+table Produtividade_Usuarios
+	lineageTag: 6ede6871-0808-46c8-9530-ffced9a4d83a
+
+	measure Qtd_Enderecos = DISTINCTCOUNT(Produtividade_Usuarios[Endereco])
+		formatString: 0
+		lineageTag: 95dc692a-ad6b-49dd-8f72-e6898f8acc73
+
+	measure Qtd_Itens = DISTINCTCOUNT(Produtividade_Usuarios[Item])
+		formatString: 0
+		lineageTag: 998371cb-d316-420c-8a29-1b858b9c5d4b
+
+	measure Total_Peças = SUM(Produtividade_Usuarios[Qtd_Pecas_Num])
+		lineageTag: dfc457db-2b63-4209-b797-b8611ba5b0e1
+
+	measure ContagemEndPCK = COALESCE(CALCULATE(DISTINCTCOUNT(Produtividade_Usuarios[Endereco]),Produtividade_Usuarios[Bloco] = "PCK"),0)
+		formatString: 0
+		lineageTag: 09449679-e4e5-4256-a672-8fc607932a17
+
+	measure ContagemEndRUA = COALESCE(CALCULATE(DISTINCTCOUNT(Produtividade_Usuarios[Endereco]),Produtividade_Usuarios[Bloco] <> "PCK"),0)
+		formatString: 0
+		lineageTag: 76195fa2-94ae-4ece-a402-7ee4f705b532
+
+	column Usuario
+		lineageTag: 50509c1e-72a9-4b75-849f-15d4965f8472
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Usuario]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qtd_Pecas
+		lineageTag: 0267acb4-1400-4f41-8bcb-04dd81b717da
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Qtd_Pecas]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Item
+		lineageTag: a2c35a96-06a6-4d58-9967-6e1215ea4d94
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Item]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		lineageTag: 34cd384a-4733-43ea-b2dc-fae247239fc6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Endereco]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataInventario
+		formatString: Short Date
+		lineageTag: 8559c0a9-0197-4a56-b626-3c8e52f859ee
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DataInventario]
+
+		variation Variation
+			isDefault
+			relationship: ebf84dad-7d2b-48a4-bfd7-bf3c94a39a4f
+			defaultHierarchy: LocalDateTable_4bc9bf21-af16-4856-a6b0-0b230b7ef512.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NumeroInventario
+		formatString: 0
+		lineageTag: dd504801-0ce5-4703-92d7-389099015504
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [NumeroInventario]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloco
+		lineageTag: 77d1b577-7edb-4f55-a12e-157f2610bd6a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Bloco]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		lineageTag: be072987-9476-4056-af06-5aad32a1ee04
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Rua]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		lineageTag: 17e832bf-2e53-47f2-aebd-e6cda1a5c536
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Nivel]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		lineageTag: 49e9382f-491c-40c9-ba6f-704317b606b5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Coluna]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qtd_Pecas_Num = VALUE(Produtividade_Usuarios[Qtd_Pecas])
+		lineageTag: 8494248b-ba19-4ac0-b16c-81d7293a3e9c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SituacaoEnd
+		lineageTag: 75d0a5fd-ee99-4fff-bc27-33a2ad1cb999
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SituacaoEnd]
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraLeitura
+		lineageTag: 3d266c2b-e986-40a4-a4d3-77a29bfbcf77
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [HoraLeitura]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaHora =
+			
+			VAR Hora = HOUR(Produtividade_Usuarios[HoraLeitura])
+			RETURN
+			FORMAT(Hora, "00") & " as " & FORMAT(Hora + 1, "00")
+		lineageTag: 8ed8b7c6-c25e-452a-b359-ce5c5e4afc03
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column EquipeContagem =
+			
+			VAR DataInv = Produtividade_Usuarios[DataInventario]
+			VAR Usuario = Produtividade_Usuarios[Usuario]
+			RETURN
+			    CALCULATE(
+			        SELECTEDVALUE(Dim_Usuarios[Equipe]),
+			        FILTER(
+			            Dim_Usuarios,
+			            Dim_Usuarios[Usuario] = Usuario &&
+			            DataInv >= Dim_Usuarios[De] &&
+			            DataInv <= Dim_Usuarios[Até]
+			        )
+			    )
+		lineageTag: 4b836645-13fb-4003-a886-8e87ac89d258
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Produtividade_Usuarios = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    UNION(
+				        SELECTCOLUMNS(
+				            Fato_InvSegundoCiclo,
+				            "Usuario", Fato_InvSegundoCiclo[Usuario1],
+				            "Qtd_Pecas", Fato_InvSegundoCiclo[QtdApurada1],
+				            "Item", Fato_InvSegundoCiclo[Item],
+				            "Endereco", Fato_InvSegundoCiclo[IdBox],
+				            "DataInventario", Fato_InvSegundoCiclo[DataInventario],
+				            "NumeroInventario", Fato_InvSegundoCiclo[NumeroInventario],
+				            "Bloco", Fato_InvSegundoCiclo[Bloco],
+				            "Rua", Fato_InvSegundoCiclo[Rua],
+				            "Nivel", Fato_InvSegundoCiclo[Nivel],
+				            "Coluna", Fato_InvSegundoCiclo[Coluna],
+				            "SituacaoEnd", Fato_InvSegundoCiclo[SituacaoEnd], "HoraLeitura", Fato_InvSegundoCiclo[HoraLeitura1]
+				        ),
+				        SELECTCOLUMNS(
+				            Fato_InvSegundoCiclo,
+				            "Usuario", Fato_InvSegundoCiclo[Usuario2],
+				            "Qtd_Pecas", Fato_InvSegundoCiclo[QtdApurada2],
+				            "Item", Fato_InvSegundoCiclo[Item],
+				            "Endereco", Fato_InvSegundoCiclo[IdBox],
+				            "DataInventario", Fato_InvSegundoCiclo[DataInventario],
+				            "NumeroInventario", Fato_InvSegundoCiclo[NumeroInventario],
+				            "Bloco", Fato_InvSegundoCiclo[Bloco],
+				            "Rua", Fato_InvSegundoCiclo[Rua],
+				            "Nivel", Fato_InvSegundoCiclo[Nivel],
+				            "Coluna", Fato_InvSegundoCiclo[Coluna],
+				            "SituacaoEnd", Fato_InvSegundoCiclo[SituacaoEnd], "HoraLeitura", Fato_InvSegundoCiclo[HoraLeitura2]
+				        ),
+				        SELECTCOLUMNS(
+				            Fato_InvSegundoCiclo,
+				            "Usuario", Fato_InvSegundoCiclo[Usuario3],
+				            "Qtd_Pecas", Fato_InvSegundoCiclo[QtdApurada3],
+				            "Item", Fato_InvSegundoCiclo[Item],
+				            "Endereco", Fato_InvSegundoCiclo[IdBox],
+				            "DataInventario", Fato_InvSegundoCiclo[DataInventario],
+				            "NumeroInventario", Fato_InvSegundoCiclo[NumeroInventario],
+				            "Bloco", Fato_InvSegundoCiclo[Bloco],
+				            "Rua", Fato_InvSegundoCiclo[Rua],
+				            "Nivel", Fato_InvSegundoCiclo[Nivel],
+				            "Coluna", Fato_InvSegundoCiclo[Coluna],
+				            "SituacaoEnd", Fato_InvSegundoCiclo[SituacaoEnd], "HoraLeitura", Fato_InvSegundoCiclo[HoraLeitura3]
+				        )
+				    ),
+				    FORMAT([Qtd_Pecas], "0") <> "?"
+				)
+
+	annotation PBI_Id = 91761adc92dd4e91aa2e723da7acbab0
+

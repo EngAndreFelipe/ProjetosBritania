@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f07845dbac8743068c71",
+  "position": {
+    "x": 1044.0897755610972,
+    "y": 131.07231920199501,
+    "z": 11000,
+    "height": 150.82294264339151,
+    "width": 235.21197007481297,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Itens_Cobrados"
+                    }
+                  },
+                  "Property": "TipoProduto"
+                }
+              },
+              "queryRef": "Fato_Itens_Cobrados.TipoProduto",
+              "nativeQueryRef": "Tipo Produto",
+              "displayName": "Tipo Produto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "CustoUnit"
+                }
+              },
+              "queryRef": "Medidas.CustoUnit",
+              "nativeQueryRef": "Custo Peça",
+              "displayName": "Custo Peça",
+              "format": "0.00000000"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "821085b102050b9276ce",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Itens_Cobrados"
+              }
+            },
+            "Property": "TipoProduto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a1d68c1e4467ea5a40a4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "CustoUnit"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

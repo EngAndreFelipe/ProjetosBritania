@@ -1,0 +1,217 @@
+table Medidas
+	lineageTag: ef5562db-4022-417d-9f35-d46ecee152c4
+
+	measure _% =
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			RETURN
+			    IF(ISBLANK(numerador) && ISBLANK(denominador), BLANK(),
+			        FORMAT(real, SELECTEDVALUE(f_Sgm[Format]))
+			    )
+		lineageTag: ff33a160-ccc7-49d3-8c5d-0d2440903e8b
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	measure '_ Meta' =
+			
+			VAR metap = DIVIDE(CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[MesAno])), 100)
+			VAR meta = CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[MesAno]))
+			VAR formato = SELECTEDVALUE(f_Sgm[Format])
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        formato = "0.00%", metap,  -- Deixa como número
+			        formato = "#,#0.00", meta,  -- Deixa como número
+			        meta  -- Default, em caso de valor não identificado
+			    )
+		lineageTag: 2d7bb70d-d0a7-417a-ada3-d15049bf4b1d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_ Realizado' = DIVIDE(SUM(f_Sgm[RealNumerador]), SUM(f_Sgm[RealDenominador]))
+		lineageTag: b3185eb7-f855-46ed-9bd3-33d6b71aae21
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _CorFonte = ```
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			VAR meta = CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[Mes])) / IF(SELECTEDVALUE(f_Sgm[Format]) = "0.00%", 100, 1)
+			VAR vr = IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima", meta * 0.95, meta * 1.05)
+			RETURN
+			IF(ISBLANK(numerador), BLANK(),
+			    IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima",
+			        IF(real >= meta, "#FFFFFF",
+			            IF(real < vr, "#FFFFFF", "#000000")
+			        )
+			    ,
+			        IF(real <= meta, "#FFFFFF",
+			            IF(real > vr, "#FFFFFF", "#000000")
+			        )
+			    )
+			)
+			
+			
+			
+			
+			
+			
+			
+			
+			```
+		lineageTag: 6c2209c6-1738-44f6-93e4-3b8ea7920313
+
+	measure _CorFundo =
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			VAR meta = CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[Mes])) / IF(SELECTEDVALUE(f_Sgm[Format]) = "0.00%", 100, 1)
+			VAR vr = IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima", meta * 0.95, meta * 1.05)
+			RETURN
+			
+			IF(ISBLANK(numerador), BLANK(),
+			    IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima",
+			        IF(real >= meta, "#008000",
+			            IF(real < vr, "#800080", "#FFFF00")
+			        )
+			    ,
+			        IF(real <= meta, "#008000",
+			            IF(real > vr, "#800080", "#FFFF00")
+			        )
+			    )
+			)
+		lineageTag: 1e850fe9-02d3-406b-af4f-791dc298d577
+
+	measure _PesoAtual = CALCULATE(MAX(f_Sgm[Peso]), f_Sgm[Ano] = MAX(f_Sgm[Ano]))
+		formatString: 0
+		lineageTag: 79a4be6e-98d6-4654-9b37-16c0a9fae7c4
+
+	measure Denominador = SUM(f_Sgm[RealDenominador])
+		lineageTag: cf0a8791-aa2d-4ec7-97d1-3daaaf92cc64
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Numerador = SUM(f_Sgm[RealNumerador])
+		lineageTag: 16d870a5-c152-483a-b417-4e7a3e52930b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PontAcm = SUM(f_Sgm[PontuacaoAcumulado])
+		formatString: 0
+		lineageTag: 51bb3e42-a6f0-49e4-8fc4-3c24f4b77f55
+
+	measure Meta =
+			
+			VAR metap = DIVIDE(CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[MesAno])), 100)
+			VAR meta = CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[MesAno]))
+			VAR formato = SELECTEDVALUE(f_Sgm[Format])
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        formato = "0.00%", FORMAT(metap, "0.00%"),  -- Deixa como número
+			        formato = "#,#0.00", FORMAT(meta, "#,#0.00"),  -- Deixa como número
+			        meta  -- Default, em caso de valor não identificado
+			    )
+		lineageTag: 0e94ebc6-1fed-49f4-a675-ff80cc7b2573
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %_Filtro =
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			RETURN
+			    FORMAT(real, SELECTEDVALUE(f_Sgm[Format]))
+		lineageTag: 7e6fdb57-2c1a-4728-b670-5b70e4c0f816
+
+	measure CorFonteFiltro =
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			VAR meta = CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[Mes])) / IF(SELECTEDVALUE(f_Sgm[Format]) = "0.00%", 100, 1)
+			VAR vr = IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima", meta * 0.95, meta * 1.05)
+			RETURN
+			
+			IF(ISBLANK(numerador), BLANK(),
+			    IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima",
+			        IF(real >= meta, "#3F953F",
+			            IF(real < vr, "#AC95DA", "#E8D166")
+			        )
+			    ,
+			        IF(real <= meta, "#3F953F",
+			            IF(real > vr, "#AC95DA", "#E8D166")
+			        )
+			    )
+			)
+		lineageTag: fa019cf2-fd4b-409d-b70c-70929c9d3543
+
+	measure PesoAtual = CALCULATE(MAX(f_Sgm[Peso]), f_Sgm[Ano] = 2025)
+		formatString: 0
+		lineageTag: 1a808476-155b-443a-92ad-61fa34c8435c
+
+	measure %Realizado =
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			RETURN
+			    FORMAT(real, SELECTEDVALUE(f_Sgm[Format]))
+		lineageTag: a4c3bb41-b325-48fb-ba8e-9496b1315c01
+
+	measure PontMes = SUM(f_Sgm[PontuacaoMes])
+		formatString: 0
+		lineageTag: 1a703b78-53da-4229-8662-12f10e6ad76a
+
+	measure CorFonteGrafico =
+			
+			VAR numerador = SUM(f_Sgm[RealNumerador])
+			VAR denominador = SUM(f_Sgm[RealDenominador])
+			VAR real = DIVIDE(numerador, denominador, 0)
+			VAR meta = CALCULATE(MAX(f_Sgm[Meta_Indicador]), ALLSELECTED(f_Sgm[Mes])) / IF(SELECTEDVALUE(f_Sgm[Format]) = "0.00%", 100, 1)
+			VAR vr = IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima", meta * 0.95, meta * 1.05)
+			RETURN
+			
+			IF(ISBLANK(numerador), BLANK(),
+			    IF(SELECTEDVALUE(f_Sgm[TpIndicador]) = "Para cima",
+			        IF(real >= meta, "#3F953F",
+			            IF(real < vr, "#744EC2", "#D9B300")
+			        )
+			    ,
+			        IF(real <= meta, "#3F953F",
+			            IF(real > vr, "#744EC2", "#D9B300")
+			        )
+			    )
+			)
+		lineageTag: 9aea1417-2bfd-4d74-9a97-7912c65a6727
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: a4ad112b-e783-4e60-81b6-4d2cef833695
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

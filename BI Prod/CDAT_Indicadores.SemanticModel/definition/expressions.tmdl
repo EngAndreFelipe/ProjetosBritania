@@ -1,0 +1,8 @@
+expression Pasta = "\\10.0.10.7\compartilhado\bi at logistica" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 8868a832-aa3c-4d3b-81cb-3b86d7de323e
+	queryGroup: AltPlanilha
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,56 @@
+table Medidas
+	lineageTag: cb25ae5c-677b-48cb-86ba-447f4c83cb26
+
+	measure QtdePeças = SUM(f_PDB381[QuantidadeAtendida])
+		formatString: #,0
+		lineageTag: 32b96d41-b486-4de7-8e31-da35a73409eb
+
+	measure QtdeNotas = DISTINCTCOUNT(f_PDB381[NotaFiscal])
+		formatString: 0
+		lineageTag: 211d205a-18fd-42eb-b371-dd15c1dfdc50
+
+	measure PercDiasExp = [QtdePeças] / CALCULATE([QtdePeças], ALL(f_PDB381[DiasExp]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e1f94b19-e3d8-4298-8627-29c0988d922f
+
+	measure PercDia =
+			
+			VAR total = CALCULATE(SUM(f_PDB381[QuantidadeAtendida]), VALUES(d_Calendario[Calendario].[Dia]))
+			VAR noprazo = CALCULATE(SUM(f_PDB381[QuantidadeAtendida]), VALUES(d_Calendario[Calendario].[Dia]),f_PDB381[DiasExp] < 3)
+			RETURN
+			    DIVIDE(noprazo, total)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 520a2922-8141-4213-b849-718ade90957a
+
+	measure Perc_D2 =
+			
+			VAR total = CALCULATE([QtdePeças], ALL(f_PDB381[DiasExp]))
+			VAR noprazo = CALCULATE([QtdePeças], ALL(f_PDB381[DiasExp]), f_PDB381[DiasExp] < 3)
+			RETURN
+			    DIVIDE(noprazo, total)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6be492b4-7750-4433-bb6c-508bfad34436
+
+	column Medidas
+		dataType: string
+		isHidden
+		lineageTag: 2c42ad7e-1b37-41e8-9d03-b99e44dab846
+		summarizeBy: none
+		sourceColumn: Medidas
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = ""
+				in
+				    Fonte
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navegação
+

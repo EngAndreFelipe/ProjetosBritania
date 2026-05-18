@@ -1,0 +1,31 @@
+table Dim_Data
+	lineageTag: 7e376406-be70-45de-99d6-edabdc19b44b
+
+	column Data
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1cba8d0b-eae5-4889-abac-38b3b4fbdbe1
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 0e292210-3b7c-4d29-b3d7-528ad622fdeb
+			defaultHierarchy: LocalDateTable_eecb96a8-17b3-4138-bec6-baa2e01eeb3d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Data = m
+		mode: import
+		source =
+				let
+				   Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)        DECLARE @RangeStart DATETIME = '2023-06-01';#(lf)        DECLARE @RangeEnd DATETIME = GETDATE();#(lf)#(lf)        SELECT #(lf)            Data,#(lf)            Mes,#(lf)            MesNome,#(lf)            SemestreNome,#(lf)            Ano,#(lf)            Feriado,#(lf)            DiaUtil,#(lf)            DiaSemanaNomAbrev#(lf)        FROM dbo.Dim_Data#(lf)        WHERE Data > @RangeStart AND Data <= @RangeEnd#(lf)    "]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [Data] > RangeStart and [Data] <= RangeEnd),
+				    ColunasRemovidas= Table.SelectColumns(#"Linhas Filtradas",{"Data"})
+				in
+				    ColunasRemovidas
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

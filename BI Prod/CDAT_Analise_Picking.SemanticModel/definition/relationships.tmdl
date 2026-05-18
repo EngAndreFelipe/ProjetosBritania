@@ -1,0 +1,150 @@
+relationship 8735a475-85ce-884d-f09f-fca7633fea08
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Faturamento.Id
+	toColumn: Dim_Item.Id
+
+relationship 3141dc09-665b-ef6f-8c3e-660483f11cf4
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_WMS.Id
+	toColumn: Dim_Item.Id
+
+relationship b7351b35-0216-18c5-ee34-b7122fb64ec1
+	fromColumn: Fato_WMS.IdItem
+	toColumn: Dim_WMS.Id
+
+relationship bb955ade-b232-4e6c-a960-f41df354bd3a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturamento.DataEmissao
+	toColumn: LocalDateTable_fc8ffbfd-aba2-419e-90e1-e235100ab2ab.Date
+
+relationship 91948304-5454-4d0b-9487-4978c1ec4bc4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturamento.DataSaida
+	toColumn: LocalDateTable_e6adc604-0938-4121-88ea-78aa5936171a.Date
+
+relationship 4053829c-d476-74cf-d1c0-a5a45acc47e3
+	fromColumn: Fato_Faturamento.IdItem
+	toColumn: Dim_Faturamento.Id
+
+relationship 33edf44e-13f7-46ef-be7e-6c631246601c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Movimentações.DataImplantacao
+	toColumn: LocalDateTable_0d1621c7-a140-4b0b-bdf2-c4ab34f6e788.Date
+
+relationship 7ac6e0b1-56dc-4b65-a3e9-3a85c36313c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Movimentações.DataCarga
+	toColumn: LocalDateTable_5f6da19d-f389-4398-b4c8-a70fca5f87a7.Date
+
+relationship fbec447b-31cc-6fac-9482-df298c0ba890
+	fromColumn: Fato_MovimentaçõesResumo.Id
+	toColumn: Dim_Item.Id
+
+relationship 04dbfbf2-9f37-1b6e-e97c-7e85d809dc99
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Faturamento.IdItem
+	toColumn: Fato_MovimentaçõesResumo.Id
+
+relationship 60b94ec1-b9b5-41e8-a7be-ac987fb5e979
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Data.Data
+	toColumn: LocalDateTable_00de04e4-71cb-4e9a-a791-6fb0d0516ad9.Date
+
+relationship 8b64a3b4-6885-d39e-a396-885796ec0318
+	fromColumn: Fato_Faturamento.IdData
+	toColumn: Dim_Data.Id
+
+relationship 9a0e6d6b-0bcb-4910-4f62-64c500f4e2d8
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_WMS.IdItem
+	toColumn: Fato_Faturamento.IdItem
+
+relationship 5b4034d7-ddb0-1a0e-5d28-221cb7d4fc3b
+	isActive: false
+	fromColumn: Fato_Faturamento.Data
+	toColumn: Dim_Data.Data
+
+relationship e593f31c-3286-28fd-19e0-4ef9ae2d9ad7
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_ItemXPicking.IdBox
+	toColumn: Dim_Enderecos.IdBox
+
+relationship b84c9ae7-5790-0aa6-8a36-fd48947f73b6
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Dim_ItemXPicking.Item
+	toColumn: Dim_Item.CodItem
+
+relationship 3edf7ac1-b899-4cef-87e3-f91fb0de16b7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Ressuprimento.DataExec
+	toColumn: LocalDateTable_5d867377-fb81-4981-b532-d789f414684c.Date
+
+relationship cbb58372-3c02-483c-80a2-d189f1fbfe83
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Ressuprimento.DataImplantacao
+	toColumn: LocalDateTable_f30013f7-7191-4820-a782-dd728939b330.Date
+
+relationship 3833f707-9f04-4726-baae-c73c30ae8faf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Ressuprimento.DataCarga
+	toColumn: LocalDateTable_d9e1cf40-1ebe-4824-8f5b-2e15954213aa.Date
+
+relationship ad4e7d57-ee16-4a60-a2e6-a08008507e4b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturamento.DataEmissaoMaisRecente
+	toColumn: LocalDateTable_50d6d661-8099-4fb8-a4ef-7bd3ffb963ed.Date
+
+relationship 4d4aab08-562f-bb68-834c-532bc78a3105
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Faturamento.CodItem
+	toColumn: Dim_ItemXPicking.Item
+
+relationship da612c33-dc67-4d71-a93c-dac46f5442e0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Serial.DataCarga
+	toColumn: LocalDateTable_744c23ea-1eeb-4dbd-aea5-9cac01dd3d2b.Date
+
+relationship AutoDetected_5771fb67-654b-4e66-99ac-48c59f943685
+	fromColumn: Fato_Serial.cod-item
+	toColumn: Dim_WMS.CodItem
+
+relationship 39b96aa7-a5cb-862e-aca9-e990fcfe3ce7
+	fromColumn: Fato_Serial.id-box
+	toColumn: Dim_Enderecos.IdBox
+
+relationship f7d3f5d9-c652-4c9b-baf2-2146d36f3be4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Usuarios.De
+	toColumn: LocalDateTable_313f8b04-d2d8-4993-8226-845415ded1e4.Date
+
+relationship 5e394d6f-f024-4b90-af73-3dec6ee61a19
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Usuarios.Até
+	toColumn: LocalDateTable_da64e112-44c3-45b6-b65c-cab9551c6b73.Date
+
+relationship 5e5114ed-9cee-ffb6-6397-8e879f196a78
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Dim_Usuarios.Usuario
+	toColumn: Dim_Ressuprimento.Usuario2
+
+relationship b8628719-5227-dd0c-ff10-a61c9eeb9761
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Serial.cod-item
+	toColumn: Fato_WMS.Item
+
+relationship a46f6bf5-cd4e-4a9e-bbf1-dc60431b0a2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Serial.DataEtiqueta
+	toColumn: LocalDateTable_7acdd2e6-bfe5-48ae-a5af-c5c5d48490ce.Date
+

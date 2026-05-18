@@ -1,0 +1,92 @@
+table Dim_Enderecos
+	lineageTag: 39bff3e5-969d-48ad-82fc-d77f7278f5b3
+
+	measure ContagemEnderecos = COALESCE(DISTINCTCOUNT(Dim_Enderecos[IdBox]),0)
+		formatString: 0
+		lineageTag: 07996e5a-cb04-4452-b9ea-5a06fb236ef8
+
+	column IdBox
+		dataType: double
+		lineageTag: 18f80d4d-81a4-4802-8380-2ae5b490530d
+		summarizeBy: none
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bloco
+		dataType: string
+		lineageTag: 14b07480-6297-4490-8ac4-9f9ccd39f8a5
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: 57a9bb5d-5bb2-4551-b75b-46219d818e1d
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: 24d0b77d-94cd-4a96-a751-df5487c4f217
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: 22f6e36b-51d7-4b1b-b2c5-10822da1e8b9
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoBox
+		dataType: string
+		lineageTag: 08839ca7-40ff-4d75-92e1-c93659385d6c
+		summarizeBy: none
+		sourceColumn: TipoBox
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusCadastro = IF(COUNTROWS(FILTER(Dim_ItemXPicking, Dim_ItemXPicking[IdBox] = Dim_Enderecos[IdBox])) > 0, "Cadastrado", "Não Cadastrado")
+		lineageTag: f177af9a-e30c-4f29-a6f8-2b5f967e830a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusSaldo = IF(COUNTROWS(FILTER(Fato_WMS, Fato_WMS[IdBox] = Dim_Enderecos[IdBox])) > 0, "Com Saldo", "Sem Saldo")
+		lineageTag: 163075ec-c801-46d4-ac6b-ad46c7806b23
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enderecos_Completo =
+			
+			COALESCE(Dim_Enderecos[Bloco], "") & "/" &
+			COALESCE(Dim_Enderecos[Rua], "") & "/" &
+			COALESCE(Dim_Enderecos[Nivel], "") & "/" &
+			COALESCE(Dim_Enderecos[Coluna], "")
+		lineageTag: 8adcce20-cdf3-41c5-bf9d-877966f3a648
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Enderecos = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)    [id-box] AS IdBox,#(lf)    [cod-bloco] AS Bloco,#(lf)    [cod-rua] AS Rua,#(lf)    [cod-nivel] AS Nivel,#(lf)    [cod-coluna] AS Coluna,#(lf)    CASE #(lf)        WHEN [cdn-tipo-box] = 1 THEN 'Porta-Palete'#(lf)        WHEN [cdn-tipo-box] = 2 THEN 'Picking'#(lf)        ELSE 'Outro'#(lf)    END AS TipoBox#(lf)FROM STAGE.tot.wmbox#(lf)WHERE [cod-estabel] = '15'#(lf)  AND [cod-local] = 'aat'#(lf)  AND [cdn-tipo-box] IN (1, 2);"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

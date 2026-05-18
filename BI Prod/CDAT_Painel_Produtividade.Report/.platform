@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CDAT_Painel_Produtividade"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "713f8be7-ed59-4f62-baed-69619219c57b"
+  }
+}

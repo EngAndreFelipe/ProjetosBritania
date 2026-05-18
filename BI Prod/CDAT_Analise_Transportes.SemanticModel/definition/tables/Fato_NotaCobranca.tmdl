@@ -1,0 +1,135 @@
+table Fato_NotaCobranca
+	lineageTag: 2e404614-20dd-49c3-905a-7172262f5a73
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7f7142b5-dd39-4096-b30d-d3c3884d7a5c
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 8cbb7923-0f99-424a-a56e-5af7146c4b74
+			defaultHierarchy: LocalDateTable_ea3e6cca-2f46-4ffa-8062-78f2e8a57146.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNF
+		dataType: string
+		lineageTag: d62023c0-f594-4883-b383-ba1a08bcf3fc
+		summarizeBy: none
+		sourceColumn: SerieNF
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNF
+		dataType: string
+		lineageTag: 4b475a62-31df-46fb-8d94-e4d4a3761c8d
+		summarizeBy: none
+		sourceColumn: NumeroNF
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmissaoNF
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 78b5f9fb-9be2-4213-acd2-e2c99408913d
+		summarizeBy: none
+		sourceColumn: EmissaoNF
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveAcesso
+		dataType: string
+		lineageTag: e28641f7-476a-44bc-98c2-93e9cd8d0c2f
+		summarizeBy: none
+		sourceColumn: ChaveAcesso
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorCobrado
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: a564d7da-0508-40a0-b9ce-c9262fd51a33
+		summarizeBy: sum
+		sourceColumn: ValorCobrado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column Transportadora
+		dataType: string
+		lineageTag: 9e57707c-57bc-4b0b-a79c-cf07989754df
+		summarizeBy: none
+		sourceColumn: Transportadora
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 287b6f55-8cac-4145-bd3b-9008e0ecaada
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: 9d99f151-7b4c-45d7-9291-2d6ad5306677
+			defaultHierarchy: LocalDateTable_009cf065-bd74-4546-b8a3-9c3aa8d3eb65.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEntregaCliente
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: df6e6863-7623-4390-9cb4-3493d3320a18
+		summarizeBy: none
+		sourceColumn: DataEntregaCliente
+
+		variation Variation
+			isDefault
+			relationship: 5a845024-67d7-45b5-b37d-4397324a9752
+			defaultHierarchy: LocalDateTable_3a55360d-79a6-4c73-9439-925ef52efd94.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 1c6b81fa-6777-4d25-ab74-ba6ed37be53c
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: 9a521084-c903-45b0-a330-a8c7d9bb9ee3
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoPagamento
+		dataType: string
+		lineageTag: b9c959e7-8558-4b6b-8dba-fc3bf0174c76
+		summarizeBy: none
+		sourceColumn: TipoPagamento
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_NotaCobranca = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "Stage", [Query="SELECT #(lf)    NF.[SERIE] AS SerieNF,#(lf)    NF.[nr-nota-fis] AS NumeroNF,#(lf)    NF.[dt-emis-nota] as EmissaoNF,#(lf)    NF.[idi-sit-nf-eletro],#(lf)    NF.[cod-chave-aces-nf-eletro] AS ChaveAcesso,#(lf)    NF.[vl-tot-nota] AS ValorCobrado,#(lf)    NF.[cod-emitente] AS CodTransportadora,#(lf)    NF.[nome-ab-cli] AS Transportadora,#(lf)    NF.[nat-operacao] As NaturezaOperacao,#(lf)    NF.[dt-saida] AS DataSaida,#(lf)    NF.[dt-entr-cli] AS DataEntregaCliente,#(lf)    NF.[cidade] AS Cidade,#(lf)    NF.[estado] AS Estado,    #(lf)    NF.[ind-tip-nota],#(lf)    NF.[esp-docto],#(lf)    NF.[cod-cond-pag],#(lf)    CP.[descricao] AS TipoPagamento,#(lf)    NF.[observ-nota] AS Observacoes,     #(lf)    NF.[ind-sit-nota],#(lf)    NF.[emite-duplic],         #(lf)    NF.[vl-frete],#(lf)    NF.[ind-tp-frete],#(lf)    NF.[DataCarga]     #(lf)FROM [STAGE].[tot].[NotaFiscal] NF#(lf)LEFT JOIN [STAGE].[tot].[CondPagto] CP#(lf)    ON NF.[cod-cond-pag] = CP.[codCondpag]#(lf)WHERE NF.[cod-estabel] = '15'#(lf)  AND NF.[SERIE] = '6'#(lf)  and [dt-cancela] is null"]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [EmissaoNF] > RangeStart and [EmissaoNF] <= RangeEnd),
+				    #"Columns removed by Measure Killer"= Table.SelectColumns(#"Linhas Filtradas",{"DataCarga","TipoPagamento","DataSaida","SerieNF","EmissaoNF","Estado","ChaveAcesso","DataEntregaCliente","ValorCobrado","Cidade","Transportadora","NumeroNF"})
+				in
+				    #"Columns removed by Measure Killer"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

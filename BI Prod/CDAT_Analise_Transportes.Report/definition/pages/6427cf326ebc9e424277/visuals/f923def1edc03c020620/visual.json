@@ -1,0 +1,159 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f923def1edc03c020620",
+  "position": {
+    "x": 421.43950995405822,
+    "y": 445.94180704441044,
+    "z": 3000,
+    "height": 274.42572741194488,
+    "width": 634.11944869831552,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabelas_Transportadoras"
+                    }
+                  },
+                  "Property": "Nome_Transportadora"
+                }
+              },
+              "queryRef": "Tabelas_Transportadoras.Nome_Transportadora",
+              "nativeQueryRef": "Nome_Transportadora"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Regioes"
+                    }
+                  },
+                  "Property": "TipoMunicipio"
+                }
+              },
+              "queryRef": "Dim_Regioes.TipoMunicipio",
+              "nativeQueryRef": "TipoMunicipio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Regioes"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              },
+              "queryRef": "Dim_Regioes.Estado",
+              "nativeQueryRef": "Estado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabelas_Transportadoras"
+                    }
+                  },
+                  "Property": "Limite_Peso_Faixa"
+                }
+              },
+              "queryRef": "Sum(Tabelas_Transportadoras.Limite_Peso_Faixa)",
+              "nativeQueryRef": "Limite_Peso_Faixa"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Frete Fixo Total"
+                }
+              },
+              "queryRef": "Medidas.Frete Fixo Total",
+              "nativeQueryRef": "Frete Fixo Total"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabelas_Transportadoras"
+                    }
+                  },
+                  "Property": "Prazo_Entrega"
+                }
+              },
+              "queryRef": "Sum(Tabelas_Transportadoras.Prazo_Entrega)",
+              "nativeQueryRef": "Prazo_Entrega"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Tabelas_Transportadoras"
+                  }
+                },
+                "Property": "Limite_Peso_Faixa"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8a1130d7e063e11cec1b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "Filtro Faixa Automatica"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+table Dim_Saldos
+	lineageTag: 27840f61-d78c-4441-93d8-0f6fe4d20aee
+
+	column DescItem
+		dataType: string
+		lineageTag: caa9ec4a-55a9-4e15-976e-964f657bed79
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo_WMS
+		dataType: int64
+		formatString: 0
+		lineageTag: b248ae9f-0f8e-4e02-bf6f-3bfb69980257
+		summarizeBy: sum
+		sourceColumn: Saldo_WMS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo_Contabil
+		dataType: int64
+		formatString: 0
+		lineageTag: 73e970b2-cb0a-47b0-b2a5-a8563396470a
+		summarizeBy: sum
+		sourceColumn: Saldo_Contabil
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 4010d647-2f65-4379-a783-145316f95b67
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Divergencia
+		dataType: int64
+		formatString: 0
+		lineageTag: b4c3316d-c9b4-475b-9db4-7e042ec63d53
+		summarizeBy: sum
+		sourceColumn: Divergencia
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Saldos = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="WITH SaldoWMS AS (#(lf)    SELECT #(lf)        W.Item AS CodItem,#(lf)        SUM(CAST(W.Total AS INT)) AS Saldo_WMS#(lf)    FROM DW.logistica.Fato_ESWM9022 AS W#(lf)    WHERE W.Estab = '15' AND W.Local = 'AAT'#(lf)    GROUP BY W.Item#(lf)),#(lf)SaldoContabil AS (#(lf)    SELECT #(lf)        S.[it-codigo] AS CodItem,#(lf)        SUM(CAST(S.[qtidade-atu] AS INT)) AS Saldo_Contabil#(lf)    FROM STAGE.tot.SaldoEstoq AS S#(lf)    WHERE S.[cod-estabel] = '15' AND S.[cod-depos] IN ('aat', 'dcv', 'ate')#(lf)    GROUP BY S.[it-codigo]#(lf)),#(lf)ItensComSaldo AS (#(lf)    SELECT CodItem, Saldo_WMS, NULL AS Saldo_Contabil FROM SaldoWMS#(lf)    UNION#(lf)    SELECT CodItem, 0 AS Saldo_WMS, Saldo_Contabil FROM SaldoContabil#(lf))#(lf)SELECT  #(lf)    I.CodItem,#(lf)    MAX(D.DescItem) AS DescItem,#(lf)    MAX(I.Saldo_WMS) AS Saldo_WMS,#(lf)    ISNULL(MAX(I.Saldo_Contabil),0) AS Saldo_Contabil,#(lf)    MAX(I.Saldo_WMS) - ISNULL(MAX(I.Saldo_Contabil),0) AS Divergencia#(lf)FROM ItensComSaldo I#(lf)LEFT JOIN dw.dbo.Dim_Item D ON D.CodItem = I.CodItem#(lf)GROUP BY I.CodItem#(lf)"])
+				in
+				    Fonte
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

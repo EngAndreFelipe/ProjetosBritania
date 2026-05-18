@@ -1,0 +1,13 @@
+
+EVALUATE
+	VAR real = DIVIDE(SUM(d_Resultado[RealizadoNumerador]), SUM(d_Resultado[RealizadoDenominador]))
+VAR meta = CALCULATE(
+    MAX(d_Resultado[MetaIndicador]), 
+    ALLSELECTED(d_Resultado)
+)
+VAR vr = meta / 0.95
+RETURN
+IF(real >= meta, "#008000",
+    IF(real < vr, "#800080", "#FFFF00"
+    )
+)

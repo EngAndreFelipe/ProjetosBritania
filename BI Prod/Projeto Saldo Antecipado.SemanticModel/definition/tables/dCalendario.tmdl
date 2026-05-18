@@ -1,0 +1,169 @@
+table dCalendario
+	lineageTag: 1ad1db9b-98b3-4d6e-93e5-5e3d96ba9d34
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: Short Date
+		lineageTag: 13745c48-4c90-4845-a5fc-a8d09e6d6e9e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataInt
+		lineageTag: be398340-24d3-4008-b56d-4fc6c8279f13
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DataInt]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		formatString: 0
+		lineageTag: ac95f4e0-1132-4a23-9ff8-5c45de5fd24b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ano]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNum
+		lineageTag: 6a5d0cf3-d333-4e93-a762-b5eef8fe40dd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMesNum
+		lineageTag: fb7738a7-7d55-4a81-89f9-d561a21d1751
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AnoMesNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMesNome
+		lineageTag: ff599782-41b4-41a0-80f7-3374937a6112
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AnoMesNome]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNomeCurto
+		lineageTag: 9732b2be-0cbf-4f5c-bd57-3057a2951c1e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesNomeCurto]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNomeLongo
+		lineageTag: 04af12a0-8ff5-4a42-a1b4-3902b6d11534
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesNomeLongo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNum
+		formatString: 0
+		lineageTag: 6219fbee-0782-456e-b59d-08a9e9c3211d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemanaNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		lineageTag: 25f60f27-ee39-4ae9-9832-170623955547
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaCurto
+		lineageTag: 8e563a21-5be4-4203-9ce3-d917f2de1fe8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemanaCurto]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: 98bd94e8-3fda-4179-86f5-d3913f9214f7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoTrimestre
+		lineageTag: f81c7b9a-8102-4e89-8ae3-a2f214c4e540
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AnoTrimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoAtual
+		lineageTag: 87769dd0-d98c-4a6e-9635-c1908a3d9b6a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AnoAtual]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAtual
+		lineageTag: 3c0ea9d6-8438-425f-aecb-d36d1586d9c7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesAtual]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaAtual
+		lineageTag: b4629623-471d-4f93-b1d9-39a99223af62
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaAtual]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = calculated
+		mode: import
+		source = ```
+				
+				VAR MinAno = 2023
+				VAR MaxAno = YEAR(TODAY())+1
+				 
+				VAR CalendarioBase =
+				    ADDCOLUMNS (
+				        CALENDAR (DATE(MinAno, 01, 01), DATE(MaxAno, 12, 31)),
+				        "DataInt", FORMAT ( [Date], "YYYYMMDD" ),
+				        "Ano", YEAR ( [Date] ),
+				        "MesNum", FORMAT ( [Date], "MM" ),
+				        "AnoMesNum", FORMAT ( [Date], "YYYY/MM" ),
+				        "AnoMesNome", FORMAT ( [Date], "YYYY/mmm" ),
+				        "MesNomeCurto", FORMAT ( [Date], "mmm" ),
+				        "MesNomeLongo", FORMAT ( [Date], "mmmm" ),
+				        "DiaSemanaNum", WEEKDAY ( [Date] ),
+				        "DiaSemana", FORMAT ( [Date], "dddd" ),
+				        "DiaSemanaCurto", FORMAT ( [Date], "ddd" ),
+				        "Trimestre", "T" & FORMAT ( [Date], "Q" ),
+				        "AnoTrimestre", FORMAT ( [Date], "YYYY" ) & "/Q" & FORMAT ( [Date], "Q" ),
+				        "AnoAtual", IF(YEAR ( [Date] ) = YEAR(TODAY()), "Ano Atual", FORMAT ( [Date], "YYYY" )),
+				        "MesAtual", IF(YEAR ( [Date] ) = YEAR(TODAY()) && MONTH ( [Date] ) = MONTH(TODAY()), "Mês Atual", FORMAT ( [Date], "MM" )),
+				        "DiaAtual", IF(YEAR ( [Date] ) = YEAR(TODAY()) && MONTH ( [Date] ) = MONTH(TODAY()) && DAY ( [Date] ) = DAY(TODAY()), "Dia Atual", FORMAT ( [Date], "DD" ))
+				    )
+				 
+				RETURN
+				    CalendarioBase
+				```
+
+	annotation PBI_Id = 26256fff0e464e82a21b8b11c2292658
+

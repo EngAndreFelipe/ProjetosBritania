@@ -1,0 +1,8 @@
+createOrReplace
+
+	relationship b578d183-e8d2-0e53-ee13-db18281ec1de
+		crossFilteringBehavior: bothDirections
+		fromCardinality: one
+		fromColumn: Dim_UltimaMov.it_codigo
+		toColumn: Dim_AAT.Item
+

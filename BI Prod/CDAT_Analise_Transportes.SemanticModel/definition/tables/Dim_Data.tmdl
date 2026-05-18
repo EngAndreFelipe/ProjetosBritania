@@ -1,0 +1,59 @@
+table Dim_Data
+	lineageTag: 27fec2d4-7431-474e-85eb-7e9d420e6ca2
+
+	column Data
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3e4b220d-db8e-4677-a590-b144ce35036d
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 93ebcd27-495c-4c09-acbe-c14134088058
+			defaultHierarchy: LocalDateTable_9149fb61-ee7a-4cbb-84ef-6112f09c94b8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaUtil
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6f96b364-11d9-4fe9-b4c0-3093d911a8a1
+		summarizeBy: none
+		sourceColumn: DiaUtil
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAbrev
+		dataType: string
+		lineageTag: bbe4c49b-c796-4bf2-89e9-a5fcdc920ce6
+		summarizeBy: none
+		sourceColumn: MesAbrev
+		sortByColumn: Mes
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: bbacb42c-786c-40b6-8847-b3f52e1f5a79
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Data = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)    [Id],#(lf)    [Data],#(lf)    [MesNome],#(lf)    [Mes],#(lf)    LEFT([MesNome], 3) AS MesAbrev,#(lf)    [Feriado],#(lf)    [DiaUtil],#(lf)    [DiaSemanaNomAbrev]#(lf)FROM [DW].[dbo].[Dim_Data]#(lf)WHERE [Data] >= DATEFROMPARTS(YEAR(GETDATE())-1, 1, 1)#(lf)  AND [Data] <= DATEADD(DAY, 60, CAST(GETDATE() AS DATE))#(lf)"]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [Data] > RangeStart and [Data] <= RangeEnd),
+				    #"Columns removed by Measure Killer"= Table.SelectColumns(#"Linhas Filtradas",{"DiaUtil","Mes","Data","MesAbrev"})
+				in
+				    #"Columns removed by Measure Killer"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_Analise_Inventario"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dc42199e-4252-47bf-bd4b-5763ad468b2b"
+  }
+}

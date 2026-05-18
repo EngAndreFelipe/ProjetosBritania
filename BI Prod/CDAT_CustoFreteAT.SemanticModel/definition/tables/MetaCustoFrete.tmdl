@@ -1,0 +1,33 @@
+table MetaCustoFrete
+	lineageTag: 2284c6ce-0453-4e62-8781-9d84b82d28f1
+
+	column Mês
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b059ed4-f20b-46a5-a31e-4efabab9dbc3
+		summarizeBy: none
+		sourceColumn: Mês
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meta
+		dataType: double
+		lineageTag: bfe352e4-1113-48c6-be78-bc16df6bf6ce
+		summarizeBy: none
+		sourceColumn: Meta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MetaCustoFrete = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("Jc65DcAwDEPRXVSriEJfmcXw/mvE4O/4AILg3lGRoexxcsfr3JYhMI0GqHUgY4AyJnBezmLsA8OoB9ErHoi54oPu3vkB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Mês = _t, Meta = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Mês", Int64.Type}, {"Meta", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

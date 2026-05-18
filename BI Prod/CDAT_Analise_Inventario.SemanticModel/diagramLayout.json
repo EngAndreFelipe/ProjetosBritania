@@ -1,0 +1,394 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 2763.5691554841,
+        "y": 20779.1005558599
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 834.76406199659618,
+            "y": 22282.892322866544
+          },
+          "nodeIndex": "Dim_Endereco",
+          "nodeLineageTag": "d52ab234-463f-4b7f-a265-7df9066f50df",
+          "size": {
+            "height": 386.28677657761864,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 569.621058002343,
+            "y": 22319.9456473402
+          },
+          "nodeIndex": "Dim_Precos",
+          "nodeLineageTag": "c57b8424-58dc-40e6-8018-28e0da780953",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 1633.6010034033932,
+            "y": 22301.519532503673
+          },
+          "nodeIndex": "Dim_DCV",
+          "nodeLineageTag": "ba0f5da4-14c9-4676-9b5f-75f4e55e419c",
+          "size": {
+            "height": 340.78978042370977,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 1377.9386194638264,
+            "y": 22299.535581610369
+          },
+          "nodeIndex": "Dim_AAT",
+          "nodeLineageTag": "895ddb8b-a685-4fe2-bec0-e45123068dba",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 1879.2027650104865,
+            "y": 22301.76814934269
+          },
+          "nodeIndex": "Dim_WMS",
+          "nodeLineageTag": "a754edb6-78e5-4a3e-b030-6540de14c955",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 2118.5782686848361,
+            "y": 22303.22769166081
+          },
+          "nodeIndex": "Dim_REC",
+          "nodeLineageTag": "b3b4fb36-fd82-47f5-a215-5fc4ae7a1ab2",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 2391.1823889105995,
+            "y": 21934.898746489365
+          },
+          "nodeIndex": "Fato_WMS",
+          "nodeLineageTag": "cfd0ab0f-6d87-42a9-961d-062159abbc82",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 2393.7022591950804,
+            "y": 21688.803781072198
+          },
+          "nodeIndex": "Fato_Contabil",
+          "nodeLineageTag": "e2e8865e-1d09-40b0-8e4e-dfb1a4d9d66c",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 2387.6508091175792,
+            "y": 22555.978015343509
+          },
+          "nodeIndex": "Fato_Cronograma",
+          "nodeLineageTag": "dfceeda4-2b27-49fb-bd53-228888712e21",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 1133.4864626441663,
+            "y": 21947.740533518368
+          },
+          "nodeIndex": "Produtividade_Usuarios",
+          "nodeLineageTag": "6ede6871-0808-46c8-9530-ffced9a4d83a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1130.1543148209623,
+            "y": 22305.819435648136
+          },
+          "nodeIndex": "Dim_Usuarios",
+          "nodeLineageTag": "01ee3d3d-b31a-4f99-a8ce-05ea2cac2b78",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 26
+        },
+        {
+          "location": {
+            "x": 148.91993488232043,
+            "y": 22228.928497979872
+          },
+          "nodeIndex": "Dim_Cancelados",
+          "size": {
+            "height": 333.939560063361,
+            "width": 234
+          },
+          "zIndex": 27
+        },
+        {
+          "location": {
+            "x": 41.487253738566778,
+            "y": 22954.336970566023
+          },
+          "nodeIndex": "Fato_CarteiraDCV",
+          "nodeLineageTag": "b1265cdd-2c4c-49f3-ad2e-807ed2460da8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 2763.2875324152305,
+            "y": 22416.563275407691
+          },
+          "nodeIndex": "Dim_Data",
+          "nodeLineageTag": "1ac1a5ca-bf19-4362-a254-194d15ffb95a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 2974.6238337316372,
+            "y": 22104.59095058329
+          },
+          "nodeIndex": "Dim_UltimaMov",
+          "nodeLineageTag": "214a5455-e5ee-4a30-ab34-0eb9e2515ce8",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 3289.8002786766638,
+            "y": 22269.733620897052
+          },
+          "nodeIndex": "Fato_Mov_Inv",
+          "nodeLineageTag": "8da76018-e156-47cd-99fe-1c47947b7b0f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 3326.6968106829913,
+            "y": 21940.675738158221
+          },
+          "nodeIndex": "Dim_Saldos",
+          "nodeLineageTag": "27840f61-d78c-4441-93d8-0f6fe4d20aee",
+          "size": {
+            "height": 224,
+            "width": 222.68681331221302
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 3557.8963702566375,
+            "y": 21879.130224666984
+          },
+          "nodeIndex": "Fato_InvSegundoCiclo",
+          "nodeLineageTag": "143cb120-9420-4f83-a5c8-52cb45f15f88",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 3800.4091165180707,
+            "y": 21657.91014909092
+          },
+          "nodeIndex": "Fato_InvPrimeiroCiclo",
+          "nodeLineageTag": "435e8b7e-c7e5-4fc0-a4b3-caa487155e27",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 4042.921862779504,
+            "y": 21391.526851717463
+          },
+          "nodeIndex": "InventarioUnificado",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 4285.4346090409363,
+            "y": 21042.420146348686
+          },
+          "nodeIndex": "Dim_Prioridade",
+          "nodeLineageTag": "af26d85c-d4a3-4f97-be90-37bf9395df54",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 4527.947355302369,
+            "y": 20576.717616636546
+          },
+          "nodeIndex": "Fato_DocumentoObs",
+          "nodeLineageTag": "34e78b7b-fd58-44bb-92a8-6ec088428518",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 4770.4601015638018,
+            "y": 20124.738410582213
+          },
+          "nodeIndex": "Dim_ContabilGeral",
+          "nodeLineageTag": "b36a1cdb-fc85-4355-9bbb-a85a87850532",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 5012.9728478252346,
+            "y": 19541.333572099844
+          },
+          "nodeIndex": "UltimaDataPorBoxCiclo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 5255.4855940866673,
+            "y": 18758.93393210389
+          },
+          "nodeIndex": "Fato_IndicadoresCic",
+          "nodeLineageTag": "2cb11e31-064a-42bd-b14e-688ae329c1f8",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 5740.5110866095329,
+            "y": 15120.243471044374
+          },
+          "nodeIndex": "InvCiclico2026",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 5983.0238328709656,
+            "y": 13809.079999024703
+          },
+          "nodeIndex": "Fato_HistoricoDCV",
+          "nodeLineageTag": "04ade9fe-1224-498b-a45b-6cc2e647c241",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6225.5365791323984,
+            "y": 11861.55662414429
+          },
+          "nodeIndex": "PreInventario2026",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 6468.0493253938312,
+            "y": 9562.2423812589623
+          },
+          "nodeIndex": "Dim_ATE",
+          "nodeLineageTag": "39f25d88-b921-4b84-8645-c4877ada4434",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 44.905697313104206,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

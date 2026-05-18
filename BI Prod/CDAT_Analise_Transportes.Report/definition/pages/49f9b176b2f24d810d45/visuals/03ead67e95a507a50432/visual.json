@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "03ead67e95a507a50432",
+  "position": {
+    "x": 73.506891271056659,
+    "y": 287.166921898928,
+    "z": 9000,
+    "height": 145.05359877488516,
+    "width": 487.10566615620218,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_Data_Fin"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Data"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Mês"
+                }
+              },
+              "queryRef": "Dim_Data_Fin.Data.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "Data Mês"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Itens_Cobrados"
+                    }
+                  },
+                  "Property": "GWM_NRDOC"
+                }
+              },
+              "queryRef": "Fato_Itens_Cobrados.GWM_NRDOC",
+              "nativeQueryRef": "GWM_NRDOC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Soma VLFRE1 por NRDoc Distinto"
+                }
+              },
+              "queryRef": "Medidas.Soma VLFRE1 por NRDoc Distinto",
+              "nativeQueryRef": "VLFRE1 por NRDoc",
+              "displayName": "VLFRE1 por NRDoc"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Soma VlFretePago por NRDoc Distinto"
+                }
+              },
+              "queryRef": "Medidas.Soma VlFretePago por NRDoc Distinto",
+              "nativeQueryRef": "VlFretePago por NRDoc",
+              "displayName": "VlFretePago por NRDoc"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

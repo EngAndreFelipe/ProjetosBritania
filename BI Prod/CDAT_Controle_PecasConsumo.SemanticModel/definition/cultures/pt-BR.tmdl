@@ -1,0 +1,2076 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "fato_WM": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fato WM": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Fato_WMS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.estab": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "Estab"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "estab": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.local": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "Local"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "local": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "native": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "resident": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "home-grown": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "narrow": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "Item"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "Descricao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Descrição": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Endereço": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.data_carga": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "DataCarga"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data carga": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DataCarga": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record carga": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fato_WM.data_carga.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "VariationSource": "DataCarga",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.data_carga.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "VariationSource": "DataCarga",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data carga ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record carga ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.data_carga.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "VariationSource": "DataCarga",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data carga trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record carga trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.data_carga.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "VariationSource": "DataCarga",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data carga mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record carga mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.data_carga.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "VariationSource": "DataCarga",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data carga dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record carga dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.saldo_por_item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "SaldoPorItem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo por item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "SaldoPorItem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "saldo por product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "saldo por element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "saldo por entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "saldo por article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "saldo por object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "saldo por piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "saldo por token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "Saldo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_minimo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Tabela_Minimo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tabela minimo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Tabela_Minimo": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_minimo.item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Tabela_Minimo",
+			          "ConceptualProperty": "Item"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_minimo.descrição": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Tabela_Minimo",
+			          "ConceptualProperty": "descrição"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descrição": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_minimo.mínimo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Tabela_Minimo",
+			          "ConceptualProperty": "Mínimo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mínimo": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.minimo_item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "MinimoItem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "minimo item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "MinimoItem": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "minimo product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "minimo element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "minimo entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "minimo article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "minimo object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "minimo piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "minimo token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Mínimo": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_WM.precisa_repor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_WMS",
+			          "ConceptualProperty": "PrecisaRepor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "precisa repor": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "PrecisaRepor": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_minimo.nome_da_origem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Tabela_Minimo",
+			          "ConceptualProperty": "Nome da Origem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nome da origem": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "fato_WM_data_carga_trimestre_has_fato_WM_data_carga_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.trimestre": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.trimestre"
+			          }
+			        },
+			        "fato_WM.data_carga.mê": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.mê"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_ano_has_fato_WM_data_carga_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.ano": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.ano"
+			          }
+			        },
+			        "fato_WM.data_carga.trimestre": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.ano"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_WM.data_carga.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_hierarquia_de_data_has_fato_WM_data_carga_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.hierarquia_de_data"
+			          }
+			        },
+			        "fato_WM.data_carga.dia": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_hierarquia_de_data_has_fato_WM_data_carga_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.hierarquia_de_data"
+			          }
+			        },
+			        "fato_WM.data_carga.mê": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_hierarquia_de_data_has_fato_WM_data_carga_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.hierarquia_de_data"
+			          }
+			        },
+			        "fato_WM.data_carga.trimestre": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_hierarquia_de_data_has_fato_WM_data_carga_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.hierarquia_de_data"
+			          }
+			        },
+			        "fato_WM.data_carga.ano": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga"
+			          }
+			        },
+			        "fato_WM.data_carga.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_cargas_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_tabela_minimo": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "tabela_minimo": {
+			          "Target": {
+			            "Entity": "tabela_minimo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "tabela_minimo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_tabela_minimos"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_minimo"
+			            },
+			            "Object": {
+			              "Role": "fato_WM"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_minimos_have_fato_WMs"
+			        }
+			      ]
+			    },
+			    "tabela_minimo_has_nome_da_origem": {
+			      "Binding": {
+			        "ConceptualEntity": "Tabela_Minimo"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_minimo": {
+			          "Target": {
+			            "Entity": "tabela_minimo"
+			          }
+			        },
+			        "tabela_minimo.nome_da_origem": {
+			          "Target": {
+			            "Entity": "tabela_minimo.nome_da_origem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_minimo"
+			            },
+			            "Object": {
+			              "Role": "tabela_minimo.nome_da_origem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_minimos_have_nome_da_origems"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_precisa_repor": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.precisa_repor": {
+			          "Target": {
+			            "Entity": "fato_WM.precisa_repor"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.precisa_repor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_precisa_repor"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_minimo_item": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.minimo_item": {
+			          "Target": {
+			            "Entity": "fato_WM.minimo_item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.minimo_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_minimo_items"
+			        }
+			      ]
+			    },
+			    "tabela_minimo_has_mínimo": {
+			      "Binding": {
+			        "ConceptualEntity": "Tabela_Minimo"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_minimo": {
+			          "Target": {
+			            "Entity": "tabela_minimo"
+			          }
+			        },
+			        "tabela_minimo.mínimo": {
+			          "Target": {
+			            "Entity": "tabela_minimo.mínimo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_minimo"
+			            },
+			            "Object": {
+			              "Role": "tabela_minimo.mínimo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_minimos_have_mínimos"
+			        }
+			      ]
+			    },
+			    "tabela_minimo_has_descrição": {
+			      "Binding": {
+			        "ConceptualEntity": "Tabela_Minimo"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_minimo": {
+			          "Target": {
+			            "Entity": "tabela_minimo"
+			          }
+			        },
+			        "tabela_minimo.descrição": {
+			          "Target": {
+			            "Entity": "tabela_minimo.descrição"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_minimo"
+			            },
+			            "Object": {
+			              "Role": "tabela_minimo.descrição"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_minimos_have_descriçãos"
+			        }
+			      ]
+			    },
+			    "tabela_minimo_has_item": {
+			      "Binding": {
+			        "ConceptualEntity": "Tabela_Minimo"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_minimo": {
+			          "Target": {
+			            "Entity": "tabela_minimo"
+			          }
+			        },
+			        "tabela_minimo.item": {
+			          "Target": {
+			            "Entity": "tabela_minimo.item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_minimo"
+			            },
+			            "Object": {
+			              "Role": "tabela_minimo.item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_minimos_have_items"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_saldo_por_item": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.saldo_por_item": {
+			          "Target": {
+			            "Entity": "fato_WM.saldo_por_item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.saldo_por_item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_saldo_por_item"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_data_carga": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.data_carga": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_data_cargas"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_total": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.total": {
+			          "Target": {
+			            "Entity": "fato_WM.total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_totals"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.endereco": {
+			          "Target": {
+			            "Entity": "fato_WM.endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_enderecos"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_descricao": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.descricao": {
+			          "Target": {
+			            "Entity": "fato_WM.descricao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.descricao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_descricaos"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_local": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.local": {
+			          "Target": {
+			            "Entity": "fato_WM.local"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.local"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_locals"
+			        }
+			      ]
+			    },
+			    "fato_WM_has_estab": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM": {
+			          "Target": {
+			            "Entity": "fato_WM"
+			          }
+			        },
+			        "fato_WM.estab": {
+			          "Target": {
+			            "Entity": "fato_WM.estab"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.estab"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_WMs_have_estab"
+			        }
+			      ]
+			    },
+			    "fato_WM_data_carga_mê_has_fato_WM_data_carga_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_WMS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_WM.data_carga.mê": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.mê"
+			          }
+			        },
+			        "fato_WM.data_carga.dia": {
+			          "Target": {
+			            "Entity": "fato_WM.data_carga.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.mê"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.dia"
+			            },
+			            "Object": {
+			              "Role": "fato_WM.data_carga.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_WM.data_carga.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_WM.data_carga.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

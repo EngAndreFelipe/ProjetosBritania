@@ -1,0 +1,199 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "68f4eca2fbbb83737a4f",
+  "position": {
+    "x": 894.83282674772045,
+    "y": 133.25227963525836,
+    "z": 1000,
+    "height": 314.16413373860183,
+    "width": 214.95440729483283,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Fato_Provisionamento"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "DataEmissaoNotaFiscal"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Mês"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.DataEmissaoNotaFiscal.Variation.Hierarquia de datas.Mês",
+              "nativeQueryRef": "DataEmissaoNotaFiscal Mês"
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Fato_Provisionamento"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "DataEmissaoNotaFiscal"
+                        }
+                      },
+                      "Hierarchy": "Hierarquia de datas"
+                    }
+                  },
+                  "Level": "Ano"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.DataEmissaoNotaFiscal.Variation.Hierarquia de datas.Ano",
+              "nativeQueryRef": "DataEmissaoNotaFiscal Ano"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Provisionamento"
+                }
+              },
+              "queryRef": "Medidas.Provisionamento",
+              "nativeQueryRef": "Provisão",
+              "displayName": "Provisão"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "PropertyVariationSource": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Fato_Provisionamento"
+                          }
+                        },
+                        "Name": "Variation",
+                        "Property": "DataEmissaoNotaFiscal"
+                      }
+                    },
+                    "Hierarchy": "Hierarquia de datas"
+                  }
+                },
+                "Level": "Ano"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.9452884284951D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Provisionamento.DataEmissaoNotaFiscal.Variation.Hierarquia de datas.Mês"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Medidas.Provisionamento"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

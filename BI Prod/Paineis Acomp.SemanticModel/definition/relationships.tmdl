@@ -1,0 +1,8 @@
+relationship d1602fae-36f2-484b-add5-3eafdb5b714c
+	fromColumn: 'Estoque Meta'.Data
+	toColumn: Calendario.Data
+
+relationship 524a6382-7969-4d80-a3c3-ac65d473f6e6
+	fromColumn: xAux_Feriados.Data
+	toColumn: Calendario.Data
+

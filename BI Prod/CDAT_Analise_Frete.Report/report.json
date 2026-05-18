@@ -1,0 +1,235 @@
+{
+  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":{\"visual\":\"1.8.95\",\"report\":\"2.0.95\",\"page\":\"1.3.95\"}}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true,\"filterPaneHiddenInEditMode\":false},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "5fe3679e327d1077edf4",
+      "config": "{}",
+      "name": "f1b37a31962d3049c01b",
+      "parameters": "[{\"name\":\"3b706cd4d2ecdf07c36c\",\"boundFilter\":\"bf6c9eb017307f1042a3\",\"fieldExpr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Medidas\"}},\"Property\":\"FreteNota\"}}},{\"name\":\"f16375e73239087df2e4\",\"boundFilter\":\"0eaa404f32d7bd50bbef\",\"fieldExpr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Medidas\"}},\"Property\":\"FretePorFatura\"}}},{\"name\":\"c3021839933f72a4887d\",\"boundFilter\":\"566097b6a7846bf2c775\",\"fieldExpr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Medidas\"}},\"Property\":\"TotalCTE\"}}}]",
+      "type": 1
+    }
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Plano_De_Fundo7625371692584959.png",
+            "path": "Plano_De_Fundo7625371692584959.png",
+            "type": 100
+          },
+          {
+            "name": "Plano_De_Fundo9357898077918788.png",
+            "path": "Plano_De_Fundo9357898077918788.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Plano_De_Fundo.png'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Plano_De_Fundo7625371692584959.png\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}]},\"visibility\":1}",
+      "displayName": "Detalhes Fatura",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"bf6c9eb017307f1042a3\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Medidas\"}},\"Property\":\"FreteNota\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"0eaa404f32d7bd50bbef\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Medidas\"}},\"Property\":\"FretePorFatura\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"566097b6a7846bf2c775\",\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Medidas\"}},\"Property\":\"TotalCTE\"}},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "5fe3679e327d1077edf4",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"27e017f07665b9e90a05\",\"layouts\":[{\"id\":0,\"position\":{\"x\":68.61086450359304,\"y\":256.60463324343795,\"z\":0,\"width\":1211.667867133453,\"height\":463.80944404428885,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.CentroCusto\"},{\"queryRef\":\"Fato_Faturas.CodEmissorFatura\"},{\"queryRef\":\"Fato_Faturas.TranspFatura\"},{\"queryRef\":\"Fato_Faturas.CodItem\"},{\"queryRef\":\"Fato_Faturas.DescItem\"},{\"queryRef\":\"Sum(Fato_Faturas.qtFaturada)\"},{\"queryRef\":\"Fato_Faturas.DataAprovação\"},{\"queryRef\":\"Fato_Faturas.DataBloqueio\"},{\"queryRef\":\"Fato_Faturas.DataEmissaoCTE\"},{\"queryRef\":\"Fato_Faturas.DataEmissaoFatura\"},{\"queryRef\":\"Fato_Faturas.DataFinanceiro\"},{\"queryRef\":\"Fato_Faturas.DataVencimento\"},{\"queryRef\":\"Sum(Fato_Faturas.PesoCTE)\"},{\"queryRef\":\"Fato_Faturas.NumCTE\"},{\"queryRef\":\"Fato_Faturas.NumeroFatura\"},{\"queryRef\":\"Fato_Faturas.NumeroNotaFiscal\"},{\"queryRef\":\"Fato_Faturas.SerieNotaFiscal\"},{\"queryRef\":\"Fato_Faturas.SerieCTE\"},{\"queryRef\":\"Fato_Faturas.SitAprovação\"},{\"queryRef\":\"Fato_Faturas.SitCTE\"},{\"queryRef\":\"Fato_Faturas.SitDivergencia\"},{\"queryRef\":\"Fato_Faturas.TipoCTE\"},{\"queryRef\":\"Fato_Faturas.UsuarioAprovacaoCTE\"},{\"queryRef\":\"Sum(Fato_Faturas.ValorFreteNota)\"},{\"queryRef\":\"Medidas.TotalDiverg\"},{\"queryRef\":\"Medidas.TotalCTE\"},{\"queryRef\":\"Medidas.FretePorFatura\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"CentroCusto\"},\"Name\":\"Fato_Faturas.CentroCusto\",\"NativeReferenceName\":\"CentroCusto\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"CodEmissorFatura\"},\"Name\":\"Fato_Faturas.CodEmissorFatura\",\"NativeReferenceName\":\"CodEmissorFatura\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"CodItem\"},\"Name\":\"Fato_Faturas.CodItem\",\"NativeReferenceName\":\"CodItem\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataAprovação\"},\"Name\":\"Fato_Faturas.DataAprovação\",\"NativeReferenceName\":\"DataAprovação\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataFinanceiro\"},\"Name\":\"Fato_Faturas.DataFinanceiro\",\"NativeReferenceName\":\"DataFinanceiro\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataEmissaoFatura\"},\"Name\":\"Fato_Faturas.DataEmissaoFatura\",\"NativeReferenceName\":\"DataEmissaoFatura\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataVencimento\"},\"Name\":\"Fato_Faturas.DataVencimento\",\"NativeReferenceName\":\"DataVencimento\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataBloqueio\"},\"Name\":\"Fato_Faturas.DataBloqueio\",\"NativeReferenceName\":\"DataBloqueio\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataEmissaoCTE\"},\"Name\":\"Fato_Faturas.DataEmissaoCTE\",\"NativeReferenceName\":\"DataEmissaoCTE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"PesoCTE\"}},\"Function\":0},\"Name\":\"Sum(Fato_Faturas.PesoCTE)\",\"NativeReferenceName\":\"Soma de PesoCTE\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NumCTE\"},\"Name\":\"Fato_Faturas.NumCTE\",\"NativeReferenceName\":\"NumCTE\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NumeroFatura\"},\"Name\":\"Fato_Faturas.NumeroFatura\",\"NativeReferenceName\":\"NumeroFatura\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NumeroNotaFiscal\"},\"Name\":\"Fato_Faturas.NumeroNotaFiscal\",\"NativeReferenceName\":\"NumeroNotaFiscal\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SerieCTE\"},\"Name\":\"Fato_Faturas.SerieCTE\",\"NativeReferenceName\":\"SerieCTE\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SitAprovação\"},\"Name\":\"Fato_Faturas.SitAprovação\",\"NativeReferenceName\":\"SitAprovação\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SitCTE\"},\"Name\":\"Fato_Faturas.SitCTE\",\"NativeReferenceName\":\"SitCTE\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SitDivergencia\"},\"Name\":\"Fato_Faturas.SitDivergencia\",\"NativeReferenceName\":\"SitDivergencia\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TipoCTE\"},\"Name\":\"Fato_Faturas.TipoCTE\",\"NativeReferenceName\":\"TipoCTE\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TranspFatura\"},\"Name\":\"Fato_Faturas.TranspFatura\",\"NativeReferenceName\":\"TranspFatura\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"UsuarioAprovacaoCTE\"},\"Name\":\"Fato_Faturas.UsuarioAprovacaoCTE\",\"NativeReferenceName\":\"UsuarioAprovacaoCTE\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"ValorFreteNota\"}},\"Function\":0},\"Name\":\"Sum(Fato_Faturas.ValorFreteNota)\",\"NativeReferenceName\":\"Soma de ValorFreteNota\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DescItem\"},\"Name\":\"Fato_Faturas.DescItem\",\"NativeReferenceName\":\"DescItem\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"TotalCTE\"},\"Name\":\"Medidas.TotalCTE\",\"NativeReferenceName\":\"TotalCTE\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FretePorFatura\"},\"Name\":\"Medidas.FretePorFatura\",\"NativeReferenceName\":\"FretePorFatura\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"TotalDiverg\"},\"Name\":\"Medidas.TotalDiverg\",\"NativeReferenceName\":\"TotalDiverg\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"qtFaturada\"}},\"Function\":0},\"Name\":\"Sum(Fato_Faturas.qtFaturada)\",\"NativeReferenceName\":\"Soma de qtFaturada\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SerieNotaFiscal\"},\"Name\":\"Fato_Faturas.SerieNotaFiscal\",\"NativeReferenceName\":\"SerieNotaFiscal\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataEmissaoCTE\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 463.81,
+          "width": 1211.67,
+          "x": 68.61,
+          "y": 256.60,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"a447652cdf8cb0d2f009\",\"layouts\":[{\"id\":0,\"position\":{\"x\":68.61086450359304,\"y\":53.516474312802565,\"z\":2000,\"width\":100.17186217524582,\"height\":131.7328598468986,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.CentroCusto\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"CentroCusto\"},\"Name\":\"Fato_Faturas.CentroCusto\",\"NativeReferenceName\":\"CentroCusto\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 131.73,
+          "width": 100.17,
+          "x": 68.61,
+          "y": 53.52,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"d2ebfeb3a4c55279713c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":640.8254744635589,\"z\":1000,\"width\":68.61086450359304,\"height\":79.5886028241679,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}},\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Voltar'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 79.59,
+          "width": 68.61,
+          "x": 0.00,
+          "y": 640.83,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Plano_De_Fundo.png'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Plano_De_Fundo9357898077918788.png\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}]}}",
+      "displayName": "Consolidado_Faturas",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "e7777daf61dac71a880e",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"12585230a045be03e40b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":511.7206982543641,\"y\":0,\"z\":0,\"width\":166.0847880299252,\"height\":45.785536159600994,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Medidas.FreteNota\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FreteNota\"},\"Name\":\"Medidas.FreteNota\",\"NativeReferenceName\":\"FreteNota\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FreteNota\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Valor Frete Nota'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"border\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 45.79,
+          "width": 166.08,
+          "x": 511.72,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"1343d0a713db70007edb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":197.50623441396507,\"y\":54.763092269326684,\"z\":6000,\"width\":160.69825436408976,\"height\":337.55610972568576,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"listSlicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.TranspFatura\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TranspFatura\"},\"Name\":\"Fato_Faturas.TranspFatura\",\"NativeReferenceName\":\"Transportadora\"}]},\"columnProperties\":{\"Fato_Faturas.TranspFatura\":{\"displayName\":\"Transportadora\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TranspFatura\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'BERTOLINI AM'\"}}],[{\"Literal\":{\"Value\":\"'BRASPRESS SP'\"}}],[{\"Literal\":{\"Value\":\"'EX PRINCE'\"}}],[{\"Literal\":{\"Value\":\"'EXP.P.CAMPOS'\"}}],[{\"Literal\":{\"Value\":\"'ICARO SC'\"}}],[{\"Literal\":{\"Value\":\"'RODONAVES SP'\"}}],[{\"Literal\":{\"Value\":\"'SOLISTICA'\"}}]]}}}]}}}}],\"layout\":[{\"properties\":{\"rowCount\":{\"expr\":{\"Literal\":{\"Value\":\"10L\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 337.56,
+          "width": 160.70,
+          "x": 197.51,
+          "y": 54.76,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"1ba2ce48dea2178a1134\",\"layouts\":[{\"id\":0,\"position\":{\"x\":989.3266832917706,\"y\":52.069825436408976,\"z\":11000,\"width\":114.0149625935162,\"height\":116.70822942643392,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"listSlicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.TipoItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TipoItem\"},\"Name\":\"Fato_Faturas.TipoItem\",\"NativeReferenceName\":\"TipoItem\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{}}],\"general\":[{\"properties\":{}}],\"layout\":[{\"properties\":{\"rowCount\":{\"expr\":{\"Literal\":{\"Value\":\"3L\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 116.71,
+          "width": 114.01,
+          "x": 989.33,
+          "y": 52.07,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"43f77b0f09e083ca4c65\",\"layouts\":[{\"id\":0,\"position\":{\"x\":392.31920199501246,\"y\":360,\"z\":12000,\"width\":254.96259351620947,\"height\":193.01745635910223,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.DataVencimento.Variation.Hierarquia de datas.Ano\"},{\"queryRef\":\"Fato_Faturas.DataVencimento.Variation.Hierarquia de datas.Mês\"},{\"queryRef\":\"Medidas.FretePorFatura\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FretePorFatura\"},\"Name\":\"Medidas.FretePorFatura\",\"NativeReferenceName\":\"Valor Da Fatura\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Name\":\"Variation\",\"Property\":\"DataVencimento\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Ano\"},\"Name\":\"Fato_Faturas.DataVencimento.Variation.Hierarquia de datas.Ano\",\"NativeReferenceName\":\"DataVencimento Ano\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Name\":\"Variation\",\"Property\":\"DataVencimento\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Mês\"},\"Name\":\"Fato_Faturas.DataVencimento.Variation.Hierarquia de datas.Mês\",\"NativeReferenceName\":\"DataVencimento Mês\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FretePorFatura\"}}}]},\"columnProperties\":{\"Medidas.FretePorFatura\":{\"displayName\":\"Valor Da Fatura\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnHeaders\":[{\"properties\":{\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Vencimento Fatura'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 193.02,
+          "width": 254.96,
+          "x": 392.32,
+          "y": 360.00,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"558d24a24c2d100749db\",\"layouts\":[{\"id\":0,\"position\":{\"x\":342.9426433915212,\"y\":0,\"z\":2000,\"width\":160.69825436408976,\"height\":45.785536159600994,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Medidas.ValorCTE\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"TotalCTE\"},\"Name\":\"Medidas.ValorCTE\",\"NativeReferenceName\":\"TotalCTE\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"TotalCTE\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Valor CTE'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"border\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 45.79,
+          "width": 160.70,
+          "x": 342.94,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"6c242663c1d0797d028e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":368.9775561097257,\"y\":54.763092269326684,\"z\":5000,\"width\":150.8229426433915,\"height\":214.5635910224439,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.NumeroFatura\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NumeroFatura\"},\"Name\":\"Fato_Faturas.NumeroFatura\",\"NativeReferenceName\":\"NumeroFatura\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 214.56,
+          "width": 150.82,
+          "x": 368.98,
+          "y": 54.76,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"7db083bae018228aa7db\",\"layouts\":[{\"id\":0,\"position\":{\"x\":529.6758104738154,\"y\":54.763092269326684,\"z\":7000,\"width\":140.04987531172068,\"height\":214.5635910224439,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"listSlicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.NumCTE\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NumCTE\"},\"Name\":\"Fato_Faturas.NumCTE\",\"NativeReferenceName\":\"NumCTE\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"layout\":[{\"properties\":{\"rowCount\":{\"expr\":{\"Literal\":{\"Value\":\"7L\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 214.56,
+          "width": 140.05,
+          "x": 529.68,
+          "y": 54.76,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"80d14e5594b10aaf7c69\",\"layouts\":[{\"id\":0,\"position\":{\"x\":686.783042394015,\"y\":0,\"z\":8000,\"width\":152.61845386533665,\"height\":45.785536159600994,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.PeçasFaturadas\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"PeçasFaturadas\"},\"Name\":\"Fato_Faturas.PeçasFaturadas\",\"NativeReferenceName\":\"PeçasFaturadas\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"PeçasFaturadas\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Displays Cobrados'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"border\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[{\"name\":\"99916bebfe4aeb812cd9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Faturas\"}},\"Property\":\"TipoItem\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TipoItem\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Display'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 45.79,
+          "width": 152.62,
+          "x": 686.78,
+          "y": 0.00,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"a5724a039d7f463deaa5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1144.4292199199317,\"y\":52.1442570227307,\"z\":3000,\"width\":135.8495117171142,\"height\":96.05521030503024,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.DataFinanceiro\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataFinanceiro\"},\"Name\":\"Fato_Faturas.DataFinanceiro\",\"NativeReferenceName\":\"DataFinanceiro\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataFinanceiro\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"startDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2026-01-01T00:00:00'\"}}},\"endDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2026-03-31T00:00:00'\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"slider\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataFinanceiro\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2026-01-01T00:00:00'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"DataFinanceiro\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2026-04-01T00:00:00'\"}}}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 96.06,
+          "width": 135.85,
+          "x": 1144.43,
+          "y": 52.14,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"aa90b79ca543a073bedd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":70.02493765586034,\"y\":54.763092269326684,\"z\":1000,\"width\":114.0149625935162,\"height\":215.46134663341644,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.CentroCusto\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"CentroCusto\"},\"Name\":\"Fato_Faturas.CentroCusto\",\"NativeReferenceName\":\"CentroCusto\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"CentroCusto\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'23210'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 215.46,
+          "width": 114.01,
+          "x": 70.02,
+          "y": 54.76,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"b66d6fbfdffe1e79583f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":171.4713216957606,\"y\":0,\"z\":4000,\"width\":163.39152119700748,\"height\":45.785536159600994,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Medidas.TotalPorFaturaDistinta\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FretePorFatura\"},\"Name\":\"Medidas.TotalPorFaturaDistinta\",\"NativeReferenceName\":\"FretePorFatura\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"FretePorFatura\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Valor Fatura'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"border\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 45.79,
+          "width": 163.39,
+          "x": 171.47,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"bc98ea2bf257cee53fd0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":677.8054862842893,\"y\":54.763092269326684,\"z\":14001,\"width\":142.7431421446384,\"height\":215.46134663341644,\"tabOrder\":14001}}],\"singleVisual\":{\"visualType\":\"listSlicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.NumeroNotaFiscal\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"NumeroNotaFiscal\"},\"Name\":\"Fato_Faturas.NumeroNotaFiscal\",\"NativeReferenceName\":\"Numero Nota Fiscal\"}]},\"columnProperties\":{\"Fato_Faturas.NumeroNotaFiscal\":{\"displayName\":\"Numero Nota Fiscal\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"layout\":[{\"properties\":{\"rowCount\":{\"expr\":{\"Literal\":{\"Value\":\"7L\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 215.46,
+          "width": 142.74,
+          "x": 677.81,
+          "y": 54.76,
+          "z": 14001.00
+        },
+        {
+          "config": "{\"name\":\"c365719be0be1aa348df\",\"layouts\":[{\"id\":0,\"position\":{\"x\":851.072319201995,\"y\":0,\"z\":9000,\"width\":154.41396508728178,\"height\":45.785536159600994,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.PeçasFaturadas\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"PeçasFaturadas\"},\"Name\":\"Fato_Faturas.PeçasFaturadas\",\"NativeReferenceName\":\"Peças Faturadas\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"PeçasFaturadas\"}}}]},\"columnProperties\":{\"Fato_Faturas.PeçasFaturadas\":{\"displayName\":\"Peças Faturadas\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Peças Cobradas'\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"border\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[{\"name\":\"99916bebfe4aeb812cd9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Faturas\"}},\"Property\":\"TipoItem\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"TipoItem\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Peças'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 45.79,
+          "width": 154.41,
+          "x": 851.07,
+          "y": 0.00,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"d09eedc32d600320c01a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":826.8329177057357,\"y\":52.069825436408976,\"z\":13000,\"width\":149.92518703241896,\"height\":218.15461346633415,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.SerieNotaFiscal\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SerieNotaFiscal\"},\"Name\":\"Fato_Faturas.SerieNotaFiscal\",\"NativeReferenceName\":\"SerieNotaFiscal\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"SerieNotaFiscal\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'5'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 218.15,
+          "width": 149.93,
+          "x": 826.83,
+          "y": 52.07,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"e151522cd5e374d623d7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":713.715710723192,\"y\":360,\"z\":14000,\"width\":250.47381546134662,\"height\":193.01745635910223,\"tabOrder\":14000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_Faturas.DataEmissaoCTE.Variation.Hierarquia de datas.Ano\"},{\"queryRef\":\"Fato_Faturas.DataEmissaoCTE.Variation.Hierarquia de datas.Mês\"},{\"queryRef\":\"Medidas.TotalCTE\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Faturas\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Name\":\"Variation\",\"Property\":\"DataEmissaoCTE\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Ano\"},\"Name\":\"Fato_Faturas.DataEmissaoCTE.Variation.Hierarquia de datas.Ano\",\"NativeReferenceName\":\"DataEmissaoCTE Ano\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Name\":\"Variation\",\"Property\":\"DataEmissaoCTE\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Mês\"},\"Name\":\"Fato_Faturas.DataEmissaoCTE.Variation.Hierarquia de datas.Mês\",\"NativeReferenceName\":\"DataEmissaoCTE Mês\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"TotalCTE\"},\"Name\":\"Medidas.TotalCTE\",\"NativeReferenceName\":\"TotalCTE\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"TotalCTE\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnHeaders\":[{\"properties\":{\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Emissão NF'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 193.02,
+          "width": 250.47,
+          "x": 713.72,
+          "y": 360.00,
+          "z": 14000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Produtividade do Recebimento"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "866559a1-70ac-4c0f-9e46-5b49583eaea0"
+  }
+}

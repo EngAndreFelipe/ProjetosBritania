@@ -1,0 +1,6 @@
+relationship f5d7411a-5c68-dd60-ad35-ce1752cbb354
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: ESWM0028.Usuario
+	toColumn: Usuário_Login_Totvs.Login
+

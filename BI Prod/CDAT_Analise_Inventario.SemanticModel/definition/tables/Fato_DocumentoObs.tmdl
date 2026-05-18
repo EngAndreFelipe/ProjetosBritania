@@ -1,0 +1,141 @@
+table Fato_DocumentoObs
+	lineageTag: 34e78b7b-fd58-44bb-92a8-6ec088428518
+
+	column Documento
+		dataType: double
+		lineageTag: a3af9603-5c5e-48c5-87ae-19af97e3c70d
+		summarizeBy: sum
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroDocumento
+		dataType: string
+		lineageTag: b3f9e00e-6d2e-4a55-95b3-5239e540e825
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: a9d849ff-7aa3-4a36-91c8-5729ef780065
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4ba30099-a078-4841-8acc-2d2ad5c00668
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 93c70f0f-db11-47b8-b479-45b7e58e4884
+			defaultHierarchy: LocalDateTable_af6b76a2-eb18-4aec-8613-3b980f756656.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario
+		dataType: string
+		lineageTag: c4e2caeb-4825-4588-b733-3b056bd8585c
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origem
+		dataType: string
+		lineageTag: 4b7a21de-7a3b-4963-967a-39e157219e66
+		summarizeBy: none
+		sourceColumn: Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: c7a78952-6c1f-4859-a207-d5f1c3db8c93
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdItem
+		dataType: int64
+		formatString: 0
+		lineageTag: 9097eea2-c286-4036-bbd1-ff200a5b29ae
+		summarizeBy: sum
+		sourceColumn: QtdItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEndereco
+		dataType: double
+		lineageTag: b5faf7d9-1fa3-422d-b501-014be3eec8dc
+		summarizeBy: sum
+		sourceColumn: IdEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Endereco
+		dataType: string
+		lineageTag: 1463e91b-8e51-4358-a89c-5ecee8f1ec30
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7a4eafa4-e1e0-4589-be0b-38c197579c59
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 8fbea17c-c193-47e7-94db-d08275e48792
+			defaultHierarchy: LocalDateTable_dd712383-c443-4edd-af79-5edbfab11521.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoAAT = COALESCE(RELATED(Dim_AAT[Quantidade]),0)
+		formatString: 0
+		lineageTag: 741da259-0b2e-4b6c-8de8-4a36557e2004
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoDCV = COALESCE(RELATED(Dim_DCV[Quantidade]),0)
+		formatString: 0
+		lineageTag: c429f9f3-51ff-45b7-ae8e-7404d9115cfd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoWMS = COALESCE(RELATED(Dim_WMS[Quantidade]),0)
+		formatString: 0
+		lineageTag: b3e624e6-328d-4ef4-afb6-066691deb67e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_DocumentoObs = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT Documento,#(lf)       NumeroDocumento,#(lf)       Local,#(lf)       CAST(DataImplantacao AS DATE) AS DataImplantacao,#(lf)       Usuario,#(lf)       Origem,#(lf)       Item,#(lf)       QtdItem,#(lf)       IdEndereco,#(lf)       Endereco,#(lf)       CAST(DataCarga AS datetime) AS DataCarga#(lf)FROM DW.logistica.Fato_Mov_Estoque_PA_AT#(lf)WHERE [Local] LIKE 'AAT'#(lf)  AND DataCarga IS NOT NULL#(lf)  AND (NumeroDocumento LIKE 'DESC%'#(lf)       OR NumeroDocumento LIKE 'NEXT%'#(lf)       OR NumeroDocumento LIKE '%RNC%')#(lf)  AND DataImplantacao >= '2025-01-01'#(lf)  AND Item IS NOT NULL;"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

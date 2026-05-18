@@ -1,0 +1,121 @@
+table Fato_Movimento
+	lineageTag: 9f346bc6-85f3-4b32-8940-a9440dcac118
+
+	measure 'DT ULT SAÍDA' = CALCULATE(Max(Fato_Movimento[dtTrans]),FILTER(Fato_Movimento,Fato_Movimento[descTrans]="Saida"))
+		formatString: Short Date
+		lineageTag: a26065db-b4a5-4aef-80c6-747a65b43b61
+
+		changedProperty = FormatString
+
+	measure 'QT DIAS' = DATEDIFF([DT ULT SAÍDA],TODAY(),DAY)
+		formatString: 0
+		lineageTag: 6189c948-39ef-44ef-845c-4c893b1e6ee9
+
+	measure 'DT ULT_ENTRADA' = CALCULATE(MAX(Fato_Movimento[DtTrans]),FILTER(Fato_Movimento,Fato_Movimento[DescTrans] ="Entrada"))
+		formatString: Short Date
+		lineageTag: c8b478cf-63b6-43e5-91ca-4bc52eb354af
+
+		changedProperty = FormatString
+
+	column EspDocto
+		dataType: string
+		lineageTag: 3a35a6da-f8bf-40fb-8a79-12287e77f539
+		summarizeBy: none
+		sourceColumn: EspDocto
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtTrans
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: dd2d6277-a90f-43d7-8dd9-1bdf39d38b7f
+		summarizeBy: none
+		sourceColumn: DtTrans
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DescTrans
+		dataType: string
+		lineageTag: 319afa09-d10e-453b-9feb-6af3cf5fb09c
+		summarizeBy: none
+		sourceColumn: DescTrans
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		lineageTag: 66dcaccc-cba8-40e6-866a-4da515e6347c
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CodDepos
+		dataType: string
+		lineageTag: edf872dd-5865-4155-a954-f57a185978a4
+		summarizeBy: none
+		sourceColumn: CodDepos
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodEstabel
+		dataType: string
+		lineageTag: 5f51e561-e352-49c2-a0fc-b18e5d457d62
+		summarizeBy: none
+		sourceColumn: CodEstabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItCodigo
+		dataType: string
+		lineageTag: 6b8de692-c616-45e9-a879-0c211d6bf721
+		summarizeBy: none
+		sourceColumn: ItCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD = if(Fato_Movimento[descTrans] = "Entrada", Fato_Movimento[quantidade], (Fato_Movimento[quantidade])*-1)
+		lineageTag: d9c344d1-6865-4c44-a9fd-89baf0b479df
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DATA = 1
+		formatString: 0
+		lineageTag: 644e8950-5cd3-4fb5-b46c-7f40caccf612
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataInt
+		dataType: string
+		lineageTag: cb3b6d49-ed73-442f-8dcb-15d08661fa49
+		summarizeBy: none
+		sourceColumn: DataInt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Movimento-c7e70d78-611d-4e3f-a320-15aaf0a55721 = m
+		mode: import
+		queryGroup: NOVO
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT EspDocto,#(lf)       CONVERT(DATE, DtTrans) AS DtTrans,#(lf)       DescTrans,#(lf)       CAST(Quantidade AS BIGINT) AS Quantidade,#(lf)       CodDepos,#(lf)       CodEstabel,#(lf)       ItCodigo,#(lf)       REPLACE(CONVERT(VARCHAR(10), DtTrans, 112), '/', '') AS DataInt#(lf)FROM dbo.Fato_Movimento WITH (NOLOCK)#(lf)WHERE DtTrans >= DATEADD(MONTH, -12, GETDATE())"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DtTrans", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

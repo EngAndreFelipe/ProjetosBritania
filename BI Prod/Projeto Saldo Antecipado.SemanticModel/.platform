@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Projeto Saldo Antecipado"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ff13cda4-19fe-4f19-8323-39b30884eda3"
+  }
+}

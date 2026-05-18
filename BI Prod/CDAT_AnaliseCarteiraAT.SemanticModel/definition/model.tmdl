@@ -1,0 +1,33 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["f_dwPDB381","f_dwMovEstoqueAT","d_Calendario","d_DescricaoBloquio","d_Regioes","MedPDB","MedEstoque"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table f_dwPDB381
+ref table DateTableTemplate_47036a57-1050-48e0-bd98-b86922e29d68
+ref table LocalDateTable_8dea3743-3ef0-4966-8a84-b1b109ba99a5
+ref table LocalDateTable_0189923f-52d8-4a66-ac88-829e91b1c4f1
+ref table LocalDateTable_b70c4b26-7176-4402-8e91-ee1c1cabbd9e
+ref table LocalDateTable_2ad588a1-8746-45de-8d8f-eff162cca553
+ref table d_Calendario
+ref table MedPDB
+ref table d_NatOperacao
+ref table d_DescricaoBloquio
+ref table d_Regioes
+ref table f_dwMovEstoqueAT
+ref table LocalDateTable_949fe13d-ae33-400e-9734-dad3c153c372
+ref table LocalDateTable_ddcecbc1-fb52-43fe-a8af-33476ed2cc91
+ref table MedEstoque
+ref table LocalDateTable_df97912d-175e-489b-a021-245a2f9bf09c
+
+ref cultureInfo pt-BR
+

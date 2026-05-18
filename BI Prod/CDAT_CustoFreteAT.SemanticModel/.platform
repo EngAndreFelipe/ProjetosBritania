@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_CustoFreteAT"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1c76bf06-b113-4311-97d7-64a5f0838a14"
+  }
+}

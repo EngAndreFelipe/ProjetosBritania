@@ -1,0 +1,56 @@
+table Dim_Data
+	lineageTag: 07ec5933-2ae3-41bc-a20f-5a742a500602
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: a9e009d6-318e-4520-b839-871a13ebb0eb
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: dec2ac74-3c85-46dc-be67-7c74282b48b1
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 60b94ec1-b9b5-41e8-a7be-ac987fb5e979
+			defaultHierarchy: LocalDateTable_00de04e4-71cb-4e9a-a791-6fb0d0516ad9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataMascara
+		dataType: string
+		lineageTag: 32082a7a-0155-4a21-a085-983581851df0
+		summarizeBy: none
+		sourceColumn: DataMascara
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoSemana = YEAR(Dim_Data[Data]) * 100 + WEEKNUM(Dim_Data[Data], 2)
+		formatString: 0
+		lineageTag: 9567cc91-fcf6-48d1-be8b-963b5cb56b51
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Data = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)       [Id]#(lf)      ,[Data]#(lf)      ,[DataMascara]#(lf)#(lf)  FROM [DW].[dbo].[Dim_Data]#(lf)  WHERE Feriado = 0#(lf)  AND DiaUtil = 1#(lf)  AND Data >= DATEADD(DAY, -365, GETDATE())#(lf)  AND Data <= DATEADD(DAY, 0, GETDATE())#(lf)"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

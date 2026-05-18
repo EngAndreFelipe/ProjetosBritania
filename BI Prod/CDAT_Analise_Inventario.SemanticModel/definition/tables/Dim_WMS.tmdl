@@ -1,0 +1,40 @@
+table Dim_WMS
+	lineageTag: a754edb6-78e5-4a3e-b030-6540de14c955
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: c78e06d1-81fe-4e0f-8fd6-b9dd54b47d3c
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: c9553645-4731-4bef-8f7d-da68a90a0982
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 5a311a7e-6458-4c65-973a-d7bdce9d0180
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_WMS = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="    SELECT #(lf)        W.Item AS Item,#(lf)        W.Descricao,#(lf)        SUM(CAST(W.Disponivel AS INT)) AS Quantidade#(lf)    FROM DW.logistica.Fato_ESWM9022 AS W#(lf)    WHERE W.Estab = '15' AND W.Local = 'AAT' AND Endereco NOT LIKE 'SEP%'#(lf)    GROUP BY W.Item, W.Descricao#(lf)#(lf)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

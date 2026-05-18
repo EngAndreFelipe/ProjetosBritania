@@ -1,0 +1,119 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "087c2666b88e5d48bbd7",
+  "position": {
+    "x": 70.024937655860342,
+    "y": 324.98753117206979,
+    "z": 9000,
+    "height": 152.61845386533665,
+    "width": 570.074812967581,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Data_Fin"
+                    }
+                  },
+                  "Property": "MesAbrev"
+                }
+              },
+              "queryRef": "Dim_Data_Fin.MesAbrev",
+              "nativeQueryRef": "MesAbrev",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Estado"
+                    }
+                  },
+                  "Property": "DescRegiao"
+                }
+              },
+              "queryRef": "Dim_Estado.DescRegiao",
+              "nativeQueryRef": "DescRegiao",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Arithmetic": {
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Medidas"
+                        }
+                      },
+                      "Property": "Soma VLFRE1 por NRDoc Distinto"
+                    }
+                  },
+                  "Right": {
+                    "ScopedEval": {
+                      "Expression": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Medidas"
+                            }
+                          },
+                          "Property": "Soma VLFRE1 por NRDoc Distinto"
+                        }
+                      },
+                      "Scope": [
+                        {
+                          "RoleRef": {
+                            "Role": "Columns"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "Operator": 3
+                }
+              },
+              "queryRef": "Medidas.Soma VLFRE1 por NRDoc Distinto",
+              "nativeQueryRef": "%CT Soma VLFRE1 por NRDoc Distinto"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_Estado"
+                  }
+                },
+                "Property": "DescRegiao"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

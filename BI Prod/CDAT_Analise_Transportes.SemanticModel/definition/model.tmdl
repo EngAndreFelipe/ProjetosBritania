@@ -1,0 +1,75 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Fato_NotaCobranca","RangeStart","RangeEnd","Fato_AcompEntregas","Dim_Data","Dim_Estado","Fato_NF_SemDataSaida","Fato_AnaliseEntrega","Fato_Faturas","Fato_Provisionamento","Fato_Reenvio","Fato_Itens_Cobrados","Dim_Data_Fin","Tabelas_Transportadoras","Dim_Regioes"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_NotaCobranca
+ref table DateTableTemplate_b89f0877-91a3-441e-9b9c-3cce515164a7
+ref table LocalDateTable_ea3e6cca-2f46-4ffa-8062-78f2e8a57146
+ref table Medidas
+ref table LocalDateTable_009cf065-bd74-4546-b8a3-9c3aa8d3eb65
+ref table LocalDateTable_3a55360d-79a6-4c73-9439-925ef52efd94
+ref table Fato_AcompEntregas
+ref table LocalDateTable_b08e5d6f-ce72-4b1c-a9fd-427fddb06e38
+ref table LocalDateTable_9837a401-1484-4e5e-a645-e90d501960e9
+ref table Dim_Data
+ref table LocalDateTable_9149fb61-ee7a-4cbb-84ef-6112f09c94b8
+ref table LocalDateTable_790910d8-a1b8-42dd-a509-72103541a054
+ref table LocalDateTable_c229282d-75f3-40a1-a56d-6bd1f2d6ec8a
+ref table LocalDateTable_12495ad4-5d2f-43e2-83a2-41448580077d
+ref table LocalDateTable_fb2a1a17-8135-47d3-8d1a-e9cec4dba736
+ref table Dim_Estado
+ref table LocalDateTable_4025d062-76ce-4d94-aa5a-c85e3761d122
+ref table Fato_NF_SemDataSaida
+ref table LocalDateTable_a9d1ee3d-eafe-4a31-a265-a2de3b4890b5
+ref table LocalDateTable_ba526a62-25a7-4891-ae73-2f07d8576ed3
+ref table LocalDateTable_bdfcafee-d1d7-4357-b668-3f3b81da0669
+ref table LocalDateTable_678611ae-e4d0-4d63-b913-76e333a166b6
+ref table LocalDateTable_147c63d7-918d-4d1e-9318-dbf08c7547d3
+ref table LocalDateTable_a0d9313d-55a2-445d-8c24-40809a5f36f1
+ref table LocalDateTable_99bd9d8e-0f3a-4c13-956e-71ab43bab86a
+ref table LocalDateTable_e3a32ea2-2bbe-478b-9359-63c92ca62f94
+ref table LocalDateTable_ba68edc6-10a5-4478-a712-17e4eb2439d1
+ref table LocalDateTable_5bb63558-222d-457c-a095-a82fd22295a6
+ref table Fato_AnaliseEntrega
+ref table LocalDateTable_b52952c9-0fc0-4975-8dd4-0e202d2e548c
+ref table LocalDateTable_a39c0e28-a98a-4ff7-be67-bfdd77bf0973
+ref table LocalDateTable_fd98346d-b1e2-4544-90fb-b1103b64e3aa
+ref table LocalDateTable_bf515d92-9f6a-4c30-b1fd-c765fc0829df
+ref table LocalDateTable_a78a642f-4ebc-4bb9-a560-35de8cd92cb4
+ref table LocalDateTable_1184e57d-9f79-4976-b94a-21a1c6666467
+ref table Fato_Faturas
+ref table LocalDateTable_f85ab122-de40-49cb-8082-4d68d75563ec
+ref table LocalDateTable_c3dc54dd-3abb-4a71-9350-d64876157d09
+ref table LocalDateTable_5ff5b6bd-e603-417d-acfa-6062e4b7e7d0
+ref table LocalDateTable_5b014888-1412-403d-b86d-fc18b23dd63b
+ref table LocalDateTable_cb3d89bb-dab5-4d5f-8366-46e08f500172
+ref table LocalDateTable_b469aad6-98fb-421a-8e73-088d138ebe25
+ref table Fato_Provisionamento
+ref table LocalDateTable_4e42b4ec-9379-4e71-abcb-e150620762c7
+ref table LocalDateTable_a60b7b24-82e9-4990-9bcb-ecc1bcfbc533
+ref table Fato_Reenvio
+ref table LocalDateTable_9032af51-9111-439c-8575-4ccf57a8854b
+ref table LocalDateTable_5c040e30-a792-4a5e-bfef-eaa21c806b13
+ref table LocalDateTable_3a3925f1-ab22-4198-8db9-8258e5a287fb
+ref table LocalDateTable_49dcf8fc-8662-4ef8-bfe9-db02651514b2
+ref table Fato_Itens_Cobrados
+ref table LocalDateTable_656e67db-4c6c-4bc8-8be3-4f5f971f211b
+ref table LocalDateTable_1e1b7ff9-4ea3-4233-b288-1abb3a4ec856
+ref table Dim_Data_Fin
+ref table LocalDateTable_7d1b562d-293b-4e18-8c69-645db63d435b
+ref table Tabelas_Transportadoras
+ref table Dim_Regioes
+ref table Peso_Simulado
+
+ref cultureInfo pt-BR
+

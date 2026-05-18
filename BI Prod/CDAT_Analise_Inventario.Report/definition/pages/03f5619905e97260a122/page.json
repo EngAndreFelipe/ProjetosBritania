@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "03f5619905e97260a122",
+  "displayName": "Visão DCV",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'FundoPadraoBISemLogoB.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "FundoPadraoBISemLogoB87748475891306.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "82ad9fcda2bc6691bf4d",
+      "target": "4b829d62a7f6b4849cab",
+      "type": "NoFilter"
+    },
+    {
+      "source": "82ad9fcda2bc6691bf4d",
+      "target": "5e419e73203f6ad657c1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "82ad9fcda2bc6691bf4d",
+      "target": "6dca4b4a38adc8bdb557",
+      "type": "NoFilter"
+    },
+    {
+      "source": "82ad9fcda2bc6691bf4d",
+      "target": "fd6a41b7862a79e65b02",
+      "type": "NoFilter"
+    }
+  ]
+}

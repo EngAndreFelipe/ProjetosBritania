@@ -1,0 +1,47 @@
+table d_DescricaoBloquio
+	lineageTag: fec38440-75eb-4ea0-9d32-34f2970b9164
+
+	column ChvBloq
+		dataType: string
+		lineageTag: d2753461-941f-4ad6-8896-f72e59e2f40e
+		summarizeBy: none
+		sourceColumn: ChvBloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescBloq
+		dataType: string
+		lineageTag: bae6e455-d07f-4b41-9e30-0312a9a3cb01
+		summarizeBy: none
+		sourceColumn: DescBloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChvBloqUnico
+		dataType: string
+		lineageTag: 4729db96-a191-41d9-99a1-a16db5a1e33d
+		summarizeBy: none
+		sourceColumn: ChvBloqUnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column BloqAT
+		dataType: string
+		lineageTag: 98368de7-76bd-4839-92a8-3426c2c86fca
+		summarizeBy: none
+		sourceColumn: BloqAT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_DescricaoBloquio = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bdAxCoMwFAbgq4TMFvQIrbWQRUWLizgEzSCoz8bo3qOUHsWLNYk1UVRw8Of730vMc+y55sEOjllVV4DC+Qvo2nOYaAUy9uR7wYWTY9c74ek49KwblHQ31FpLSVdC2zdMaLzThssspY3ESeBrpZn6+MNVKshapPEC9wNXKDPSTawT84fXq9SUhFkQPud3QiJbWlrqzDAIQLcGXiOjZsVhyVIw3ufyqsLqI1deZsvgGlDMGXpQYRsnFdkx/+XuZxursYp2XKdRimLKy5o2W79OL34=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ChvBloq = _t, DescBloq = _t, ChvBloqUnico = _t, BloqAT = _t])
+				in
+				    Fonte
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

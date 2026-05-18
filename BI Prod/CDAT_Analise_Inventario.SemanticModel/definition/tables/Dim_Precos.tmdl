@@ -1,0 +1,44 @@
+table Dim_Precos
+	lineageTag: c57b8424-58dc-40e6-8018-28e0da780953
+
+	column Estabelecimento
+		dataType: string
+		lineageTag: 3dc8ec19-c230-42a2-895a-ae978ff04bd5
+		summarizeBy: none
+		sourceColumn: Estabelecimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 656d66c3-5215-4045-8054-b94d66994bda
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custo
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 17dfa31a-13c4-4737-ac0e-c64fe481c039
+		summarizeBy: sum
+		sourceColumn: Custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Dim_Precos = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)    IE.[cod-estabel] AS Estabelecimento,#(lf)    IE.[it-codigo] AS Item,#(lf)    FORMAT(#(lf)        SUM(IE.[val-unit-mat-m] + IE.[val-unit-mob-m] + IE.[val-unit-ggf-m]), #(lf)        'N4', #(lf)        'pt-BR'#(lf)    ) AS Custo#(lf)FROM STAGE.tot.ItemEstab IE#(lf)WHERE IE.[cod-estabel] = '15'#(lf)GROUP BY IE.[cod-estabel], IE.[it-codigo]#(lf)HAVING SUM(IE.[val-unit-mat-m] + IE.[val-unit-mob-m] + IE.[val-unit-ggf-m]) <> 0;"]),
+				    #"Texto em Maiúscula" = Table.TransformColumns(Fonte,{{"Item", Text.Upper, type text}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Texto em Maiúscula",{{"Custo", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

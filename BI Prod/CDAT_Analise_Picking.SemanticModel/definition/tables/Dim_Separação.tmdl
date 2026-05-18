@@ -1,0 +1,91 @@
+table Dim_Separação
+	lineageTag: d828097b-0e6d-43e6-a7f0-a00905929d3a
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 275a7ed1-c28a-429b-ac95-eee88de27b48
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: ef5b63db-63b4-4708-9e85-7a393b2a62f6
+		summarizeBy: none
+		sourceColumn: Mes
+		sortByColumn: Mes2
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalSeparacoes
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e91ad1b-4265-498a-b55d-482bab06a1ff
+		summarizeBy: sum
+		sourceColumn: TotalSeparacoes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SeparacoesPCK
+		dataType: int64
+		formatString: 0
+		lineageTag: 6eaf853a-e241-46d2-ae8f-4f8b03d9204d
+		summarizeBy: sum
+		sourceColumn: SeparacoesPCK
+
+		annotation SummarizationSetBy = Automatic
+
+	column PercentualPCK
+		dataType: double
+		lineageTag: 641fbdf6-e926-4e1e-9128-3615fec680b5
+		summarizeBy: sum
+		sourceColumn: PercentualPCK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mes2
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a0e288c-cee1-48ed-96ba-c9745ed119e5
+		summarizeBy: sum
+		sourceColumn: Mes2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SeparacoesRUA
+		dataType: int64
+		formatString: 0
+		lineageTag: baf750fb-2f38-4f3d-87da-76a87be7569c
+		summarizeBy: sum
+		sourceColumn: SeparacoesRUA
+
+		annotation SummarizationSetBy = Automatic
+
+	column PercentualRUA
+		dataType: double
+		lineageTag: 9a6a36d7-f9c4-4671-a60d-b96c61c19835
+		summarizeBy: sum
+		sourceColumn: PercentualRUA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Dim_Separação = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)    YEAR(M.[DataImplantacao]) AS Ano,#(lf)    FORMAT(M.[DataImplantacao], 'MMM', 'pt-BR') AS Mes,#(lf)    MONTH(M.[DataImplantacao]) AS Mes,#(lf)    COUNT(DISTINCT M.IdMovto) AS TotalSeparacoes,#(lf)    COUNT(DISTINCT CASE WHEN E.[cod-bloco] = 'PCK' THEN M.IdMovto END) AS SeparacoesPCK,#(lf)    COUNT(DISTINCT CASE WHEN E.[cod-bloco] NOT LIKE 'PCK' THEN M.IdMovto END) AS SeparacoesRUA,#(lf)    CAST(#(lf)        COUNT(DISTINCT CASE WHEN E.[cod-bloco] = 'PCK' THEN M.IdMovto END) * 1.0#(lf)        / NULLIF(COUNT(DISTINCT M.IdMovto), 0) #(lf)        AS DECIMAL(5,4)#(lf)    ) AS PercentualPCK,#(lf)    CAST(#(lf)        COUNT(DISTINCT CASE WHEN E.[cod-bloco] NOT LIKE 'PCK' THEN M.IdMovto END) * 1.0#(lf)        / NULLIF(COUNT(DISTINCT M.IdMovto), 0) #(lf)        AS DECIMAL(5,4)#(lf)    ) AS PercentualRUA#(lf)FROM dw.logistica.Fato_Mov_Estoque_PA_AT AS M#(lf)LEFT JOIN STAGE.tot.WmBox AS E #(lf)    ON M.IdEndereco = E.[id-box]#(lf)LEFT JOIN DW.dbo.Dim_Item AS I #(lf)    ON I.CodItem = M.Item#(lf)WHERE M.Origem = 'Consolidação'#(lf)  AND M.Local = 'aat'#(lf)  AND M.Movimento = 'Saida'#(lf)  AND M.Situacao = 'Atualizado'#(lf)  AND CAST(M.[DataImplantacao] AS DATE) >= '2025-01-01'#(lf)  AND E.[cod-local] = 'aat'#(lf)  AND I.DescFamMaterial NOT LIKE 'DISPLAY LCD/LED/PLASMA'#(lf)  AND M.NumeroDocumento NOT LIKE 'PUR%'#(lf)GROUP BY #(lf)    YEAR(M.[DataImplantacao]),#(lf)    MONTH(M.[DataImplantacao]),#(lf)    FORMAT(M.[DataImplantacao], 'MMM', 'pt-BR')#(lf)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

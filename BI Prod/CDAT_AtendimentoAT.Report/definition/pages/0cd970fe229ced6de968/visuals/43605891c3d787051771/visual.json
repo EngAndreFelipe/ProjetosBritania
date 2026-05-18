@@ -1,0 +1,474 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.3.0/schema.json",
+  "name": "43605891c3d787051771",
+  "position": {
+    "x": 72.075605994701249,
+    "y": 94.751077543596026,
+    "z": 1000,
+    "height": 625.19514413381307,
+    "width": 1208.2786982482503,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "NumeroPedido"
+                }
+              },
+              "queryRef": "f_PDB381.NumeroPedido",
+              "nativeQueryRef": "Num. Pedido",
+              "displayName": "Num. Pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DataImplantacao"
+                }
+              },
+              "queryRef": "f_PDB381.DataImplantacao",
+              "nativeQueryRef": "Dt Implantação",
+              "displayName": "Dt Implantação"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "PedidoOS"
+                }
+              },
+              "queryRef": "f_PDB381.PedidoOS",
+              "nativeQueryRef": "PedidoOS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "NomeMatriz"
+                }
+              },
+              "queryRef": "f_PDB381.NomeMatriz",
+              "nativeQueryRef": "NomeMatriz"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "Cidade"
+                }
+              },
+              "queryRef": "f_PDB381.Cidade",
+              "nativeQueryRef": "Cidade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "EstadoEntrega"
+                }
+              },
+              "queryRef": "f_PDB381.EstadoEntrega",
+              "nativeQueryRef": "UF",
+              "displayName": "UF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "CodItem"
+                }
+              },
+              "queryRef": "f_PDB381.CodItem",
+              "nativeQueryRef": "CodItem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DescItem"
+                }
+              },
+              "queryRef": "f_PDB381.DescItem",
+              "nativeQueryRef": "DescItem"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MediasOS"
+                    }
+                  },
+                  "Property": "QtdePçOsUtil"
+                }
+              },
+              "queryRef": "MediasOS.QtdePçOsUtil",
+              "nativeQueryRef": "QtdeOsUtil",
+              "displayName": "QtdeOsUtil"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DtFaturamento"
+                }
+              },
+              "queryRef": "f_PDB381.DtFaturamento",
+              "nativeQueryRef": "Data Fat.",
+              "displayName": "Data Fat."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "Embarque"
+                }
+              },
+              "queryRef": "Sum(f_PDB381.Embarque)",
+              "nativeQueryRef": "Embarque"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DataEmbarque"
+                }
+              },
+              "queryRef": "f_PDB381.DataEmbarque",
+              "nativeQueryRef": "Data Emb.",
+              "displayName": "Data Emb."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DataSaida"
+                }
+              },
+              "queryRef": "f_PDB381.DataSaida",
+              "nativeQueryRef": "Data Saida",
+              "displayName": "Data Saida"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "NotaFiscal"
+                }
+              },
+              "queryRef": "f_PDB381.NotaFiscal",
+              "nativeQueryRef": "Nota Fiscal",
+              "displayName": "Nota Fiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "SerieNotaFiscal"
+                }
+              },
+              "queryRef": "f_PDB381.SerieNotaFiscal",
+              "nativeQueryRef": "Serie NF",
+              "displayName": "Serie NF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "EstabNotaFiscal"
+                }
+              },
+              "queryRef": "f_PDB381.EstabNotaFiscal",
+              "nativeQueryRef": "Estab.",
+              "displayName": "Estab."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "SitPedido"
+                }
+              },
+              "queryRef": "f_PDB381.SitPedido",
+              "nativeQueryRef": "Sit. Pedido",
+              "displayName": "Sit. Pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "ValidaDisplay"
+                }
+              },
+              "queryRef": "f_PDB381.ValidaDisplay",
+              "nativeQueryRef": "Valida Display",
+              "displayName": "Valida Display"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "IRP"
+                }
+              },
+              "queryRef": "f_PDB381.IRP",
+              "nativeQueryRef": "IRP"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "LOG_ERRO"
+                }
+              },
+              "queryRef": "f_PDB381.LOG_ERRO",
+              "nativeQueryRef": "Log Erro",
+              "displayName": "Log Erro"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DiasExp"
+                }
+              },
+              "queryRef": "f_PDB381.DiasExp",
+              "nativeQueryRef": "Dias Exp",
+              "displayName": "Dias Exp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "Polegada"
+                }
+              },
+              "queryRef": "f_PDB381.Polegada",
+              "nativeQueryRef": "Polegada"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DiasCorridos"
+                }
+              },
+              "queryRef": "f_PDB381.DiasCorridos",
+              "nativeQueryRef": "Dias Corridos",
+              "displayName": "Dias Corridos"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DiasUteis"
+                }
+              },
+              "queryRef": "f_PDB381.DiasUteis",
+              "nativeQueryRef": "Dias Uteis",
+              "displayName": "Dias Uteis"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "ValidaBloqPedido"
+                }
+              },
+              "queryRef": "Sum(f_PDB381.ValidaBloqPedido)",
+              "nativeQueryRef": "Bloq. Pedido",
+              "displayName": "Bloq. Pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "f_PDB381"
+                    }
+                  },
+                  "Property": "DiasUteis_OS"
+                }
+              },
+              "queryRef": "Sum(f_PDB381.DiasUteis_OS)",
+              "nativeQueryRef": "Dias Uteis OS",
+              "displayName": "Dias Uteis OS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "f_PDB381"
+                  }
+                },
+                "Property": "DataSaida"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0E436E'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

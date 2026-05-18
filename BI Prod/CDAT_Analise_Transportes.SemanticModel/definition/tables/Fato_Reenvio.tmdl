@@ -1,0 +1,226 @@
+table Fato_Reenvio
+	lineageTag: 3d96b87b-3850-4bef-8c17-9829c8c5e24f
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: 51a7905f-f140-42d7-9b63-76e38d445f6f
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroPedidoRepres
+		dataType: string
+		lineageTag: 2e280086-af2d-4e10-a42b-49defed224a1
+		summarizeBy: none
+		sourceColumn: NumeroPedidoRepres
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e9c96108-1854-4608-b905-d18426117714
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: f9522c43-94fc-4cf7-a1e0-d6a346c38ff5
+			defaultHierarchy: LocalDateTable_9032af51-9111-439c-8575-4ccf57a8854b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroOS
+		dataType: string
+		lineageTag: 63f66582-1255-4e94-84db-bde9631d1182
+		summarizeBy: none
+		sourceColumn: NumeroOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodEmitente
+		dataType: int64
+		formatString: 0
+		lineageTag: f7664345-6286-4153-b5b5-95c9caa5ff36
+		summarizeBy: sum
+		sourceColumn: CodEmitente
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: b127e5f4-b951-4a14-9b8e-a87d9b5bb74d
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 1b43a16c-b842-4688-ab51-507ece949887
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoEntrega
+		dataType: string
+		lineageTag: 324ddc57-333a-4123-92e7-838e9be66224
+		summarizeBy: none
+		sourceColumn: EstadoEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 6452d0f3-a47a-4969-8b15-9f2daa2c7857
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: e12e953b-d30f-4abd-a341-a431b0316644
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column NatOperacao
+		dataType: string
+		lineageTag: 20960283-0ee4-40fb-98f8-d75961a2e773
+		summarizeBy: none
+		sourceColumn: NatOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denominacao
+		dataType: string
+		lineageTag: 6a622802-4af6-4b26-bf33-fe7fdb742715
+		summarizeBy: none
+		sourceColumn: Denominacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadePedida
+		dataType: string
+		lineageTag: 687d06b7-7419-4b41-9a1f-9de252c524c1
+		summarizeBy: none
+		sourceColumn: QuantidadePedida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeAtendida
+		dataType: string
+		lineageTag: b3636df8-11f6-4f2e-81e6-610f9a25f6fd
+		summarizeBy: none
+		sourceColumn: QuantidadeAtendida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeAlocada
+		dataType: string
+		lineageTag: ed271a30-1edf-44ad-9995-3b2feb847d12
+		summarizeBy: none
+		sourceColumn: QuantidadeAlocada
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeCarteira
+		dataType: string
+		lineageTag: bf731868-6c81-490e-ae24-24f68edbd9e7
+		summarizeBy: none
+		sourceColumn: QuantidadeCarteira
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtFaturamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3388fc37-5f37-4c69-9259-185639878a43
+		summarizeBy: none
+		sourceColumn: DtFaturamento
+
+		variation Variation
+			isDefault
+			relationship: df848353-67d6-4952-9e67-5f1d98648a9b
+			defaultHierarchy: LocalDateTable_5c040e30-a792-4a5e-bfef-eaa21c806b13.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Embarque
+		dataType: double
+		lineageTag: d9c0aaa5-130d-4063-8bea-09073d9d3141
+		summarizeBy: sum
+		sourceColumn: Embarque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataEmbarque
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 35dddc8c-ad8b-4f16-ac54-0649847dcbe9
+		summarizeBy: none
+		sourceColumn: DataEmbarque
+
+		variation Variation
+			isDefault
+			relationship: eb130f15-0d5b-4f91-b5f6-62f301b25d73
+			defaultHierarchy: LocalDateTable_3a3925f1-ab22-4198-8db9-8258e5a287fb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8009a100-1123-4bf1-bee6-963de5e7e1ac
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: d2f267e2-5075-49cf-9885-fa3f08b8c72f
+			defaultHierarchy: LocalDateTable_49dcf8fc-8662-4ef8-bfe9-db02651514b2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NotaFiscal
+		dataType: string
+		lineageTag: eae64045-c994-4b1a-8e63-be61db6cd237
+		summarizeBy: none
+		sourceColumn: NotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: 8eac3728-5587-49ab-94d7-5959b99fd4fb
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoReenvio
+		dataType: string
+		lineageTag: cdb0c172-a0ff-4b7a-a7b8-381db71695db
+		summarizeBy: none
+		sourceColumn: TipoReenvio
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Reenvio = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)      [NumeroPedido],#(lf)      [NumeroPedidoRepres],#(lf)      [DataImplantacao],#(lf)      [NumeroOS],#(lf)     #(lf)      [CodEmitente],#(lf)      [NomeMatriz],#(lf)      [Cidade],#(lf)      [EstadoEntrega],#(lf)      [CodItem],#(lf)      [DescItem],#(lf)    #(lf)      [NatOperacao],#(lf)      [Denominacao],#(lf)#(lf)      FORMAT([QuantidadePedida], 'N2', 'pt-BR') AS QuantidadePedida,#(lf)      FORMAT([QuantidadeAtendida], 'N2', 'pt-BR') AS QuantidadeAtendida,#(lf)      FORMAT([QuantidadeAlocada], 'N2', 'pt-BR') AS QuantidadeAlocada,#(lf)      FORMAT([QuantidadeCarteira], 'N2', 'pt-BR') AS QuantidadeCarteira,#(lf)#(lf)      [DtFaturamento],#(lf)      #(lf)      [Embarque],#(lf)      [DataEmbarque],#(lf)      [DataSaida],#(lf)      [NotaFiscal],#(lf)      [SerieNotaFiscal],#(lf)      #(lf)      #(lf)#(lf)      CASE#(lf)          WHEN NumeroPedido LIKE '%RPD' THEN 'Defeito'#(lf)          WHEN NumeroPedido LIKE '%RPE' THEN 'Errada'#(lf)          WHEN NumeroPedido LIKE '%RPF' THEN 'Faltando'#(lf)          WHEN NumeroPedido LIKE '%RPI' THEN 'Identificação'#(lf)          WHEN NumeroPedido LIKE '%RPO' THEN 'Outros'#(lf)          WHEN NumeroPedido LIKE '%RPQ' THEN 'Quebrado'#(lf)          WHEN NumeroPedido LIKE '%RPT' THEN 'Transportadora'#(lf)          ELSE NULL#(lf)      END AS TipoReenvio#(lf)#(lf)  FROM [DW].[logistica].[Fato_PDB381]#(lf)#(lf)  WHERE DataImplantacao BETWEEN '2025-01-01' AND getdate()#(lf)    AND (#(lf)         NumeroPedido LIKE '%RPD' OR#(lf)         NumeroPedido LIKE '%RPE' OR#(lf)         NumeroPedido LIKE '%RPF' OR#(lf)         NumeroPedido LIKE '%RPI' OR#(lf)         NumeroPedido LIKE '%RPO' OR#(lf)         NumeroPedido LIKE '%RPQ' OR#(lf)         NumeroPedido LIKE '%RPT'#(lf)    )"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

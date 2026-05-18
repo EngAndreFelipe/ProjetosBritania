@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_Status_Cadastro_Itens"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e5472b88-167f-4918-9130-ff8bb6fe6f37"
+  }
+}

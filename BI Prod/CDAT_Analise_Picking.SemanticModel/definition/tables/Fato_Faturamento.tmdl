@@ -1,0 +1,245 @@
+table Fato_Faturamento
+	lineageTag: dbbd9e0b-14dd-475e-9387-171bea6e99c1
+
+	measure TotalPeças = SUM('Fato_Faturamento'[QuantidadeFat])
+		formatString: 0
+		lineageTag: d8bb1697-bdef-4974-af48-2c79ff28deb7
+
+	measure HOJE = TODAY()
+		formatString: General Date
+		lineageTag: b600ac97-ef9a-49da-85bd-41f1a6e813cc
+
+	measure ItensTotais =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Faturamento[CodItem]),
+			    FILTER(
+			        Fato_Faturamento,
+			        Fato_Faturamento[RepetiçõesItem] > 20
+			    )
+			)
+		formatString: 0
+		lineageTag: ece7defd-8d55-4bed-959f-05882cde9a6c
+
+	column IdData
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d1d48af-2f74-4b7e-b937-69bb39be91ad
+		summarizeBy: none
+		sourceColumn: IdData
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2c1c6a06-366d-41f2-a618-d0f3ec73b73b
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column IdEstab
+		dataType: int64
+		formatString: 0
+		lineageTag: fc7384d1-987d-4937-9ae6-77a767c62794
+		summarizeBy: sum
+		sourceColumn: IdEstab
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodEstab
+		dataType: string
+		lineageTag: ece4f8bb-aa32-42d3-a793-c0afafb8f3a4
+		summarizeBy: none
+		sourceColumn: CodEstab
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdItem
+		dataType: int64
+		formatString: 0
+		lineageTag: 808903f3-c85e-4e92-a3e4-d26a36921e78
+		summarizeBy: none
+		sourceColumn: IdItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 91fc7596-37f5-4671-990f-c4ae4dc67b57
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEmitente
+		dataType: int64
+		formatString: 0
+		lineageTag: a96ef9bd-0949-4805-8a6d-792d14cfce77
+		summarizeBy: sum
+		sourceColumn: IdEmitente
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNotaFiscal
+		dataType: string
+		lineageTag: 07d3a165-dd2d-4c44-a055-f655b1c21919
+		summarizeBy: none
+		sourceColumn: NumeroNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: 09f19c1c-459b-4dc7-83b7-c5aecd8ef4d2
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: 9aa4bfaf-29e0-4ced-83be-0a697116ce74
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 290791ea-41db-46fd-915c-306696d9dc6d
+		summarizeBy: none
+		sourceColumn: DataEmissao
+
+		variation Variation
+			isDefault
+			relationship: bb955ade-b232-4e6c-a960-f41df354bd3a
+			defaultHierarchy: LocalDateTable_fc8ffbfd-aba2-419e-90e1-e235100ab2ab.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f062971d-c194-4fec-858c-a94780906a71
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: 91948304-5454-4d0b-9487-4978c1ec4bc4
+			defaultHierarchy: LocalDateTable_e6adc604-0938-4121-88ea-78aa5936171a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column QuantidadeFat
+		dataType: int64
+		formatString: 0
+		lineageTag: 74aba584-651e-4007-96f5-41dd84884b60
+		summarizeBy: sum
+		sourceColumn: QuantidadeFat
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdDeposito
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b9d86ad-8221-41d6-b89b-f9885ca2b6f9
+		summarizeBy: sum
+		sourceColumn: IdDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoDeposito
+		dataType: string
+		lineageTag: 6387e662-3e8a-4299-9f5d-c0844b8ac3a2
+		summarizeBy: none
+		sourceColumn: CodigoDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoMaisRecente =
+			
+			CALCULATE (
+			    MAX ( Fato_Faturamento[DataEmissao] ),
+			    ALLEXCEPT ( Fato_Faturamento, Fato_Faturamento[CodItem] )
+			)
+		formatString: General Date
+		lineageTag: f43ac385-ddd2-479d-a962-8da2adc87989
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: ad4e7d57-ee16-4a60-a2e6-a08008507e4b
+			defaultHierarchy: LocalDateTable_50d6d661-8099-4fb8-a4ef-7bd3ffb963ed.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasUltimoFaturamento = [HOJE] - Fato_Faturamento[DataEmissaoMaisRecente]
+		dataType: int64
+		formatString: 0
+		lineageTag: b5397b0f-908b-42d3-9dc1-0554c5db9f6d
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaDiasUltimoFat =
+			
+			SWITCH (
+			    TRUE(),
+			    Fato_Faturamento[DiasUltimoFaturamento] < 30, "1 mês",
+			    Fato_Faturamento[DiasUltimoFaturamento] < 60, "2 meses", Fato_Faturamento[DiasUltimoFaturamento] < 90, "3 meses",
+			    Fato_Faturamento[DiasUltimoFaturamento] < 180, "6 meses",
+			    Fato_Faturamento[DiasUltimoFaturamento] < 365, "Até um ano",
+			    Fato_Faturamento[DiasUltimoFaturamento] < 730, "Mais de 1 ano",
+			    "Mais de 2 anos"
+			)
+		lineageTag: 5defdf08-1fd7-4830-b090-4fdc5b9db58a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column RepetiçõesItem = ```
+			COUNTROWS(
+			    FILTER(
+			        Fato_Faturamento,
+			        Fato_Faturamento[IdItem] = EARLIER(Fato_Faturamento[IdItem])
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 868746bd-0ed7-4756-b0fb-0446ca9dac6a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusCadastro = IF(COUNTROWS(FILTER(Dim_ItemXPicking, Dim_ItemXPicking[Item] = Fato_Faturamento[CodItem])) > 0, "Cadastrado", "Não Cadastrado")
+		lineageTag: ad588197-79c9-4827-952f-d85718f4d180
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Faturamento = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT F.[IdData]#(lf)      ,CAST(D.[Data] AS DATE) AS Data#(lf)      ,F.[IdEstab]#(lf)      ,E.CodEstab#(lf)      ,F.[IdItem]#(lf)      ,I.CodItem#(lf)      ,F.[IdEmitente]#(lf)      ,F.[NumeroNotaFiscal]#(lf)      ,F.[SerieNotaFiscal]#(lf)      ,F.[NumeroPedido]#(lf)      ,CAST(F.[DataEmissaoNotaFiscal] AS DATE) AS DataEmissao#(lf)      ,CAST(F.[DataSaida] AS DATE) AS DataSaida#(lf)      ,CAST(F.[QuantidadeFaturada] AS INT) AS QuantidadeFat#(lf)      ,F.[IdDeposito]#(lf)      ,DE.CodigoDeposito#(lf)#(lf)#(lf)  FROM [DW].[dbo].[Fato_Faturamento] AS F#(lf)  LEFT JOIN DW.dbo.Dim_Item AS I ON I.Id = F.IdItem#(lf)  LEFT JOIN DW.dbo.Dim_Data AS D ON D.Id = F.IdData#(lf)  LEFT JOIN DW.dbo.Dim_Estabelecimento AS E ON E.Id = F.IdEstab#(lf)  LEFT JOIN DW.dbo.Dim_Deposito AS DE ON DE.IdDeposito = F.IdDeposito#(lf)  WHERE CodEstab = '15'#(lf)  AND SerieNotaFiscal IN ('5','21')#(lf)  AND Cancelado = 0#(lf)  AND DataSaida IS NOT NULL#(lf)  AND CAST(F.[DataEmissaoNotaFiscal] AS DATE) >= DATEADD(DAY, -730, GETDATE())#(lf)  AND CAST(F.[QuantidadeFaturada] AS INT) <= 10#(lf)  AND F.[IdDeposito] = '4'#(lf)ORDER BY DataEmissaoNotaFiscal ASC#(lf)"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}, {"DataEmissao", type date}, {"DataSaida", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

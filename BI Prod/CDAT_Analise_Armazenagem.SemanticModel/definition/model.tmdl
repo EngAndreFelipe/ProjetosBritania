@@ -1,0 +1,34 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Dim_Enderecos_Inutil","Fato_ESWM9002","RangeStart","RangeEnd","Dim_ESWM9002","Dim_Enderecos","Ocupacao_Diaria","Dim_Enderecos_Vazio","Dim_Tipo","Fato_Agrupamento"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Dim_Enderecos_Inutil
+ref table Fato_ESWM9002
+ref table DateTableTemplate_d6f4a01d-36af-4191-ba7e-bcb6ec040120
+ref table LocalDateTable_c42cf72f-acdf-4ef9-a2c5-794d7591f6c4
+ref table Dim_ESWM9002
+ref table LocalDateTable_3c3d99f3-45a7-47e8-bd64-6930c9cd2a8a
+ref table Dim_Enderecos
+ref table LocalDateTable_c14e6279-3259-4084-9d72-03293c358138
+ref table Ocupacao_Diaria
+ref table LocalDateTable_06c1a31b-cc67-4038-a4e6-070a9a3266f8
+ref table Dim_Enderecos_Vazio
+ref table LocalDateTable_6bfb9c4b-3ba5-4f54-bf3f-a445563338e0
+ref table Dim_Tipo
+ref table LocalDateTable_be578087-424d-44c8-9d76-f33dfabce42c
+ref table Fato_Agrupamento
+ref table LocalDateTable_8fa7e053-ba7b-4a90-8b72-969f8f3b8e70
+ref table Medidas
+
+ref cultureInfo pt-BR
+

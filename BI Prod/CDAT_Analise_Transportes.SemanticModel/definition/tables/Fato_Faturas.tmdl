@@ -1,0 +1,478 @@
+table Fato_Faturas
+	lineageTag: eb4b67c2-9a1a-4b5b-9370-5f6d3efc637b
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: 4a8769e2-736c-4d3f-82e9-8085b5bfce24
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNotaFiscal
+		dataType: string
+		lineageTag: d3bb78eb-7dae-414f-a5ee-cdedf70f6235
+		summarizeBy: none
+		sourceColumn: NumeroNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoNotaFiscal
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 88f42282-5748-4b36-b1f8-dd283962a901
+		summarizeBy: none
+		sourceColumn: DataEmissaoNotaFiscal
+
+		variation Variation
+			isDefault
+			relationship: bfb71b98-e71e-427b-8c22-5fe1299b198a
+			defaultHierarchy: LocalDateTable_f85ab122-de40-49cb-8082-4d68d75563ec.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1910e6f6-7665-4fa2-a976-ba8808f94e9b
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: cd0e5691-5758-4865-8c81-f7d3c4368d38
+			defaultHierarchy: LocalDateTable_c3dc54dd-3abb-4a71-9350-d64876157d09.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEntrega
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e80f62e5-7097-4439-ab96-7d566537e00a
+		summarizeBy: none
+		sourceColumn: DataEntrega
+
+		variation Variation
+			isDefault
+			relationship: 1484295f-34e5-4571-b9c9-aa635356e929
+			defaultHierarchy: LocalDateTable_5ff5b6bd-e603-417d-acfa-6062e4b7e7d0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCancelamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0b389027-ff70-4088-b2be-6a7ca933ca4c
+		summarizeBy: none
+		sourceColumn: DataCancelamento
+
+		variation Variation
+			isDefault
+			relationship: 036ebd97-8e7d-43f8-b59a-c1018309ab2e
+			defaultHierarchy: LocalDateTable_5b014888-1412-403d-b86d-fc18b23dd63b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataPrevisaoEntrega
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 11c7d0ec-76bd-4a6a-8a4b-0d26d4b77e66
+		summarizeBy: none
+		sourceColumn: DataPrevisaoEntrega
+
+		variation Variation
+			isDefault
+			relationship: 7212ef6d-9e60-4806-ab89-95500aef9fe6
+			defaultHierarchy: LocalDateTable_cb3d89bb-dab5-4d5f-8366-46e08f500172.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column VlFretePago
+		dataType: double
+		lineageTag: ed443526-8112-4a3b-a45d-0a3cd770ce64
+		summarizeBy: sum
+		sourceColumn: VlFretePago
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4fa5837a-d171-4aa6-afbc-ea4737d981bd
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 29c501ca-81ff-446a-90a1-739615df0ae7
+			defaultHierarchy: LocalDateTable_b469aad6-98fb-421a-8e73-088d138ebe25.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEnvioFinanceiro
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f98933cf-cafe-4abf-adcf-c28fbfd19fa1
+		summarizeBy: none
+		sourceColumn: DataEnvioFinanceiro
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtVolumes
+		dataType: int64
+		formatString: 0
+		lineageTag: 0163b3ff-e842-4fe9-b91d-1279e3a57548
+		summarizeBy: sum
+		sourceColumn: QtVolumes
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: df03fc6c-3d11-4db3-930f-c9405b83b0b9
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 105d11b2-4e45-4e29-9d7c-d9d8af2c94c9
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeFaturada
+		dataType: int64
+		formatString: 0
+		lineageTag: 83ac56f2-fb8d-4de1-bee8-3151157d00bc
+		summarizeBy: sum
+		sourceColumn: QtdeFaturada
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodFamiliaComl
+		dataType: string
+		lineageTag: 6a89053a-3b8b-44c6-ae3d-16adc9f227fe
+		summarizeBy: none
+		sourceColumn: CodFamiliaComl
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescFamiliaComercial
+		dataType: string
+		lineageTag: 2e0c8dda-cf9e-4c62-a970-c58579c9adad
+		summarizeBy: none
+		sourceColumn: DescFamiliaComercial
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoProduto
+		dataType: string
+		lineageTag: a0eaf09b-8152-44ea-af84-d5eb5136a3ec
+		summarizeBy: none
+		sourceColumn: TipoProduto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Produto
+		dataType: string
+		lineageTag: d2629fb2-3ee2-4e3a-94cf-7d43892f0869
+		summarizeBy: none
+		sourceColumn: Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoNota
+		dataType: string
+		lineageTag: edaa6628-3977-4820-a962-3e4ef5cebd5a
+		summarizeBy: none
+		sourceColumn: TipoNota
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoNota
+		dataType: string
+		lineageTag: e36b8aa5-9d26-421a-aac9-85ec5bfdaf01
+		summarizeBy: none
+		sourceColumn: SituacaoNota
+
+		annotation SummarizationSetBy = Automatic
+
+	column NatOperacao
+		dataType: string
+		lineageTag: 257badd3-51a2-4bf2-b4d6-40ca0751ab0b
+		summarizeBy: none
+		sourceColumn: NatOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denominacao
+		dataType: string
+		lineageTag: cbe69b4c-d092-4681-8db1-8421ada441ad
+		summarizeBy: none
+		sourceColumn: Denominacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoFrete
+		dataType: string
+		lineageTag: 25656fd5-afdb-425c-b79a-3d45512b9035
+		summarizeBy: none
+		sourceColumn: TipoFrete
+
+		annotation SummarizationSetBy = Automatic
+
+	column Representante
+		dataType: string
+		lineageTag: 27e816e6-8ae2-4794-91bf-47c615e0ad54
+		summarizeBy: none
+		sourceColumn: Representante
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 2f0da1d3-e104-4a21-980a-a2b8cf1b59d9
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoDestino
+		dataType: string
+		lineageTag: 0bb375a7-fa40-4916-bb3c-aecd3606228e
+		summarizeBy: none
+		sourceColumn: EstadoDestino
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocalizacaoCompleta
+		dataType: string
+		lineageTag: 143caefa-108a-4c23-8d22-ea06ef83117b
+		summarizeBy: none
+		sourceColumn: LocalizacaoCompleta
+
+		annotation SummarizationSetBy = Automatic
+
+	column VlFretePrevisto
+		dataType: double
+		lineageTag: 325750a3-4875-45c9-a768-d4956630b7f6
+		summarizeBy: sum
+		sourceColumn: VlFretePrevisto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalNota
+		dataType: double
+		lineageTag: ba85464c-e545-48b4-ac2b-5bab15a04944
+		summarizeBy: sum
+		sourceColumn: TotalNota
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdeFaturadaNota
+		dataType: double
+		lineageTag: b0e79927-e229-4467-aed6-708475bb69af
+		summarizeBy: sum
+		sourceColumn: QtdeFaturadaNota
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdeFaturadaDevolvida
+		dataType: double
+		lineageTag: fbf24495-a1d3-45c8-b5c7-74194de131ba
+		summarizeBy: sum
+		sourceColumn: QtdeFaturadaDevolvida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdeAbatidaNota
+		dataType: double
+		lineageTag: 59e8ab19-9484-49e5-9876-eb3d4a399eb0
+		summarizeBy: sum
+		sourceColumn: QtdeAbatidaNota
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorFreteReentrega
+		dataType: double
+		lineageTag: a15c3c9a-bf83-4b02-aa18-9a97661d16ea
+		summarizeBy: sum
+		sourceColumn: ValorFreteReentrega
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorFreteDevolucao
+		dataType: double
+		lineageTag: ed87ee0d-a5e3-40c2-8dd2-fda0dc425bb8
+		summarizeBy: sum
+		sourceColumn: ValorFreteDevolucao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroRomaneio
+		dataType: string
+		lineageTag: 0b62121d-bd75-4e24-ba6d-f12533227aa3
+		summarizeBy: none
+		sourceColumn: NumeroRomaneio
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoCalculo
+		dataType: string
+		lineageTag: 4208d93d-585f-4a3f-86b7-df78faac5918
+		summarizeBy: none
+		sourceColumn: SituacaoCalculo
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioCalculo
+		dataType: string
+		lineageTag: 11782669-a69b-4882-8832-eae75a961cfa
+		summarizeBy: none
+		sourceColumn: UsuarioCalculo
+
+		annotation SummarizationSetBy = Automatic
+
+	column PesoCubico
+		dataType: double
+		lineageTag: 9cba6427-f422-4475-b402-9113d297c7be
+		summarizeBy: sum
+		sourceColumn: PesoCubico
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PesoBruto
+		dataType: double
+		lineageTag: e054f758-c50f-455d-a521-e463ce24262c
+		summarizeBy: sum
+		sourceColumn: PesoBruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ocorrencia
+		dataType: string
+		lineageTag: e92d813e-01e6-42cc-991b-c094a1d9f2f9
+		summarizeBy: none
+		sourceColumn: Ocorrencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column ObservacaoCarga
+		dataType: string
+		lineageTag: 773495dd-8659-44ef-8cbc-10cf53bfb831
+		summarizeBy: none
+		sourceColumn: ObservacaoCarga
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveNFe
+		dataType: string
+		lineageTag: 1a54ea6a-ded2-49ad-88a4-066f8a9c99ef
+		summarizeBy: none
+		sourceColumn: ChaveNFe
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeTransportadoraNF
+		dataType: string
+		lineageTag: 8a17ef9e-31c3-4c9b-a985-08f3480beb45
+		summarizeBy: none
+		sourceColumn: NomeTransportadoraNF
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatrizTransportador
+		dataType: string
+		lineageTag: f3426560-e77e-4725-8dd3-e8cd3f00990b
+		summarizeBy: none
+		sourceColumn: NomeMatrizTransportador
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoFrete
+		dataType: string
+		lineageTag: bcf12d14-98f1-4cb9-844c-c59204f205b8
+		summarizeBy: none
+		sourceColumn: CodigoFrete
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: 6eb0fe53-9eda-4698-9f72-73180c1707c6
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: c6b20977-0e0c-4b4d-b643-e94a48649c18
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroOS
+		dataType: string
+		lineageTag: 281213af-adc0-4fa6-b108-f2e24b64c116
+		summarizeBy: none
+		sourceColumn: NumeroOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column OS
+		dataType: string
+		lineageTag: 82093ee9-60a5-46f0-be65-e6f2efc609ee
+		summarizeBy: none
+		sourceColumn: OS
+
+		annotation SummarizationSetBy = Automatic
+
+	column TransTime
+		dataType: double
+		lineageTag: 234e4f38-af73-4445-91f0-8d7abc0b2b66
+		summarizeBy: sum
+		sourceColumn: TransTime
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fato_Faturas = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT  #(lf)    F.[SerieNotaFiscal],#(lf)    F.[NumeroNotaFiscal],#(lf)    F.[DataEmissaoNotaFiscal],#(lf)    NE.[qt-volumes] AS QtVolumes,#(lf)    ITNF.[it-codigo] AS CodItem,#(lf)    CAST(ITNF.qtFaturada AS INT) AS QtdeFaturada,#(lf)    I.[DescItem],#(lf)    I.[CodFamiliaComl],#(lf)    FC.[DESCRICAO] AS DescFamiliaComercial,#(lf)    CASE #(lf)        WHEN NE.[qt-volumes] IS NULL OR NE.[qt-volumes] = 0 THEN 'Complemento'#(lf)        ELSE 'Master'#(lf)    END AS TipoNota,#(lf)    F.[SituacaoNota],#(lf)    N.[NatOperacao],#(lf)    N.[Denominacao],#(lf)    F.TipoFrete,#(lf)    DS.[Data] AS DataSaida,#(lf)    DE.[Data] AS DataEntrega,#(lf)    DC.[Data] AS DataCancelamento,#(lf)    DP.[Data] AS DataPrevisaoEntrega,#(lf)    R.[NomeAbrev] AS Representante,#(lf)    UPPER(CAST(CidadeDestino AS VARCHAR(100)) COLLATE Latin1_General_CI_AI) AS Cidade,#(lf)    F.[EstadoDestino],#(lf)    CONCAT(UPPER(F.CidadeDestino), ', ', F.EstadoDestino, ', Brasil') AS LocalizacaoCompleta,#(lf)    F.[VlFretePrevisto],#(lf)    F.[VlFretePago],#(lf)    F.[TotalNota],#(lf)    F.[QuantidadeFaturada] AS QtdeFaturadaNota,#(lf)    F.[QuantidadeDevolvida] AS QtdeFaturadaDevolvida,#(lf)    F.[QuantidadeAbatida] AS QtdeAbatidaNota,#(lf)    F.[ValorFreteReentrega],#(lf)    F.[ValorFreteDevolucao],#(lf)    F.[NumeroRomaneio],#(lf)    F.[SituacaoCalculo],#(lf)    F.[UsuarioCalculo],#(lf)    F.[VolumeM3] * 167 AS PesoCubico,#(lf)    F.[PesoBruto],#(lf)    F.[Ocorrencia],#(lf)    F.[ObservacaoCarga],#(lf)    F.[ChaveNFe],#(lf)    CASE #(lf)        WHEN LEFT(ITNF.[it-codigo], 2) IN ('03', '05', '06', '09', '10') THEN 'PRODUTO ACABADO'#(lf)        WHEN I.[CodFamMaterial] = '59004' THEN 'LINHA PREMIUM'#(lf)        WHEN UPPER(LEFT(LTRIM(I.[DescItem]), CHARINDEX(' ', LTRIM(I.[DescItem]) + ' ') - 1)) IN ('TELA', 'DISPLAY') #(lf)             AND I.[CodFamiliaComl] = '07672' THEN 'DISPLAY'#(lf)        ELSE 'PEÇA'#(lf)    END AS TipoProduto,#(lf)    UPPER(LEFT(LTRIM(I.[DescItem]), CHARINDEX(' ', LTRIM(I.[DescItem]) + ' ') - 1)) AS Produto,#(lf)    F.[NomeTransportadoraNF],#(lf)    F.[DataCarga],#(lf)    CASE #(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%correi%' THEN 'CORREIOS'#(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%braspre%' THEN 'BRASPRESS'#(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%expresso%' THEN 'PRINCESA'#(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%rodonav%' THEN 'RODONAVES'#(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%berto%' THEN 'BERTOLINI'#(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%icar%' THEN 'ICARO'#(lf)        WHEN F.[NomeMatrizTransportador] COLLATE Latin1_General_CI_AI LIKE '%solist%' THEN 'SOLISTICA'#(lf)        ELSE F.[NomeMatrizTransportador]#(lf)    END AS NomeMatrizTransportador,#(lf)    F.[CodigoFrete],#(lf)    F.[DataEnvioFinanceiro],#(lf)    PDB.[NumeroPedido],#(lf)    PDB.[NomeMatriz],#(lf)    PDB.[NumeroOS],#(lf)    CASE #(lf)        WHEN LTRIM(RTRIM(PDB.[NumeroOS])) IS NULL OR LTRIM(RTRIM(PDB.[NumeroOS])) = '' THEN 'NÃO'#(lf)        ELSE 'SIM'#(lf)    END AS OS,#(lf)    GV6.GV6_QTPRAZ AS TransTime#(lf)FROM [DW].[auditoria].[Fato_CustosFrete_Faturamento] F#(lf)LEFT JOIN [DW].[dbo].[Dim_Natureza] N#(lf)    ON F.[IdNatureza] = N.[IdNatureza]#(lf)LEFT JOIN [DW].[dbo].[Dim_Representante] R#(lf)    ON F.[IdRepresentante] = R.[Id]#(lf)LEFT JOIN [DW].[dbo].[Dim_Data] DS#(lf)    ON F.[IdDataSaida] = DS.[Id]#(lf)LEFT JOIN [DW].[dbo].[Dim_Data] DE#(lf)    ON F.[IdDataEntrega] = DE.[Id]#(lf)LEFT JOIN [DW].[dbo].[Dim_Data] DC#(lf)    ON F.[IdDataCancelamento] = DC.[Id]#(lf)LEFT JOIN [DW].[dbo].[Dim_Data] DP#(lf)    ON F.[IdDataPrevisEntrega] = DP.[Id]#(lf)LEFT JOIN [STAGE].[tot].[NotaEmbal] NE#(lf)    ON F.[SerieNotaFiscal] = NE.[serie]#(lf)    AND F.[NumeroNotaFiscal] = NE.[nr-nota-fis]#(lf)LEFT JOIN [STAGE].[tot].[ItNotaFisc] ITNF#(lf)    ON F.[SerieNotaFiscal] = ITNF.[serie]#(lf)    AND F.[NumeroNotaFiscal] = ITNF.[nr-nota-fis]#(lf)LEFT JOIN [DW].[dbo].[Dim_Item] I#(lf)    ON ITNF.[it-codigo] = I.[CodItem]  #(lf)LEFT JOIN (#(lf)    SELECT #(lf)        SerieNotaFiscal,#(lf)        NotaFiscal,#(lf)        STRING_AGG(CAST(NumeroPedido AS VARCHAR(MAX)), ' / ') AS NumeroPedido,#(lf)        MIN(NomeMatriz) AS NomeMatriz,#(lf)        CASE #(lf)            WHEN COUNT(NULLIF(LTRIM(RTRIM(NumeroOS)), '')) = 0 THEN NULL#(lf)            ELSE STRING_AGG(CAST(NumeroOS AS VARCHAR(MAX)), ' / ')#(lf)        END AS NumeroOS#(lf)    FROM [DW].[logistica].[Fato_PDB381]#(lf)    GROUP BY SerieNotaFiscal, NotaFiscal#(lf)) PDB#(lf)    ON F.SerieNotaFiscal = PDB.SerieNotaFiscal #(lf)   AND F.NumeroNotaFiscal = PDB.NotaFiscal#(lf)LEFT JOIN STAGE.gfe.GWH nrclc#(lf)    ON F.SerieNotaFiscal = nrclc.GWH_SERDC #(lf)   AND F.NumeroNotaFiscal = nrclc.GWH_NRDC#(lf)LEFT JOIN STAGE.gfe.GWG gwgchv#(lf)    ON nrclc.GWH_NRCALC = gwgchv.GWG_NRCALC#(lf)LEFT JOIN STAGE.gfe.GV6 GV6#(lf)    ON gwgchv.GWG_NRTAB = GV6.GV6_NRTAB#(lf)   AND gwgchv.GWG_NRNEG = GV6.GV6_NRNEG#(lf)   AND gwgchv.GWG_CDFXTV = GV6.GV6_CDFXTV#(lf)   AND gwgchv.GWG_NRROTA = GV6.GV6_NRROTA#(lf)   AND gwgchv.GWG_CDEMIT = GV6.GV6_CDEMIT#(lf)LEFT JOIN [STAGE].[tot].[FamComer] FC#(lf)    ON CAST(I.[CodFamiliaComl] AS VARCHAR) = CAST(FC.[fm-cod-com] AS VARCHAR)#(lf)   AND FC.[EMPRESA] = '15'#(lf)   AND FC.[STATUS_REGISTRO] = 1#(lf)WHERE F.[IdEstab] = 8#(lf)  AND F.[DataEnvioFinanceiro] BETWEEN '2025-12-01' AND GETDATE()#(lf)  AND F.[IdDataCancelamento] IS NULL#(lf)  AND nrclc.D_E_L_E_T_ = ''#(lf)  AND GV6.D_E_L_E_T_ = ''"]),
+				    #"Colunas Reordenadas" = Table.ReorderColumns(Fonte,{"SerieNotaFiscal", "NumeroNotaFiscal", "DataEmissaoNotaFiscal", "QtVolumes", "CodItem", "DescItem", "QtdeFaturada", "CodFamiliaComl", "DescFamiliaComercial", "TipoProduto", "Produto", "TipoNota", "SituacaoNota", "NatOperacao", "Denominacao", "TipoFrete", "DataSaida", "DataEntrega", "DataCancelamento", "DataPrevisaoEntrega", "Representante", "Cidade", "EstadoDestino", "LocalizacaoCompleta", "VlFretePrevisto", "VlFretePago", "TotalNota", "QtdeFaturadaNota", "QtdeFaturadaDevolvida", "QtdeAbatidaNota", "ValorFreteReentrega", "ValorFreteDevolucao", "NumeroRomaneio", "SituacaoCalculo", "UsuarioCalculo", "PesoCubico", "PesoBruto", "Ocorrencia", "ObservacaoCarga", "ChaveNFe", "NomeTransportadoraNF", "DataCarga", "NomeMatrizTransportador", "CodigoFrete", "DataEnvioFinanceiro", "NumeroPedido", "NomeMatriz", "NumeroOS", "OS", "TransTime"}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Colunas Reordenadas", each [DataEnvioFinanceiro] > RangeStart and [DataEnvioFinanceiro] <= RangeEnd)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

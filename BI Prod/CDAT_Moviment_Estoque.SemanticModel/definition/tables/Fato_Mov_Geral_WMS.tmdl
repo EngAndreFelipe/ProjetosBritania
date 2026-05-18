@@ -1,0 +1,186 @@
+table Fato_Mov_Geral_WMS
+	lineageTag: 76a7e969-f938-42ec-91b1-7f5719910543
+
+	column Documento
+		dataType: string
+		lineageTag: e8a80b79-706f-4e02-bc20-bbeb95f80324
+		summarizeBy: none
+		sourceColumn: Documento
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4482f0c9-7d69-4741-b564-989c4414ea65
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 195d8b2e-e1a3-48bd-88e4-daccabcd95e8
+			defaultHierarchy: LocalDateTable_7ea804ce-b069-444a-b4c2-3ee537ed4700.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origem
+		dataType: string
+		lineageTag: 92ecd825-fd5c-4c71-933d-9af18dc69906
+		summarizeBy: none
+		sourceColumn: Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 9fc9c6ad-fdc9-4e50-9c7e-801d31320de9
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Movimento
+		dataType: string
+		lineageTag: edf49e8b-b9ed-4026-8d8f-5875ac517f67
+		summarizeBy: none
+		sourceColumn: Movimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeItemMov
+		dataType: int64
+		formatString: 0
+		lineageTag: c21bd367-3a3e-40bc-984a-1f78fee3bee7
+		summarizeBy: sum
+		sourceColumn: QtdeItemMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoItem
+		dataType: string
+		lineageTag: 5f72e1f4-cea2-4d36-8b7a-8f079aaaff90
+		summarizeBy: none
+		sourceColumn: SituacaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: e2afb175-ded3-415e-a89a-d0cdaa000af5
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtInicioTarefa
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 015544aa-e804-492f-b133-42cbfb516a78
+		summarizeBy: none
+		sourceColumn: DtInicioTarefa
+
+		variation Variation
+			isDefault
+			relationship: 8a8780ef-7983-4da5-b612-2cc5aa976d48
+			defaultHierarchy: LocalDateTable_8c8c6ff5-f2c8-4a12-b095-20ed27237e3a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtFimTarefa
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 164462cc-da1f-4b06-a4f2-0a2c7ce6f275
+		summarizeBy: none
+		sourceColumn: DtFimTarefa
+
+		variation Variation
+			isDefault
+			relationship: 60cf1c14-eabc-4801-84db-751f1b44706a
+			defaultHierarchy: LocalDateTable_5d809942-3869-4c40-a202-1e62ce2e290e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEndereco
+		dataType: string
+		lineageTag: b37e2ddb-9829-4973-a31d-a61fc10418b4
+		summarizeBy: none
+		sourceColumn: IdEndereco
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: c1fed9f9-4a30-4bb5-930f-92bd12579f91
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dt_Hora_Inicio
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7fc2bfb0-197d-45c6-a9f0-3225721f8c37
+		summarizeBy: none
+		sourceColumn: Dt_Hora_Inicio
+
+		variation Variation
+			isDefault
+			relationship: 743f4da8-6c9b-47a8-89ee-bf718f197af3
+			defaultHierarchy: LocalDateTable_cc98d65d-eca4-4959-a4bb-5b6986532799.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dt_Hora_Fim
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 209b41fb-8e53-4040-bc0c-053340e268e3
+		summarizeBy: none
+		sourceColumn: Dt_Hora_Fim
+
+		variation Variation
+			isDefault
+			relationship: db43f4ba-e6d0-4363-9c4c-32ecd4eb115e
+			defaultHierarchy: LocalDateTable_4c7d519a-b28c-4d90-8ae2-11973850742c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0054e9fd-ce57-4b86-bc89-486eb98fd295
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: d1e5c35c-dd8d-4729-a313-ec274a2937d8
+			defaultHierarchy: LocalDateTable_056b00b2-05b3-4637-9196-2cabf520add4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: b6028565-3da7-4cd8-999e-50a4652b086e
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Mov_Geral_WMS = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)            DECLARE @RangeStart DATETIME = '2023-06-01';#(lf)            DECLARE @RangeEnd DATETIME = GETDATE();#(lf)#(lf)            SELECT #(lf)                f.[Documento],#(lf)                f.[NumeroDocumento],#(lf)                UPPER(f.[Local]) AS [Local],#(lf)                f.[DataImplantacao],#(lf)                f.[HoraCriacaoDoc],#(lf)                CASE #(lf)                    WHEN f.Origem LIKE 'Inventário%' AND (f.Usuario IS NULL OR LTRIM(RTRIM(f.Usuario)) = '') THEN 'inventario'#(lf)                    ELSE f.Usuario#(lf)                END AS Usuario,#(lf)                CASE #(lf)                    WHEN f.Origem = 'Transferência Destino' THEN 'Ressuprimento'#(lf)                    WHEN f.Origem = 'Pré-Faturamento' THEN 'Conferência'#(lf)                    WHEN f.Origem = 'Consolidação' THEN 'Separação'#(lf)                    WHEN f.Origem = 'Recebimento' THEN 'Conferência REC'#(lf)                    WHEN f.Origem = 'Transferência Origem' THEN 'Transferência REC'#(lf)                    WHEN f.Origem = 'Transferência Manual' THEN 'Transferência Endereços'#(lf)                    ELSE f.Origem#(lf)                END AS Origem,#(lf)                f.[SequenciaMovto],#(lf)                LTRIM(RTRIM(f.[Item])) AS [Item],#(lf)                i.[DescItem],#(lf)                f.[QtdItem],#(lf)                f.[Situacao],#(lf)                f.[Movimento],#(lf)                f.[IdMovto],#(lf)                f.[QtdeItemMov],#(lf)                f.[SituacaoItem],#(lf)                CASE #(lf)                    WHEN f.Origem LIKE 'Inventário%' AND (f.Usuario2 IS NULL OR LTRIM(RTRIM(f.Usuario2)) = '') THEN 'inventario'#(lf)                    ELSE f.Usuario2#(lf)                END AS Usuario2,#(lf)                f.[DtInicioTarefa],#(lf)                f.[DtFimTarefa],#(lf)                f.[HoraInicio],#(lf)                f.[HoraFim],#(lf)                f.[IdEndereco],#(lf)                f.[Endereco],#(lf)                f.[DataCarga],#(lf)                CASE #(lf)                    WHEN f.DtInicioTarefa IS NOT NULL AND f.HoraInicio IS NOT NULL #(lf)                    THEN CAST(f.DtInicioTarefa AS DATETIME) + CAST(f.HoraInicio AS DATETIME)#(lf)                    ELSE NULL#(lf)                END AS Dt_Hora_Inicio,#(lf)                CASE #(lf)                    WHEN f.DtFimTarefa IS NOT NULL AND f.HoraFim IS NOT NULL #(lf)                    THEN CAST(f.DtFimTarefa AS DATETIME) + CAST(f.HoraFim AS DATETIME)#(lf)                    ELSE NULL#(lf)                END AS Dt_Hora_Fim#(lf)            FROM #(lf)                logistica.Fato_Mov_Estoque_PA_AT f#(lf)            LEFT JOIN #(lf)                dbo.Dim_Item i ON i.CodItem = f.Item#(lf)            WHERE #(lf)                f.DataImplantacao > @RangeStart #(lf)                AND f.DataImplantacao <= @RangeEnd #(lf)                AND f.Local IN ('AAT', 'REC') #(lf)                AND f.SituacaoItem IS NOT NULL;"]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DataImplantacao] > RangeStart and [DataImplantacao] <= RangeEnd),
+				    ColunasRemovidas= Table.SelectColumns(#"Linhas Filtradas",{"Movimento","DtInicioTarefa","Documento","Endereco","DataCarga","Usuario2","DescItem","QtdeItemMov","Origem","SituacaoItem","Dt_Hora_Fim","IdEndereco","Dt_Hora_Inicio","DtFimTarefa","Item","DataImplantacao"})
+				in
+				    ColunasRemovidas
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

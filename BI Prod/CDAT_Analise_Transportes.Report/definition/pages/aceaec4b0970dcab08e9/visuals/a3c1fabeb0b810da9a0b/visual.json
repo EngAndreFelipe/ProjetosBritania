@@ -1,0 +1,627 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a3c1fabeb0b810da9a0b",
+  "position": {
+    "x": 67.331670822942641,
+    "y": 113.11720698254364,
+    "z": 1000,
+    "height": 606.88279301745638,
+    "width": 1212.8678304239402,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "DataEmissaoNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.DataEmissaoNotaFiscal",
+              "nativeQueryRef": "DataEmissaoNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "SerieNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.SerieNotaFiscal",
+              "nativeQueryRef": "SerieNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "NumeroNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.NumeroNotaFiscal",
+              "nativeQueryRef": "NumeroNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "NumeroOS"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.NumeroOS",
+              "nativeQueryRef": "NumeroOS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "NumeroPedido"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.NumeroPedido",
+              "nativeQueryRef": "NumeroPedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "DataSaida"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.DataSaida",
+              "nativeQueryRef": "DataSaida"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "DataEntrega"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.DataEntrega",
+              "nativeQueryRef": "DataEntrega"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "NomeMatriz"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.NomeMatriz",
+              "nativeQueryRef": "NomeMatriz"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "NomeMatrizTransportador"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.NomeMatrizTransportador",
+              "nativeQueryRef": "NomeMatrizTransportador"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "CidadeDestino"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.CidadeDestino",
+              "nativeQueryRef": "CidadeDestino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "EstadoDestino"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.EstadoDestino",
+              "nativeQueryRef": "EstadoDestino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "TransTime"
+                }
+              },
+              "queryRef": "Sum(Fato_AcompEntregas.TransTime)",
+              "nativeQueryRef": "TransTime"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "VlFretePrevisto"
+                }
+              },
+              "queryRef": "Sum(Fato_AcompEntregas.VlFretePrevisto)",
+              "nativeQueryRef": "VlFretePrevisto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "VlFretePago"
+                }
+              },
+              "queryRef": "Sum(Fato_AcompEntregas.VlFretePago)",
+              "nativeQueryRef": "VlFretePago"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.StatusEntrega",
+              "nativeQueryRef": "StatusEntrega"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "OS"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.OS",
+              "nativeQueryRef": "OS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "TipoNota"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.TipoNota",
+              "nativeQueryRef": "TipoNota"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "QtVolumes"
+                }
+              },
+              "queryRef": "Sum(Fato_AcompEntregas.QtVolumes)",
+              "nativeQueryRef": "QtVolumes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "PesoBruto"
+                }
+              },
+              "queryRef": "Sum(Fato_AcompEntregas.PesoBruto)",
+              "nativeQueryRef": "PesoBruto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "ObservacaoCarga"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.ObservacaoCarga",
+              "nativeQueryRef": "ObservacaoCarga"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_AcompEntregas"
+                    }
+                  },
+                  "Property": "Ocorrencia"
+                }
+              },
+              "queryRef": "Fato_AcompEntregas.Ocorrencia",
+              "nativeQueryRef": "Ocorrencia"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fato_AcompEntregas"
+                  }
+                },
+                "Property": "NumeroOS"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 7,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "230.3179402038213D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_AcompEntregas.NumeroOS"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "317.4799171171238D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_AcompEntregas.NumeroPedido"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.79099988023223D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_AcompEntregas.DataEmissaoNotaFiscal"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.37995949220382D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_AcompEntregas.DiasUteisAtraso)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.61846320912709D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_AcompEntregas.DiasUteisRestantes)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b6ee824d4bb4dba170c9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_AcompEntregas"
+              }
+            },
+            "Property": "Status"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Fato_AcompEntregas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "Status"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Entregue no Prazo'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "701c1c391cba8eb8fd7f",
+  "position": {
+    "x": 73.9209726443769,
+    "y": 142.97872340425533,
+    "z": 8000,
+    "height": 127.41641337386019,
+    "width": 172.15805471124619,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "listSlicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Itens_Cobrados"
+                    }
+                  },
+                  "Property": "SerieNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_Itens_Cobrados.SerieNotaFiscal",
+              "nativeQueryRef": "Serie Nota Fiscal",
+              "active": true,
+              "displayName": "Serie Nota Fiscal"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "layout": [
+        {
+          "properties": {
+            "rowCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

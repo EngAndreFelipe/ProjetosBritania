@@ -1,0 +1,67 @@
+table Consulta1
+	lineageTag: 1fd37612-65d0-4386-a41f-d377c9540365
+
+	column cod-item
+		dataType: string
+		lineageTag: e7f3a97c-1a69-4b21-89ec-628aa6e71abf
+		summarizeBy: none
+		sourceColumn: cod-item
+
+		annotation SummarizationSetBy = Automatic
+
+	column qtd-item
+		dataType: int64
+		lineageTag: 4345bcb5-28a7-49f3-b3b1-6be79ba149f4
+		summarizeBy: sum
+		sourceColumn: qtd-item
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column qtd-item-bloq
+		dataType: int64
+		lineageTag: 2392e8e8-13e2-4571-bdc4-301fce72827a
+		summarizeBy: sum
+		sourceColumn: qtd-item-bloq
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ind-status-saldo
+		dataType: string
+		lineageTag: 7d54501e-245d-4405-87fd-78f620ad6aa7
+		summarizeBy: none
+		sourceColumn: ind-status-saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo = Consulta1[qtd-item] - Consulta1[qtd-item-bloq]
+		dataType: int64
+		formatString: #,0
+		lineageTag: e83da863-45d2-4e89-868c-7911057d8c9e
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition Consulta1 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "Stage", [Query="SELECT DISTINCT#(lf)#(tab)[cod-item],#(lf)#(tab)[qtd-item],#(lf)#(tab)[qtd-item-bloq],#(lf)#(tab)CONVERT(VARCHAR, [ind-status-saldo]) AS [ind-status-saldo]#(lf)FROM tot.WmBoxSaldo#(lf)WHERE [ind-status-saldo] = 3"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

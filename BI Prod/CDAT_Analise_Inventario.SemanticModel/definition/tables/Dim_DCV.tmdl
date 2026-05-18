@@ -1,0 +1,167 @@
+table Dim_DCV
+	lineageTag: ba0f5da4-14c9-4676-9b5f-75f4e55e419c
+
+	measure TotalPreçoDCV =
+			
+			SUMX(Dim_DCV, Dim_DCV[Quantidade] * [PrecoPecaMedida])
+		lineageTag: d9067be8-c067-4e10-b0e4-92e85cea51f0
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemItensDCV = DISTINCTCOUNT(Dim_DCV[Item])
+		formatString: 0
+		lineageTag: 2b6c6104-d900-4cb6-8c42-932745b0a30e
+
+	measure QuantidadePecasDCV = SUM(Dim_DCV[Quantidade])
+		formatString: 0
+		lineageTag: 1fb96278-fc64-4734-ae73-57a432d71b40
+
+	measure PrecoPecaMedida =
+			
+			CALCULATE(
+			    SUM(Dim_Precos[Custo]),
+			    USERELATIONSHIP(Dim_Precos[Item], Dim_DCV[Item])
+			)
+		lineageTag: 2bf00a62-1641-44bb-8ae2-0e78772cc184
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Item
+		dataType: string
+		lineageTag: f5bc73bc-a1b4-47f2-85bd-6ea865b19c26
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 9cae17ae-6b0c-43cd-9c70-e422ad88dc93
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 151632d9-37c1-4f9c-b679-741f9e690d51
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Depósito
+		dataType: string
+		lineageTag: 848adbc8-3217-416b-b163-732438e05da2
+		summarizeBy: none
+		sourceColumn: Depósito
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaPreco = ```
+			
+			SWITCH(
+			    TRUE(),
+			    Dim_DCV[Quantidade] * [PrecoPecaMedida] < 25, "Abaixo de R$25",
+			    Dim_DCV[Quantidade] * [PrecoPecaMedida] < 300, "Entre R$26 - R$300",
+			    Dim_DCV[Quantidade] * [PrecoPecaMedida] > 300, "Maior que R$300"
+			)
+			
+			```
+		lineageTag: d3e6f9f2-54ce-410f-80b9-bd48efd61dc6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoPeça =
+			
+			VAR TextoLimpo = TRIM(Dim_DCV[Descrição])
+			VAR TextoSeparado = SUBSTITUTE(TextoLimpo, " ", "|")
+			RETURN PATHITEM(TextoSeparado, 1)
+		lineageTag: eb2faf2e-2501-4d52-9644-2d3771089415
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrimeiraEntDCV
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b5abad98-0796-48ed-9621-b851db458533
+		summarizeBy: none
+		sourceColumn: PrimeiraEntDCV
+
+		variation Variation
+			isDefault
+			relationship: 7fd9ada9-98a9-4806-a04c-23ac02e81fd8
+			defaultHierarchy: LocalDateTable_67d30de8-d083-439f-bd0a-d3f9f6dd4187.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UltimaEntDCV
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1042bd77-0f13-4f80-9e7f-04bcee1d4b81
+		summarizeBy: none
+		sourceColumn: UltimaEntDCV
+
+		variation Variation
+			isDefault
+			relationship: 4458cb30-d399-4704-994d-f814ca3647e5
+			defaultHierarchy: LocalDateTable_b2fd973a-3d81-4ec0-ad7d-794c84913707.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DiasEmDCV = [HOJE] - Dim_DCV[UltimaEntDCV]
+		dataType: int64
+		lineageTag: 40e38f3b-19cb-4b08-99fd-4ec2b1c36117
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FaixaDias = ```
+			
+			SWITCH(
+			    TRUE(),
+			    Dim_DCV[DiasEmDCV] < 10, "Até 10 dias",
+			    Dim_DCV[DiasEmDCV] < 90, "Até 90 dias", Dim_DCV[DiasEmDCV] = 90, "Até 90 dias",
+			    Dim_DCV[DiasEmDCV] = 91, "Maior que 90 dias", Dim_DCV[DiasEmDCV] > 91, "Maior que 90 dias"
+			)
+			
+			```
+		lineageTag: fd2354d2-7d49-4dde-bcb3-e12690dca3e0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column UsuarioUltimaMov
+		dataType: string
+		lineageTag: 10e05c1b-d6bc-41b1-a5cc-0a9dc5d9476a
+		summarizeBy: none
+		sourceColumn: UsuarioUltimaMov
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_DCV = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="WITH UltMov AS (#(lf)    SELECT #(lf)        M.[it-codigo],#(lf)        M.[usuario],#(lf)        M.[dt-trans],#(lf)        ROW_NUMBER() OVER (#(lf)            PARTITION BY M.[it-codigo] #(lf)            ORDER BY M.[dt-trans] DESC#(lf)        ) AS rn#(lf)    FROM [STAGE].[tot].[MovtoEstoq] M#(lf)    WHERE M.[cod-depos] = 'dcv'#(lf)      AND M.[tipo-trans] = '1'#(lf)      AND M.[esp-docto] = '33'#(lf))#(lf)SELECT#(lf)    S.[it-codigo] AS Item,#(lf)    I.[DescItem] AS Descrição,#(lf)    CONVERT(INT, S.[qtidade-atu], 0) AS Quantidade,#(lf)    UPPER(S.[cod-depos]) AS Depósito,#(lf)    -- Primeira movimentação#(lf)    CAST(MIN(MovCon.[dt-trans]) AS DATE) AS PrimeiraEntDCV,#(lf)    -- Última movimentação#(lf)    CAST(MAX(MovCon.[dt-trans]) AS DATE) AS UltimaEntDCV,#(lf)    U.[usuario] AS UsuarioUltimaMov#(lf)FROM STAGE.tot.SaldoEstoq AS S#(lf)LEFT JOIN DW.dbo.Dim_Item AS I #(lf)       ON S.[it-codigo] = I.[CodItem]#(lf)LEFT JOIN [STAGE].[tot].[MovtoEstoq] AS MovCon #(lf)       ON MovCon.[it-codigo] = S.[it-codigo]#(lf)      AND MovCon.[cod-depos] = 'dcv'#(lf)      AND MovCon.[tipo-trans] = '1'#(lf)      AND MovCon.[esp-docto] = '33'#(lf)LEFT JOIN UltMov U#(lf)       ON U.[it-codigo] = S.[it-codigo]#(lf)      AND U.rn = 1#(lf)WHERE S.[cod-depos] = 'dcv' #(lf)  AND S.[cod-estabel] = '15' #(lf)  AND S.[qtidade-atu] <> 0#(lf)GROUP BY #(lf)    S.[it-codigo], #(lf)    I.[DescItem], #(lf)    S.[qtidade-atu], #(lf)    S.[cod-depos], #(lf)    U.[usuario];"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"UltimaEntDCV", type date}, {"PrimeiraEntDCV", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

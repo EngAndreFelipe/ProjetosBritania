@@ -1,0 +1,49 @@
+table Fato_PcPMaster2
+	lineageTag: f6192b16-6cb1-40a7-a777-26057da4dabd
+
+	column producao
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d342785-e2f5-4538-950c-81aa2d29f7f3
+		summarizeBy: sum
+		sourceColumn: producao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 50290796-c834-4d36-808b-238101c49f03
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column itcodigo
+		dataType: string
+		lineageTag: 808af774-ff1a-40c4-b184-051c6fdb9fac
+		summarizeBy: none
+		sourceColumn: itcodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATAI
+		dataType: string
+		lineageTag: 775177b6-feb2-4933-8bc9-a45495d665c9
+		summarizeBy: none
+		sourceColumn: DATAI
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_PcPMaster2-c37f2b75-2f6a-4c4d-a915-792a826eb275 = m
+		mode: import
+		queryGroup: NOVO
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT producao,#(lf)       Tipo,#(lf)       itcodigo,#(lf)       DATAI#(lf)FROM dbo.Fato_PcpMaster_2 WITH(NOLOCK)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

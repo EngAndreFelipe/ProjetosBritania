@@ -1,0 +1,149 @@
+relationship d369e6d0-f66f-41c8-81ad-dc934a432a35
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RangeStart.RangeStart
+	toColumn: LocalDateTable_0ca6e81c-aa21-4fa9-94da-91b9cf76d05d.Date
+
+relationship d33d3c98-0bb4-48d1-bc63-73cdc48ccec4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RangeEnd.RangeEnd
+	toColumn: LocalDateTable_4a289b7a-fcd8-40bb-b369-d22a5506183c.Date
+
+relationship 91044c1e-b2f7-4486-a049-1b2a74485c1c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Data.Data
+	toColumn: LocalDateTable_d840ba8d-8965-4643-b20e-d141b612b84d.Date
+
+relationship 8421a11c-b3ea-4ae0-8d78-fbfbf538d94f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Consolidacao_Entrada.DtHrInicioTarefa
+	toColumn: LocalDateTable_e508ed71-53f5-4db9-a10e-62cfc8ed44b8.Date
+
+relationship 76101d3e-3365-4cee-9ec0-e4a547ba4469
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Consolidacao_Saida.DtHrInicioTarefa
+	toColumn: LocalDateTable_b0ebf346-94fd-42f8-b380-db82d5bd981e.Date
+
+relationship 59891d65-4eba-44d3-8396-9b2e2e8216e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Consolidacao_Saida.DtHRImplant
+	toColumn: LocalDateTable_6a43735c-9a8d-46ad-abb1-382846387bc7.Date
+
+relationship 222e6a31-1745-ff14-fe8f-b05ced7b5067
+	fromColumn: Fato_Consolidacao_Saida.DtHrFimTarefa
+	toColumn: Dim_Data.Data
+
+relationship 513b8463-6d82-4955-a1a1-7998ff2e070b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Consolidacao_Entrada.DtHrFimTarefa
+	toColumn: LocalDateTable_91ed5506-2a06-4481-8aba-b066cf503f69.Date
+
+relationship 5fbeddb4-318f-246b-b113-b01ce2e8e504
+	fromColumn: Fato_Consolidacao_Entrada.DtHRImplant
+	toColumn: Dim_Data.Data
+
+relationship a7ce7b81-f2a7-3d25-19ed-9086ab249bf3
+	fromColumn: Fato_Consolidacao_Saida.Usuario2
+	toColumn: Dim_Usuarios.Usuario_Nome
+
+relationship b27122de-76ad-47d0-aa9d-ab934136525c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Consolidacao_Saida.DtHrFimTarefaAjustada
+	toColumn: LocalDateTable_febeeb55-507c-441c-94cc-90d6907627bb.Date
+
+relationship 17bd94a2-1e4b-46df-8db0-a9273516fba3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Consolidacao_Saida.DataCarga
+	toColumn: LocalDateTable_18ce056d-248e-4c76-b426-86afadb79ecb.Date
+
+relationship 1a87314d-55c1-46ac-802d-345f457d3e1f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Destino.DtHRImplant
+	toColumn: LocalDateTable_b03a93f2-e9eb-4889-b03d-7d59eebfa3c4.Date
+
+relationship e354dee7-3b2f-4b8a-ba70-1b36719f1519
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Destino.DtHrInicioTarefa
+	toColumn: LocalDateTable_a1b6336c-e65a-48ca-acdc-c298c705075b.Date
+
+relationship 9af898b8-d38d-4d43-a5b1-83a3de4189dc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Destino.DtHrFimTarefa
+	toColumn: LocalDateTable_8ae40c25-35d0-43fe-a7f9-41713fc5230a.Date
+
+relationship 2676a1f8-fdd8-4be2-8df2-8baa61204418
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Destino.DataCarga
+	toColumn: LocalDateTable_38ad8dca-53e6-4478-9c98-ca3a6a17fe07.Date
+
+relationship b6a75b8f-82a5-49ef-a748-24cd35222dc9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Destino.DtHrFimTarefaAjustada
+	toColumn: LocalDateTable_8e8a30c2-e533-4d90-a817-53ef26eb8ef8.Date
+
+relationship 7a341714-9f20-45b9-a3a3-25ea53a52094
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Origem.DtHRImplant
+	toColumn: LocalDateTable_5535e476-ea73-4a09-9e79-219aa2fb1a0d.Date
+
+relationship 5c1758dc-0e6b-46de-9b71-6bedd7b01f87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Origem.DtHrInicioTarefa
+	toColumn: LocalDateTable_96cda43c-b828-4592-88db-81257df757c9.Date
+
+relationship a88354d9-bfe2-4cea-8edc-a81662864815
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Origem.DtHrFimTarefa
+	toColumn: LocalDateTable_dbd92d35-d0a2-4c17-adb8-de719ec1d488.Date
+
+relationship f89f9549-402e-4d27-a137-fe793f27f03d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Origem.DataCarga
+	toColumn: LocalDateTable_363d7741-ab92-480b-b5f2-b0a31d3ccb75.Date
+
+relationship 7bc298f3-7386-48ae-ae77-0bf22ec44e7f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Ressup_Origem.DtHrFimTarefaAjustada
+	toColumn: LocalDateTable_9c1886cc-165a-4ca5-8bd3-c826c0b92ed1.Date
+
+relationship 6e9f0e45-7e12-44cb-8470-a0783dd2ba4e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Conferencia.DtHRImplant
+	toColumn: LocalDateTable_6d72adc0-1d3d-404f-bdbe-2033a18a5818.Date
+
+relationship 2fe22106-b49a-4408-ba58-a60f86195129
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Conferencia.DtHrInicioTarefa
+	toColumn: LocalDateTable_26938c08-3f49-4b73-8b70-aaedf671caae.Date
+
+relationship 0025ebab-ffa6-4460-9158-8e4d2cd58c44
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Conferencia.DtHrFimTarefa
+	toColumn: LocalDateTable_c794fc56-c0fb-451f-a543-d1a3a3635235.Date
+
+relationship 34429949-99ad-4603-a3c7-0db378110b82
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Conferencia.DataCarga
+	toColumn: LocalDateTable_37c37537-7b15-45c4-a5b7-bb840d76fbd3.Date
+
+relationship fae67874-e919-41c0-8f10-6d7079eca9c2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Conferencia.DtHrFimTarefaAjustada
+	toColumn: LocalDateTable_b8e19d96-48a5-4467-9c5b-a36dc82bc994.Date
+
+relationship AutoDetected_dc9d6fae-cafb-4523-bf94-f689c49e9f6c
+	isActive: false
+	fromColumn: Fato_Conferencia.Nome
+	toColumn: Dim_Usuarios.Nome
+
+relationship bf295981-4f96-c4d4-caad-d0e8adbfb281
+	fromColumn: Fato_Conferencia.Usuario2
+	toColumn: Dim_Usuarios.Usuario_Nome
+
+relationship f0fee2f2-8c6d-d848-731e-178006132564
+	fromColumn: Fato_Ressup_Destino.Usuario2
+	toColumn: Dim_Usuarios.Usuario_Nome
+
+relationship 0c0d10af-a844-253c-9e54-5641d2503d06
+	fromColumn: Fato_Ressup_Origem.Usuario2
+	toColumn: Dim_Usuarios.Usuario_Nome
+

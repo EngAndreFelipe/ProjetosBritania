@@ -1,0 +1,27 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["Fato_Faturas","RangeStart","RangeEnd"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table Fato_Faturas
+ref table DateTableTemplate_e4c54e04-67d9-4d7d-9308-ca89f31ee325
+ref table LocalDateTable_f2f832be-708c-4493-8e02-d05f4cc45723
+ref table LocalDateTable_cb364cc8-922b-4f04-bcb6-f11bc3501595
+ref table LocalDateTable_bbe4ced1-204f-4261-8563-d011170059dc
+ref table LocalDateTable_0e864fa1-a639-46f5-ae9c-3f7921e0e17e
+ref table LocalDateTable_9466f906-ae57-4426-9524-c405d2c6e30b
+ref table LocalDateTable_9531d896-ce1e-48e9-bd19-f509edf7d439
+ref table LocalDateTable_af4268f2-4f6e-4a02-bc4e-c87797a140f1
+ref table Medidas
+
+ref cultureInfo pt-BR
+

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f76e11eb0e6bdaedd5a2",
+  "position": {
+    "x": 488.34615896684863,
+    "y": 65.031021168952208,
+    "z": 3000,
+    "height": 274.84808946877911,
+    "width": 516.56716815337506,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Reenvio"
+                    }
+                  },
+                  "Property": "CodItem"
+                }
+              },
+              "queryRef": "Max(Fato_Reenvio.CodItem)",
+              "nativeQueryRef": "Código",
+              "displayName": "Código"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Reenvio"
+                    }
+                  },
+                  "Property": "DescItem"
+                }
+              },
+              "queryRef": "Fato_Reenvio.DescItem",
+              "nativeQueryRef": "DescItem"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "446D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Reenvio.DescItem"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Max(Fato_Reenvio.CodItem)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

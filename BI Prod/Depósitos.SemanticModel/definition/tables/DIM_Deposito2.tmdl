@@ -1,0 +1,30 @@
+table DIM_Deposito2
+	lineageTag: 3b060d94-773e-4171-b235-ce3acc224c76
+
+	column codDepos
+		dataType: string
+		lineageTag: 73d7b858-abf4-4f27-90d6-656e8e20f031
+		summarizeBy: none
+		sourceColumn: codDepos
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescDeposito
+		dataType: string
+		lineageTag: b35cb444-3ea9-452a-82c7-b9d572b95ad3
+		summarizeBy: none
+		sourceColumn: DescDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_Deposito2-a26e5ab8-d6a6-4fc8-adbb-d94bedde806d = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCnYMCFDSUQoI8ncJPdx+uNlfASwSqxOtFOAc4IsqBRaJjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [codDepos = _t, DescDeposito = _t])
+				in
+				    Source
+
+	annotation PBI_ResultType = Exception
+

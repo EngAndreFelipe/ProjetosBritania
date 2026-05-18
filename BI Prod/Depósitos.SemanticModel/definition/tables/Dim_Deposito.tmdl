@@ -1,0 +1,32 @@
+table Dim_Deposito
+	lineageTag: fbf140b7-d913-4f29-acca-f24293cd1b37
+
+	column CodigoDeposito
+		dataType: string
+		lineageTag: 2a26e75b-b517-403e-b980-0df7746d202f
+		summarizeBy: none
+		sourceColumn: CodigoDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: f7cedd75-00da-4142-911c-7f84dbfc1814
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Deposito-20f5d128-f195-4ddd-97d1-ab2f1aea076c = m
+		mode: import
+		queryGroup: NOVO
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT CodigoDeposito,#(lf)       Nome#(lf)FROM dbo.Dim_Deposito WITH(NOLOCK)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

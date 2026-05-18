@@ -1,0 +1,48 @@
+relationship 4d4d509e-30e7-46d2-99bf-3a39074ce234
+	toCardinality: many
+	fromColumn: Fato_Sapp.itCodigo
+	toColumn: Dim_Item.CodItem
+
+relationship 4de4befa-f6b8-4a8a-afe9-2c3aba7f786b
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_PcPMaster2.itcodigo
+	toColumn: Dim_Item.CodItem
+
+relationship e1d3268f-daec-42a4-86a2-08c0e9bcff4b
+	fromColumn: Fato_PcPMaster2.DATAI
+	toColumn: Date.DateInt
+
+relationship c10c8eeb-297a-4707-a90f-1105cb824160
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Estoque.CodItem
+	toColumn: Dim_Item.CodItem
+
+relationship f3d308a8-3ede-4ab5-bfcb-b527459dfcd0
+	fromColumn: Fato_Movimento.CodDepos
+	toColumn: Dim_Deposito.CodigoDeposito
+
+relationship d512e523-8a7d-4ae0-a39c-d770136d48e8
+	fromColumn: Fato_Movimento.CodEstabel
+	toColumn: DIM_Estab.codEstabel
+
+relationship 5cb59df6-2224-4f71-aa94-d6a792c049d0
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Movimento.ItCodigo
+	toColumn: Dim_Item.CodItem
+
+relationship 423c622d-bed0-4dce-9632-a3cc78674d52
+	fromColumn: Fato_Sapp.codDepos
+	toColumn: DIM_Deposito2.codDepos
+
+relationship 4cff1694-3cc3-4b6a-8880-902839b78fa2
+	fromColumn: Fato_Sapp.codDepos
+	toColumn: Dim_Deposito.CodigoDeposito
+
+relationship aa932e80-8d56-42a3-bdfd-c62bca59de1b
+	isActive: false
+	fromColumn: Fato_Estoque.CodigoDeposito
+	toColumn: Dim_Deposito.CodigoDeposito
+

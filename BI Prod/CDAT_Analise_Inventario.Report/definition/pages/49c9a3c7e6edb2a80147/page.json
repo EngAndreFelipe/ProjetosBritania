@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "49c9a3c7e6edb2a80147",
+  "displayName": "AcuráciaPorValor",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.2
+                  }
+                }
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'FundoPadraoBISemLogoB.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "FundoPadraoBISemLogoB856645517691559.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "c6af3891910a198d7f70",
+      "target": "da5661b925142e245876",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6af3891910a198d7f70",
+      "target": "e6b08fc50bd9ca356ff0",
+      "type": "DataFilter"
+    },
+    {
+      "source": "c6af3891910a198d7f70",
+      "target": "21f79bab427472d3b9dd",
+      "type": "DataFilter"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+table f_3917VendaDat
+	lineageTag: 6655d877-8f30-446b-a91c-a4547b97ace1
+
+	column IdIndicador
+		dataType: int64
+		formatString: 0
+		lineageTag: a5981bc5-5e59-4f77-a8ec-53b10310c33e
+		summarizeBy: sum
+		sourceColumn: IdIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 66dab4c3-05e2-47fe-9532-3d3539bad53e
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a0089dd-9cc2-476c-bb61-a248eb989462
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealizadoDenominador
+		dataType: int64
+		formatString: 0
+		lineageTag: e966f36f-9550-402b-a511-e4c97cf62c86
+		summarizeBy: sum
+		sourceColumn: RealizadoDenominador
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealizadoNumerador
+		dataType: int64
+		formatString: 0
+		lineageTag: 11d3c46f-e958-43d0-a51d-16e735dcb9e2
+		summarizeBy: sum
+		sourceColumn: RealizadoNumerador
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_3917VendaDat = m
+		mode: import
+		queryGroup: AltPlanilha
+		source =
+				let
+				    Fonte = Folder.Files(Pasta),
+				    #"\\10 0 10 7\compartilhado\bi at logistica\ID_DAT\_Atividades de Processo xlsx" = Fonte{[#"Folder Path"="\\10.0.10.7\compartilhado\bi at logistica\ID_DAT\",Name="Atividades de Processo.xlsx"]}[Content],
+				    PlanAtividade = Excel.Workbook(#"\\10 0 10 7\compartilhado\bi at logistica\ID_DAT\_Atividades de Processo xlsx"),
+				    FiltroTabela = Table.SelectRows(PlanAtividade, each not Text.Contains([Name], " T ")),
+				    DataExpandido = Table.ExpandTableColumn(FiltroTabela, "Data", {"Column4", "Column2", "Column13"}, {"Atividade", "Data", "Quantidade"}),
+				    FiltroAtividade = Table.SelectColumns( Table.SelectRows(DataExpandido, each Text.Contains([Atividade], "DAT")), {"Atividade", "Data", "Quantidade"}),
+				    TipoAlterado = Table.TransformColumnTypes(FiltroAtividade,{{"Atividade", type text}, {"Quantidade", Int64.Type}, {"Data", type datetime}}),
+				    DW = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)DECLARE @MES INT;#(lf)DECLARE @ID INT;#(lf)#(lf)SELECT @ID = '3917' -- AT.CD.3917 - PRODUTOS DISPONÍVEIS PARA VENDA X QTDE PRODUTOS NO ESTOQUE DAT#(lf)#(lf)SELECT @MES = MIN(Mes) #(lf)FROM DW.AT.GestaoMetas#(lf)WHERE IdIndicador = @ID #(lf)#(tab)AND RealizadoNumerador IS NULL#(lf)#(tab)AND MetaIndicador IS NOT NULL;#(lf)#(lf)WITH tbSaldo AS(#(lf)#(tab)SELECT QuantidadeDisponivel#(lf)#(tab)FROM logistica.Fato_CE0919#(lf)#(tab)WHERE CodigoDeposito ='DAT'#(lf)#(tab)#(tab)AND Data = (SELECT MAX(Data) FROM  logistica.Fato_CE0919)#(lf))#(lf)SELECT @ID IdIndicador -- AT.CD.3917 - PRODUTOS DISPONÍVEIS PARA VENDA X QTDE PRODUTOS NO ESTOQUE DAT#(lf)#(tab),YEAR(DATEFROMPARTS(YEAR(GETDATE()), @MES, 1)) Ano#(lf)#(tab),MONTH(DATEFROMPARTS(YEAR(GETDATE()), @MES, 1)) Mes#(lf)#(tab),SUM(QuantidadeDisponivel) RealizadoDenominador#(lf)FROM tbSaldo"]),
+				    #"Personalização Adicionada" = Table.AddColumn(DW, "RealizadoNumerador", each List.Sum(TipoAlterado[Quantidade]), Int64.Type)
+				in
+				    #"Personalização Adicionada"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

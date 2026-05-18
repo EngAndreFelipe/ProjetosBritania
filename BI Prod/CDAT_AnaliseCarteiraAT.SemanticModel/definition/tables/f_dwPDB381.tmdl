@@ -1,0 +1,551 @@
+table f_dwPDB381
+	lineageTag: 237bc3cb-8caf-47c2-a22d-c5bd67fbb916
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: ba51f917-5dc1-4583-9343-cf97515ba95f
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4f1d72b9-8dc7-470a-908a-36bec222ca2f
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroOS
+		dataType: string
+		lineageTag: a684e941-dc73-46a1-8a4f-aa01db502af9
+		summarizeBy: none
+		sourceColumn: NumeroOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataOS
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3e7f7f50-8c4b-4d30-9d96-d79c3a5cefb2
+		summarizeBy: none
+		sourceColumn: DataOS
+
+		variation Variation
+			isDefault
+			relationship: c3e1b213-a609-427d-9095-175a6b61eef4
+			defaultHierarchy: LocalDateTable_8dea3743-3ef0-4966-8a84-b1b109ba99a5.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: 34099a8f-40c7-4c54-9ee5-f809707b9729
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: c3832e9a-d027-4539-b35e-96b651a1d0da
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoEntrega
+		dataType: string
+		lineageTag: 7e4d4eb9-4502-4a31-b2e1-adc38dc6e51d
+		summarizeBy: none
+		sourceColumn: EstadoEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 49a8f1bc-0ac1-4f29-96d9-d3f6c5687dd0
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: d33d49c0-4385-4b3c-bf8a-795cf172ac52
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inventario
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 823fd524-ffa9-4a90-afbd-1fb8f2640e04
+		summarizeBy: none
+		sourceColumn: Inventario
+
+		annotation SummarizationSetBy = Automatic
+
+	column NatOperacao
+		dataType: string
+		lineageTag: 275dd313-d337-4ef2-85c9-837eb81d0741
+		summarizeBy: none
+		sourceColumn: NatOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denominacao
+		dataType: string
+		lineageTag: 1ec5a471-44b2-41c8-ab93-e889e8ba1431
+		summarizeBy: none
+		sourceColumn: Denominacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadePedida
+		dataType: double
+		formatString: #,0
+		lineageTag: 4affd9a7-8004-44cb-a7bc-3e5aa7f7b5bf
+		summarizeBy: sum
+		sourceColumn: QuantidadePedida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeAtendida
+		dataType: double
+		lineageTag: b1a232dc-9aa1-4682-9752-2b0b25f45a70
+		summarizeBy: sum
+		sourceColumn: QuantidadeAtendida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QuantidadeAlocada
+		dataType: double
+		lineageTag: b953c171-7267-4ec9-b11c-27c8b41ef4b7
+		summarizeBy: sum
+		sourceColumn: QuantidadeAlocada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QuantidadeCarteira
+		dataType: double
+		lineageTag: 3e072c3c-2b4c-40d5-98e0-d95e976a41db
+		summarizeBy: sum
+		sourceColumn: QuantidadeCarteira
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DtFaturamento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 33270c77-56a4-4920-9f58-4e100cce531e
+		summarizeBy: none
+		sourceColumn: DtFaturamento
+
+		variation Variation
+			isDefault
+			relationship: b1e652ca-7ecc-4894-9d3e-aa4c2e4b91e2
+			defaultHierarchy: LocalDateTable_0189923f-52d8-4a66-ac88-829e91b1c4f1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumEmbarquePreFatur
+		dataType: double
+		lineageTag: 8e2a397d-6c61-402f-b1c8-396059b2740c
+		summarizeBy: sum
+		sourceColumn: NumEmbarquePreFatur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Embarque
+		dataType: double
+		formatString: 0
+		lineageTag: eb45eb8c-1ce4-4856-ba90-2b6ed8505e75
+		summarizeBy: none
+		sourceColumn: Embarque
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DataEmbarque
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 19a6d975-5b96-40d1-8778-15fdc86b6ad5
+		summarizeBy: none
+		sourceColumn: DataEmbarque
+
+		variation Variation
+			isDefault
+			relationship: 10a315b8-8071-4151-9fc5-6bfc7ffffc59
+			defaultHierarchy: LocalDateTable_b70c4b26-7176-4402-8e91-ee1c1cabbd9e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 8cbd5019-cd45-4d81-950b-3a2a987d3888
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: 2e7246c2-9969-4c4d-a8ee-e4a97cdd9e0c
+			defaultHierarchy: LocalDateTable_2ad588a1-8746-45de-8d8f-eff162cca553.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NotaFiscal
+		dataType: string
+		lineageTag: 41f7da58-d61a-4f29-8a8d-362849ffc39a
+		summarizeBy: none
+		sourceColumn: NotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: c2da78ac-dd26-4c8b-837e-7a94b9d3aea0
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstabNotaFiscal
+		dataType: string
+		lineageTag: 296c9b7f-3629-47a0-b8a2-659aa8683822
+		summarizeBy: none
+		sourceColumn: EstabNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column PedidoCompleto
+		dataType: string
+		lineageTag: 9e1e6048-5217-4705-bab5-0e81c4a83180
+		summarizeBy: none
+		sourceColumn: PedidoCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitPedido
+		dataType: string
+		lineageTag: b9854fee-db07-40e4-a7c6-5b91a69eebcd
+		summarizeBy: none
+		sourceColumn: SitPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditoCliente
+		dataType: string
+		lineageTag: a4b05e68-f603-4600-bf71-88fe7a471ca2
+		summarizeBy: none
+		sourceColumn: CreditoCliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitCredenciamento
+		dataType: string
+		lineageTag: c2a14fcb-d315-41dd-a349-072b4e93f63f
+		summarizeBy: none
+		sourceColumn: SitCredenciamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitItem
+		dataType: string
+		lineageTag: b159b23d-f3f3-465a-882b-f3689c885abb
+		summarizeBy: none
+		sourceColumn: SitItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoAAT
+		dataType: double
+		formatString: #,0
+		lineageTag: 622a1edb-9fc0-4806-9750-6df0c48324d6
+		summarizeBy: sum
+		sourceColumn: SaldoAAT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column SaldoREC
+		dataType: double
+		formatString: #,0
+		lineageTag: ce7edfae-fd66-4c7b-87ea-f012bfe14a30
+		summarizeBy: sum
+		sourceColumn: SaldoREC
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DispPreFat
+		dataType: string
+		lineageTag: 8c22ad1a-ec1b-41e3-b849-564843ae9d8b
+		summarizeBy: none
+		sourceColumn: DispPreFat
+
+		annotation SummarizationSetBy = Automatic
+
+	column OS = IF(f_dwPDB381[NumeroOS] <> BLANK(), "COM OS","SEM OS")
+		lineageTag: ca7dabbd-e29a-4d3b-8532-d8346d1f30ad
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtTotalPedItem
+		dataType: double
+		lineageTag: 329ac707-f2b4-496e-8277-c79c6c355278
+		summarizeBy: sum
+		sourceColumn: QtTotalPedItem
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtItemOs
+		dataType: int64
+		formatString: 0
+		lineageTag: bbb17f5a-147d-4360-9b58-b73f6bda83c8
+		summarizeBy: sum
+		sourceColumn: QtItemOs
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtPedOs
+		dataType: double
+		lineageTag: 18f62169-b5cc-4ad6-8945-95da35168057
+		summarizeBy: sum
+		sourceColumn: QtPedOs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SldPedOs
+		dataType: double
+		lineageTag: 36ff85ff-d055-4a49-8ab6-afa2a000cc35
+		summarizeBy: sum
+		sourceColumn: SldPedOs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column B_Inventario
+		dataType: int64
+		formatString: 0
+		lineageTag: c218a572-9733-4a07-89d6-9fcf41d90c0b
+		summarizeBy: sum
+		sourceColumn: B_Inventario
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_Dcv
+		dataType: int64
+		formatString: 0
+		lineageTag: 3253d0dd-13b3-40bf-a184-b60ad6589bde
+		summarizeBy: sum
+		sourceColumn: B_Dcv
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_Rec
+		dataType: int64
+		formatString: 0
+		lineageTag: ec7e44bb-db0b-4932-963f-bc09e95b7b92
+		summarizeBy: sum
+		sourceColumn: B_Rec
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_SemSaldo
+		dataType: int64
+		formatString: 0
+		lineageTag: 2102382f-a140-450c-a4bb-9d34ec049407
+		summarizeBy: sum
+		sourceColumn: B_SemSaldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_PedCompleto
+		dataType: int64
+		formatString: 0
+		lineageTag: ffa75d36-100b-47cf-a07d-3afe96544326
+		summarizeBy: sum
+		sourceColumn: B_PedCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_PedidoAprovado
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ca05c78-14bb-4454-a4e1-66cb93fb821c
+		summarizeBy: sum
+		sourceColumn: B_PedidoAprovado
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_PedSuspenso
+		dataType: int64
+		formatString: 0
+		lineageTag: 9461c4d2-8e25-4c6c-a00c-0760ba7b1ca5
+		summarizeBy: sum
+		sourceColumn: B_PedSuspenso
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_PostoBloq
+		dataType: int64
+		formatString: 0
+		lineageTag: 1486702c-cda7-43be-aea0-5175419e9152
+		summarizeBy: sum
+		sourceColumn: B_PostoBloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChvBloq
+		dataType: string
+		lineageTag: 7f5532b5-49ce-4993-92b1-27a0a0e15cd1
+		summarizeBy: none
+		sourceColumn: ChvBloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChvBloqUnico
+		dataType: string
+		lineageTag: cc171bfa-1b47-455b-959c-3826501aaffa
+		summarizeBy: none
+		sourceColumn: ChvBloqUnico
+
+		annotation SummarizationSetBy = Automatic
+
+	column PedAlocado = IF([QuantidadeAlocada] > 0, "SIM", "NÃO")
+		lineageTag: e118218a-ac9e-4b71-99b3-25a327fd7b9e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column BloqueioAT = RELATED(d_DescricaoBloquio[BloqAT])
+		lineageTag: 51ad50ae-7e0e-4873-85f8-529beda25f87
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitCreditoPed
+		dataType: string
+		lineageTag: eb846c22-57a7-4974-bf58-407fec628715
+		summarizeBy: none
+		sourceColumn: SitCreditoPed
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditoPosto
+		dataType: string
+		lineageTag: d1d92c02-7f38-4d12-9ba5-e02464c061a8
+		summarizeBy: none
+		sourceColumn: CreditoPosto
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_CreditoCliente
+		dataType: int64
+		formatString: 0
+		lineageTag: a2f7bf0d-3196-4091-94f4-8790ef9996df
+		summarizeBy: sum
+		sourceColumn: B_CreditoCliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescBloqueio = RELATED(d_DescricaoBloquio[DescBloq])
+		lineageTag: fed77fcd-c2be-4e7f-a5d5-1f7416e9101e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo_DCV
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9d1a6409-0270-405c-9cff-90548a683343
+		summarizeBy: sum
+		sourceColumn: Saldo_DCV
+
+		annotation SummarizationSetBy = Automatic
+
+	column SumBloq
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ebe50a2-57ae-49cb-b1db-fec3c5bb7ffc
+		summarizeBy: sum
+		sourceColumn: SumBloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column sBloqAcm = CALCULATE(SUM(f_dwPDB381[SumBloq]), ALLEXCEPT(f_dwPDB381, f_dwPDB381[NumeroOS]))
+		formatString: 0
+		lineageTag: 2364c764-bca8-4acb-bd9a-3fe2ea4d20bc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChvBloq_ = IF(f_dwPDB381[OS] = "COM OS" && f_dwPDB381[QtItemOs] > 1 && f_dwPDB381[sBloqAcm] > 0, CONCATENATE(f_dwPDB381[ChvBloq],1), CONCATENATE(f_dwPDB381[ChvBloq],0))
+		lineageTag: 1c8061b1-fdff-4e06-b2fa-f72d5a128230
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChvBloqUnico_ = ```
+			VAR Pos = SEARCH("1", f_dwPDB381[ChvBloq_], 1, 0)
+			RETURN
+			    IF(
+			        Pos > 0,
+			        LEFT(f_dwPDB381[ChvBloq_], SEARCH("1", f_dwPDB381[ChvBloq_], 1, 0)) ,
+			        BLANK() 
+			    )
+			```
+		lineageTag: aa41e29f-811a-4424-8b03-0ce749d6e0f7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Alocado = IF(f_dwPDB381[QuantidadeAlocada] > 0, "Sim","Não")
+		lineageTag: 732e0c84-14b8-4d0a-b6dd-626a15bdf690
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column B_BloqPreFat
+		dataType: int64
+		formatString: 0
+		lineageTag: a4b3adf7-fa36-434d-b489-d20121dac361
+		summarizeBy: sum
+		sourceColumn: B_BloqPreFat
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_dwPDB381 = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="DECLARE @DataInicial DATE = EOMONTH(DATEADD(MONTH, -3,CAST(GETDATE() AS DATE)));#(lf)#(lf)-- Valida se tabela Temp existe e Deleta#(lf)IF OBJECT_ID('tempdb..#Filtered_PDB') IS NOT NULL#(lf)    DROP TABLE #Filtered_PDB;#(lf)#(lf)SELECT *#(lf)INTO #Filtered_PDB#(lf)FROM DW.logistica.Fato_PDB381 WITH (NOLOCK)#(lf)WHERE DataImplantacao > @DataInicial#(lf)#(tab)AND SitPedido IN('1','2','5')#(lf)#(tab)AND DataSaida IS NULL#(lf)#(tab)AND SerieNotaFiscal IN (5, 21, '');#(lf)#(lf)WITH UltimaDataCE AS (#(lf)    SELECT DISTINCT MAX(Data) AS MaxData#(lf)    FROM logistica.Fato_CE0919 WITH (NOLOCK)#(lf)    WHERE Data > DATEADD(DAY, -4, CAST(GETDATE() AS DATE))#(lf)),#(lf)GE_SldDcv AS (#(lf)#(tab)SELECT#(lf)#(tab)#(tab)CAST(DT.Data as Date) Data#(lf)#(tab)#(tab),I.CodItem#(lf)#(tab)#(tab),D.CodigoDeposito#(tab)#(lf)#(tab)#(tab),CAST(F.QuantidadeDisponivel AS INT) SldDcv#(lf)#(tab)#(tab),I.CodGrupoEstoque#(lf)#(tab)FROM [DW].[dbo].[Fato_SaldoEstoque] F WITH (NOLOCK)#(lf)#(tab)#(tab)JOIN [DW].[dbo].[Dim_Item] I WITH (NOLOCK) #(lf)#(tab)#(tab)#(tab)ON I.Id = F.IdItem#(lf)#(tab)#(tab)JOIN [DW].[dbo].[Dim_Localizacao] L WITH (NOLOCK) #(lf)#(tab)#(tab)#(tab)ON L.IdLocalizacao = F.IdLocalizacao#(lf)#(tab)#(tab)JOIN [DW].[dbo].[Dim_Deposito] D WITH (NOLOCK) #(lf)#(tab)#(tab)#(tab)ON D.IdDeposito = L.IdDeposito#(lf)#(tab)#(tab)JOIN [DW].[dbo].[Dim_Estabelecimento] Est WITH (NOLOCK) #(lf)#(tab)#(tab)#(tab)ON L.idEstab = Est.Id#(lf)#(tab)#(tab)JOIN [DW].[dbo].[Dim_Data] DT WITH (NOLOCK) #(lf)#(tab)#(tab)#(tab)ON DT.Id = F.IdData#(lf)#(tab)WHERE 1 = 1#(lf)#(tab)#(tab)AND I.CodGrupoEstoque IN ('0','1','2','7','14','16','19','27')#(lf)#(tab)#(tab)AND L.idEstab IN ('8')#(lf)#(tab)#(tab)AND D.CodigoDeposito = 'DCV'#(lf)#(tab)#(tab)AND Data = (SELECT MaxData FROM UltimaDataCE)#(lf)),#(lf)SaldoItem AS (#(lf)#(tab)SELECT DISTINCT DataImplantacao  #(lf)#(tab),NumeroPedido#(lf)#(tab),CodItem#(lf)#(tab),QuantidadePedida#(lf)#(tab),SUM(QuantidadePedida) OVER (PARTITION BY CodItem ORDER BY DataImplantacao ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW#(lf)    ) AS  QtTotalPedItem#(lf)#(tab)FROM #Filtered_PDB#(lf)),#(lf)QtdeItemOS AS (#(lf)#(tab)SELECT sub.NumeroOs,#(lf)#(tab)#(tab)COUNT(*) AS QtItemOs#(lf)#(tab)FROM (SELECT DISTINCT#(lf)#(tab)#(tab)#(tab)NumeroOS,#(lf)#(tab)#(tab)#(tab)CodItem#(lf)#(tab)#(tab)FROM #Filtered_PDB#(lf)#(tab)#(tab)WHERE NumeroOS <> ''#(lf)#(tab)) sub#(lf)#(tab)GROUP BY sub.NumeroOs#(lf)),#(lf)QtdPedOS AS (#(lf)#(tab)SELECT NumeroOs,#(lf)#(tab)#(tab)CodItem,#(lf)#(tab)#(tab)SUM(QuantidadePedida) AS QtPedOs#(lf)#(tab)FROM #Filtered_PDB#(lf)#(tab)WHERE NumeroOS <> ''#(lf)#(tab)GROUP BY #(lf)#(tab)#(tab)NumeroOs,#(lf)#(tab)#(tab)CodItem#(lf)),#(lf)SaldoPedOS AS (#(lf)#(tab)SELECT NumeroOs,#(lf)#(tab)#(tab)ROUND(AVG(SaldoAAT),0) AS SldPedOs#(lf)#(tab)FROM #Filtered_PDB#(lf)#(tab)WHERE NumeroOS <> ''#(lf)#(tab)GROUP BY #(lf)#(tab)#(tab)NumeroOs#(lf)),#(lf)SaldoMinOS AS (#(lf)#(tab)SELECT NumeroOs,#(lf)#(tab)#(tab)MIN(SaldoAAT) AS SldMinOs#(lf)#(tab)FROM #Filtered_PDB#(lf)#(tab)WHERE NumeroOS <> ''#(lf)#(tab)GROUP BY #(lf)#(tab)#(tab)NumeroOs#(lf)),#(lf)Filtro_PDB_2 AS(#(lf)#(tab)SELECT#(lf)#(tab)#(tab)pdb.NumeroPedido,#(lf)#(tab)#(tab)CAST(pdb.DataImplantacao AS DATE) DataImplantacao,#(lf)#(tab)#(tab)pdb.NumeroOS,#(lf)#(tab)#(tab)pdb.DataOS,#(lf)#(tab)#(tab)pdb.NomeMatriz,#(lf)#(tab)#(tab)pdb.Cidade,#(lf)#(tab)#(tab)pdb.EstadoEntrega,#(lf)#(tab)#(tab)pdb.CodItem,#(lf)#(tab)#(tab)pdb.DescItem,#(lf)#(tab)#(tab)pdb.NatOperacao,#(lf)#(tab)#(tab)pdb.Denominacao,#(lf)#(tab)#(tab)pdb.QuantidadePedida,#(lf)#(tab)#(tab)pdb.QuantidadeAtendida,#(lf)#(tab)#(tab)pdb.QuantidadeAlocada,#(lf)#(tab)#(tab)pdb.QuantidadeCarteira,#(lf)#(tab)#(tab)CAST(pdb.DtFaturamento AS DATE) DtFaturamento,#(lf)#(tab)#(tab)pdb.NumEmbarquePreFatur,#(lf)#(tab)#(tab)pdb.Embarque,#(lf)#(tab)#(tab)CAST(pdb.DataEmbarque AS DATE) DataEmbarque,#(lf)#(tab)#(tab)CAST(pdb.DataSaida AS DATE) DataSaida,#(lf)#(tab)#(tab)pdb.NotaFiscal,#(lf)#(tab)#(tab)pdb.SerieNotaFiscal,#(lf)#(tab)#(tab)pdb.EstabNotaFiscal,#(lf)#(tab)#(tab)pdb.DispPreFat,#(lf)#(tab)#(tab)pdb.Inventario,#(lf)#(tab)#(tab)pdb.SitCreditoPed,#(lf)#(tab)#(tab)pdb.CreditoPosto,#(lf)#(tab)#(tab)pdb.PedidoCompleto,#(lf)#(tab)#(tab)sp.DescSitPedido AS SitPedido, --pdb.SitPedido,#(lf)#(tab)#(tab)CASE #(lf)#(tab)#(tab)#(tab)WHEN pdb.CreditoCliente NOT IN(2,4) THEN 'Sim'#(lf)#(tab)#(tab)#(tab)ELSE 'Não'#(lf)#(tab)#(tab)END CreditoCliente,#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN UPPER(pdb.SitCredenciamento) = 'N' THEN 'Descredenciado'#(lf)#(tab)#(tab)#(tab)ELSE 'Credenciado'#(lf)#(tab)#(tab)END SitCredenciamento,#(lf)#(tab)#(tab)pdb.SitItem,#(lf)#(tab)#(tab)pdb.SaldoAAT,#(lf)#(tab)#(tab)pdb.SaldoREC,#(lf)#(tab)#(tab)COALESCE(gesd.SldDcv, 0) Saldo_DCV,#(lf)#(tab)#(tab)si.QtTotalPedItem,#(lf)#(tab)#(tab)qios.QtItemOs,#(lf)#(tab)#(tab)qpos.QtPedOs,#(lf)#(tab)#(tab)sldos.SldPedOs,#(lf)#(tab)#(tab)--'Pedido Não Parovado'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN pdb.SitCreditoPed <> 'Aprovado' THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_PedidoAprovado,#(lf)#(tab)#(tab)--'Suspenso'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN sp.DescSitPedido = 'Suspenso' THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_PedSuspenso,#(lf)#(tab)#(tab)--'Pedido Incompleto'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN pdb.PedidoCompleto <> 'Sim' THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_PedCompleto,#(lf)#(tab)#(tab)--'Saldo Rec'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN ((COALESCE(gesd.SldDcv, 0) + pdb.SaldoAAT) < si.QtTotalPedItem)#(lf)#(tab)#(tab)#(tab)#(tab)AND (pdb.SaldoREC >= (si.QtTotalPedItem - (COALESCE(gesd.SldDcv, 0) + pdb.SaldoAAT))) THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_Rec,#(lf)#(tab)#(tab)--'Sem Saldo'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN ((pdb.SaldoAAT + pdb.SaldoREC) = 0 OR pdb.SaldoAAT + pdb.SaldoREC < si.QtTotalPedItem)#(lf)#(tab)#(tab)#(tab)#(tab)AND COALESCE(gesd.SldDcv, 0) < si.QtTotalPedItem THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_SemSaldo,#(lf)#(tab)#(tab)--'Inventario'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN pdb.Inventario = '1' THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_Inventario,#(lf)#(tab)#(tab)--'Posto Bloqueado'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN pdb.CreditoPosto = 'Suspenso' OR pdb.CreditoPosto = 'Só Imprime Pedidos' THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_PostoBloq,#(lf)#(tab)#(tab)--'Posto Sem Credito'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN pdb.CreditoCliente IN(2,4) THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_CreditoCliente,#(lf)#(tab)#(tab)--'Bloq Pre Fatura'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN UPPER(pdb.DispPreFat) <> 'SIM' THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_BloqPreFat,#(lf)#(tab)#(tab)--'DCV'#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN (pdb.SaldoAAT < si.QtTotalPedItem AND COALESCE(gesd.SldDcv, 0) >= si.QtTotalPedItem) THEN 1#(lf)#(tab)#(tab)#(tab)ELSE 0#(lf)#(tab)#(tab)END B_Dcv#(lf)#(tab)FROM #Filtered_PDB pdb#(lf)#(tab)#(tab)LEFT JOIN GE_SldDcv gesd#(lf)#(tab)#(tab)#(tab)ON pdb.CodItem = gesd.CodItem#(lf)#(tab)#(tab)LEFT JOIN dbo.Dim_SituacaoPedido sp#(lf)#(tab)#(tab)#(tab)ON pdb.SitPedido = sp.CodSitPed#(lf)#(tab)#(tab)LEFT JOIN SaldoItem si#(lf)#(tab)#(tab)#(tab)ON pdb.CodItem = si.CodItem#(lf)#(tab)#(tab)#(tab)#(tab)AND pdb.DataImplantacao = si.DataImplantacao#(lf)#(tab)#(tab)#(tab)#(tab)AND  pdb.NumeroPedido =si.NumeroPedido#(lf)#(tab)#(tab)LEFT JOIN QtdeItemOS qios #(lf)#(tab)#(tab)#(tab)ON pdb.NumeroOS = qios.NumeroOS#(lf)#(tab)#(tab)LEFT JOIN QtdPedOS qpos #(lf)#(tab)#(tab)#(tab)ON pdb.NumeroOS = qpos.NumeroOS#(lf)#(tab)#(tab)#(tab)#(tab)AND pdb.CodItem = qpos.CodItem#(lf)#(tab)#(tab)LEFT JOIN SaldoPedOS sldos #(lf)#(tab)#(tab)#(tab)ON pdb.NumeroOS = sldos.NumeroOS#(lf)#(tab)#(tab)LEFT JOIN SaldoMinOS sminos#(lf)#(tab)#(tab)#(tab)ON sminos.NumeroOS = pdb.NumeroOS#(lf))#(lf)SELECT *,#(lf)#(tab)(B_PedidoAprovado + B_PedSuspenso + B_PedCompleto + B_Rec + B_SemSaldo + #(lf)#(tab)#(tab)B_Inventario + B_PostoBloq + B_CreditoCliente + B_BloqPreFat + B_Dcv) AS SumBloq,#(lf)#(tab)CONCAT(#(lf)#(tab)#(tab)B_PedidoAprovado, B_PedSuspenso, B_PedCompleto, B_Rec, B_SemSaldo, #(lf)#(tab)#(tab)B_Inventario, B_PostoBloq, B_CreditoCliente, B_BloqPreFat, B_Dcv#(lf)#(tab)) AS ChvBloq,#(lf)#(tab)LEFT(#(lf)#(tab)#(tab)CONCAT(#(lf)#(tab)#(tab)#(tab)B_PedidoAprovado, B_PedSuspenso, B_PedCompleto, B_Rec, B_SemSaldo, #(lf)#(tab)#(tab)#(tab)B_Inventario, B_PostoBloq, B_CreditoCliente, B_BloqPreFat, B_Dcv#(lf)#(tab)#(tab)),#(lf)#(tab)#(tab)CHARINDEX('1', CONCAT(#(lf)#(tab)#(tab)#(tab)B_PedidoAprovado, B_PedSuspenso, B_PedCompleto, B_Rec, B_SemSaldo, #(lf)#(tab)#(tab)#(tab)B_Inventario, B_PostoBloq, B_CreditoCliente, B_BloqPreFat, B_Dcv#(lf)#(tab)#(tab)))#(lf)#(tab)) AS ChvBloqUnico#(lf)FROM Filtro_PDB_2#(lf)#(lf) DROP TABLE #Filtered_PDB"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

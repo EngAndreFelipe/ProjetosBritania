@@ -1,0 +1,147 @@
+table Fato_Consolidacao_Entrada
+	lineageTag: 5dfbdc4b-24b5-4bdf-9e17-32096bdfd57a
+
+	column Documento
+		dataType: double
+		lineageTag: d6044ea2-c526-4f4c-b7a1-2b316070077e
+		summarizeBy: sum
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroDocumento
+		dataType: string
+		lineageTag: cc8433c1-c864-4410-972b-bedf8e69a48b
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario
+		dataType: string
+		lineageTag: 33490c44-d486-4f8c-8764-d50f3d8f63a8
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: db86f57f-a9af-4bad-9485-edf3a142ab46
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdMovto
+		dataType: double
+		lineageTag: 01e63422-a157-4fca-8436-8d351ee11a9d
+		summarizeBy: sum
+		sourceColumn: IdMovto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdeItemMov
+		dataType: int64
+		formatString: 0
+		lineageTag: cfd5e027-bc1e-4079-a023-835140533b1c
+		summarizeBy: sum
+		sourceColumn: QtdeItemMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoItem
+		dataType: string
+		lineageTag: c630b2b7-7eb4-4590-bcf9-25d032410fcf
+		summarizeBy: none
+		sourceColumn: SituacaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: 3ceb5314-c76b-4503-b513-f76d2a4974d7
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: f7f47119-4eb6-41c6-9dab-72857622bfd1
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Situacao
+		dataType: string
+		lineageTag: 74c6d3f1-a29b-4d16-b9e7-28dd79200634
+		summarizeBy: none
+		sourceColumn: Situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: e6da588c-977c-4d71-8276-e121b2c588a1
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHrInicioTarefa
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7c0978d7-c725-42ba-9db5-1dc540916857
+		summarizeBy: none
+		sourceColumn: DtHrInicioTarefa
+
+		variation Variation
+			isDefault
+			relationship: 8421a11c-b3ea-4ae0-8d78-fbfbf538d94f
+			defaultHierarchy: LocalDateTable_e508ed71-53f5-4db9-a10e-62cfc8ed44b8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHrFimTarefa
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f2801b05-e658-4a34-a31f-a5b89197e6b7
+		summarizeBy: none
+		sourceColumn: DtHrFimTarefa
+
+		variation Variation
+			isDefault
+			relationship: 513b8463-6d82-4955-a1a1-7998ff2e070b
+			defaultHierarchy: LocalDateTable_91ed5506-2a06-4481-8aba-b066cf503f69.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHRImplant
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d3132cab-3e0b-4e87-b62f-a91f29a0c8e2
+		summarizeBy: none
+		sourceColumn: DtHRImplant
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Consolidacao_Entrada = m
+		mode: import
+		queryGroup: 'Tabelas Fato'
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)        DECLARE @RangeStart DATETIME = '2025-01-01';#(lf)        DECLARE @RangeEnd DATETIME = GETDATE();#(lf)#(lf)        SELECT #(lf)            Documento,#(lf)            UPPER(NumeroDocumento) AS NumeroDocumento,#(lf)            CAST(DataImplantacao AS DATETIME) + CAST(HoraCriacaoDoc AS DATETIME) AS DtHRImplant,#(lf)            Usuario,#(lf)            UPPER(Item) AS Item,#(lf)            Situacao,#(lf)            IdMovto,#(lf)            QtdeItemMov,#(lf)            SituacaoItem,#(lf)            Usuario2,#(lf)           #(lf)            UPPER(Endereco) AS Endereco,#(lf)            UPPER(Local) AS Local,#(lf)            CAST(DtInicioTarefa AS DATETIME) + CAST(HoraInicio AS DATETIME) AS DtHrInicioTarefa,#(lf)            CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME) AS DtHrFimTarefa#(lf)            #(lf)        FROM #(lf)            logistica.Fato_Mov_Estoque_PA_AT#(lf)        WHERE #(lf)            (Local = 'AAT' OR Local = 'REC') AND#(lf)            Origem = 'Consolidação' AND#(lf)            Movimento = 'Entrada' AND#(lf)            DataImplantacao > @RangeStart AND#(lf)            DataImplantacao <= @RangeEnd;#(lf)    "]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DtHRImplant] > RangeStart and [DtHRImplant] <= RangeEnd)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

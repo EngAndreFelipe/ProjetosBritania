@@ -1,0 +1,35 @@
+relationship 6a0e10d3-e43e-456d-b717-6ea13ba6a918
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataEmissaoFatura
+	toColumn: LocalDateTable_f2f832be-708c-4493-8e02-d05f4cc45723.Date
+
+relationship 0adbbd34-f9ab-4c9d-bd0c-7227b9a9d5fb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataVencimento
+	toColumn: LocalDateTable_cb364cc8-922b-4f04-bcb6-f11bc3501595.Date
+
+relationship 6d7a2ae8-a508-4403-b1dc-3a3d3d0e3270
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataAprovação
+	toColumn: LocalDateTable_bbe4ced1-204f-4261-8563-d011170059dc.Date
+
+relationship f5d7b767-d002-48b4-9a7c-fb6eb0f4c561
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataFinanceiro
+	toColumn: LocalDateTable_0e864fa1-a639-46f5-ae9c-3f7921e0e17e.Date
+
+relationship f52b8142-ecb2-490b-8df9-d01a61d0c8e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataEmissaoCTE
+	toColumn: LocalDateTable_9466f906-ae57-4426-9524-c405d2c6e30b.Date
+
+relationship ae18b8bc-446e-4303-a5bf-74b09a5d2bbf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataBloqueio
+	toColumn: LocalDateTable_9531d896-ce1e-48e9-bd19-f509edf7d439.Date
+
+relationship 91cd7e41-49f6-486f-8faf-986fd27211f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Faturas.DataAprovacaoCTE
+	toColumn: LocalDateTable_af4268f2-4f6e-4a02-bc4e-c87797a140f1.Date
+

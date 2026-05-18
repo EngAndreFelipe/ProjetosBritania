@@ -1,0 +1,24 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Fato_Rastreio"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_Rastreio
+ref table DateTableTemplate_3d59363f-cdff-4734-b864-8c31ade3c43d
+ref table LocalDateTable_8f8ddc41-36b0-4d1e-b79b-4ed9d3cbcd8c
+ref table TabelaFinal
+ref table LocalDateTable_9d0f22f7-9099-4a1c-b25f-6aa8b166c0fa
+ref table LocalDateTable_2c185bb6-7477-4122-b683-def9928b40e1
+ref table TipoRastreio
+
+ref cultureInfo pt-BR
+

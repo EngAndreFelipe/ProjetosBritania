@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CDAT_Moviment_Estoque"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2c82d31a-3dc5-4b0d-8a1e-96b467761d33"
+  }
+}

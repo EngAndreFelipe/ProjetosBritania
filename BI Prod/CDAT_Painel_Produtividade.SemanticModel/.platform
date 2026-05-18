@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_Painel_Produtividade"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9d63af27-a56e-4534-b2e0-bbebbc63395b"
+  }
+}

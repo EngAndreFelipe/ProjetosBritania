@@ -1,0 +1,395 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "e2618b20dc94bd238074",
+  "displayName": "Status Entregas - CIF",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "430bce4838e1769ac86d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_AcompEntregas"
+              }
+            },
+            "Property": "TipoFrete"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Fato_AcompEntregas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "TipoFrete"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'1 - CIF'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "ea405ee8c02d6c1a8146",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_AcompEntregas"
+              }
+            },
+            "Property": "NomeMatrizTransportador"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Fato_AcompEntregas",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "f"
+                              }
+                            },
+                            "Property": "NomeMatrizTransportador"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "''"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'BRASIL WEB T'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'BRITANIA 22'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'CORREIOS'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'FAVORITA TPT'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'geral'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'J.J. SUL SC'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'JADLOG LOGIC'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'L.Q.D TRANSP'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'LQD SP TRANS'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'METAR LOGI'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'OLIVEIRA SC'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'OTIMIZA TRAN'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'PAC'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'RODOBRASSC'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Sem Info'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'TMA SUDESTE'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Visão Geral Vendas (1).png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Vis_o_Geral_Vendas_(1)09376422130534268.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "b69549c58a0400c2b5c9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "252833d08102945c3714",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "c505491fb6b62e30a2d0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "b9365218290146d72460",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "7f2948ba3c3a20e40723",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "846dbe3f993a30292332",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "90b62eb7d5e41326d15e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "171d0bf0013a5accdecd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "991697349b465aecce54",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "7f896693c58983c5426e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "7f896693c58983c5426e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "35ebafdd2a21d375c2b3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "822f5b5936e19a276714",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "7a41e324308c24008617",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "c3c1bfbf8a35c77640c5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "f165e4a2ec95b0b353c6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "171d0bf0013a5accdecd",
+      "target": "f165e4a2ec95b0b353c6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b9365218290146d72460",
+      "target": "171d0bf0013a5accdecd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5b412e642890e42b403c",
+      "target": "f165e4a2ec95b0b353c6",
+      "type": "DataFilter"
+    },
+    {
+      "source": "069dfdbb10d946836c4d",
+      "target": "171d0bf0013a5accdecd",
+      "type": "DataFilter"
+    }
+  ]
+}

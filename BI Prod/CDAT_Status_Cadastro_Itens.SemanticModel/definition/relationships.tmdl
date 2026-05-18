@@ -1,0 +1,5 @@
+relationship dc2e5513-3ab4-45ab-8be4-f387b3f8e578
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Cadastro.DATA_ALTERACAO
+	toColumn: LocalDateTable_af894933-c5e2-481e-86d9-fbd95cb60daf.Date
+

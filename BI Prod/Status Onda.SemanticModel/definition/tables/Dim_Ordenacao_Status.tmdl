@@ -1,0 +1,35 @@
+table Dim_Ordenacao_Status
+	lineageTag: ad5cfe5a-10d5-40ca-b20f-bd3f54eba10a
+
+	column StatusOnda
+		dataType: string
+		lineageTag: 19681913-24ed-4bd9-b1bb-7e94c61cafd7
+		summarizeBy: none
+		sourceColumn: StatusOnda
+		sortByColumn: IdStatusOnda
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdStatusOnda
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a9134e1-4866-4e33-b87e-750376763133
+		summarizeBy: sum
+		sourceColumn: IdStatusOnda
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Ordenacao_Status = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT DISTINCT#(lf)#(tab)StatusOnda,#(lf)#(tab)CASE#(lf)#(tab)#(tab)WHEN StatusOnda = 'Não Integrado' THEN 0#(lf)#(tab)#(tab)WHEN StatusOnda = 'Em Separação' THEN 1#(lf)#(tab)#(tab)WHEN StatusOnda = 'Conferido Linha' THEN 2#(lf)#(tab)#(tab)WHEN StatusOnda = 'Stage Conferência' THEN 3#(lf)#(tab)#(tab)WHEN StatusOnda = 'Expedido' THEN 4#(lf)#(tab)#(tab)ELSE 5#(lf)#(tab)END AS IdStatusOnda#(lf)FROM logistica.Fato_FTB101"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

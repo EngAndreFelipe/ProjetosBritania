@@ -1,0 +1,745 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dw_GTB201.vl_frete_pc": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vlFretePc"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl frete pc": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vlFretePc": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl frete processer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "vl frete processor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "vl frete notebook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "vl frete laptop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "vl frete computer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "vl frete machine": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "tb_regiõe": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbRegiões"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tb regiõe": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "tbRegiões": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tb_regiõe.unidade_federativa": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbRegiões",
+			          "ConceptualProperty": "UnidadeFederativa"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unidade federativa": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "UnidadeFederativa": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tb_regiõe.sigla": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbRegiões",
+			          "ConceptualProperty": "Sigla"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sigla": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tb_regiõe.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbRegiões",
+			          "ConceptualProperty": "Descricao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tb_regiõe.região": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbRegiões",
+			          "ConceptualProperty": "Região"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "região": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbNatOperacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tb nat operacao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "tbNatOperacao": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao.nat_operacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbNatOperacao",
+			          "ConceptualProperty": "NatOperacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nat operacao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "NatOperacao": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao.tipo_nat": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbNatOperacao",
+			          "ConceptualProperty": "TipoNat"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tipo nat": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TipoNat": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao.denominacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "tbNatOperacao",
+			          "ConceptualProperty": "Denominacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "denominacao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "meta_custo_frete": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "MetaCustoFrete"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "meta custo frete": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "MetaCustoFrete": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "meta_custo_frete.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "MetaCustoFrete",
+			          "ConceptualProperty": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "meta_custo_frete.meta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "MetaCustoFrete",
+			          "ConceptualProperty": "Meta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "meta": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.coluna_1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "Coluna 1"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "coluna 1": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.medida": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "PercAtigID"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "medida": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "medida.medida_2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "QtdePeças"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "qtde peças": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "QtdePeças": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "medida.vl_total_frete": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Medidas",
+			          "ConceptualProperty": "vlTotalFrete"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vl total frete": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vlTotalFrete": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vl aggregate frete": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "vl overall frete": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "meta_custo_frete_has_meta": {
+			      "Binding": {
+			        "ConceptualEntity": "MetaCustoFrete"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "meta_custo_frete": {
+			          "Target": {
+			            "Entity": "meta_custo_frete"
+			          }
+			        },
+			        "meta_custo_frete.meta": {
+			          "Target": {
+			            "Entity": "meta_custo_frete.meta"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "meta_custo_frete"
+			            },
+			            "Object": {
+			              "Role": "meta_custo_frete.meta"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "meta_custo_fretes_have_meta"
+			        }
+			      ]
+			    },
+			    "meta_custo_frete_has_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "MetaCustoFrete"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "meta_custo_frete": {
+			          "Target": {
+			            "Entity": "meta_custo_frete"
+			          }
+			        },
+			        "meta_custo_frete.mê": {
+			          "Target": {
+			            "Entity": "meta_custo_frete.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "meta_custo_frete"
+			            },
+			            "Object": {
+			              "Role": "meta_custo_frete.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "meta_custo_fretes_have_mê"
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao_has_denominacao": {
+			      "Binding": {
+			        "ConceptualEntity": "tbNatOperacao"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_nat_operacao": {
+			          "Target": {
+			            "Entity": "tb_nat_operacao"
+			          }
+			        },
+			        "tb_nat_operacao.denominacao": {
+			          "Target": {
+			            "Entity": "tb_nat_operacao.denominacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_nat_operacao"
+			            },
+			            "Object": {
+			              "Role": "tb_nat_operacao.denominacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_nat_operacaos_have_denominacaos"
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao_has_tipo_nat": {
+			      "Binding": {
+			        "ConceptualEntity": "tbNatOperacao"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_nat_operacao": {
+			          "Target": {
+			            "Entity": "tb_nat_operacao"
+			          }
+			        },
+			        "tb_nat_operacao.tipo_nat": {
+			          "Target": {
+			            "Entity": "tb_nat_operacao.tipo_nat"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_nat_operacao"
+			            },
+			            "Object": {
+			              "Role": "tb_nat_operacao.tipo_nat"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_nat_operacaos_have_tipo_nat"
+			        }
+			      ]
+			    },
+			    "tb_nat_operacao_has_nat_operacao": {
+			      "Binding": {
+			        "ConceptualEntity": "tbNatOperacao"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_nat_operacao": {
+			          "Target": {
+			            "Entity": "tb_nat_operacao"
+			          }
+			        },
+			        "tb_nat_operacao.nat_operacao": {
+			          "Target": {
+			            "Entity": "tb_nat_operacao.nat_operacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_nat_operacao"
+			            },
+			            "Object": {
+			              "Role": "tb_nat_operacao.nat_operacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_nat_operacaos_have_nat_operacaos"
+			        }
+			      ]
+			    },
+			    "tb_regiõe_has_região": {
+			      "Binding": {
+			        "ConceptualEntity": "tbRegiões"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_regiõe": {
+			          "Target": {
+			            "Entity": "tb_regiõe"
+			          }
+			        },
+			        "tb_regiõe.região": {
+			          "Target": {
+			            "Entity": "tb_regiõe.região"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_regiõe"
+			            },
+			            "Object": {
+			              "Role": "tb_regiõe.região"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_regiões_have_regiãos"
+			        }
+			      ]
+			    },
+			    "tb_regiõe_has_descricao": {
+			      "Binding": {
+			        "ConceptualEntity": "tbRegiões"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_regiõe": {
+			          "Target": {
+			            "Entity": "tb_regiõe"
+			          }
+			        },
+			        "tb_regiõe.descricao": {
+			          "Target": {
+			            "Entity": "tb_regiõe.descricao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_regiõe"
+			            },
+			            "Object": {
+			              "Role": "tb_regiõe.descricao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_regiões_have_descricaos"
+			        }
+			      ]
+			    },
+			    "tb_regiõe_has_sigla": {
+			      "Binding": {
+			        "ConceptualEntity": "tbRegiões"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_regiõe": {
+			          "Target": {
+			            "Entity": "tb_regiõe"
+			          }
+			        },
+			        "tb_regiõe.sigla": {
+			          "Target": {
+			            "Entity": "tb_regiõe.sigla"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_regiõe"
+			            },
+			            "Object": {
+			              "Role": "tb_regiõe.sigla"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_regiões_have_siglas"
+			        }
+			      ]
+			    },
+			    "tb_regiõe_has_unidade_federativa": {
+			      "Binding": {
+			        "ConceptualEntity": "tbRegiões"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tb_regiõe": {
+			          "Target": {
+			            "Entity": "tb_regiõe"
+			          }
+			        },
+			        "tb_regiõe.unidade_federativa": {
+			          "Target": {
+			            "Entity": "tb_regiõe.unidade_federativa"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tb_regiõe"
+			            },
+			            "Object": {
+			              "Role": "tb_regiõe.unidade_federativa"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tb_regiões_have_unidade_federativas"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.0.0"
+			    }
+			  }
+			}
+		contentType: json
+

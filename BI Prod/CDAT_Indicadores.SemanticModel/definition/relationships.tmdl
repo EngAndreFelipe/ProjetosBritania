@@ -1,0 +1,42 @@
+relationship 74ae5a31-9981-dc60-2016-0f2287654650
+	fromColumn: f_Sgm.MesAno
+	toColumn: dCalendario.Calendario
+
+relationship a41bb56f-c73f-411a-95c6-870e61f0ee05
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Calendario
+	toColumn: LocalDateTable_c2378660-fcbc-4756-834b-1f2d18a931c0.Date
+
+relationship 8f979680-84f1-3559-df15-119db01ac056
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Parametros.IdIndicador
+	toColumn: f_IndicadoresDW.IdIndicador
+
+relationship e7491e15-7105-4dfc-90e1-b4593cf07156
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_IndicadoresDW.MesAno
+	toColumn: LocalDateTable_29461e08-70e8-4ec5-a563-0b667c1e5492.Date
+
+relationship AutoDetected_48f9c4f6-4512-41ce-ad03-775c7f6d47b4
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: f_2457DocExp.IdIndicador
+	toColumn: Parametros.IdIndicador
+
+relationship AutoDetected_5fdc3ee7-8635-4434-abb7-2df34ad3bd31
+	isActive: false
+	fromColumn: f_IndicadoresDW.Ano
+	toColumn: f_2457DocExp.Ano
+
+relationship AutoDetected_599ba3eb-4816-4616-8847-07a0f3efdee1
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: f_3917VendaDat.Ano
+	toColumn: f_2457DocExp.Ano
+
+relationship AutoDetected_d5022241-6716-4e6d-80a5-02fa34f1005f
+	isActive: false
+	fromColumn: f_IndicadoresDW.Mes
+	toColumn: f_3917VendaDat.Mes
+

@@ -1,0 +1,54 @@
+table Medidas
+	lineageTag: 03b7af66-0c5b-495c-8482-0931c5a3c66c
+
+	measure 'Notas Conferidas' =
+			
+			COUNTROWS(
+			    VALUES(ESWM0028[NumeroDocumento])
+			)
+		formatString: #,0
+		lineageTag: da14ba1a-e178-4385-bf03-bbdfac333e50
+
+	measure 'Pecas conferidas' = sum(ESWM0028[QuantidadeRecebimento])
+		formatString: #,0
+		lineageTag: 94886a59-6538-4158-8a7c-2af597423caa
+
+	measure 'Qtd Conferentes' = DISTINCTCOUNT(ESWM0028[Usuario])
+		formatString: 0
+		lineageTag: 08013f81-1c42-433c-a870-c66244232e6a
+
+	measure Medida = DISTINCTCOUNT(ESWM0028[DescricaoItem])
+		formatString: #,0
+		lineageTag: 4d5d9750-13b6-4ebb-adbe-115565e9e9a6
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure MaiorData =
+			
+			CALCULATE(
+			    MAX('ESWM0028'[DataImplantacao]),
+			    ALL('ESWM0028')
+			)
+		formatString: General Date
+		lineageTag: 067ba9f8-5bde-4975-88cb-b405228ca086
+
+	measure EhUltimaData =
+			
+			IF( MAX('ESWM0028'[DataImplantacao]) = [MaiorData], 1, 0 )
+		formatString: 0
+		lineageTag: 326d9f34-0b8b-4f9d-8335-4cc21cb96ce4
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

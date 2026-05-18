@@ -1,0 +1,51 @@
+table Dim_Tipo
+	lineageTag: 31b4d85a-da19-4ff9-ba2c-f948d40a8390
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2c0566b8-826c-40a0-8a11-12c3b27346f7
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 151bcf12-7f22-4deb-9657-0f5e830ee048
+			defaultHierarchy: LocalDateTable_be578087-424d-44c8-9d76-f33dfabce42c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Tipo
+		dataType: string
+		lineageTag: 0d4b0be3-39ef-4086-b1e1-0dc69ed86d38
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ocupação
+		dataType: double
+		lineageTag: d4b45c94-d3e2-4060-94f2-58700c17c25d
+		summarizeBy: sum
+		sourceColumn: Ocupação
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Dim_Tipo = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMjDWNzDTNzIwMlXSUQrILypJVAhIzEktSQVyDXQsjY0MlWJ10JVlJmdn5qWDVZiZmxlDVJgQMMgMizIUg0yBKmIB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Data = _t, Tipo = _t, Ocupação = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}, {"Ocupação", Percentage.Type}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Tipo Alterado", {"Tipo"})
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

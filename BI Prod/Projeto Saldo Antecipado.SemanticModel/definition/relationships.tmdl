@@ -1,0 +1,28 @@
+relationship 83dfa703-c51b-b465-ff63-68a4f2ca5593
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: FATO_FTB101_Saída.CodItem
+	toColumn: FATO_EXB023_Entrada.Item
+
+relationship 455f4623-5a51-e583-20c9-de2916bee879
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: FATO_FTB101_Saída.DescLinhaPai
+	toColumn: FATO_EXB023_Entrada.DescLinhaPai
+
+relationship 616dd985-547f-d434-6d5c-89909e0a5d98
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Consulta1.cod-item
+	toColumn: FATO_FTB101_Saída.CodItem
+
+relationship 42a2322b-d05a-4818-b7d3-760aa276761e
+	fromColumn: Planilha1.Date
+	toColumn: dCalendario.Date
+
+relationship 1518db54-ec13-4c86-57be-d7774b717844
+	isActive: false
+	fromColumn: FATO_FTB101_Saída.DtProgEmbarque
+	toColumn: dCalendario.Date
+

@@ -1,0 +1,111 @@
+table Dim_Data
+	excludeFromModelRefresh
+	lineageTag: 1ac1a5ca-bf19-4362-a254-194d15ffb95a
+
+	measure DiasPrazoRestante =
+			
+			VAR DataHoje = VALUE([HOJE])
+			VAR DataMeta = VALUE([MetaInvPrimeiroCiclo])
+			RETURN
+			COUNTROWS(
+			    FILTER(
+			        Dim_Data,
+			        Dim_Data[Data] >= DataHoje
+			            && Dim_Data[Data] <= DataMeta
+			    )
+			)
+		formatString: 0
+		lineageTag: 77570d45-38e0-4110-9170-7a91a886c2a6
+
+	measure MetaInvPrimeiroCiclo = DATE(2026, 2, 28)
+		formatString: General Date
+		lineageTag: 63e5849a-a752-49a2-bbc5-e9ca3fdeb752
+
+	measure MédiaPrevistaEnd = Dim_Endereco[EnderecosNaoContados] / [DiasPrazoRestante]
+		lineageTag: 43360ffd-c716-4e42-bae2-010e75e58519
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DataFinalPrevistaInventario =
+			
+			VAR DiasNecessarios = CEILING([PrevisãoDeDias], 1) -- arredonda para cima
+			VAR DataInicial = MIN('Fato_InvSegundoCiclo'[DataInventario])
+			RETURN
+			    CALCULATE (
+			        MAXX (
+			            TOPN (
+			                DiasNecessarios,
+			                FILTER (
+			                    'Dim_Data',
+			                    'Dim_Data'[Data] >= DataInicial
+			                ),
+			                'Dim_Data'[Data],
+			                ASC
+			            ),
+			            'Dim_Data'[Data]
+			        )
+			    )
+		formatString: General Date
+		lineageTag: 1e31e502-1162-4a23-ba97-bc8cdf25cc66
+
+	measure MetaInvSegundoCiclo = DATE(2026, 12, 31)
+		formatString: General Date
+		lineageTag: 28dc257d-0f74-49b6-b3bd-78399f6ef1ff
+
+	measure DiasAntesFinaliza = VALUE([MetaInvSegundoCiclo] - [DataFinalPrevistaInventario])
+		lineageTag: d130d074-1450-4e72-81b7-68f9368d6224
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: ac932f4a-ed47-40bd-a3ae-38f18463a4bc
+		summarizeBy: count
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 12e9421c-ed6e-44b7-a58e-1fb6db87064d
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 685198b1-405c-44c7-8815-4925e3347550
+			defaultHierarchy: LocalDateTable_ca9bf1ac-5736-4523-b1f3-428c42157911.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataMascara
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c8a1e8ea-1eec-48cb-b433-bb6068914586
+		summarizeBy: none
+		sourceColumn: DataMascara
+
+		variation Variation
+			isDefault
+			relationship: 76daf9b2-bc16-40b0-96e3-ae1ddef595ad
+			defaultHierarchy: LocalDateTable_398a1b6e-a227-4831-af3d-212f133ab29a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Dim_Data = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)       [Id]#(lf)      ,[Data]#(lf)      ,[DataMascara]#(lf)#(lf)  FROM [DW].[dbo].[Dim_Data]#(lf)  WHERE Feriado = 0#(lf)  AND DiaUtil = 1#(lf)  AND Data >= '2025-01-01'#(lf)"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataMascara", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

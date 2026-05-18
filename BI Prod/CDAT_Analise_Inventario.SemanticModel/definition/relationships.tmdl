@@ -1,0 +1,403 @@
+relationship bcb38082-68e4-4e3a-91b3-6f4afb26763c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Cronograma.'Data Inventário '
+	toColumn: LocalDateTable_eefa9f2d-fbbd-4779-b1c9-d2d96f47703b.Date
+
+relationship 9b31b2f1-08b9-4c56-86c5-b29d46b10b3c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_WMS.DataCarga
+	toColumn: LocalDateTable_a9fdee9e-5341-4e5a-8cb7-ec7664baf72b.Date
+
+relationship ce74d8cb-299e-6f23-3693-31f849be71b5
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Cancelados.Código
+	toColumn: Dim_Precos.Item
+
+relationship 03b56ad8-4731-cde3-62cb-327d271512c0
+	fromColumn: Fato_Cronograma.Código
+	toColumn: Dim_WMS.Item
+
+relationship 554ffbbd-cb98-9282-ca19-19cc7e24c0b3
+	fromColumn: Fato_Cronograma.Código
+	toColumn: Dim_AAT.Item
+
+relationship 1b641e3b-940b-8ca8-6ad2-9f61333a6fdf
+	fromColumn: Fato_Cronograma.Código
+	toColumn: Dim_DCV.Item
+
+relationship 3921bf62-239e-9818-4308-95814e15e7e1
+	crossFilteringBehavior: bothDirections
+	fromColumn: Fato_Cronograma.Código
+	toColumn: Dim_Precos.Item
+
+relationship d8278bc1-17e9-e902-024e-5b796538175d
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Cronograma.Código
+	toColumn: Fato_WMS.Item
+
+relationship b552bd60-8ecb-d417-1885-6a1218251c70
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Contabil.Item
+	toColumn: Fato_WMS.Item
+
+relationship b399cfbd-8f4a-63b8-2414-d0419bdcdef7
+	fromColumn: Fato_WMS.Item
+	toColumn: Dim_WMS.Item
+
+relationship 7e2d56ce-43f8-c732-ce29-81c729c2c31d
+	fromColumn: Fato_WMS.Item
+	toColumn: Dim_AAT.Item
+
+relationship 6dd9a6ce-63a8-fe1b-ebc3-cfc8e7bf2b4f
+	fromColumn: Fato_WMS.Item
+	toColumn: Dim_DCV.Item
+
+relationship 90a68175-bc2e-1b80-968c-7305dfdc2748
+	fromColumn: Fato_WMS.Item
+	toColumn: Dim_REC.Item
+
+relationship a33e284d-5a17-6e52-e0c2-4feb3274e3f2
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Precos.Item
+	toColumn: Dim_DCV.Item
+
+relationship 8e81fc2d-7216-c794-aaa0-b6dcb56b6e57
+	isActive: false
+	fromColumn: Fato_WMS.Item
+	toColumn: Dim_Precos.Item
+
+relationship 1d106280-7652-aa4b-8e79-a5cf3a401612
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_AAT.Item
+	toColumn: Dim_Precos.Item
+
+relationship 10cb3e85-bc9f-76b0-a7cf-406e22a3ba6f
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_WMS.Item
+	toColumn: Dim_Precos.Item
+
+relationship 6f2d6e66-aa9e-1cef-1bdb-ab36ed1ed251
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_REC.Item
+	toColumn: Dim_Precos.Item
+
+relationship 58cc9255-3e4f-d914-79ef-87cc59fbccca
+	isActive: false
+	fromColumn: Fato_Contabil.Item
+	toColumn: Dim_Precos.Item
+
+relationship 4fd50d8d-4ef7-47f8-b72a-a58907bc12d9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_CarteiraDCV.DataCarga
+	toColumn: LocalDateTable_1500ad37-2d06-49b7-901a-718713d5a042.Date
+
+relationship 4458cb30-d399-4704-994d-f814ca3647e5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_DCV.UltimaEntDCV
+	toColumn: LocalDateTable_b2fd973a-3d81-4ec0-ad7d-794c84913707.Date
+
+relationship 7fd9ada9-98a9-4806-a04c-23ac02e81fd8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_DCV.PrimeiraEntDCV
+	toColumn: LocalDateTable_67d30de8-d083-439f-bd0a-d3f9f6dd4187.Date
+
+relationship 685198b1-405c-44c7-8815-4925e3347550
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Data.Data
+	toColumn: LocalDateTable_ca9bf1ac-5736-4523-b1f3-428c42157911.Date
+
+relationship 76daf9b2-bc16-40b0-96e3-ae1ddef595ad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Data.DataMascara
+	toColumn: LocalDateTable_398a1b6e-a227-4831-af3d-212f133ab29a.Date
+
+relationship ecbe5877-93f1-d2e9-8ab6-5f1e1c0451f0
+	fromColumn: Fato_Mov_Inv.Item
+	toColumn: Dim_UltimaMov.it_codigo
+
+relationship b05c8f79-a385-af8a-325b-97a6eab34b82
+	fromColumn: Fato_Mov_Inv.Item
+	toColumn: Dim_Saldos.CodItem
+
+relationship c0eacb1d-585c-4411-a6f6-02a565fc466a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Inv.DataImplant
+	toColumn: LocalDateTable_39216eae-85db-406e-a9a5-3e4be7958b3c.Date
+
+relationship b578d183-e8d2-0e53-ee13-db18281ec1de
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_UltimaMov.it_codigo
+	toColumn: Dim_AAT.Item
+
+relationship ffa7cf48-a714-e83b-4b8f-9ed7b8b97dab
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_DCV.Item
+	toColumn: Dim_UltimaMov.it_codigo
+
+relationship 1c760636-72f8-494e-ad2e-74f1b32e41ec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Inv.DataCarga
+	toColumn: LocalDateTable_15ec86a7-edfc-4736-843b-e2c757f0e359.Date
+
+relationship b3b7c57f-e0e7-4ae1-8db3-2a047f17a33a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_UltimaMov.dt_transf
+	toColumn: LocalDateTable_64ceffc8-9661-4f23-8206-c9e094ac21cb.Date
+
+relationship 92b5c8fe-b9cd-4399-a461-d3419759515a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvSegundoCiclo.DataCarga
+	toColumn: LocalDateTable_62ec6fa2-646f-4cb0-82d3-f45c8f7a1544.Date
+
+relationship AutoDetected_1b05b7d2-2735-46ef-933c-4cb78e4432dd
+	fromColumn: Fato_InvSegundoCiclo.Item
+	toColumn: Dim_Precos.Item
+
+relationship AutoDetected_31ef9903-a4f9-44a6-9bd8-2190308708c5
+	fromColumn: Fato_InvSegundoCiclo.Item
+	toColumn: Dim_UltimaMov.it_codigo
+
+relationship AutoDetected_fd45c41d-d979-41bc-8949-f72c115d214e
+	fromColumn: Fato_InvSegundoCiclo.IdBox
+	toColumn: Dim_Endereco.IdBox
+
+relationship 7ff6d174-26e4-cf15-ea38-9057662b0c99
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Produtividade_Usuarios.Usuario
+	toColumn: Dim_Usuarios.Usuario
+
+relationship 871f712f-3bbc-4d07-a7e9-f7cd0bfc3475
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvSegundoCiclo.DataInventario
+	toColumn: LocalDateTable_3d05d529-8c9f-4790-b798-c100531e07da.Date
+
+relationship ebf84dad-7d2b-48a4-bfd7-bf3c94a39a4f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Produtividade_Usuarios.DataInventario
+	toColumn: LocalDateTable_4bc9bf21-af16-4856-a6b0-0b230b7ef512.Date
+
+relationship 51322eec-7544-488c-82c4-e939cda5bc1d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_CarteiraDCV.DataImplantacao
+	toColumn: LocalDateTable_c8aac7cd-e790-4d3a-b7a5-4b96d8cf1fbc.Date
+
+relationship 5093be93-e1c3-4527-8c5c-3ada44f0e4f6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_CarteiraDCV.DataOS
+	toColumn: LocalDateTable_597a01e5-bc5b-4f58-8f79-4510a13a2441.Date
+
+relationship de8e8c80-64e8-4c44-aa8e-563420dcf35c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvSegundoCiclo.ContagemMaisRecente
+	toColumn: LocalDateTable_ac565b3d-4e77-40dc-85d8-badceef43f2b.Date
+
+relationship 9324a0f9-64d3-4bd6-a957-59a039eefa02
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.DataInventario
+	toColumn: LocalDateTable_fd317b11-6f69-4a54-b618-ba80129e0ee0.Date
+
+relationship 75334de4-67bb-4bbe-8249-99d3552c5793
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.DataLeitura
+	toColumn: LocalDateTable_cb5eef7a-70f7-47c0-bb02-e072a03cabcb.Date
+
+relationship 6d4b3898-5ef1-4260-aea4-08fc8ce86dd7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.HoraLeitura1
+	toColumn: LocalDateTable_dd020afa-1179-4cb7-bea3-6ae6d86e9ddf.Date
+
+relationship 128d2e95-58dc-4a9f-9755-183bb8963e56
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.HoraLeitura2
+	toColumn: LocalDateTable_dd541b59-fcd0-46af-81c3-cb04c4e1f7f5.Date
+
+relationship 1c01ea99-4821-42c8-b5f2-b3e30c3b9da9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.HoraLeitura3
+	toColumn: LocalDateTable_8d1d81fe-ac81-4a58-96a9-1bae1154c5b7.Date
+
+relationship 397de045-7f5e-44f6-b5b3-a1b1d29e80ca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.DataCarga
+	toColumn: LocalDateTable_34e98de1-027e-45e4-8267-e083ec0c5820.Date
+
+relationship 8e04f290-f6cc-4852-b5a8-edc6e360fb88
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_InvPrimeiroCiclo.ContagemMaisRecente
+	toColumn: LocalDateTable_2387c83a-2da5-4e58-9247-77a6b5fd4d3f.Date
+
+relationship AutoDetected_7851b1a4-e14d-4aa1-932d-5a3ae3e9d461
+	fromColumn: Fato_InvPrimeiroCiclo.Item
+	toColumn: Dim_Precos.Item
+
+relationship AutoDetected_72bf5b16-b748-4ba8-9714-e848466f24d2
+	fromColumn: Fato_InvPrimeiroCiclo.Item
+	toColumn: Dim_UltimaMov.it_codigo
+
+relationship AutoDetected_2f434b35-c06b-4bbb-80df-d5e43b3f23c0
+	toCardinality: many
+	fromColumn: Fato_InvPrimeiroCiclo.Usuario1
+	toColumn: Dim_Usuarios.Usuario
+
+relationship AutoDetected_ccb4c60a-51ef-4f53-812d-f70b8d3f6cb6
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Prioridade.IdBox
+	toColumn: Dim_Endereco.IdBox
+
+relationship 45543a4e-6cc3-e9d8-e7b1-b6c7721e9005
+	toCardinality: many
+	fromColumn: Fato_InvSegundoCiclo.Usuario1
+	toColumn: Dim_Usuarios.Usuario
+
+relationship a41b21ff-8c5a-476f-9733-ef34dd633994
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Usuarios.De
+	toColumn: LocalDateTable_21d0e7bc-84b3-441f-8274-0d65db93ca43.Date
+
+relationship 245b7951-8382-4a08-8ac4-58e02126cc72
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Usuarios.Até
+	toColumn: LocalDateTable_2c6bb081-3f1d-4519-b8da-5ec9b24568b2.Date
+
+relationship 93c70f0f-db11-47b8-b479-45b7e58e4884
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_DocumentoObs.DataImplantacao
+	toColumn: LocalDateTable_af6b76a2-eb18-4aec-8613-3b980f756656.Date
+
+relationship 8fbea17c-c193-47e7-94db-d08275e48792
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_DocumentoObs.DataCarga
+	toColumn: LocalDateTable_dd712383-c443-4edd-af79-5edbfab11521.Date
+
+relationship AutoDetected_c3161a9c-4117-4fdf-8bd8-4a9be399636c
+	isActive: false
+	fromColumn: Fato_DocumentoObs.Item
+	toColumn: Dim_Precos.Item
+
+relationship AutoDetected_8e812141-fc58-40c7-a5fd-11cfece0faf4
+	isActive: false
+	fromColumn: Fato_DocumentoObs.Item
+	toColumn: Dim_UltimaMov.it_codigo
+
+relationship 7a97e805-a229-7a31-6f25-f13620b6cdbf
+	fromColumn: Fato_DocumentoObs.Item
+	toColumn: Dim_Saldos.CodItem
+
+relationship e489ab24-b814-4e83-4c47-aef12584f938
+	fromColumn: Fato_DocumentoObs.Item
+	toColumn: Dim_AAT.Item
+
+relationship b605aa29-67ea-4e17-2733-b0e2ee918885
+	fromColumn: Fato_DocumentoObs.Item
+	toColumn: Dim_DCV.Item
+
+relationship 7ef8409c-722a-d901-f365-16b24ca8e222
+	fromColumn: Fato_DocumentoObs.Item
+	toColumn: Dim_WMS.Item
+
+relationship 618a1579-77db-4e78-8dee-c49334434ffa
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_WMS.Item
+	toColumn: Fato_DocumentoObs.Item
+
+relationship 87de9b6e-eea7-f20b-2ea2-b9f308c19127
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_WMS.Item
+	toColumn: Dim_ContabilGeral.Item
+
+relationship db89790c-5c94-0e94-2141-6f651d68256d
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_InvSegundoCiclo.Rua
+	toColumn: Fato_InvPrimeiroCiclo.Rua
+
+relationship 94d30301-c307-4de7-bdb3-86e524391cf2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: UltimaDataPorBoxCiclo.UltimaData
+	toColumn: LocalDateTable_1e8f33f1-4975-4857-9c32-acc996c9a19b.Date
+
+relationship 746b5b4a-2bc8-4131-989d-944a89b39a48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: InventarioUnificado.DataInventario
+	toColumn: LocalDateTable_c64b43ce-1ea7-40ab-a5da-4dd35c5de16e.Date
+
+relationship ecd3998a-71db-4f25-9768-6d5195c8f135
+	joinOnDateBehavior: datePartOnly
+	fromColumn: InvCiclico2026.DataInventario
+	toColumn: LocalDateTable_020c3b2f-115d-4d2d-8d5b-cfb88e72dd78.Date
+
+relationship 2c91dc0b-511d-a633-cddf-64e717a3ceea
+	fromColumn: InvCiclico2026.ChaveItem
+	toColumn: Dim_Cancelados.ChaveItem
+
+relationship cbf446d3-c183-4083-a840-108a0d530e57
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Cancelados.'Data Cancelado'
+	toColumn: LocalDateTable_af51884f-87e2-4b3c-a12f-3367a438e5e6.Date
+
+relationship 57eabc69-d477-f909-66ea-ba36644a3649
+	fromColumn: InventarioUnificado.IdBox
+	toColumn: Dim_Endereco.IdBox
+
+relationship AutoDetected_665d3781-40e1-4d61-8e91-dcf6df8f7791
+	fromColumn: Fato_HistoricoDCV.CodItem
+	toColumn: Dim_Saldos.CodItem
+
+relationship 649a5a69-4016-433a-92b7-9d4e36f39fee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_HistoricoDCV.Data
+	toColumn: LocalDateTable_299a5e95-0437-4442-aaf7-8ae7fe72d44b.Date
+
+relationship 346b559e-d66a-4398-a22d-460ff40da56a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_IndicadoresCic.DataFormatada
+	toColumn: LocalDateTable_5c9ee4df-c0d0-4586-86e1-d443b4350ac0.Date
+
+relationship AutoDetected_07240695-f9b6-4d70-acd1-153e5864eb89
+	fromColumn: Fato_IndicadoresCic.CodItem
+	toColumn: Dim_Saldos.CodItem
+
+relationship 10e01ee2-03f1-49c1-a133-dd1acdf6bfd6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PreInventario2026.DataInventario
+	toColumn: LocalDateTable_0c095a8b-861b-4703-97e9-6eedf7f7ff22.Date
+
+relationship AutoDetected_22149e1b-3018-4514-8c03-73ae6b7bbd1d
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_ATE.Item
+	toColumn: Dim_ContabilGeral.Item
+
+relationship AutoDetected_975c7e4b-a1c5-4c4e-89f6-1450c144f1ed
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_ATE.Item
+	toColumn: Dim_Precos.Item
+
+relationship AutoDetected_2f04b713-e5d5-46e5-ac63-da366b65d462
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_ATE.Item
+	toColumn: Dim_UltimaMov.it_codigo
+

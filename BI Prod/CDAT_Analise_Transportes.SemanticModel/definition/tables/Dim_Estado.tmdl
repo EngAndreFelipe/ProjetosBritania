@@ -1,0 +1,52 @@
+table Dim_Estado
+	lineageTag: ad480582-20ae-41ae-b44e-bb131a2b48f3
+
+	column UF
+		dataType: string
+		lineageTag: c54adece-cbe2-4503-a201-912b74c57ee9
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescRegiao
+		dataType: string
+		lineageTag: e745de09-a255-4342-a920-d85b74785d4e
+		summarizeBy: none
+		sourceColumn: DescRegiao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescEstado
+		dataType: string
+		lineageTag: 258eb07e-ad4b-4d44-be95-fd5556069853
+		summarizeBy: none
+		sourceColumn: DescEstado
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'DescRegiao Hierarquia'
+		lineageTag: 290222df-d928-4dc3-8927-fd37905c7001
+
+		level DescRegiao
+			lineageTag: 7aa4cfe1-2636-4af7-8502-4389a44d3299
+			column: DescRegiao
+
+		level UF
+			lineageTag: 464fa760-56eb-450c-ad15-12bcf92e2b10
+			column: UF
+
+	partition Dim_Estado = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW"),
+				    dbo_Dim_Estado = Fonte{[Schema="dbo",Item="Dim_Estado"]}[Data],
+				    #"Columns removed by Measure Killer"= Table.SelectColumns(dbo_Dim_Estado,{"UF", "DescEstado", "DescRegiao"})
+				in
+				    #"Columns removed by Measure Killer"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

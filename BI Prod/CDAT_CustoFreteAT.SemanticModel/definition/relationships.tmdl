@@ -1,0 +1,27 @@
+relationship 35cf1a88-e29d-4fb0-ac54-360ff4915b07
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dwGTB201.DataEmissao
+	toColumn: LocalDateTable_345e99c4-201d-4063-b45f-c4206e39ca79.Date
+
+relationship 6c361d11-b1ca-48af-a28f-3a1e820f8d86
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dwGTB201.DataRomaneio
+	toColumn: LocalDateTable_15d4b179-ec90-475e-a4e1-c526754202fd.Date
+
+relationship b64b2484-06d2-badb-a52e-e4b630613a25
+	fromColumn: dwGTB201.MesRef
+	toColumn: MetaCustoFrete.Mês
+
+relationship df53a3c9-9981-a7a7-09e4-97d9cbde7c42
+	fromColumn: dwGTB201.NatOperacao
+	toColumn: tbNatOperacao.NatOperacao
+
+relationship 538d755b-bff7-f81a-f5d5-5eaf094f6fb6
+	fromColumn: dwGTB201.UfDestino
+	toColumn: tbRegiões.Sigla
+
+relationship 4c09ea62-9839-4548-92e4-23b98d926efd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dwGTB201.DataSaida
+	toColumn: LocalDateTable_d9514c1e-865c-4d9e-88e1-50c45af0dd03.Date
+

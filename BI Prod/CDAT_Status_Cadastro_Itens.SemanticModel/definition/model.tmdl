@@ -1,0 +1,21 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Fato_Cadastro"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_Cadastro
+ref table DateTableTemplate_c1f405f2-afdc-430e-989f-2ed97a728927
+ref table LocalDateTable_af894933-c5e2-481e-86d9-fbd95cb60daf
+ref table Medida
+
+ref cultureInfo pt-BR
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CDAT_Indicadores"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e3744ef3-5a8c-4277-baed-1e694f286804"
+  }
+}

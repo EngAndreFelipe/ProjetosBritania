@@ -1,0 +1,416 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c2f088f8836e8ea7d2ec",
+  "position": {
+    "x": 67.485021967780582,
+    "y": 51.53401677539609,
+    "z": 0,
+    "height": 668.7152176807349,
+    "width": 1212.2763946212222,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "EmissaoNF"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.EmissaoNF",
+              "nativeQueryRef": "EmissaoNF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "NumeroNF"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.NumeroNF",
+              "nativeQueryRef": "NumeroNF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "SerieNF"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.SerieNF",
+              "nativeQueryRef": "SerieNF"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "TipoPagamento"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.TipoPagamento",
+              "nativeQueryRef": "TipoPagamento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "Transportadora"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.Transportadora",
+              "nativeQueryRef": "Transportadora"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "Cidade"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.Cidade",
+              "nativeQueryRef": "Cidade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.Estado",
+              "nativeQueryRef": "Estado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "ChaveAcesso"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.ChaveAcesso",
+              "nativeQueryRef": "ChaveAcesso"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "DataSaida"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.DataSaida",
+              "nativeQueryRef": "DataSaida"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_NotaCobranca"
+                    }
+                  },
+                  "Property": "DataEntregaCliente"
+                }
+              },
+              "queryRef": "Fato_NotaCobranca.DataEntregaCliente",
+              "nativeQueryRef": "DataEntregaCliente"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fato_NotaCobranca"
+                  }
+                },
+                "Property": "DataSaida"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 7,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "230.3179402038213D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_AcompEntregas.NumeroOS"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "317.4799171171238D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_AcompEntregas.NumeroPedido"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.79099988023223D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_AcompEntregas.DataEmissaoNotaFiscal"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.37995949220382D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_AcompEntregas.DiasUteisAtraso)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.61846320912709D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_AcompEntregas.DiasUteisRestantes)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

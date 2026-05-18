@@ -1,0 +1,82 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Dim_Saldos","Fato_Cronograma","Fato_WMS","Dim_Cancelados","Dim_Endereco","Dim_DCV","Dim_AAT","Dim_WMS","Dim_Precos","Dim_REC","Fato_Contabil","Dim_Usuarios","Fato_CarteiraDCV","Dim_Data","Fato_Mov_Inv","Dim_UltimaMov","Fato_InvSegundoCiclo","Fato_InvPrimeiroCiclo","Dim_Prioridade","Fato_DocumentoObs","Dim_ContabilGeral","Fato_IndicadoresCic","Fato_HistoricoDCV","Dim_ATE"]
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop","TMDLView_Desktop"]
+
+ref table Dim_Saldos
+ref table Fato_Cronograma
+ref table DateTableTemplate_7e2f1e3b-fb55-472b-80a2-78b486129a05
+ref table LocalDateTable_eefa9f2d-fbbd-4779-b1c9-d2d96f47703b
+ref table Fato_WMS
+ref table LocalDateTable_a9fdee9e-5341-4e5a-8cb7-ec7664baf72b
+ref table Dim_Cancelados
+ref table Dim_Endereco
+ref table Dim_DCV
+ref table Dim_AAT
+ref table Dim_WMS
+ref table Dim_Precos
+ref table Dim_REC
+ref table Fato_Contabil
+ref table Produtividade_Usuarios
+ref table Dim_Usuarios
+ref table Fato_CarteiraDCV
+ref table LocalDateTable_1500ad37-2d06-49b7-901a-718713d5a042
+ref table LocalDateTable_b2fd973a-3d81-4ec0-ad7d-794c84913707
+ref table LocalDateTable_67d30de8-d083-439f-bd0a-d3f9f6dd4187
+ref table Dim_Data
+ref table LocalDateTable_ca9bf1ac-5736-4523-b1f3-428c42157911
+ref table LocalDateTable_398a1b6e-a227-4831-af3d-212f133ab29a
+ref table Fato_Mov_Inv
+ref table Dim_UltimaMov
+ref table LocalDateTable_39216eae-85db-406e-a9a5-3e4be7958b3c
+ref table LocalDateTable_15ec86a7-edfc-4736-843b-e2c757f0e359
+ref table LocalDateTable_64ceffc8-9661-4f23-8206-c9e094ac21cb
+ref table Fato_InvSegundoCiclo
+ref table LocalDateTable_62ec6fa2-646f-4cb0-82d3-f45c8f7a1544
+ref table LocalDateTable_3d05d529-8c9f-4790-b798-c100531e07da
+ref table LocalDateTable_4bc9bf21-af16-4856-a6b0-0b230b7ef512
+ref table LocalDateTable_c8aac7cd-e790-4d3a-b7a5-4b96d8cf1fbc
+ref table LocalDateTable_597a01e5-bc5b-4f58-8f79-4510a13a2441
+ref table LocalDateTable_ac565b3d-4e77-40dc-85d8-badceef43f2b
+ref table Fato_InvPrimeiroCiclo
+ref table LocalDateTable_fd317b11-6f69-4a54-b618-ba80129e0ee0
+ref table LocalDateTable_cb5eef7a-70f7-47c0-bb02-e072a03cabcb
+ref table LocalDateTable_dd020afa-1179-4cb7-bea3-6ae6d86e9ddf
+ref table LocalDateTable_dd541b59-fcd0-46af-81c3-cb04c4e1f7f5
+ref table LocalDateTable_8d1d81fe-ac81-4a58-96a9-1bae1154c5b7
+ref table LocalDateTable_34e98de1-027e-45e4-8267-e083ec0c5820
+ref table LocalDateTable_2387c83a-2da5-4e58-9247-77a6b5fd4d3f
+ref table InventarioUnificado
+ref table Dim_Prioridade
+ref table LocalDateTable_21d0e7bc-84b3-441f-8274-0d65db93ca43
+ref table LocalDateTable_2c6bb081-3f1d-4519-b8da-5ec9b24568b2
+ref table Fato_DocumentoObs
+ref table LocalDateTable_af6b76a2-eb18-4aec-8613-3b980f756656
+ref table LocalDateTable_dd712383-c443-4edd-af79-5edbfab11521
+ref table Dim_ContabilGeral
+ref table UltimaDataPorBoxCiclo
+ref table LocalDateTable_1e8f33f1-4975-4857-9c32-acc996c9a19b
+ref table Fato_IndicadoresCic
+ref table LocalDateTable_c64b43ce-1ea7-40ab-a5da-4dd35c5de16e
+ref table InvCiclico2026
+ref table LocalDateTable_020c3b2f-115d-4d2d-8d5b-cfb88e72dd78
+ref table LocalDateTable_af51884f-87e2-4b3c-a12f-3367a438e5e6
+ref table Fato_HistoricoDCV
+ref table LocalDateTable_299a5e95-0437-4442-aaf7-8ae7fe72d44b
+ref table LocalDateTable_5c9ee4df-c0d0-4586-86e1-d443b4350ac0
+ref table PreInventario2026
+ref table LocalDateTable_0c095a8b-861b-4703-97e9-6eedf7f7ff22
+ref table Dim_ATE
+
+ref cultureInfo pt-BR
+

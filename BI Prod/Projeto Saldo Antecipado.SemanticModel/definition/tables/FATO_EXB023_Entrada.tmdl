@@ -1,0 +1,112 @@
+table FATO_EXB023_Entrada
+	lineageTag: dfb13db8-0438-4170-9a64-2dfff2806f95
+
+	measure Estoque = SUMX(FILTER('tot MovtoEstoq',''))
+		lineageTag: eb1b2a42-f091-4cc8-ae47-5e470a5862f0
+
+	measure 'soma entrada' = SUM(Planilha1[Entrada])
+		formatString: #,0
+		lineageTag: ee25ba4b-892c-4a61-a285-aaca6e016da4
+
+	measure 'soma saida' = SUM(Planilha1[Saída])
+		formatString: 0
+		lineageTag: 882e97d1-fd68-49e8-8480-25b4122a940e
+
+	measure 'soma capacidade' = ```
+			[soma entrada] + [soma saida] 
+			```
+		formatString: #,0
+		lineageTag: 93172301-0d53-46a9-aa30-555c427a4ab9
+
+	measure 'saldo do dia' = [soma capacidade] - Tabela[saldo]
+		formatString: #,0
+		lineageTag: f0336489-9d55-4150-8611-1db1ed370b1b
+
+	column DataProgramacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ad04353d-eac3-4539-a009-3aee555baba3
+		summarizeBy: none
+		sourceColumn: DataProgramacao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Container
+		dataType: string
+		lineageTag: 675bb24c-5003-4194-b1b7-7753a26bb429
+		summarizeBy: none
+		sourceColumn: Container
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeNFE
+		dataType: int64
+		formatString: 0
+		lineageTag: cfb4424b-015f-48ba-8be8-380ae6f51628
+		summarizeBy: sum
+		sourceColumn: QtdeNFE
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: a5af9979-78ec-4185-8044-739a57904eb0
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 9760415c-e47e-4029-af41-b04cff3ce5ac
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescricaodoItem
+		dataType: string
+		lineageTag: 0ffb929b-7c7a-4839-9b09-6cd025710186
+		summarizeBy: none
+		sourceColumn: DescricaodoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusProg
+		dataType: string
+		lineageTag: f7328a0c-5284-435e-be99-5b3c8e04c4e0
+		summarizeBy: none
+		sourceColumn: StatusProg
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sta
+		type: calculated
+		lineageTag: 494fd625-9855-4bff-a60d-69cb37174d01
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescLinhaPai
+		dataType: string
+		lineageTag: b3850400-1e5a-477e-baac-dd28d853797d
+		summarizeBy: none
+		sourceColumn: DescLinhaPai
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FATO_EXB023_Entrada = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT DISTINCT#(lf)#(tab)DataProgramacao,#(lf)#(tab)Container,#(lf)#(tab)QtdeNFE,#(lf)#(tab)[Status],#(lf)#(tab)Item,#(lf)#(tab)StatusProg,#(lf)#(tab)DescricaodoItem,#(lf)#(tab)DescLinhaPai#(lf)FROM logistica.Fato_EXB023"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataProgramacao", type date}, {"QtdeNFE", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

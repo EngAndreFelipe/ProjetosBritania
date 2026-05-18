@@ -1,0 +1,48 @@
+table Fato_Estoque_Contabil
+	lineageTag: a425fe51-b40d-439a-a356-ee54a78ffb6b
+
+	column Item
+		dataType: string
+		lineageTag: 303497d8-fb3b-4204-9351-47785a79506c
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: cf8196a9-e035-4e08-901c-ef59fa7acbb9
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Depósito
+		dataType: string
+		lineageTag: d7503af3-e621-4b0c-aa30-dbee8119bf7d
+		summarizeBy: none
+		sourceColumn: Depósito
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: c1d9bbc0-27d5-47c0-8fbb-0f4c3828f3bd
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Estoque_Contabil = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "STAGE", [Query="SELECT #(lf)  S.[it-codigo] AS 'Item',#(lf)  I.[DescItem] AS 'Descrição',#(lf)  CONVERT(INT,S.[qtidade-atu],0) AS 'Quantidade',#(lf)  UPPER(S.[cod-depos]) AS 'Depósito'#(lf)FROM #(lf)  STAGE.tot.SaldoEstoq AS S#(lf)LEFT JOIN #(lf)  DW.dbo.Dim_Item AS I ON S.[it-codigo] = I.[CodItem]#(lf)WHERE #(lf)  S.[cod-depos] IN ('DCV','AAT','AIR','ATE','DAT','DES','RCB','REC','NAT','DEV') #(lf)  AND S.[cod-estabel] = '15' #(lf)  AND S.[qtidade-atu] <> 0;"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

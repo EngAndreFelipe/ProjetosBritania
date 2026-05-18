@@ -1,0 +1,206 @@
+table Fato_Serial
+	lineageTag: 45210419-c009-4f50-848e-d5375dd03e3a
+
+	measure QtdEtiquetasPorBox =
+			
+			CALCULATE (
+			    DISTINCTCOUNT ( Fato_Serial[id-etiqueta] ),
+			    ALLEXCEPT ( Fato_Serial, Fato_Serial[id-box] ),
+			    NOT ISBLANK ( Fato_Serial[id-etiqueta] )
+			)
+		formatString: 0
+		lineageTag: 5baace91-3177-4844-8641-8da59fe5ce1b
+
+	measure ContagemIdBox = DISTINCTCOUNT(Fato_Serial[id-box])
+		formatString: 0
+		lineageTag: 461c8394-69bc-4603-a12e-50f6adc7130d
+
+	column cod-local
+		dataType: string
+		lineageTag: 4487c2d1-eb68-4688-bda8-6a20114b96e5
+		summarizeBy: none
+		sourceColumn: cod-local
+
+		annotation SummarizationSetBy = Automatic
+
+	column id-box
+		dataType: int64
+		formatString: 0
+		lineageTag: 09666740-615c-49c3-b711-1335cc4300c6
+		summarizeBy: none
+		sourceColumn: id-box
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-item
+		dataType: string
+		lineageTag: 3345214c-7568-421a-a8b9-4ca9a47a2d62
+		summarizeBy: none
+		sourceColumn: cod-item
+
+		annotation SummarizationSetBy = Automatic
+
+	column id-saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: e4123f72-92eb-4e0a-b763-a8a2cfb4fb6d
+		summarizeBy: sum
+		sourceColumn: id-saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column id-docto
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e157d58-efc8-4a5d-8f62-0f33108c809c
+		summarizeBy: sum
+		sourceColumn: id-docto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario
+		dataType: string
+		lineageTag: a016f8a9-487c-4027-9422-58672dd95d40
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: d1f57ce0-a44a-44f0-9fac-0d4eaafe739d
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ind-status-saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: 760a4c4c-3cb8-40ba-a874-c7146c318b66
+		summarizeBy: sum
+		sourceColumn: ind-status-saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column desc-status-saldo
+		dataType: string
+		lineageTag: 0c433355-183f-4465-bbfa-abe27dd76dd6
+		summarizeBy: none
+		sourceColumn: desc-status-saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-bloco
+		dataType: string
+		lineageTag: 98f269d5-d16b-4314-9023-bd74ce225ad9
+		summarizeBy: none
+		sourceColumn: cod-bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-rua
+		dataType: string
+		lineageTag: 6f5cc2c5-1ab7-41fe-94f7-dbbcc2faa4ec
+		summarizeBy: none
+		sourceColumn: cod-rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-nivel
+		dataType: string
+		lineageTag: 0ff7fe11-cafb-4cd2-a5af-23186a0d0a52
+		summarizeBy: none
+		sourceColumn: cod-nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-coluna
+		dataType: string
+		lineageTag: debe998c-9d0f-48ac-a4ba-45c013912799
+		summarizeBy: none
+		sourceColumn: cod-coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column cdn-tipo-box
+		dataType: int64
+		formatString: 0
+		lineageTag: 58261d5e-ed34-40b6-8749-39fbfc901cc6
+		summarizeBy: sum
+		sourceColumn: cdn-tipo-box
+
+		annotation SummarizationSetBy = Automatic
+
+	column id-etiqueta
+		dataType: int64
+		formatString: 0
+		lineageTag: 473bc405-5870-4cc3-a63a-2450aef4a805
+		summarizeBy: sum
+		sourceColumn: id-etiqueta
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 532ecd67-3e35-438f-8bd2-e6a924e22e67
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: da612c33-dc67-4d71-a93c-dac46f5442e0
+			defaultHierarchy: LocalDateTable_744c23ea-1eeb-4dbd-aea5-9cac01dd3d2b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enderecos_Completo =
+			
+			COALESCE(Fato_Serial[cod-bloco], "") & "/" &
+			COALESCE(Fato_Serial[cod-rua], "") & "/" &
+			COALESCE(Fato_Serial[cod-nivel], "") & "/" &
+			COALESCE(Fato_Serial[cod-coluna], "")
+		lineageTag: 78f484d0-064b-43eb-aff3-ebe46df35772
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column desc-item
+		dataType: string
+		lineageTag: c335bf4a-4f9f-4d82-9be0-e56cc1c3ac93
+		summarizeBy: none
+		sourceColumn: desc-item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEtiqueta
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2e4e794e-9319-4400-9e2d-020f3126f5e1
+		summarizeBy: none
+		sourceColumn: DataEtiqueta
+
+		variation Variation
+			isDefault
+			relationship: a46f6bf5-cd4e-4a9e-bbf1-dc60431b0a2d
+			defaultHierarchy: LocalDateTable_7acdd2e6-bfe5-48ae-a5af-c5c5d48490ce.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Fato_Serial = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "STAGE", [Query="SELECT BoxSaldo.[cod-local],#(lf)#(tab)   BoxSaldo.[id-box],#(lf)#(tab)   BoxSaldo.[cod-item],#(lf)#(tab)   IT.[desc-item],#(lf)#(tab)   BoxSaldo.[id-saldo],#(lf)#(tab)   BoxSaldo.[id-docto],#(lf)#(tab)   DOCS.Usuario,#(lf)#(tab)   CAST(BoxSaldo.[qtd-item] - BoxSaldo.[qtd-item-bloq] AS INT) AS Saldo,#(lf)#(tab)   BoxSaldo.[ind-status-saldo],#(lf)#(tab)   CASE BoxSaldo.[ind-status-saldo]#(lf)#(tab)   WHEN '2' THEN 'Destinado'#(lf)#(tab)   WHEN '3' THEN 'Liberado'#(lf)#(tab)   ELSE 'Outro'#(lf)#(tab)   END AS [desc-status-saldo],#(lf)#(tab)   Box.[cod-bloco],#(lf)#(tab)   Box.[cod-rua],#(lf)#(tab)   Box.[cod-nivel],#(lf)#(tab)   Box.[cod-coluna],#(lf)#(tab)   Box.[cdn-tipo-box],#(lf)#(tab)   BoxSaldoEtiqueta.[id-etiqueta],#(lf)#(tab)   CAST(BoxSaldoEtiqueta.[dt-ent-saldo] AS DATE) AS DataEtiqueta,#(lf)#(tab)   BoxSaldoEtiqueta.DataCarga#(lf)FROM STAGE.tot.WmBoxSaldo AS BoxSaldo#(lf)LEFT JOIN STAGE.tot.WmBox AS Box#(lf)ON Box.[id-box] = BoxSaldo.[id-box]#(lf)AND Box.[cod-local] = BoxSaldo.[cod-local]#(lf)LEFT JOIN STAGE.tot.WmBoxSaldoEtiqueta AS BoxSaldoEtiqueta#(lf)ON BoxSaldoEtiqueta.[id-box] = BoxSaldo.[id-box]#(lf)AND BoxSaldoEtiqueta.[cod-local] = BoxSaldo.[cod-local]#(lf)AND BoxSaldoEtiqueta.[id-saldo] = BoxSaldo.[id-saldo]#(lf)LEFT JOIN (#(lf)    SELECT #(lf)        Documento, #(lf)        Item, #(lf)        IdEndereco, #(lf)        MAX(Usuario2) AS Usuario#(lf)    FROM DW.logistica.Fato_Mov_Estoque_PA_AT#(lf)    GROUP BY Documento, Item, IdEndereco#(lf)) AS DOCS#(lf)ON DOCS.Documento = BoxSaldo.[id-docto]#(lf)AND DOCS.Item = BoxSaldo.[cod-item]#(lf)AND DOCS.IdEndereco = BoxSaldo.[id-box]#(lf)LEFT JOIN (#(lf)    SELECT [it-codigo], MAX([desc-item]) AS [desc-item]#(lf)    FROM STAGE.tot.Item#(lf)    GROUP BY [it-codigo]#(lf)) AS IT#(lf)ON IT.[it-codigo] = BoxSaldo.[cod-item]#(lf)WHERE BoxSaldo.[cod-local] = 'AAT'"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"cod-local", type text}, {"id-box", Int64.Type}, {"cod-item", type text}, {"id-saldo", Int64.Type}, {"id-docto", Int64.Type}, {"Usuario", type text}, {"Saldo", Int64.Type}, {"ind-status-saldo", Int64.Type}, {"desc-status-saldo", type text}, {"cod-bloco", type text}, {"cod-rua", type text}, {"cod-nivel", type text}, {"cod-coluna", type text}, {"cdn-tipo-box", Int64.Type}, {"id-etiqueta", Int64.Type}, {"DataCarga", type datetime}, {"DataEtiqueta", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

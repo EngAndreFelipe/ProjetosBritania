@@ -1,0 +1,28 @@
+table Peso_Simulado
+	lineageTag: 67f3a4e3-64e2-4e09-a41a-535895ebcaed
+
+	measure 'Valor Peso_Simulados' = SELECTEDVALUE('Peso_Simulado'[Peso_Simulados], 1)
+		lineageTag: 3d753a7e-15ae-4e99-9c40-a84cf6773636
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Peso_Simulados
+		lineageTag: ddbf6283-98e5-405e-adb9-c855ec06be8f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Peso_Simulado = calculated
+		mode: import
+		source = GENERATESERIES(0, 5000, 0.1)
+
+	annotation PBI_Id = 595ca63180c446c68bcf8d3c13d83865
+

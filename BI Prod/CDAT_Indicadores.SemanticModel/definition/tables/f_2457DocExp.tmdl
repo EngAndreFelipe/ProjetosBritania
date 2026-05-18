@@ -1,0 +1,74 @@
+table f_2457DocExp
+	lineageTag: 532296ee-ea8f-4282-8829-397480dcdf24
+
+	column IdIndicador
+		dataType: string
+		lineageTag: 6256f227-eaa5-43d7-a73a-e616232d858e
+		summarizeBy: none
+		sourceColumn: IdIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: f895db9c-1736-4b57-9e09-625ed8ec5f4a
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 216b4684-ea50-4ba4-91c2-d6c6a7994c1d
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealizadoNumerador
+		dataType: int64
+		formatString: 0
+		lineageTag: 27b2aa4d-c28e-460c-ac89-d841b81ffe6f
+		summarizeBy: sum
+		sourceColumn: RealizadoNumerador
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealizadoDenominador
+		dataType: int64
+		formatString: 0
+		lineageTag: bdea6ce5-e14f-49d0-8df8-91532c8351cf
+		summarizeBy: sum
+		sourceColumn: RealizadoDenominador
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_2457DocExp = m
+		mode: import
+		queryGroup: AltPlanilha
+		source = ```
+				let
+				    Fonte = Folder.Files(Pasta),
+				    #"\\10 0 10 7\compartilhado\bi at logistica\ID_Documentos\_Relatorio_de_Documentos xlsx" = Fonte{[#"Folder Path"="\\10.0.10.7\compartilhado\bi at logistica\ID_Documentos\",Name="Relatorio_de_Documentos.xlsx"]}[Content],
+				    PlanDoc = Excel.Workbook(#"\\10 0 10 7\compartilhado\bi at logistica\ID_Documentos\_Relatorio_de_Documentos xlsx"),
+				    Sheet1_Sheet = PlanDoc{[Item="Sheet1",Kind="Sheet"]}[Data][[Column1], [Column7], [Column9], [Column10]],
+				    CabPromovidos = Table.PromoteHeaders(Table.Skip(Sheet1_Sheet,2)),
+				    TipoAlterado = Table.SelectRows(Table.TransformColumnTypes(CabPromovidos,{{"Código", type text}, {"Data de vigência", type date}, {"Situação", type text}, {"Envio em", type datetime}}),each ([Situação] <> "Bloqueado")),
+				    DocExpirado = Table.AddColumn(TipoAlterado, "Expirado", each 
+				        try 
+				            if DateTime.Date(DateTime.LocalNow()) > [Data de vigência] then 1 else 0 
+				        otherwise 0
+				    , Int64.Type),
+				    FiltroDW = Sql.Database("PR-S188\DW", "DW", [Query="SELECT  '2457' IdIndicador#(lf)#(tab),MIN(Ano) Ano#(lf)#(tab),MIN(Mes) Mes#(lf)FROM DW.AT.GestaoMetas#(lf)WHERE IdIndicador = '2457' -- AT.CD.2457 - % DOCUMENTOS EXPIRADOS CD-AT LOGÍSTICA#(lf)#(tab)AND RealizadoNumerador IS NULL;"]),
+				    #"Personalização Adicionada" = Table.AddColumn(FiltroDW, "RealizadoNumerador", each List.Sum(DocExpirado[Expirado]), Int64.Type),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Personalização Adicionada", "RealizadoDenominador", each List.Count(List.Distinct(DocExpirado[Código])), Int64.Type)
+				in
+				    #"Personalização Adicionada1"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

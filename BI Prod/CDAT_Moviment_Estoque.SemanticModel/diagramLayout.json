@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 23.25
+          },
+          "nodeIndex": "Fato_Estoque_WMS",
+          "nodeLineageTag": "babc77fe-9ea7-47af-9f57-ec32f72d4adb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 733.93851944792982,
+            "y": 0
+          },
+          "nodeIndex": "Dim_Data",
+          "nodeLineageTag": "7e376406-be70-45de-99d6-edabdc19b44b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1228,
+            "y": 248.25
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "f91ed095-b75d-41a6-9cd0-cd8e23c2709b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 381,
+            "y": 0
+          },
+          "nodeIndex": "Fato_Mov_Geral_WMS",
+          "nodeLineageTag": "76a7e969-f938-42ec-91b1-7f5719910543",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 319.74071397290169,
+            "y": 443.75285196897352
+          },
+          "nodeIndex": "Dim_Item",
+          "nodeLineageTag": "02d121ec-370e-48e8-b3de-d4c3033ff476",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 345.28479657387561,
+            "y": 684.63445596307349
+          },
+          "nodeIndex": "Fato_Mov_Geral_Contabil",
+          "nodeLineageTag": "eefe6b7e-0151-40c7-afc1-60ad88878a7d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 787.11777301927191,
+            "y": 649.39645710359252
+          },
+          "nodeIndex": "Fato_Estoque_Contabil",
+          "nodeLineageTag": "a425fe51-b40d-439a-a356-ee54a78ffb6b",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 6
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 57.940446650124066,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

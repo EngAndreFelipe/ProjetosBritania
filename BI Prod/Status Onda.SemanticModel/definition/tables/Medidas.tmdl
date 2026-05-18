@@ -1,0 +1,177 @@
+table Medidas
+	lineageTag: 5c60bade-c00f-407c-98ed-39878acf6b7b
+
+	measure '# Itens' = SUM(Fato_Onda[qt-faturada])
+		formatString: #,0
+		lineageTag: ceaebc8f-5401-4138-b468-b9855bbd439f
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Ordenação Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    MAX(Fato_Onda[StatusOnda]) = "null", 6,
+			    MAX(Fato_Onda[StatusOnda]) = "Em Separação", 1,
+			    MAX(Fato_Onda[StatusOnda]) = "Conferido Linha", 2,
+			    MAX(Fato_Onda[StatusOnda]) = "Stage Conferência", 3,
+			    MAX(Fato_Onda[StatusOnda]) = "Expedido" && MAX(Fato_Onda[DataSaida]) = "null", 4,
+			    MAX(Fato_Onda[StatusOnda]) = "Expedido" , 5,
+			    MAX(Fato_Onda[StatusOnda]) = "Não Integrado", 0)
+		formatString: 0
+		lineageTag: 1abd041f-af41-41a7-9914-c8df55e0c8dc
+
+	measure Standard = 1
+		formatString: 0
+		lineageTag: 07281ed6-3064-4fc3-a8e2-f3101efae1bb
+
+	measure 'Standard line Higligth' = ```
+			
+			VAR vStatusSelecionado = 
+			    SELECTEDVALUE(Fato_Onda[StatusOnda])
+			VAR vStatusOnda =
+			    CALCULATE(
+			        MAX('Dim_Ordenacao_Status'[IdStatusOnda]),
+			        'Dim_Ordenacao_Status'[StatusOnda] = vStatusSelecionado)
+			VAR vResultado =
+			    IF
+			    (SELECTEDVALUE(Dim_Ordenacao_Status[IdStatusOnda]) <= vStatusOnda,
+			    [Standard]
+			    )
+			
+			
+			RETURN
+			vResultado
+			
+			```
+		formatString: 0
+		lineageTag: 57c39f69-e721-4fbd-85a7-d910c3d6d7a1
+
+	measure '# Separação' =
+			
+			CALCULATE(
+			    [# Itens],
+			    FILTER(Fato_Onda,Fato_Onda[StatusOnda] = "Em Separação"))
+		formatString: #,0
+		lineageTag: 047d5f51-4625-4181-a643-adcb491771f2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '# Conferido Linha' =
+			
+			CALCULATE(
+			    [# Itens],
+			    FILTER(Fato_Onda,Fato_Onda[StatusOnda] = "Conferido Linha"))
+		formatString: #,0
+		lineageTag: 7aa6819f-3e79-4103-a7b7-58e1986a66e1
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '# Expedido' =
+			
+			CALCULATE(
+			    [# Itens],
+			    FILTER(Fato_Onda,Fato_Onda[StatusOnda] = "Expedido"))
+		formatString: #,0
+		lineageTag: c51768df-bb4c-43ff-a633-4f4155c197bc
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '# Não Integrado' =
+			
+			CALCULATE(
+			    [# Itens],
+			    FILTER(Fato_Onda,Fato_Onda[StatusOnda] = "Não Integrado"))
+		formatString: #,0
+		lineageTag: 8ae002e3-f613-4efc-8f4a-d8081a3f9563
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '# Stage Conferência' =
+			
+			CALCULATE(
+			    [# Itens],
+			    FILTER(Fato_Onda,Fato_Onda[StatusOnda] = "Stage Conferência"))
+		formatString: #,0
+		lineageTag: e9e0085c-730b-47c6-a3ef-444481fe5cb4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Não Integrado' = DIVIDE([# Não Integrado],[# Itens],BLANK())
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 56844ed2-06d1-4448-a540-3cf499e5d749
+
+	measure '% Em Separação' = DIVIDE([# Separação],[# Itens], BLANK())
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4dcb6692-8052-4a7b-87f4-f6757c34541b
+
+	measure '% Stage Conferencia' = DIVIDE([# Stage Conferência],[# Itens],BLANK()) + [% Em Separação]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 779d5ebd-5f97-4869-a0ab-e2d48b2ba89f
+
+	measure '% Conferido Linha' = DIVIDE([# Conferido Linha],[# Itens],BLANK()) + [% Stage Conferencia]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 90ddb819-6ec5-4f97-b0f5-f33c3e7095cd
+
+	measure '% Expedido' = 1 - DIVIDE([# Expedido], [# Itens], BLANK())
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6db2dda2-4fc5-40e0-8479-3978b88d53f5
+
+	measure '# Onda' = DISTINCTCOUNTNOBLANK(Fato_Onda[num-docto])
+		formatString: 0
+		lineageTag: 9ae2d447-f1fb-4afc-ba54-97238d103521
+
+	measure '# Onda s/ Expedição' =
+			
+			CALCULATE(
+			    [# Onda],
+			    FILTER(Fato_Onda,Fato_Onda[StatusOnda] <> "Expedido"
+			    ))
+		formatString: 0
+		lineageTag: 97cbacf4-4c43-40f6-9cd8-8d8a50c3f0b8
+
+	measure 'NF Selecionada' = SELECTEDVALUE(Fato_Onda[nr-nota-fis])
+		lineageTag: ba116246-42dd-49bc-94b5-5e7c2a22f0a0
+
+	measure 'Dt Emissão Selecionada' = SELECTEDVALUE(Fato_Onda[DataEmissaoNotaFiscal])
+		formatString: Short Date
+		lineageTag: 19139bb8-682c-4560-8b74-ea61e5ad424d
+
+	measure 'Hr Emissão Selecionada' = SELECTEDVALUE(Fato_Onda[HoraEmissaoNotaFiscal])
+		formatString: Short Time
+		lineageTag: 9e191f0f-2b02-405c-b5f6-47c05e45cbe2
+
+	measure 'FC % Capacidade Fonte' = ```
+			
+			VAR vLogAgrupado = MAX(Fato_Onda[log-agrupado])
+			
+			RETURN
+			 
+			SWITCH(
+			    TRUE(),
+			    vLogAgrupado = TRUE(), "#CD9A33",
+			    "")
+			```
+		formatString: 0
+		lineageTag: 1c8fde11-2117-49f6-adba-c8c0e5325bf9
+
+	measure '# Qtde NF' = DISTINCTCOUNT(Fato_Onda[nr-nota-fis])
+		formatString: 0
+		lineageTag: e8c67862-5fa7-4565-a681-b6f7b061fa26
+
+	measure '# Cubagem' = SUM(Fato_Onda[CubagemPrevista])
+		formatString: #,0.000
+		lineageTag: d1009ae1-3376-4b80-8b70-fc314e4a6682
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

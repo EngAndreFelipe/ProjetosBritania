@@ -1,0 +1,87 @@
+table Fato_Agrupamento
+	lineageTag: b319c4c2-ecc6-49e3-a8d1-865af1b129d7
+
+	column Item
+		dataType: string
+		lineageTag: 6cd557b1-d103-48aa-8013-495e9ac06602
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: 2bbebc4e-001c-4086-bea9-ed90b33c6701
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Disponivel
+		dataType: string
+		lineageTag: accdfab5-db03-4962-ae2c-69d155037b74
+		summarizeBy: none
+		sourceColumn: Total_Disponivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Enderecos_Distintos
+		dataType: int64
+		formatString: 0
+		lineageTag: c6b9b8bf-d478-4664-9cd9-afbe3f1d11df
+		summarizeBy: sum
+		sourceColumn: Total_Enderecos_Distintos
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 95a72233-6908-4223-a57a-9befca5ff877
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: cf996ed2-943e-4890-892f-c6a1a153cdf8
+			defaultHierarchy: LocalDateTable_8fa7e053-ba7b-4a90-8b72-969f8f3b8e70.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Agrupamento = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Value.NativeQuery(
+				        Sql.Database("PR-S188\DW", "DW"),
+				        "
+				        SELECT 
+				            Item,
+				            Descricao,
+				            FORMAT(SUM(Disponivel), 'N0', 'pt-BR') AS Total_Disponivel,
+				            COUNT(DISTINCT Endereco) AS Total_Enderecos_Distintos,
+				            DataCarga
+				        FROM 
+				            logistica.Fato_ESWM9022
+				        WHERE 
+				            Local = 'AAT'
+				        GROUP BY 
+				            Item,
+				            Descricao,
+				            DataCarga
+				
+				        ",
+				        null,
+				        [EnableFolding = true]
+				    ),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+				in
+				    #"Linhas Filtradas"
+				```
+
+	annotation PBI_IsMQueryFoldable = True
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

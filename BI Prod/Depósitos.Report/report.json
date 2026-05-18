@@ -1,0 +1,331 @@
+{
+  "config": "{\"version\":\"5.37\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY20SU09\",\"version\":\"5.15\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"exportDataMode\":1,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "publicCustomVisuals": [],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY20SU09",
+            "path": "BaseThemes/CY20SU09.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Depósitos Transitórios",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection0eb3322dda99c5c7d070",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"507567717ea27adb7029\",\"layouts\":[{\"id\":0,\"position\":{\"x\":214.40643863179073,\"y\":91.26760563380282,\"z\":1000,\"width\":312.9175050301811,\"height\":88.37022132796781}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.DescItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"}]},\"columnProperties\":{\"Dim_Item.DescItem\":{\"displayName\":\"Descrição Item\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 88.37,
+          "width": 312.92,
+          "x": 214.41,
+          "y": 91.27,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"8ac2f3e354100042a322\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":178.56,\"z\":6000,\"width\":1280.16,\"height\":541.44}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodItem\"},{\"queryRef\":\"Dim_Item.DescItem\"},{\"queryRef\":\"Dim_Deposito.CodigoDeposito\"},{\"queryRef\":\"Sum(Fato_Estoque.QuantidadeDisponivel)\"},{\"queryRef\":\"Fato_Movimento.DT ULT_ENTRADA\"},{\"queryRef\":\"Fato_Movimento.DT ULT SAÍDA\"},{\"queryRef\":\"Fato_Movimento.QT DIAS\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Estoque\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"Fato_Movimento\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0},{\"Name\":\"d2\",\"Entity\":\"Dim_Deposito\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"QuantidadeDisponivel\"}},\"Function\":0},\"Name\":\"Sum(Fato_Estoque.QuantidadeDisponivel)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"QT DIAS\"},\"Name\":\"Fato_Movimento.QT DIAS\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"},\"Name\":\"Dim_Item.CodItem\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"CodigoDeposito\"},\"Name\":\"Dim_Deposito.CodigoDeposito\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"DT ULT SAÍDA\"},\"Name\":\"Fato_Movimento.DT ULT SAÍDA\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"DT ULT_ENTRADA\"},\"Name\":\"Fato_Movimento.DT ULT_ENTRADA\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"}}}]},\"columnProperties\":{\"Sum(Fato_Estoque.QuantidadeDisponivel)\":{\"displayName\":\"Saldo\"},\"Dim_Item.CodItem\":{\"displayName\":\"Item\"},\"Dim_Item.DescItem\":{\"displayName\":\"Descrição Item\"},\"Dim_Deposito.CodigoDeposito\":{\"displayName\":\"Depósito\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{},\"selector\":{\"metadata\":\"Sum(Fato_Estoque.QuantidadeDisponivel)\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"519.8798866431274D\"}}}},\"selector\":{\"metadata\":\"Dim_Item.DescItem\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"124.44000092160059D\"}}}},\"selector\":{\"metadata\":\"Dim_Item.CodItem\"}}],\"grid\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}}}}],\"values\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"total\":[{\"properties\":{\"totals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Estoque\"}},\"Property\":\"QuantidadeDisponivel\"}},\"Function\":0}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_Estoque\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"QuantidadeDisponivel\"}},\"Function\":0}},\"Right\":{\"Literal\":{\"Value\":\"0L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 541.44,
+          "width": 1280.16,
+          "x": 0.00,
+          "y": 178.56,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"a82c0094e9c0e186d2a3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":3000,\"width\":1280,\"height\":90.72164948453609}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Monitoramento dos Depósitos Transitórios\",\"textStyle\":{\"fontSize\":\"40pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 90.72,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"ad2803d66c05ad118a7d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":527.3239436619718,\"y\":91.26760563380282,\"z\":2000,\"width\":199.91951710261569,\"height\":88.37022132796781}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Deposito.CodigoDeposito\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Deposito\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodigoDeposito\"},\"Name\":\"Dim_Deposito.CodigoDeposito\"}]},\"columnProperties\":{\"Dim_Deposito.CodigoDeposito\":{\"displayName\":\"Depósito\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 88.37,
+          "width": 199.92,
+          "x": 527.32,
+          "y": 91.27,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"b740b0d06b476238cd20\",\"layouts\":[{\"id\":0,\"position\":{\"x\":727.2434607645876,\"y\":91.26760563380282,\"z\":4000,\"width\":308.57142857142856,\"height\":88.37022132796781}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Deposito.Nome\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Deposito\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Nome\"},\"Name\":\"Dim_Deposito.Nome\"}]},\"columnProperties\":{\"Dim_Deposito.Nome\":{\"displayName\":\"Descrição Depósito\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 88.37,
+          "width": 308.57,
+          "x": 727.24,
+          "y": 91.27,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"e6496ec6432141812705\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":91.26760563380282,\"z\":0,\"width\":214.40643863179073,\"height\":88.37022132796781}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"},\"Name\":\"Dim_Item.CodItem\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"}}}]},\"columnProperties\":{\"Dim_Item.CodItem\":{\"displayName\":\"Item\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 88.37,
+          "width": 214.41,
+          "x": 0.00,
+          "y": 91.27,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"fa2b82b6021d09e3e9d9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1035.8148893360162,\"y\":91.26760563380282,\"z\":5000,\"width\":244.82897384305835,\"height\":88.37022132796781}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodObsoleto\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodObsoleto\"},\"Name\":\"Dim_Item.CodObsoleto\"}]},\"columnProperties\":{\"Dim_Item.CodObsoleto\":{\"displayName\":\"Obsoleto\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 88.37,
+          "width": 244.83,
+          "x": 1035.81,
+          "y": 91.27,
+          "z": 5000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"visibility\":1}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection8a5a631e473a1d3d5698",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"2815766778abe9c26153\",\"layouts\":[{\"id\":0,\"position\":{\"x\":956.6332665330661,\"y\":0,\"z\":5000,\"width\":204.88977955911824,\"height\":66.37274549098197}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DIM_Item.itCodigo\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DIM_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"itCodigo\"},\"Name\":\"DIM_Item.itCodigo\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DIM_Item\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"itCodigo\"}},\"Right\":{\"Literal\":{\"Value\":\"'21149'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 66.37,
+          "width": 204.89,
+          "x": 956.63,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"30347eb0bcc7c98c56ae\",\"layouts\":[{\"id\":0,\"position\":{\"x\":744.5,\"y\":0,\"width\":205,\"height\":720,\"z\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_PcPMaster.itcodigo\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_PcPMaster\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"itcodigo\"},\"Name\":\"Fato_PcPMaster.itcodigo\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_PcPMaster\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"itcodigo\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'020838'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 720.00,
+          "width": 205.00,
+          "x": 744.50,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"5fec3649d4b55db1d17c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":492.0240480961924,\"y\":0,\"z\":2000,\"width\":252.5050100200401,\"height\":720}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DIM_Item.itCodigo\"},{\"queryRef\":\"Sum(Fato_PCPMaster2.producao)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DIM_Item\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fato_PCPMaster2\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"itCodigo\"},\"Name\":\"DIM_Item.itCodigo\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"producao\"}},\"Function\":0},\"Name\":\"Sum(Fato_PCPMaster2.producao)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"producao\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 720.00,
+          "width": 252.51,
+          "x": 492.02,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"900c19087ee53e702ba0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":180.3607214428858,\"y\":0,\"z\":1000,\"width\":311.6633266533066,\"height\":720}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Fato_PCPMaster2.itcodigo\"},{\"queryRef\":\"Sum(Fato_PCPMaster2.producao)\"},{\"queryRef\":\"Fato_PCPMaster2.Tipo\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_PCPMaster2\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"itcodigo\"},\"Name\":\"Fato_PCPMaster2.itcodigo\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"producao\"}},\"Function\":0},\"Name\":\"Sum(Fato_PCPMaster2.producao)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Tipo\"},\"Name\":\"Fato_PCPMaster2.Tipo\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"itcodigo\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 720.00,
+          "width": 311.66,
+          "x": 180.36,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"9ca8eed2a29c2db2b69c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1161.5230460921844,\"y\":0,\"z\":3000,\"width\":118.31663326653307,\"height\":77.91583166332666}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.AnoMes\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AnoMes\"},\"Name\":\"Date.AnoMes\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AnoMes\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'2021-May'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 77.92,
+          "width": 118.32,
+          "x": 1161.52,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"b9dbe7eeacfe5184dfd3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.100200400801603,\"y\":0,\"z\":0,\"width\":170.26052104208418,\"height\":720}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(Fato_PcPMaster.produzido)\"},{\"queryRef\":\"Fato_PcPMaster.itcodigo\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fato_PcPMaster\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"produzido\"}},\"Function\":0},\"Name\":\"Sum(Fato_PcPMaster.produzido)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"itcodigo\"},\"Name\":\"Fato_PcPMaster.itcodigo\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 720.00,
+          "width": 170.26,
+          "x": 10.10,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"195L\"}}}}}]}}",
+      "displayName": "Análise de Estoques",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection8c0d384a28590db19d70",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"01d467a850780bbbbabc\",\"layouts\":[{\"id\":0,\"position\":{\"x\":210.24,\"y\":110.88000000000001,\"z\":7000,\"width\":172.8,\"height\":83.52}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.DescItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"}]},\"columnProperties\":{\"Dim_Item.DescItem\":{\"displayName\":\"Descrição Item\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 83.52,
+          "width": 172.80,
+          "x": 210.24,
+          "y": 110.88,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"521349d55a1a328e5492\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":192.70718232044197,\"z\":0,\"width\":1280,\"height\":526.8508287292817}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodItem\"},{\"queryRef\":\"Dim_Item.DescItem\"},{\"queryRef\":\"Medidas.# PROD PCP\"},{\"queryRef\":\"Medidas.# Reportada\"},{\"queryRef\":\"Medidas.# PCPxRep\"},{\"queryRef\":\"Medidas.# CONS\"},{\"queryRef\":\"Medidas.# VAR ESTOQUE\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# Reportada\"},\"Name\":\"Medidas.# Reportada\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# CONS\"},\"Name\":\"Medidas.# CONS\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PROD PCP\"},\"Name\":\"Medidas.# PROD PCP\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# VAR ESTOQUE\"},\"Name\":\"Medidas.# VAR ESTOQUE\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PCP x Rep\"},\"Name\":\"Medidas.# PCPxRep\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"},\"Name\":\"Dim_Item.CodItem\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PROD PCP\"}}}]},\"columnProperties\":{\"Medidas.# PROD PCP\":{\"displayName\":\"PCP\"},\"Medidas.# Reportada\":{\"displayName\":\"# REP\"},\"Medidas.# VAR ESTOQUE\":{\"displayName\":\"# VAR EST\"},\"Dim_Item.CodItem\":{\"displayName\":\"Item\"},\"Dim_Item.DescItem\":{\"displayName\":\"Descrição\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"111.85436893203882D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}},\"Right\":{\"Literal\":{\"Value\":\"'Entrada'\"}}}}}]}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"106.98058252427184D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}},\"Right\":{\"Literal\":{\"Value\":\"'Saida'\"}}}}}]}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"125.02912621359224D\"}}}},\"selector\":{\"data\":[{\"total\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}}]}]}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"96.6116504854369D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}},\"Right\":{\"Literal\":{\"Value\":\"'Entrada'\"}}}}}],\"metadata\":\"Fato_Movimento.MEASURE\"}},{\"properties\":{},\"selector\":{\"metadata\":\"Medidas.# Reportada\"}}],\"values\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"grid\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}],\"columnHeaders\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 526.85,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 192.71,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"54eba403a1fe9863c36e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1087.9678068410462,\"y\":110.10060362173039,\"z\":6000,\"width\":192.67605633802816,\"height\":82.57545271629779}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.AnoMes\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AnoMes\"},\"Name\":\"Date.AnoMes\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 82.58,
+          "width": 192.68,
+          "x": 1087.97,
+          "y": 110.10,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"71c39d40351d137e0324\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":110.88000000000001,\"z\":8000,\"width\":210.24,\"height\":83.52}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"},\"Name\":\"Dim_Item.CodItem\"}]},\"columnProperties\":{\"Dim_Item.CodItem\":{\"displayName\":\"Item\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 83.52,
+          "width": 210.24,
+          "x": 0.00,
+          "y": 110.88,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"8620d9af8cb193a6249b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":737.3843058350101,\"y\":110.10060362173039,\"z\":4000,\"width\":221.64989939637826,\"height\":82.57545271629779}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.DescGrupoEstoque\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescGrupoEstoque\"},\"Name\":\"Dim_Item.DescGrupoEstoque\"}]},\"columnProperties\":{\"Dim_Item.DescGrupoEstoque\":{\"displayName\":\"Grupo Estoque\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 82.58,
+          "width": 221.65,
+          "x": 737.38,
+          "y": 110.10,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"8f1b3d2203049bd1cca6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":383.04,\"y\":110.88000000000001,\"z\":3000,\"width\":139.68,\"height\":83.52}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Deposito.CodigoDeposito\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Deposito\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodigoDeposito\"},\"Name\":\"Dim_Deposito.CodigoDeposito\"}]},\"columnProperties\":{\"Dim_Deposito.CodigoDeposito\":{\"displayName\":\"Depósito\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 83.52,
+          "width": 139.68,
+          "x": 383.04,
+          "y": 110.88,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"ade4bbbba0cd3a2892fe\",\"layouts\":[{\"id\":0,\"position\":{\"x\":522.72,\"y\":110.88000000000001,\"z\":1000,\"width\":214.56,\"height\":84.96000000000001}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Deposito.Nome\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Deposito\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Nome\"},\"Name\":\"Dim_Deposito.Nome\"}]},\"columnProperties\":{\"Dim_Deposito.Nome\":{\"displayName\":\"Descrição Depósito\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 84.96,
+          "width": 214.56,
+          "x": 522.72,
+          "y": 110.88,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"d8c71cf5a0abf45fb26a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":382.45472837022135,\"y\":10.140845070422536,\"z\":2000,\"width\":505.59356136820924,\"height\":81.12676056338029}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Análise de Estoques\",\"textStyle\":{\"fontSize\":\"40pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 81.13,
+          "width": 505.59,
+          "x": 382.45,
+          "y": 10.14,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"e5990c5a7a368ce74310\",\"layouts\":[{\"id\":0,\"position\":{\"x\":959.0342052313883,\"y\":110.10060362173039,\"z\":5000,\"width\":128.93360160965796,\"height\":82.57545271629779}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodObsoleto\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodObsoleto\"},\"Name\":\"Dim_Item.CodObsoleto\"}]},\"columnProperties\":{\"Dim_Item.CodObsoleto\":{\"displayName\":\"Obsoleto\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 82.58,
+          "width": 128.93,
+          "x": 959.03,
+          "y": 110.10,
+          "z": 5000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"195L\"}}}}}]}}",
+      "displayName": "SAPP",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection9cf7435d8269533939a1",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"28272367d3b48bf178a5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":613.44,\"y\":192.96,\"z\":4000,\"width\":665.28,\"height\":527.04}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Medidas.# PROD SAPP\"}],\"Category\":[{\"queryRef\":\"Dim_Item.DescItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PROD SAPP\"},\"Name\":\"Medidas.# PROD SAPP\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PROD SAPP\"}}}]},\"columnProperties\":{\"Medidas.# PROD SAPP\":{\"displayName\":\"SAPP\"}},\"drillFilterOtherVisuals\":true,\"objects\":{},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Produção SAPP'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 527.04,
+          "width": 665.28,
+          "x": 613.44,
+          "y": 192.96,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"521349d55a1a328e5492\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":192.96,\"z\":0,\"width\":613.44,\"height\":527.04}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodItem\"},{\"queryRef\":\"Dim_Item.DescItem\"},{\"queryRef\":\"Medidas.# PROD SAPP\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PROD SAPP\"},\"Name\":\"Medidas.# PROD SAPP\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"},\"Name\":\"Dim_Item.CodItem\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"# PROD SAPP\"}}}]},\"columnProperties\":{\"Medidas.# PROD SAPP\":{\"displayName\":\"SAPP\"},\"Dim_Item.CodItem\":{\"displayName\":\"Item\"},\"Dim_Item.DescItem\":{\"displayName\":\"Descricão\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"111.85436893203882D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}},\"Right\":{\"Literal\":{\"Value\":\"'Entrada'\"}}}}}]}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"106.98058252427184D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}},\"Right\":{\"Literal\":{\"Value\":\"'Saida'\"}}}}}]}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"125.02912621359224D\"}}}},\"selector\":{\"data\":[{\"total\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}}]}]}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"96.6116504854369D\"}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fato_Movimento\"}},\"Property\":\"descTrans\"}},\"Right\":{\"Literal\":{\"Value\":\"'Entrada'\"}}}}}],\"metadata\":\"Fato_Movimento.MEASURE\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"355.99997695998525D\"}}}},\"selector\":{\"metadata\":\"Dim_Item.DescItem\"}}],\"values\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}},\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"grid\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}}}}],\"columnHeaders\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 527.04,
+          "width": 613.44,
+          "x": 0.00,
+          "y": 192.96,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"59640463cd21def9141c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1051.7505030181087,\"y\":110.10060362173039,\"z\":5000,\"width\":228.89336016096578,\"height\":82.57545271629779}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.AnoMes\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"AnoMes\"},\"Name\":\"Date.AnoMes\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 82.58,
+          "width": 228.89,
+          "x": 1051.75,
+          "y": 110.10,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"8620d9af8cb193a6249b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":593.9637826961771,\"y\":110.10060362173039,\"z\":3000,\"width\":457.78672032193157,\"height\":82.57545271629779}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.DescGrupoEstoque\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescGrupoEstoque\"},\"Name\":\"Dim_Item.DescGrupoEstoque\"}]},\"columnProperties\":{\"Dim_Item.DescGrupoEstoque\":{\"displayName\":\"Grupo Estoque\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 82.58,
+          "width": 457.79,
+          "x": 593.96,
+          "y": 110.10,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"b21e028f567ce0390380\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":110.14341590612777,\"z\":6000,\"width\":270.35202086049543,\"height\":83.44198174706649}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.CodItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CodItem\"},\"Name\":\"Dim_Item.CodItem\"}]},\"columnProperties\":{\"Dim_Item.CodItem\":{\"displayName\":\"Item\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 83.44,
+          "width": 270.35,
+          "x": 0.00,
+          "y": 110.14,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"cc64ac00a7d8095863aa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":324.50704225352115,\"y\":110.10060362173039,\"z\":1000,\"width\":269.4567404426559,\"height\":84.02414486921529}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim_Item.DescItem\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim_Item\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DescItem\"},\"Name\":\"Dim_Item.DescItem\"}]},\"columnProperties\":{\"Dim_Item.DescItem\":{\"displayName\":\"Desc Item\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 84.02,
+          "width": 269.46,
+          "x": 324.51,
+          "y": 110.10,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"d8c71cf5a0abf45fb26a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":382.45472837022135,\"y\":10.140845070422536,\"z\":2000,\"width\":505.59356136820924,\"height\":81.12676056338029}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Análise de Estoques\",\"textStyle\":{\"fontSize\":\"40pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 81.13,
+          "width": 505.59,
+          "x": 382.45,
+          "y": 10.14,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

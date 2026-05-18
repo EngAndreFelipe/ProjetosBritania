@@ -1,0 +1,804 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ed666f9130fc57efd740",
+  "position": {
+    "x": 66.731707317073173,
+    "y": 313.46341463414637,
+    "z": 6000,
+    "height": 404.78048780487808,
+    "width": 1213.4634146341464,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "it-codigo"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.it-codigo",
+              "nativeQueryRef": "Item",
+              "displayName": "Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "DescItem"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.DescItem",
+              "nativeQueryRef": "DescItem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "Quantidade"
+                }
+              },
+              "queryRef": "Sum(Fato_Mov_Geral_Contabil.Quantidade)",
+              "nativeQueryRef": "Qtde Mov",
+              "displayName": "Qtde Mov"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "DescEspDocto"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.DescEspDocto",
+              "nativeQueryRef": "EspDocto",
+              "displayName": "EspDocto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "cod-depos"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.cod-depos",
+              "nativeQueryRef": "Depósito",
+              "displayName": "Depósito"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "usuario"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.usuario",
+              "nativeQueryRef": "Usuário",
+              "displayName": "Usuário"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "TipoTrans"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.TipoTrans",
+              "nativeQueryRef": "Movimento",
+              "displayName": "Movimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "nro-docto"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.nro-docto",
+              "nativeQueryRef": "Documento",
+              "displayName": "Documento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "DataHoraTransf"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.DataHoraTransf",
+              "nativeQueryRef": "DataHoraTransf"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Mov_Geral_Contabil"
+                    }
+                  },
+                  "Property": "serie-docto"
+                }
+              },
+              "queryRef": "Fato_Mov_Geral_Contabil.serie-docto",
+              "nativeQueryRef": "Série",
+              "displayName": "Série"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fato_Mov_Geral_Contabil"
+                  }
+                },
+                "Property": "DataHoraTransf"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.02438927116347D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.usuario"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "121.87805394744973D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.nro-docto"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "57.92684580487562D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.serie-docto"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_Mov_Geral_Contabil.Quantidade)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "68D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.cod-depos"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.TipoTrans"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "132D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.DataHoraTransf"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "184D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.DescEspDocto"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "314D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.DescItem"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "70D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.it-codigo"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_Mov_Geral_Contabil.Quantidade)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.cod-depos"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.usuario"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.TipoTrans"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.nro-docto"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.DataHoraTransf"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.serie-docto"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Mov_Geral_Contabil.DescEspDocto"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'DFFFF'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "912fe909009515091c65",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "Quantidade"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "beb2f485280478ce4cd7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "DescEspDocto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5b93a6eb90acd5dae880",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "cod-depos"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "73782ed40a0a0a10555e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "usuario"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b7dbc0d8ed67cc04e104",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "TipoTrans"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "590a930c03988913101b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "nro-docto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "55bcd32fa15752784721",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "DataHoraTransf"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6b509213ed81e20b8da6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "serie-docto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2116f92921ac8ed0694c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "it-codigo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9fb35400a06313b1ec23",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Mov_Geral_Contabil"
+              }
+            },
+            "Property": "DescItem"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

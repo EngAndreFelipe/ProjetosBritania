@@ -1,0 +1,74 @@
+table Date
+	lineageTag: 264eb9c1-42cf-4ca2-bb1e-e273f8db2185
+
+	column Date
+		formatString: dd/mm/yyyy
+		lineageTag: 56a530b2-aa1c-4a6e-9e66-a8835a5e908b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year
+		formatString: 0
+		lineageTag: 5078a485-9223-4a11-8af1-fe3ed67233ca
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateInt
+		lineageTag: c1bd9ddf-d3c1-4f4d-9a89-40045d488481
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DateInt]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: dc1e0456-4fdd-456b-9fbd-7485c1eb18be
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes
+		lineageTag: c43aad39-f07c-4644-b793-a5041f29d7ff
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AnoMes]
+		sortByColumn: AnoMM
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMM
+		lineageTag: e56d29a0-0f98-4822-a12a-26ecca2a5db0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AnoMM]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date-57d1491f-891e-4948-b6e7-55053c9cba82 = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				CALENDAR ((today()-365), (today())),
+				"DateInt", FORMAT ( [Date], "DDMMYYYY" ),
+				"Year", YEAR ( [Date] ),
+				"Month", MONTH ( [Date] ),
+				"AnoMM", FORMAT([Date],"YYYYMM"),
+				"AnoMes", FORMAT([Date],"YYYY-MMM")
+				)
+
+	annotation PBI_Id = 3603c2c0a76348bb80d170c13e52161e
+

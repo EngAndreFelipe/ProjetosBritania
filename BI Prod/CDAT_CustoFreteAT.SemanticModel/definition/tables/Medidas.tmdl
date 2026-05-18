@@ -1,0 +1,46 @@
+table Medidas
+	lineageTag: 6cac8b80-e0ab-4465-bc8c-63f2077182d4
+
+	measure vlFretePc = DIVIDE(CALCULATE(SUM(dwGTB201[FreteCorrigido]), dwGTB201[TipoFrete] <> "FRETE FOB"), CALCULATE(SUM(dwGTB201[QtdeFat]), dwGTB201[TipoFrete] <> "FRETE FOB"))
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: a44d1380-53be-40e8-8a52-e748b66cbdc4
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure PercAtigID = ([vlFretePc]/AVERAGE(dwGTB201[Meta])*-1)+2
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1d41236e-ed84-499a-b51c-7e6a7bcc686a
+
+	measure QtdePeças = SUM(dwGTB201[QtdeFat])
+		lineageTag: 7f44551c-78b7-4f19-86cd-4194a68f67e5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure vlTotalFrete = sum(dwGTB201[FreteCorrigido])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 480bea22-9379-4bda-805e-8d05e2020239
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: e8da1cd6-8755-44e8-8bd1-8a553f48800b
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

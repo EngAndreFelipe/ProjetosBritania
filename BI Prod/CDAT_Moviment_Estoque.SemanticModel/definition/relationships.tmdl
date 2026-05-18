@@ -1,0 +1,75 @@
+relationship 195d8b2e-e1a3-48bd-88e4-daccabcd95e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_WMS.DataImplantacao
+	toColumn: LocalDateTable_7ea804ce-b069-444a-b4c2-3ee537ed4700.Date
+
+relationship 60cf1c14-eabc-4801-84db-751f1b44706a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_WMS.DtFimTarefa
+	toColumn: LocalDateTable_5d809942-3869-4c40-a202-1e62ce2e290e.Date
+
+relationship 7f53f931-bf59-4c26-8932-392f6379ea58
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Estoque_WMS.DataCarga
+	toColumn: LocalDateTable_96b0f800-a4d8-42f3-890c-2fe5e6292e5f.Date
+
+relationship 0e292210-3b7c-4d29-b3d7-528ad622fdeb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Data.Data
+	toColumn: LocalDateTable_eecb96a8-17b3-4138-bec6-baa2e01eeb3d.Date
+
+relationship 743f4da8-6c9b-47a8-89ee-bf718f197af3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_WMS.Dt_Hora_Inicio
+	toColumn: LocalDateTable_cc98d65d-eca4-4959-a4bb-5b6986532799.Date
+
+relationship db43f4ba-e6d0-4363-9c4c-32ecd4eb115e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_WMS.Dt_Hora_Fim
+	toColumn: LocalDateTable_4c7d519a-b28c-4d90-8ae2-11973850742c.Date
+
+relationship d1e5c35c-dd8d-4729-a313-ec274a2937d8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_WMS.DataCarga
+	toColumn: LocalDateTable_056b00b2-05b3-4637-9196-2cabf520add4.Date
+
+relationship fedc3f6f-cd5b-0ccf-8e2b-22ef263a63fb
+	fromColumn: Fato_Estoque_WMS.Item
+	toColumn: Dim_Item.CodItem
+
+relationship ff065a47-6441-140e-a05e-d4b9ce777895
+	crossFilteringBehavior: bothDirections
+	fromColumn: Fato_Mov_Geral_WMS.Item
+	toColumn: Dim_Item.CodItem
+
+relationship 8a8780ef-7983-4da5-b612-2cc5aa976d48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_WMS.DtInicioTarefa
+	toColumn: LocalDateTable_8c8c6ff5-f2c8-4a12-b095-20ed27237e3a.Date
+
+relationship 4146f91b-2411-49be-ad5a-66d1fb920184
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_Contabil.DataTransf
+	toColumn: LocalDateTable_75c570e8-9cb8-4932-aa27-b367c64e5737.Date
+
+relationship 4d9456e9-f996-4dd4-aaca-9ec47b722bfb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_Contabil.DATA_ALTERACAO
+	toColumn: LocalDateTable_a3233ff8-c91e-44e1-940e-68141962a075.Date
+
+relationship c2bf58ef-a7de-4ebe-a77b-d7b66edcda6e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_Contabil.DataCriacao
+	toColumn: LocalDateTable_fbc20dcc-1983-4bb4-8f1b-1e2f167cbcb2.Date
+
+relationship ffa706c0-7464-4900-856f-f7e1e92d22ab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Mov_Geral_Contabil.DataHoraTransf
+	toColumn: LocalDateTable_36a48b97-6d3d-478d-9c0a-c92727d88045.Date
+
+relationship d62a95cb-12d8-2533-b4f3-0921f001b544
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Mov_Geral_Contabil.it-codigo
+	toColumn: Fato_Estoque_Contabil.Item
+

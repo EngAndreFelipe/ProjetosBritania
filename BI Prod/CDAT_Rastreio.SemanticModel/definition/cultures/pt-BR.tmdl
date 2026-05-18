@@ -1,0 +1,3296 @@
+cultureInfo pt-BR
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "fato_rastreio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fato rastreio": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Fato_Rastreio": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.data_implantacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "DataImplantacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data implantacao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DataImplantacao": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "Data": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fato_rastreio.data_implantacao.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.data_implantacao.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.data_implantacao.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.data_implantacao.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.data_implantacao.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Item"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Descricao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.id_endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "IdEndereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "id endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "IdEndereco": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "identification endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "identity endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "identifier endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "credential endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Endereço": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.saldo_DCV": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Saldo DCV"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo DCV": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.saldo_AAT": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Saldo AAT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo AAT": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.saldo_total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Saldo Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "saldo aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "saldo overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.saldo_WM": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Saldo WMS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo WM": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.almoxarife": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Almoxarife"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "almoxarife": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fato_rastreio.localizado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Fato_Rastreio",
+			          "ConceptualProperty": "Localizado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "localizado": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tabela final": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TabelaFinal": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "tabela decider": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.451
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.data_implantacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "DataImplantacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data implantacao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DataImplantacao": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record implantacao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "Data": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "tabela_final.data_implantacao.hierarquia_de_data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hierarquia de data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "hierarquia de information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "hierarquia de document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "hierarquia de record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.data_implantacao.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao ano": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.data_implantacao.trimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Trimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao trimestre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao trimestre": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.data_implantacao.mê": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Mês"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao mê": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao mê": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.data_implantacao.dia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "VariationSource": "DataImplantacao",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Hierarquia de datas",
+			          "HierarchyLevel": "Dia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "data implantacao dia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "information implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record implantacao dia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.item": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Item"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "item": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "product": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "entry": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "article": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "object": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "piece": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "token": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.descricao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Descricao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "descricao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.id_endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "IdEndereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "id endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "IdEndereco": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "identification endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "identity endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "identifier endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "credential endereco": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.endereco": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Endereco"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "endereco": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Endereço": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.saldo_DCV": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Saldo DCV"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo DCV": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.saldo_AAT": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Saldo AAT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo AAT": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.saldo_total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Saldo Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "saldo aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "saldo overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.saldo_WM": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Saldo WMS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "saldo WM": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "WMS": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.ordem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Ordem"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ordem": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "tabela_final.preenchimento": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "TabelaFinal",
+			          "ConceptualProperty": "Preenchimento"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "preenchimento": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "tabela_final_data_implantacao_mê_has_tabela_final_data_implantacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.mê": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.mê"
+			          }
+			        },
+			        "tabela_final.data_implantacao.dia": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.dia"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê1"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_trimestre_has_tabela_final_data_implantacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.trimestre": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.trimestre"
+			          }
+			        },
+			        "tabela_final.data_implantacao.mê": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres1"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_ano_has_tabela_final_data_implantacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.ano": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.ano"
+			          }
+			        },
+			        "tabela_final.data_implantacao.trimestre": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.ano"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos1"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_hierarquia_de_data_has_tabela_final_data_implantacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "tabela_final.data_implantacao.dia": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_hierarquia_de_data_has_tabela_final_data_implantacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "tabela_final.data_implantacao.mê": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_hierarquia_de_data_has_tabela_final_data_implantacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "tabela_final.data_implantacao.trimestre": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_hierarquia_de_data_has_tabela_final_data_implantacao_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "tabela_final.data_implantacao.ano": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos"
+			        }
+			      ]
+			    },
+			    "tabela_final_data_implantacao_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final.data_implantacao": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao"
+			          }
+			        },
+			        "tabela_final.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final.data_implantacao"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_implantacaos_have_hierarquia_de_data"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_mê_has_fato_rastreio_data_implantacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.mê": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.mê"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.dia": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_dias1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.dia"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_have_mê1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.dia"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dias_are_in_mê"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_trimestre_has_fato_rastreio_data_implantacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.trimestre": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.trimestre"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.mê": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_mê1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_have_trimestres1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "mê_are_in_trimestres"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_ano_has_fato_rastreio_data_implantacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.ano": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.ano"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.trimestre": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.ano"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "anos_have_trimestres1"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_have_anos1"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "trimestres_are_in_anos"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_hierarquia_de_data_has_fato_rastreio_data_implantacao_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.dia": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_dias1"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_hierarquia_de_data_has_fato_rastreio_data_implantacao_mê": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.mê": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.mê"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.mê"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_mê1"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_hierarquia_de_data_has_fato_rastreio_data_implantacao_trimestre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.trimestre": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.trimestre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.trimestre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_trimestres1"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_hierarquia_de_data_has_fato_rastreio_data_implantacao_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.ano": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "hierarquia_de_data_have_anos1"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_data_implantacao_has_hierarquia_de_data": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio.data_implantacao": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao.hierarquia_de_data": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio.data_implantacao"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao.hierarquia_de_data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_implantacaos_have_hierarquia_de_data1"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_preenchimento": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.preenchimento": {
+			          "Target": {
+			            "Entity": "tabela_final.preenchimento"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.preenchimento"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_preenchimentos"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_ordem": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.ordem": {
+			          "Target": {
+			            "Entity": "tabela_final.ordem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.ordem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_ordems"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_saldo_WM": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.saldo_WM": {
+			          "Target": {
+			            "Entity": "tabela_final.saldo_WM"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.saldo_WM"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_saldo_WMs"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_saldo_total": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.saldo_total": {
+			          "Target": {
+			            "Entity": "tabela_final.saldo_total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.saldo_total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_saldo_totals"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_saldo_AAT": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.saldo_AAT": {
+			          "Target": {
+			            "Entity": "tabela_final.saldo_AAT"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.saldo_AAT"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_saldo_AAT"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_saldo_DCV": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.saldo_DCV": {
+			          "Target": {
+			            "Entity": "tabela_final.saldo_DCV"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.saldo_DCV"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_saldo_DCVs"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.endereco": {
+			          "Target": {
+			            "Entity": "tabela_final.endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_enderecos"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_id_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.id_endereco": {
+			          "Target": {
+			            "Entity": "tabela_final.id_endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.id_endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_id_enderecos"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_descricao": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.descricao": {
+			          "Target": {
+			            "Entity": "tabela_final.descricao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.descricao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_descricaos"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_item": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.item": {
+			          "Target": {
+			            "Entity": "tabela_final.item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_items"
+			        }
+			      ]
+			    },
+			    "tabela_final_has_data_implantacao": {
+			      "Binding": {
+			        "ConceptualEntity": "TabelaFinal"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "tabela_final": {
+			          "Target": {
+			            "Entity": "tabela_final"
+			          }
+			        },
+			        "tabela_final.data_implantacao": {
+			          "Target": {
+			            "Entity": "tabela_final.data_implantacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "tabela_final"
+			            },
+			            "Object": {
+			              "Role": "tabela_final.data_implantacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "tabela_finals_have_data_implantacaos"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_localizado": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.localizado": {
+			          "Target": {
+			            "Entity": "fato_rastreio.localizado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.localizado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_localizados"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_almoxarife": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.almoxarife": {
+			          "Target": {
+			            "Entity": "fato_rastreio.almoxarife"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.almoxarife"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_almoxarifes"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_saldo_WM": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.saldo_WM": {
+			          "Target": {
+			            "Entity": "fato_rastreio.saldo_WM"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.saldo_WM"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_saldo_WMs"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_saldo_total": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.saldo_total": {
+			          "Target": {
+			            "Entity": "fato_rastreio.saldo_total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.saldo_total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_saldo_totals"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_saldo_AAT": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.saldo_AAT": {
+			          "Target": {
+			            "Entity": "fato_rastreio.saldo_AAT"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.saldo_AAT"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_saldo_AAT"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_saldo_DCV": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.saldo_DCV": {
+			          "Target": {
+			            "Entity": "fato_rastreio.saldo_DCV"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.saldo_DCV"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_saldo_DCVs"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.endereco": {
+			          "Target": {
+			            "Entity": "fato_rastreio.endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_enderecos"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_id_endereco": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.id_endereco": {
+			          "Target": {
+			            "Entity": "fato_rastreio.id_endereco"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.id_endereco"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_id_enderecos"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_descricao": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.descricao": {
+			          "Target": {
+			            "Entity": "fato_rastreio.descricao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.descricao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_descricaos"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_item": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.item": {
+			          "Target": {
+			            "Entity": "fato_rastreio.item"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.item"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_items"
+			        }
+			      ]
+			    },
+			    "fato_rastreio_has_data_implantacao": {
+			      "Binding": {
+			        "ConceptualEntity": "Fato_Rastreio"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fato_rastreio": {
+			          "Target": {
+			            "Entity": "fato_rastreio"
+			          }
+			        },
+			        "fato_rastreio.data_implantacao": {
+			          "Target": {
+			            "Entity": "fato_rastreio.data_implantacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fato_rastreio"
+			            },
+			            "Object": {
+			              "Role": "fato_rastreio.data_implantacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fato_rastreios_have_data_implantacaos"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

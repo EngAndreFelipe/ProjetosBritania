@@ -1,0 +1,285 @@
+table 'Depósito Aging'
+	lineageTag: c91746a0-549a-47bc-b4fe-addc887f3778
+
+	measure '- Turno A' =
+			
+			var c = CALCULATE(SUM('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Turno] = "Turno A"))
+			return IF(ISBLANK(c),0,c)
+		formatString: #,0
+		lineageTag: 87fa76d3-f250-4f02-ab17-976a2ad03a73
+
+	measure '- Turno B' =
+			
+			var c = CALCULATE(SUM('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Turno] = "Turno B"))
+			return IF(ISBLANK(c),0,c)
+		formatString: #,0
+		lineageTag: 97375fee-b5fa-48ea-8841-d0a7dce12c27
+
+	measure '- Turno C' =
+			
+			var c = CALCULATE(SUM('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Turno] = "Turno C"))
+			return IF(ISBLANK(c),0,c)
+		formatString: #,0
+		lineageTag: ae5f942b-1557-4705-832a-f2f2cd9d76ba
+
+	measure '- Informado' = ```
+			
+			var c =
+			CALCULATE(COUNT('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Status] = "Informado" ))
+			return IF(ISBLANK(c),0,c)
+			
+			```
+		formatString: #,0
+		lineageTag: cf91ee5d-4d24-4522-ada6-db3b39b48355
+
+	measure '- Atenção' = ```
+			
+			var c = 
+			CALCULATE(COUNT('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Status] = "Atenção" ) )
+			return IF(ISBLANK(c),0,c)
+			
+			```
+		formatString: #,0
+		lineageTag: 0d571d43-eec1-45de-ad0c-d3a152e89eec
+
+	measure '- Critico' = ```
+			
+			var c = 
+			CALCULATE(COUNT('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Status] = "Crítico" ) )
+			return IF(ISBLANK(c),0,c)
+			
+			```
+		formatString: #,0
+		lineageTag: 3cd4755e-d752-46a4-9615-b91a443ba73c
+
+	measure Count = DISTINCTCOUNT('Depósito Aging'[Item])
+		formatString: 0
+		lineageTag: 7f1f04b2-ffe6-4ca0-851f-2ac904dfa115
+
+	measure '- Sem movto' =
+			
+			var c = CALCULATE(SUM('Depósito Aging'[Total]),
+			FILTER('Depósito Aging','Depósito Aging'[Turno] = "Sem Movimentação"))
+			return IF(ISBLANK(c),0,c)
+		formatString: #,0
+		lineageTag: c33860c0-5da2-4d54-843d-60d68ca73a3a
+
+	column Serial
+		dataType: int64
+		formatString: 0
+		lineageTag: 998ebc65-5e28-4488-adac-74fcd37311fc
+		summarizeBy: sum
+		sourceColumn: Serial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: a9c1c50d-4ddc-434d-a30b-1e0e52850133
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodFamMaterial
+		dataType: string
+		lineageTag: 4cdaa8d1-da8b-4967-8527-baaac6df35d5
+		summarizeBy: none
+		sourceColumn: CodFamMaterial
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescFamMaterial
+		dataType: string
+		lineageTag: ae7a5fc6-f99e-490a-bc2f-f153c435089c
+		summarizeBy: none
+		sourceColumn: DescFamMaterial
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodFamiliaComl
+		dataType: string
+		lineageTag: bc8b22d9-74af-4206-8eb3-cc6e6d8f7603
+		summarizeBy: none
+		sourceColumn: CodFamiliaComl
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescFamiliaComl
+		dataType: string
+		lineageTag: 5804a82e-ff2a-429a-accb-7851f9fc05a2
+		summarizeBy: none
+		sourceColumn: DescFamiliaComl
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodGrupoEstoque
+		dataType: int64
+		formatString: 0
+		lineageTag: a3e90feb-04fb-4835-8576-6d068879b4a8
+		summarizeBy: sum
+		sourceColumn: CodGrupoEstoque
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescGrupoEstoque
+		dataType: string
+		lineageTag: 40d5def5-09c6-47c8-81d6-54effd9ddace
+		summarizeBy: none
+		sourceColumn: DescGrupoEstoque
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 679aa7d6-a235-427f-bc3b-00587306fd04
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classe
+		dataType: string
+		lineageTag: a04ea1e1-1081-4ab5-afe5-27e07cb6f79c
+		summarizeBy: none
+		sourceColumn: Classe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloco
+		dataType: string
+		lineageTag: 68d5678e-cd49-4ccc-b7c7-e3e5b703f11c
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: 407f1e81-a766-489a-998b-b0fb6d6cbdd5
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: 03d8124d-5243-4f49-b69d-919aa1191776
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: 24218dfd-efd0-4a13-9704-0d975e0f5551
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column Embalagem
+		dataType: string
+		lineageTag: 5b13c8ca-d333-47df-9e0b-d25747732fd6
+		summarizeBy: none
+		sourceColumn: Embalagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloq
+		dataType: string
+		lineageTag: 19dc30a7-9413-416a-8867-49634521a680
+		summarizeBy: none
+		sourceColumn: Bloq
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: int64
+		formatString: #,0
+		lineageTag: 51d78379-0ff4-42b7-bb58-13c4391ab4e4
+		summarizeBy: sum
+		sourceColumn: Total
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Documento
+		dataType: string
+		lineageTag: 96f8665b-f3cc-48e2-9a22-1d358cdc8ddb
+		summarizeBy: none
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: string
+		lineageTag: c28ed6bc-c148-4fe2-a885-abf63afba354
+		summarizeBy: none
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasParados
+		dataType: int64
+		formatString: 0
+		lineageTag: fc866f62-c31b-4b99-a631-2469329c5757
+		summarizeBy: sum
+		sourceColumn: DiasParados
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataHora
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ab402e74-25d0-434a-ac44-21518e4c1bfd
+		summarizeBy: none
+		sourceColumn: DataHora
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hoje
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 42cb413f-7a8e-4438-a193-07d6b0a20f28
+		summarizeBy: none
+		sourceColumn: Hoje
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 63d61100-1181-495b-9f96-a0997f08b095
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Blq/Rua/Nvl/Col
+		dataType: string
+		lineageTag: 4f59ab79-44af-45c0-bff9-d4ce8b9e16f2
+		summarizeBy: none
+		sourceColumn: Blq/Rua/Nvl/Col
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Depósito Aging' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)#(tab)Serial,#(lf)#(tab)Item,#(lf)#(tab)CodFamMaterial,#(lf)#(tab)DescFamMaterial,#(lf)#(tab)CodFamiliaComl,#(lf)#(tab)DescFamiliaComl,#(lf)#(tab)CodGrupoEstoque,#(lf)#(tab)DescGrupoEstoque,#(lf)#(tab)Descrição,#(lf)#(tab)Classe,#(lf)#(tab)Bloco,#(lf)#(tab)Rua,#(lf)#(tab)Nivel,#(lf)#(tab)Coluna,#(lf)#(tab)Embalagem,#(lf)#(tab)Bloq,#(lf)#(tab)Total,#(lf)#(tab)Documento,#(lf)#(tab)Turno,#(lf)#(tab)DiasParados,#(lf)#(tab)DataHora,#(lf)#(tab)Hoje,#(lf)#(tab)case when DiasParados = 0 then 'Informado'#(lf)#(tab)#(tab)when DiasParados = 1 then 'Informado'#(lf)#(tab)#(tab)when DiasParados = 2 then 'Informado'#(lf)#(tab)#(tab)when DiasParados = 3 then 'Atenção'#(lf)#(tab)#(tab)else 'Crítico'#(lf)#(tab)#(tab)end 'Status',#(lf)#(tab)#(tab)Bloco+'/'+Rua+'/'+Nivel+'/'+Coluna [Blq/Rua/Nvl/Col]#(lf)FROM logistica.Fato_DepositosAging"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Serial", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+
