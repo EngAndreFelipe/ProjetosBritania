@@ -1,0 +1,61 @@
+table Fato_Sapp
+	lineageTag: d2932ad2-d954-4c70-aef1-171cd04f7cf1
+
+	column Realizado
+		dataType: int64
+		formatString: 0
+		lineageTag: 84258555-2095-4aab-a15f-9f22adebda05
+		summarizeBy: sum
+		sourceColumn: Realizado
+
+		annotation SummarizationSetBy = Automatic
+
+	column itCodigo
+		dataType: string
+		lineageTag: a0d14a37-8d1e-47aa-85a9-affd65a96f3a
+		summarizeBy: none
+		sourceColumn: itCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aa3ef030-3e35-44cd-a470-6f8b17dfbb09
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column codDepos
+		dataType: string
+		lineageTag: 67297635-a3b9-46c5-ab5d-ff462287e391
+		summarizeBy: none
+		sourceColumn: codDepos
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataInt
+		dataType: string
+		lineageTag: b5d81991-308c-41be-88d8-7f49546fb081
+		summarizeBy: none
+		sourceColumn: DataInt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Sapp-36fe4f62-f63e-47fe-8730-2ffa00492c9c = m
+		mode: import
+		queryGroup: NOVO
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT Realizado,#(lf)       Identificador AS itCodigo,#(lf)       CONVERT(DATE, DATA) AS Data,#(lf)       REPLACE(CONVERT(VARCHAR(10), DATA, 112), '/', '') AS DataInt,#(lf)       'SAPP' AS codDepos#(lf)FROM dbo.Fato_Sapp#(lf)where DATA >= DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

@@ -1,0 +1,227 @@
+table Fato_IndicadoresCic
+	lineageTag: 2cb11e31-064a-42bd-b14e-688ae329c1f8
+
+	measure SaldoContabilTotal = SUM(Fato_IndicadoresCic[Quantidade])
+		formatString: 0
+		lineageTag: ae1f0489-9801-46d7-a58d-7a60c8406b90
+
+	measure MetaAcuraciaQuantidade = VALUE("0,9850")
+		lineageTag: 7014bca5-a3aa-40f2-af0a-214120549e24
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Contabil-Divergencia(Quantidade) = [SaldoContabilTotal] - [Totalajustes (Quantidade)]
+		formatString: 0
+		lineageTag: f2cdef4d-d1ab-4f6a-b616-fc5a61e8622d
+
+	measure AcuraciaQuantidade = DIVIDE([Contabil-Divergencia(Quantidade)], [SaldoContabilTotal])
+		lineageTag: f0e104fc-aace-4907-8843-24e1fc296e57
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MetaAcuraciaPosição = VALUE("0,9676")
+		lineageTag: 468afaca-ddb3-420a-b6d7-a309bbcec2d4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MetaAcuraciaValor = VALUE("0,9550")
+		lineageTag: 424b96f9-470e-48eb-b7f1-bd4e36b0121f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ValorContabilTotal = SUM(Fato_IndicadoresCic[Valor Contabil])
+		lineageTag: fb94d8a7-b9e4-4ff2-8894-4fc3e5babe9f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Contabil-Divergencia(Valor) = [ValorContabilTotal] - [Totalajustes (Valor)]
+		lineageTag: 66a3dfdf-4030-4824-aaeb-062e2feed4a5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AcuraciaValor = DIVIDE([Contabil-Divergencia(Valor)], [ValorContabilTotal])
+		lineageTag: 6fa95b65-71a2-4762-a0b9-825caea90c88
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Totalajustes (Valor)' = SUM(Fato_IndicadoresCic[Valor Ajustado])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: d309844f-1584-4e50-a21b-c537c7146ffc
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Totalajustes (Quantidade)' = SUM(Fato_IndicadoresCic[Ajustado])
+		formatString: 0
+		lineageTag: c7cba705-3084-49ec-9141-c16ddfed51cc
+
+	measure 'Atingimento Valor' = DIVIDE([AcuraciaValor],[MetaAcuraciaValor])
+		lineageTag: 6cfd21ff-4929-4289-817d-b70c3498a5ea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Atingimento Posição' = DIVIDE([AcuraciaPorDia], [MetaAcuraciaPosição])
+		lineageTag: 8fac49c1-c2eb-41ee-8e71-cb7d009578a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Atingimento Quantidade' = DIVIDE([AcuraciaQuantidade],[MetaAcuraciaQuantidade])
+		lineageTag: 1e45d27d-f526-446d-90d3-92c4f309f50d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Apurado
+		dataType: int64
+		formatString: 0
+		lineageTag: 755d3b30-ad8b-4e4c-9bcc-a180cd689df5
+		summarizeBy: sum
+		sourceColumn: Apurado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Custo Unit.'
+		dataType: decimal
+		lineageTag: 44935cdc-2c19-473a-9b42-20f8ca279b4e
+		summarizeBy: sum
+		sourceColumn: Custo Unit.
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Valor Contabil'
+		dataType: decimal
+		lineageTag: 5c4e3593-84f6-4a8a-b162-69e1843ebf23
+		summarizeBy: sum
+		sourceColumn: Valor Contabil
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ajustado
+		dataType: int64
+		formatString: 0
+		lineageTag: f08cee7b-8838-40a6-a94b-09fbee8574f9
+		summarizeBy: sum
+		sourceColumn: Ajustado
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFormatada
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1415ee30-bcec-45f1-adca-35a8f533a2ac
+		summarizeBy: none
+		sourceColumn: DataFormatada
+
+		variation Variation
+			isDefault
+			relationship: 346b559e-d66a-4398-a22d-460ff40da56a
+			defaultHierarchy: LocalDateTable_5c9ee4df-c0d0-4586-86e1-d443b4350ac0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CodigoDeposito
+		dataType: string
+		lineageTag: 666f6371-2e6f-4418-ae84-bbb42585951e
+		summarizeBy: none
+		sourceColumn: CodigoDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: f146e5b0-bc4e-4124-8191-4264e7cfee26
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 353115ad-0917-4a9d-82c4-7f417d623889
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: a103de36-7882-4e50-890d-165fb50944b3
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ff9d47c-1a4d-457e-913e-55e76ae12d21
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valor Ajustado'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: cb3418ca-0595-4fb3-8dd8-d873c441f9c0
+		summarizeBy: sum
+		sourceColumn: Valor Ajustado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column TipoMov
+		dataType: string
+		lineageTag: 78e2f090-7c2a-4ed9-89d7-5c36e46da3c4
+		summarizeBy: none
+		sourceColumn: TipoMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column13
+		dataType: string
+		lineageTag: 075475ec-d28e-4f3a-99da-c95b33cd3f9d
+		summarizeBy: none
+		sourceColumn: Column13
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column14
+		dataType: string
+		lineageTag: 924f4a73-bf87-4671-9c7e-8317a661bca3
+		summarizeBy: none
+		sourceColumn: Column14
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column15
+		dataType: string
+		lineageTag: 825ba814-8e83-4912-ac3e-a5e6ceca7490
+		summarizeBy: none
+		sourceColumn: Column15
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_IndicadoresCic = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\BI AT LOGISTICA\",
+				    Fonte = Folder.Files(CaminhoBase),
+				    BaseIndicadores_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "Cronograma_Inventario\",Name="BaseIndicadores.xlsx"]}[Content],
+				    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(BaseIndicadores_xlsx),
+				    BaseIndicadores_Sheet = #"Pasta de Trabalho Importada do Excel"{[Item="Geral",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(BaseIndicadores_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"DataFormatada", type date}, {"CodigoDeposito", type text}, {"CodItem", type text}, {"DescItem", type text}, {"Chave", type text}, {"Quantidade", Int64.Type}, {"Apurado", Int64.Type}, {"Ajustado", Int64.Type}, {"Custo Unit.", Currency.Type}, {"Valor Ajustado", Currency.Type}, {"Valor Contabil", Currency.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

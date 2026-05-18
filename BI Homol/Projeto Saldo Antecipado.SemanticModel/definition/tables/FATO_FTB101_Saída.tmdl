@@ -1,0 +1,141 @@
+table FATO_FTB101_Saída
+	lineageTag: 9692c701-131a-47e9-adef-819a989de109
+
+	column NumeroNotaFiscal
+		dataType: string
+		lineageTag: 22552f8a-40d2-49d1-84ff-eccc4e404558
+		summarizeBy: none
+		sourceColumn: NumeroNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoNotaFiscal
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c36fcae9-14dd-48f5-93e1-d4a208d4bdcd
+		summarizeBy: none
+		sourceColumn: DataEmissaoNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CodItem
+		dataType: string
+		lineageTag: 2d859fdf-9895-4f91-b8a1-d2df02f8cbd1
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 77db99b3-4ba4-42b2-b15a-fd47864a3d30
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeFaturada
+		dataType: int64
+		lineageTag: 8d02a76a-7417-42c4-9cd4-5c856fc268e5
+		summarizeBy: sum
+		sourceColumn: QuantidadeFaturada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CubagemPrevista
+		dataType: double
+		lineageTag: bece8b79-9b7a-4167-8ded-1197e091995b
+		summarizeBy: sum
+		sourceColumn: CubagemPrevista
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorNotaFiscal
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 7f1b8b11-41ac-4c07-8738-eed88ca81b0c
+		summarizeBy: sum
+		sourceColumn: ValorNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column DataSaida
+		dataType: dateTime
+		formatString: d/m/yyyy
+		lineageTag: a9d9048c-410e-44c7-bcce-86ae883f0dd6
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DataEntrega
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: badb3a80-e375-4973-bc22-ba41822d52b7
+		summarizeBy: none
+		sourceColumn: DataEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Deposito
+		dataType: string
+		lineageTag: 6ae5ff5d-aaf8-4825-91f6-2ad0205b72de
+		summarizeBy: none
+		sourceColumn: Deposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: 9de1bb17-9907-4c3b-a47c-8a5f5240cdba
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtProgEmbarque
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4b3041f0-f926-4c46-9594-124e5e61858e
+		summarizeBy: none
+		sourceColumn: DtProgEmbarque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DescLinhaPai
+		dataType: string
+		lineageTag: 8a012b32-3324-415e-b327-67cf2361efdc
+		summarizeBy: none
+		sourceColumn: DescLinhaPai
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FATO_FTB101_Saída = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT DISTINCT #(lf)#(tab)NumeroNotaFiscal,#(lf)#(tab)DataEmissaoNotaFiscal,#(lf)#(tab)CodItem,#(lf)#(tab)DescItem,#(lf)#(tab)QuantidadeFaturada,#(lf)#(tab)CubagemPrevista,#(lf)#(tab)ValorNotaFiscal,#(lf)#(tab)DtProgEmbarque,#(lf)#(tab)DataSaida,#(lf)#(tab)DataEntrega,#(lf)#(tab)NomeMatriz,#(lf)#(tab)UPPER(Deposito) AS Deposito,#(lf)#(tab)DescLinhaPai #(lf)FROM logistica.Fato_FTB101#(lf)WHERE DataSaida IS NULL#(lf)AND Deposito IN ('TR1', 'TR2', 'TR3', 'TR4')"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataEmissaoNotaFiscal", type date}, {"ValorNotaFiscal", Currency.Type}, {"DataSaida", type date}, {"DataEntrega", type date}, {"QuantidadeFaturada", Int64.Type}, {"DtProgEmbarque", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

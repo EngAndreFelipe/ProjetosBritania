@@ -1,0 +1,61 @@
+table Tabela_Minimo
+	lineageTag: 812c6cef-6e1d-4641-8a74-e629a2309359
+
+	column Item
+		dataType: string
+		lineageTag: c7e00b94-19a4-4446-80c7-ccbfea6934c3
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column descrição
+		dataType: string
+		lineageTag: 66cf6787-e0a1-4687-8224-ff084623c99c
+		summarizeBy: none
+		sourceColumn: descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mínimo
+		dataType: int64
+		formatString: 0
+		lineageTag: c2fbb3ec-b79a-48f3-93d8-8642be282f66
+		summarizeBy: none
+		sourceColumn: Mínimo
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome da Origem'
+		dataType: string
+		lineageTag: 2f1e9acc-7934-4c69-a96d-05cf7fc34681
+		summarizeBy: none
+		sourceColumn: Nome da Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tabela_Minimo = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\bi at logistica\",
+				    Fonte = Folder.Files(CaminhoBase),
+				    QtdMínimaCaixas_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "Cronograma_Inventario\",Name="QtdMínimaCaixas.xlsx"]}[Content],
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([Name] = "QtdMínimaCaixas.xlsx")),
+				    #"Arquivos Ocultos Filtrados1" = Table.SelectRows(#"Linhas Filtradas", each [Attributes]?[Hidden]? <> true),
+				    #"Invocar Função Personalizada1" = Table.AddColumn(#"Arquivos Ocultos Filtrados1", "Transformar Arquivo", each #"Transformar Arquivo"([Content])),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Invocar Função Personalizada1", {"Name", "Nome da Origem"}),
+				    #"Outras Colunas Removidas1" = Table.SelectColumns(#"Colunas Renomeadas1", {"Nome da Origem", "Transformar Arquivo"}),
+				    #"Coluna de Tabela Expandida1" = Table.ExpandTableColumn(#"Outras Colunas Removidas1", "Transformar Arquivo", Table.ColumnNames(#"Transformar Arquivo"(#"Arquivo de Amostra"))),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Coluna de Tabela Expandida1",{{"código", Int64.Type}, {"descrição", type text}, {"média mês", type any}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"código", "Item"}, {"média mês", "Mínimo"}}),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"Item", type text}})
+				in
+				    #"Tipo Alterado1"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

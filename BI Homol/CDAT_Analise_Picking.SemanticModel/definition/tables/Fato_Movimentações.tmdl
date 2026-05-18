@@ -1,0 +1,144 @@
+table Fato_Movimentações
+	lineageTag: e877f463-fff1-49e9-a5c9-9dba37f14e17
+
+	measure UltimaDataCarga = MAX('Fato_Movimentações'[DataCarga])
+		formatString: General Date
+		lineageTag: f437ec84-4972-4a5a-82b5-fd88681e1f35
+
+	column Documento
+		dataType: double
+		lineageTag: c9bbabf8-355c-4fda-bb63-e852bcb305c3
+		summarizeBy: sum
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroDocumento
+		dataType: string
+		lineageTag: f7437a27-df67-433d-bab4-a4f95a2caa15
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Origem
+		dataType: string
+		lineageTag: 2941e41e-6b1f-4ec2-934c-907bd32342fb
+		summarizeBy: none
+		sourceColumn: Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Movimento
+		dataType: string
+		lineageTag: 1cfa37a7-159e-4149-8c70-7e70a3a5bede
+		summarizeBy: none
+		sourceColumn: Movimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ed209045-f66f-4148-b046-99bf0a7ea962
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 33edf44e-13f7-46ef-be7e-6c631246601c
+			defaultHierarchy: LocalDateTable_0d1621c7-a140-4b0b-bdf2-c4ab34f6e788.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b19d659-a40a-4051-b6aa-6f5918d70e08
+		summarizeBy: count
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: d9dfca5d-c44e-478f-99e2-9a649d2316ea
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Situacao
+		dataType: string
+		lineageTag: 5a945d20-3ae6-4d1c-8990-991540060594
+		summarizeBy: none
+		sourceColumn: Situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeItemMov
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ec525b7-74bc-444e-ad22-f56132e21cdb
+		summarizeBy: sum
+		sourceColumn: QtdeItemMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: 7c874f7c-9be8-49c4-9613-50b51236b713
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEndereco
+		dataType: double
+		lineageTag: 71c135d3-580c-49e0-afbb-47b06139f787
+		summarizeBy: sum
+		sourceColumn: IdEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Endereco
+		dataType: string
+		lineageTag: 0a3a7435-98c8-4953-8df7-da7bd6f65a51
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 75937d11-e174-43d4-9fc6-60a5fbb3b08c
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 7ac6e0b1-56dc-4b65-a3e9-3a85c36313c0
+			defaultHierarchy: LocalDateTable_5f6da19d-f389-4398-b4c8-a70fca5f87a7.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Movimentações = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)#(tab)S.Documento,#(lf)#(tab)S.NumeroDocumento,#(lf)    S.Origem,#(lf)    S.Movimento,#(lf)#(tab)CAST(S.DataImplantacao AS DATE) AS DataImplantacao,#(lf)#(tab)I.Id,#(lf)#(tab)S.Item,#(lf)#(tab)S.Situacao,#(lf)#(tab)S.QtdeItemMov,#(lf)#(tab)S.Usuario2,#(lf)#(tab)S.IdEndereco,#(lf)#(tab)S.Endereco,#(lf)#(tab)S.DataCarga#(lf)FROM DW.logistica.Fato_Mov_Estoque_PA_AT AS S#(lf)LEFT JOIN DW.dbo.Dim_Item AS I ON I.CodItem = S.Item#(lf)WHERE CAST(S.DataImplantacao AS DATE) >= DATEADD(DAY, -365, GETDATE())#(lf)AND S.Endereco LIKE 'PCK%'"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataImplantacao", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,144 @@
+table Fato_Rastreio
+	lineageTag: a3cec098-98a0-4077-8bbc-c2e1b5920f1b
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f525f78f-ce22-43e1-9c48-6f7b7f644ba0
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 0879a137-d147-4f6e-ac8b-bb1eb17651ff
+			defaultHierarchy: LocalDateTable_8f8ddc41-36b0-4d1e-b79b-4ed9d3cbcd8c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Item
+		dataType: string
+		lineageTag: 5f9d1e82-e5e2-432d-ac9d-182a0eeb11f3
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: 19e67a66-bf64-45c7-b3bf-919562329f1e
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEndereco
+		dataType: double
+		lineageTag: 588e36c0-aa70-4196-aef2-9c05f90aed44
+		summarizeBy: sum
+		sourceColumn: IdEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Endereco
+		dataType: string
+		lineageTag: 5c3ddb4b-b974-434e-8ee6-fefda5addbdb
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo DCV'
+		dataType: double
+		lineageTag: e27f8802-811f-42a9-9d5c-8d89e7b452b1
+		summarizeBy: sum
+		sourceColumn: Saldo DCV
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo AAT'
+		dataType: double
+		lineageTag: 77a02913-e494-499b-964b-ca84aa041852
+		summarizeBy: sum
+		sourceColumn: Saldo AAT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo Total'
+		dataType: double
+		lineageTag: 5bd7e4fc-b8c1-49ba-bfc0-c7965f7893d6
+		summarizeBy: sum
+		sourceColumn: Saldo Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo WMS'
+		dataType: double
+		lineageTag: 8563c440-b4aa-4903-a181-f9e21d9b475a
+		summarizeBy: sum
+		sourceColumn: Saldo WMS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Almoxarife = BLANK()
+		formatString: 0
+		lineageTag: de86946e-f055-4775-b7ca-550b179b8f4f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Localizado = BLANK()
+		formatString: 0
+		lineageTag: ab222638-5a6b-4479-ad7b-31e1920215f7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f994c45d-79a8-4b28-869c-52dab72b6be9
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 9f1fcd27-8cb7-4f69-9380-2bf189072a11
+			defaultHierarchy: LocalDateTable_2c185bb6-7477-4122-b683-def9928b40e1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo ATE'
+		dataType: double
+		lineageTag: d60033cd-7820-4059-8b29-7f68170c82ad
+		summarizeBy: sum
+		sourceColumn: Saldo ATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fato_Rastreio = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "STAGE", [Query="SELECT #(lf)  S.[DataImplantacao],#(lf)  S.[Item],#(lf)  I.[DescItem] AS [Descricao],#(lf)  S.[IdEndereco],#(lf)  REPLACE(REPLACE(S.[Endereco], ' / ', '/'), '/ ', '/') AS [Endereco],#(lf)  ISNULL(SP.[Saldo DCV], 0) AS [Saldo DCV],#(lf)  ISNULL(SP.[Saldo AAT], 0) AS [Saldo AAT],#(lf)  ISNULL(SP.[Saldo ATE], 0) AS [Saldo ATE],#(lf)  ISNULL(SP.[Saldo DCV], 0) + ISNULL(SP.[Saldo AAT], 0) + ISNULL(SP.[Saldo ATE], 0) AS [Saldo Total],#(lf)  ISNULL(WMS.[Saldo WMS], 0) AS [Saldo WMS],#(lf)  ISNULL(WMS.[DataCarga], '1900-01-01') AS [DataCarga] -- ← Data padrão para nulos#(lf)FROM (#(lf)  SELECT #(lf)    S.[DataImplantacao],#(lf)    S.[Item],#(lf)    S.[IdEndereco],#(lf)    S.[Endereco],#(lf)    ROW_NUMBER() OVER (PARTITION BY S.[Item], S.[IdEndereco] ORDER BY S.[DataImplantacao] DESC) AS [rn]#(lf)  FROM DW.logistica.Fato_Mov_Estoque_PA_AT AS S#(lf)  WHERE S.[Local] = 'aat'#(lf)    AND S.[HoraCriacaoDoc] IS NOT NULL#(lf)    AND S.[Endereco] IS NOT NULL#(lf)    AND S.[IdEndereco] IS NOT NULL#(lf)    AND S.[Usuario] <> ''#(lf)    AND S.[Endereco] NOT LIKE 'RAS%' #(lf)    AND S.[Endereco] NOT LIKE 'DCV%' #(lf)    AND S.[Endereco] NOT LIKE 'WWW/01%' #(lf)    AND S.[Endereco] NOT LIKE 'ADT%' #(lf)    AND S.[Endereco] NOT LIKE 'SEP%' #(lf)    AND S.[Endereco] NOT LIKE 'RUA/A%' #(lf)    AND S.[Endereco] NOT LIKE 'RUA/C%' #(lf)    AND S.[Endereco] NOT LIKE 'RUA/01'#(lf)    AND S.[Endereco] NOT LIKE 'DES%'#(lf)    AND S.[Endereco] NOT LIKE 'PCK/01'#(lf)    AND S.[Endereco] NOT LIKE 'TEM%'#(lf)    AND S.[Endereco] NOT LIKE '///'#(lf)    AND S.[Endereco] NOT LIKE 'BLO%'#(lf)) AS S#(lf)LEFT JOIN DW.dbo.Dim_Item AS I ON S.[Item] = I.[CodItem]#(lf)LEFT JOIN (#(lf)  SELECT #(lf)    [it-codigo],#(lf)    SUM(CASE WHEN [cod-depos] = 'dcv' THEN [qtidade-atu] ELSE 0 END) AS [Saldo DCV],#(lf)    SUM(CASE WHEN [cod-depos] = 'aat' THEN [qtidade-atu] ELSE 0 END) AS [Saldo AAT],#(lf)    SUM(CASE WHEN [cod-depos] = 'ate' THEN [qtidade-atu] ELSE 0 END) AS [Saldo ATE]#(lf)  FROM STAGE.tot.SaldoEstoq#(lf)  GROUP BY [it-codigo]#(lf)) AS SP ON S.[Item] = SP.[it-codigo]#(lf)LEFT JOIN (#(lf)  SELECT #(lf)    [Item],#(lf)    REPLACE(REPLACE([Endereco], ' / ', '/'), '/ ', '/') AS [Endereco],#(lf)    MAX([DataCarga]) AS [DataCarga],#(lf)    SUM([Total]) AS [Saldo WMS]#(lf)  FROM DW.logistica.Fato_ESWM9022#(lf)  GROUP BY [Item], REPLACE(REPLACE([Endereco], ' / ', '/'), '/ ', '/')#(lf)) AS WMS ON S.[Item] = WMS.[Item] AND REPLACE(REPLACE(S.[Endereco], ' / ', '/'), '/ ', '/') = WMS.[Endereco]#(lf)WHERE S.[rn] = 1#(lf)ORDER BY S.[DataImplantacao] DESC;"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataImplantacao", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

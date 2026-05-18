@@ -1,0 +1,409 @@
+table Medidas
+	lineageTag: 39227750-e555-43c5-a027-c4bd885df294
+
+	measure Ressup_Concl_Pecas =
+			CALCULATE(
+			    SUM(Fato_Ressup_Destino[QtdeItemMov]),
+			    Fato_Ressup_Destino[SituacaoItem] = "Concluído")
+		formatString: #,0
+		lineageTag: eac25f2d-658f-499d-b65b-a1336c3fed15
+
+	measure Ressup_Concl_Itens = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Ressup_Destino[Item]),
+			    Fato_Ressup_Destino[SituacaoItem] = "Concluído"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: c18c671b-eff7-4482-a952-1dc1e81569c9
+
+	measure Ressup_Pend_Itens = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Ressup_Origem[Item]),
+			    Fato_Ressup_Origem[SituacaoItem] = "Não Iniciado",
+			    FILTER(
+			        Fato_Ressup_Origem,
+			        Fato_Ressup_Origem[Endereco] <> BLANK() &&
+			        NOT (
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "RAS") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "TEM") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "WWW") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "ADT")
+			        )
+			    )
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 463aaea5-a855-4d94-bb4c-5dd5266d9c6d
+
+	measure Ressup_Em_Proc_Itens =
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Ressup_Destino[Item]),
+			    Fato_Ressup_Destino[SituacaoItem] = "Em Processo"
+			   )
+		formatString: #,0
+		lineageTag: 95ddbd7d-4ef3-461a-a709-ddb3c4683f2f
+
+	measure Separ_Pend_Pecas = ```
+			
+			CALCULATE(
+			    SUM(Fato_Consolidacao_Saida[QtdeItemMov]),
+			    Fato_Consolidacao_Saida[SituacaoItem] <> "Concluído"
+			  
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 068826ee-f4b3-464f-b307-3112177ae118
+
+	measure Separ_Pend_Tarefas =
+			CALCULATE(
+			    COUNT(Fato_Consolidacao_Saida[SituacaoItem]),
+			    Fato_Consolidacao_Saida[SituacaoItem] <> "Concluído"
+			)
+		formatString: 0
+		lineageTag: e3d06659-3b37-4b42-a004-ab9fe6449c01
+
+	measure Separ_Pend_Itens =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Consolidacao_Saida[Item]),
+			    Fato_Consolidacao_Saida[SituacaoItem] <> "Concluído"
+			)
+		formatString: 0
+		lineageTag: 5e69d3b1-40bc-4f0b-ae57-c9b4bf1f05c3
+
+	measure Separ_Concl_Itens =
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Consolidacao_Saida[Item]),
+			    Fato_Consolidacao_Saida[SituacaoItem] = "Concluído"
+			)
+		formatString: 0
+		lineageTag: 4b8bd5cb-f2de-4bee-89d0-980f7436d180
+
+	measure Separ_Concl_Pecas =
+			
+			CALCULATE(
+			    SUM(Fato_Consolidacao_Saida[QtdeItemMov]),
+			    Fato_Consolidacao_Saida[SituacaoItem] = "Concluído")
+		formatString: 0
+		lineageTag: bf2d01ad-b197-492b-b067-5df71981c328
+
+	measure Separ_Concl_Tarefas =
+			CALCULATE(
+			    COUNT(Fato_Consolidacao_Saida[SituacaoItem]),
+			    Fato_Consolidacao_Saida[SituacaoItem] = "Concluído"
+			)
+		formatString: 0
+		lineageTag: 435fb4a7-8e10-4bbc-9e20-29aca4f7e8d5
+
+	measure Separ_Total_Tarefas = [Separ_Concl_Tarefas] + [Separ_Pend_Tarefas]
+		formatString: 0
+		lineageTag: 37d29418-6301-4561-b3f2-b2491bd7f4a7
+
+	measure Separ_Total_Pecas = [Separ_Concl_Pecas] + [Separ_Pend_Pecas]
+		formatString: 0
+		lineageTag: 516e2844-6439-4e2e-aef5-4758e6ec10f1
+
+	measure Separ_Total_Itens = [Separ_Concl_Itens] + [Separ_Pend_Itens]
+		formatString: 0
+		lineageTag: ad70b8fd-671e-4c4a-9894-bd0cd4aaa2bd
+
+	measure Ressup_Pend_Pecas =
+			
+			CALCULATE(
+			    SUM(Fato_Ressup_Origem[QtdeItemMov]),
+			    Fato_Ressup_Origem[SituacaoItem] = "Não Iniciado",
+			    FILTER(
+			        Fato_Ressup_Origem,
+			        Fato_Ressup_Origem[Endereco] <> BLANK() &&
+			        NOT (
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "RAS") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "TEM") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "WWW") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "ADT")
+			    )
+			))
+		formatString: #,0
+		lineageTag: 524bb6ea-3085-4f82-8da0-90386b65a6eb
+
+	measure Ressup_Pend_Tarefas =
+			
+			CALCULATE(
+			    COUNTROWS(Fato_Ressup_Origem),
+			    Fato_Ressup_Origem[SituacaoItem] = "Não Iniciado",
+			    FILTER(
+			        Fato_Ressup_Origem,
+			        Fato_Ressup_Origem[Endereco] <> BLANK() &&
+			        NOT (
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "RAS") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "TEM") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "WWW") ||
+			            CONTAINSSTRING(Fato_Ressup_Origem[Endereco], "ADT")
+			    )
+			))
+		formatString: 0
+		lineageTag: a8cee241-1c46-4c7a-8245-4db6d6c00bc1
+
+	measure Ressup_Concl_Tarefas =
+			
+			CALCULATE(
+			    COUNTROWS(Fato_Ressup_Destino),
+			    Fato_Ressup_Destino[SituacaoItem] = "Concluído"
+			)
+		formatString: 0
+		lineageTag: 8be8299e-170c-4dff-933e-038d4e7def92
+
+	measure Ressup_Em_Proc_Tarefas =
+			
+			CALCULATE(
+			    COUNTROWS(Fato_Ressup_Destino),
+			    Fato_Ressup_Destino[SituacaoItem] = "Em Processo"
+			)
+		formatString: 0
+		lineageTag: 297dadce-58b0-46c2-a64b-8183190d74b4
+
+	measure Ressup_Em_Proc_Pecas =
+			
+			CALCULATE(
+			    SUM(Fato_Ressup_Destino[QtdeItemMov]),
+			    Fato_Ressup_Destino[SituacaoItem] = "Em Processo"
+			)
+		formatString: 0
+		lineageTag: 01be5f78-1918-46ef-aaa7-8acd18f384d8
+
+	measure Ressup_Total_Itens = [Ressup_Concl_Itens] + [Ressup_Em_Proc_Itens] + [Ressup_Pend_Itens]
+		formatString: 0
+		lineageTag: d94e500b-e4b7-4fdd-b31b-906f6f2afab1
+
+	measure Ressup_Total_Pecas = [Ressup_Pend_Pecas] + [Ressup_Em_Proc_Pecas] + [Ressup_Concl_Pecas]
+		formatString: 0
+		lineageTag: 7678b609-e277-4b83-ae7f-4651637f45ca
+
+	measure Ressup_Total_Tarefas = [Ressup_Concl_Tarefas] + [Ressup_Em_Proc_Tarefas] + [Ressup_Pend_Tarefas]
+		formatString: 0
+		lineageTag: bbbe0390-60ab-437a-b990-8fd658480b2c
+
+	measure Confer_Concl_Pecas =
+			
+			CALCULATE(
+			    SUM(Fato_Conferencia[QtdeItemMov]),
+			    Fato_Conferencia[SituacaoItem] = "Concluído")
+		formatString: 0
+		lineageTag: d1ea7020-dbcd-4250-91f3-cf3ab1805785
+
+	measure Confer_Pend_Pecas =
+			
+			CALCULATE(
+			    SUM(Fato_Conferencia[QtdeItemMov]),
+			    Fato_Conferencia[SituacaoItem] <> "Concluído")
+		formatString: 0
+		lineageTag: b239f8c4-374d-4921-9050-51c4e10879b1
+
+	measure Porc_Sep_Concl = [Separ_Concl_Pecas] / [Separ_Total_Pecas]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bf5fc307-e1c0-4a61-89d5-4c6ecf8451f7
+
+	measure Confer_Concl_Tarefas =
+			
+			CALCULATE(
+			    COUNT(Fato_Conferencia[Item]),
+			    Fato_Conferencia[SituacaoItem] = "Concluído"
+			)
+		formatString: 0
+		lineageTag: 4f597e38-4ee9-488f-9ebf-37e6d5c13fe9
+
+	measure Confer_Concl_Embarques =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Conferencia[NumeroDocumento]),
+			    Fato_Conferencia[SituacaoItem] = "Concluído"
+			)
+		formatString: 0
+		lineageTag: d28f4100-d693-4eb3-9e99-94e249a10839
+
+	measure FiltroDiaAnterior = IF(MAX(DIM_DATA[Data]) = TODAY() - 1, 1, 0)
+		formatString: 0
+		lineageTag: ee8ccfe1-e4ca-4a9a-9e03-494e305d1d5c
+
+	measure Total_Colab =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Consolidacao_Saida[Usuario2]),
+			    FILTER(
+			        ALLSELECTED(Dim_Data),
+			        Dim_Data[Data] >= MIN(Dim_Data[Data]) &&
+			        Dim_Data[Data] <= MAX(Dim_Data[Data])
+			    )
+			)
+		formatString: 0
+		lineageTag: eae480c9-09d3-4f33-a2f1-4894886bcc92
+
+	measure Perc_Pend_Separado = [Separ_Pend_Pecas] /  [Separ_Total_Pecas]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7de37c00-8dbe-4639-876b-da5f4ca95664
+
+	measure Separ_Pend_Pecas_D2Corridos =
+			
+			CALCULATE(
+			    SUM(Fato_Consolidacao_Saida[QtdeItemMov]),
+			    FILTER(
+			        Fato_Consolidacao_Saida,
+			        Fato_Consolidacao_Saida[SituacaoItem] <> "Concluído" &&
+			        Fato_Consolidacao_Saida[FaixaHoraFim] = "Separação Pendente" &&
+			        Fato_Consolidacao_Saida[D2Corridos] >= 2
+			    )
+			)
+		formatString: 0
+		lineageTag: f88a8c69-4d85-49d9-a678-587d5d0a5e98
+
+	measure MediSepar_Pend_Pecas_D2Corridos = ```
+			
+			CALCULATE(
+			    SUM(Fato_Consolidacao_Saida[QtdeItemMov]),
+			    FILTER(
+			        Fato_Consolidacao_Saida,
+			        Fato_Consolidacao_Saida[SituacaoItem] = "Concluído" &&
+			        
+			        Fato_Consolidacao_Saida[D2Corridos] > 2
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: c6ccd15c-3f73-4559-84c7-1fc8bdde3da0
+
+	measure PeçasPorSeparador = [Separ_Concl_Pecas] / DISTINCTCOUNT(Fato_Consolidacao_Saida[Usuario2])
+		lineageTag: ec7577c2-b008-4bd3-a32b-b643514b3b34
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TotalSeparadores = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Consolidacao_Saida[Usuario2]),
+			    FILTER(
+			        Fato_Consolidacao_Saida,
+			        NOT(ISBLANK(Fato_Consolidacao_Saida[Usuario2])) && Fato_Consolidacao_Saida[Usuario2] <> ""
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 7680e8d7-4c30-4375-960b-5555f60b3a43
+
+	measure PeçasHoraSeparador =
+			
+			[PeçasPorSeparador] / 8.8
+		lineageTag: 17cde1fd-7f6f-4b25-8b5e-2f27bbc608fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TempoAtividade = ```
+			
+			VAR PrimeiroHorario = 
+			    CALCULATE(
+			        MIN(Fato_Consolidacao_Saida[DtHrInicioTarefa]),
+			        Fato_Consolidacao_Saida[Turno] IN {"TA", "TB", "TC", "COM"}
+			    )
+			VAR UltimoHorario = 
+			    CALCULATE(
+			        MAX(Fato_Consolidacao_Saida[DtHrFimTarefa]),
+			        Fato_Consolidacao_Saida[Turno] IN {"TA", "TB", "TC", "COM"}
+			    )
+			RETURN
+			    DATEDIFF(PrimeiroHorario, UltimoHorario, HOUR)
+			
+			```
+		formatString: 0
+		lineageTag: 01014e41-278e-4d23-82d5-388524125041
+
+	measure TotalConf = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Conferencia[Usuario2]),
+			    FILTER(
+			        Fato_Conferencia,
+			        NOT(ISBLANK(Fato_Conferencia[Usuario2])) && Fato_Conferencia[Usuario2] <> ""
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e2ea170f-0850-4897-907b-3e1dd2922838
+
+	measure PeçasPorConf = [Confer_Concl_Pecas] / [TotalConf]
+		lineageTag: df8084f7-2782-4c07-9aef-2d0e4ac8dd50
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PecasHoraConf = [PeçasPorConf] / 8.8
+		lineageTag: f43e9058-bc34-4470-9f17-29d2a0d40825
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Confer_Pend_Embarques =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Conferencia[NumeroDocumento]),
+			    Fato_Conferencia[SituacaoItem] = "Não Iniciado"
+			)
+		formatString: 0
+		lineageTag: 02ad0eed-2fbb-43f3-abd7-f084b15a8e8e
+
+	measure Confer_Pend_Tarefas =
+			
+			CALCULATE(
+			    COUNT(Fato_Conferencia[Item]),
+			    Fato_Conferencia[SituacaoItem] = "Não Iniciado"
+			)
+		formatString: 0
+		lineageTag: f692ff6d-91b5-40a8-b109-66883650909b
+
+	measure TotalAlmoxRessu =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Ressup_Destino[Usuario2]),
+			    FILTER(
+			        Fato_Ressup_Destino,
+			        NOT(ISBLANK(Fato_Ressup_Destino[Usuario2])) && Fato_Ressup_Destino[Usuario2] <> ""
+			    )
+			)
+		formatString: 0
+		lineageTag: fa247fe1-1a4e-4262-b79a-eea628ecf626
+
+	measure Pecas_Por_Almox_Ressup = [Ressup_Concl_Pecas] / [TotalAlmoxRessu]
+		lineageTag: 89dbe8b1-ec7e-4c9e-8308-2126026f9d1e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PecasHoraRessup = [Pecas_Por_Almox_Ressup] / 8.8
+		lineageTag: 719b508f-74bf-41ab-b27c-86c07f6cda42
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure EnderecosDistintos = DISTINCTCOUNT(Fato_Consolidacao_Saida[Endereco])
+		formatString: 0
+		lineageTag: 2fc13122-6d49-4823-93ce-38c53d1d3a34
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: cdb72424-d1bb-4ec4-b695-aab2c4837a48
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = f847498a3cc24c80a226895aebbd28b4
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

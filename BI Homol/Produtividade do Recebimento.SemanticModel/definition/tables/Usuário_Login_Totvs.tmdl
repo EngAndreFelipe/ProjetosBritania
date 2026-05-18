@@ -1,0 +1,72 @@
+table Usuário_Login_Totvs
+	lineageTag: f85b2e9c-95b6-4f1e-b3f2-6e2da52ded8c
+
+	column Matrícula
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c9d6126-955a-4c26-88d4-1efc8e780e9a
+		summarizeBy: sum
+		sourceColumn: Matrícula
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: 54962013-9ca5-4ede-86e8-400a9ef6b201
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Função
+		dataType: string
+		lineageTag: 25453e2f-3769-447c-82ce-f9791f9742f8
+		summarizeBy: none
+		sourceColumn: Função
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: string
+		lineageTag: 52ad5c85-b8c9-433b-b0d7-4b1beaf318dc
+		summarizeBy: none
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Login
+		dataType: string
+		lineageTag: 3fa226fb-7f6a-40ea-84b5-b5f2b0ad16af
+		summarizeBy: none
+		sourceColumn: Login
+
+		annotation SummarizationSetBy = Automatic
+
+	column Setor
+		dataType: string
+		lineageTag: f6b7aa33-c3d5-4227-a5b0-079678600076
+		summarizeBy: none
+		sourceColumn: Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: b7849bdc-2fdc-4da0-bbe1-8cf47c5e5977
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Usuário_Login_Totvs = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\10.0.10.7\compartilhado\BI AT LOGISTICA\ID_REC\Setores_CDAT.xlsx"), null, true),
+				    Usuário_Login_Totvs_Table = Fonte{[Item="Usuário_Login_Totvs",Kind="Table"]}[Data],
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Usuário_Login_Totvs_Table,{{"Matrícula", Int64.Type}, {"Nome", type text}, {"Função", type text}, {"Turno", type text}, {"Login", type text}, {"Setor", type text}, {"Local", type any}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

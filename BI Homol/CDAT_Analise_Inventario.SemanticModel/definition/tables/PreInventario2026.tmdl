@@ -1,0 +1,232 @@
+table PreInventario2026
+	lineageTag: 75d44509-5e84-4f2e-b997-c8ef5307239c
+
+	column IdBox
+		lineageTag: 22ac1bef-b4a4-4c38-a885-a28000770f5e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [IdBox]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bloco
+		lineageTag: 85c499be-3b2d-417e-b285-13bea51c8039
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Bloco]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		lineageTag: 937fd032-af81-4b23-9a5d-5e83e648d748
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Rua]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		lineageTag: 09829243-ee74-4bc7-8562-aba407644320
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Nivel]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		lineageTag: 21b92897-efbe-4398-86c5-c7f68c46332b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Coluna]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataInventario
+		formatString: General Date
+		lineageTag: f97a4945-dac7-4bab-af70-16e3a71d2769
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DataInventario]
+
+		variation Variation
+			isDefault
+			relationship: 10e01ee2-03f1-49c1-a133-dd1acdf6bfd6
+			defaultHierarchy: LocalDateTable_0c095a8b-861b-4703-97e9-6eedf7f7ff22.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroInventario
+		lineageTag: 5490e5d3-b2de-436a-abf2-e8a845bc9369
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [NumeroInventario]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Item
+		lineageTag: 40968dd6-f51a-45de-b2db-900b7c3df409
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Item]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		lineageTag: 37cccc71-de61-4fc4-b93c-4611cb278111
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Descrição]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		lineageTag: 9c6cac5c-3320-4c44-aa65-9f07fe48d91b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Saldo]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada1
+		lineageTag: 3dc36f1b-dd33-4e6c-92cc-19eee215e2a5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QtdApurada1]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada2
+		lineageTag: be2e006c-8176-4442-b062-1348bbbfa45a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QtdApurada2]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada3
+		lineageTag: 435f98d5-fd0e-4a0a-9abb-e529264c79cf
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QtdApurada3]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Usuario1
+		lineageTag: 85283149-e618-4c1e-9a2a-555bed3afbcc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Usuario1]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		lineageTag: 31fadb9a-e556-4ce1-aac0-d6281f5ddd54
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Usuario2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario3
+		lineageTag: 1a6cf43f-bc08-473a-998d-e46e93df15a4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Usuario3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Acuracia
+		lineageTag: a2948491-7388-4dae-bf42-6a91ac15addf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Acuracia]
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuraciaPorPosicao
+		lineageTag: 86bd8b94-c23a-4d45-985f-d39fe0870c55
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AcuraciaPorPosicao]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		lineageTag: fe9d7db7-d007-4ee3-a8be-0ef31d28dfc8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Chave]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PreInventario2026 = calculated
+		mode: import
+		source =
+				
+				UNION (
+				    SELECTCOLUMNS (
+				        FILTER (
+				            Fato_InvPrimeiroCiclo,
+				            Fato_InvPrimeiroCiclo[EquipeContagem] = "PRE"
+				        ),
+				        "IdBox", Fato_InvPrimeiroCiclo[IdBox],
+				        "Bloco", Fato_InvPrimeiroCiclo[Bloco],
+				        "Rua", Fato_InvPrimeiroCiclo[Rua],
+				        "Nivel", Fato_InvPrimeiroCiclo[Nivel],
+				        "Coluna", Fato_InvPrimeiroCiclo[Coluna],
+				        "DataInventario", Fato_InvPrimeiroCiclo[DataInventario],
+				        "NumeroInventario", Fato_InvPrimeiroCiclo[NumeroInventario],
+				        "Item", Fato_InvPrimeiroCiclo[Item],
+				        "Descrição", Fato_InvPrimeiroCiclo[DescItem],
+				        "Saldo", Fato_InvPrimeiroCiclo[Saldo],
+				        "QtdApurada1", Fato_InvPrimeiroCiclo[QtdApurada1],
+				        "QtdApurada2", Fato_InvPrimeiroCiclo[QtdApurada2],
+				        "QtdApurada3", Fato_InvPrimeiroCiclo[QtdApurada3],
+				        "Usuario1", Fato_InvPrimeiroCiclo[Usuario1],
+				        "Usuario2", Fato_InvPrimeiroCiclo[Usuario2],
+				        "Usuario3", Fato_InvPrimeiroCiclo[Usuario3],
+				        "Acuracia", Fato_InvPrimeiroCiclo[Acuracidade],
+				        "AcuraciaPorPosicao", Fato_InvPrimeiroCiclo[AcuracidadePorPosicao],
+				        "Chave", Fato_InvPrimeiroCiclo[ChaveDocumento]
+				    ),
+				    SELECTCOLUMNS (
+				        FILTER (
+				            Fato_InvSegundoCiclo,
+				            Fato_InvSegundoCiclo[EquipeContagem] = "PRE"
+				        ),
+				        "IdBox", Fato_InvSegundoCiclo[IdBox],
+				        "Bloco", Fato_InvSegundoCiclo[Bloco],
+				        "Rua", Fato_InvSegundoCiclo[Rua],
+				        "Nivel", Fato_InvSegundoCiclo[Nivel],
+				        "Coluna", Fato_InvSegundoCiclo[Coluna],
+				        "DataInventario", Fato_InvSegundoCiclo[DataInventario],
+				        "NumeroInventario", Fato_InvSegundoCiclo[NumeroInventario],
+				        "Item", Fato_InvSegundoCiclo[Item],
+				        "Descrição", Fato_InvSegundoCiclo[DescItem],
+				        "Saldo", Fato_InvSegundoCiclo[Saldo],
+				        "QtdApurada1", Fato_InvSegundoCiclo[QtdApurada1],
+				        "QtdApurada2", Fato_InvSegundoCiclo[QtdApurada2],
+				        "QtdApurada3", Fato_InvSegundoCiclo[QtdApurada3],
+				        "Usuario1", Fato_InvSegundoCiclo[Usuario1],
+				        "Usuario2", Fato_InvSegundoCiclo[Usuario2],
+				        "Usuario3", Fato_InvSegundoCiclo[Usuario3],
+				        "Acuracia", Fato_InvSegundoCiclo[Acuracidade],
+				        "AcuraciaPorPosicao", Fato_InvSegundoCiclo[AcuracidadePorPosicao],
+				        "Chave", Fato_InvSegundoCiclo[ChaveDocumento]
+				    )
+				)
+
+	annotation PBI_Id = 35cc0528ca4d48039fd4e972f8eb77e9
+

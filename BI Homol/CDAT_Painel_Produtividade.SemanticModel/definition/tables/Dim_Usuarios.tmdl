@@ -1,0 +1,66 @@
+table Dim_Usuarios
+	lineageTag: fb913fe4-27b0-43ef-a7e4-a131a8666201
+
+	column Matrícula
+		dataType: int64
+		formatString: 0
+		lineageTag: efcfac6c-ea02-4dce-a4eb-b19b6123bcb4
+		summarizeBy: sum
+		sourceColumn: Matrícula
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: d8da6be3-6fd3-4c85-ae30-8317d02ecc44
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario_Nome
+		dataType: string
+		lineageTag: da1896fc-bab1-44d0-a0af-c08920ba1671
+		summarizeBy: none
+		sourceColumn: Usuario_Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Função
+		dataType: string
+		lineageTag: 69ec9dec-a089-4200-af6e-adb79621b803
+		summarizeBy: none
+		sourceColumn: Função
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: string
+		lineageTag: d500f702-5d92-4e89-aa4a-87bda6293fb8
+		summarizeBy: none
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Usuarios = m
+		mode: import
+		queryGroup: 'Tabelas DIM'
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Matrícula = _t, Nome = _t, Usuário = _t, Função = _t, #"Novo Turno" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Matrícula", Int64.Type}, {"Nome", type text}, {"Usuário", type text}, {"Função", type text}, {"Novo Turno", type text}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Tipo Alterado", each ([Usuário] <> "")),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Linhas Filtradas",{{"Novo Turno", "Turno"}}),
+				    #"Valor Substituído" = Table.ReplaceValue(#"Colunas Renomeadas","COMERCIAL","COM",Replacer.ReplaceText,{"Turno"}),
+				    #"Valor Substituído1" = Table.ReplaceValue(#"Valor Substituído","TURNO A","TA",Replacer.ReplaceText,{"Turno"}),
+				    #"Valor Substituído2" = Table.ReplaceValue(#"Valor Substituído1","TURNO B","TB",Replacer.ReplaceText,{"Turno"}),
+				    #"Valor Substituído3" = Table.ReplaceValue(#"Valor Substituído2","TURNO C","TC",Replacer.ReplaceText,{"Turno"}),
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Valor Substituído3",{{"Usuário", "Usuario_Nome"}}),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Colunas Renomeadas1",{{"Nome", Text.Upper, type text}})
+				in
+				    #"Texto em Maiúscula"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

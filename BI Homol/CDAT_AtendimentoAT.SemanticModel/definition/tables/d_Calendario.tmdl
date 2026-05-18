@@ -1,0 +1,126 @@
+table d_Calendario
+	lineageTag: f9bff3b6-5a2d-4540-8569-3010a8f808ba
+
+	column Calendario
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: 03209711-4b94-4046-8aa7-1493b9af2efe
+		summarizeBy: none
+		sourceColumn: Calendario
+
+		variation Variation
+			isDefault
+			relationship: 433c3bd1-6322-44f7-97c6-7d6fa21be4f1
+			defaultHierarchy: LocalDateTable_43be0b17-1b2e-4b0c-842d-f4aa8334ece3.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column DiaSemana
+		dataType: string
+		lineageTag: 9c4fd576-5a1c-4a85-b206-8fd019b1e74b
+		summarizeBy: none
+		sourceColumn: DiaSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNome
+		dataType: string
+		lineageTag: 820c47f1-bb9b-4142-959a-56c996dca8fb
+		summarizeBy: none
+		sourceColumn: DiaSemanaNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaAno
+		dataType: string
+		lineageTag: 89cfe439-501a-40d2-8ae5-0d507015a57e
+		summarizeBy: none
+		sourceColumn: DiaSemanaAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: 1a88b16c-8fb8-49f0-997e-0fcb3b2a57a2
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNome
+		dataType: string
+		lineageTag: 85fd3230-c5c1-4ff0-a694-30ac4d37c7fd
+		summarizeBy: none
+		sourceColumn: MesNome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: string
+		lineageTag: e63fa108-d367-429a-867d-0fcc30fedd14
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: string
+		lineageTag: 553f6a01-0469-4e5a-a56a-a020ccc3348d
+		summarizeBy: none
+		sourceColumn: MesAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaUtil
+		dataType: int64
+		formatString: 0
+		lineageTag: 14f8f970-682a-4415-80a7-9370a9ab2246
+		summarizeBy: sum
+		sourceColumn: DiaUtil
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bf888527-24a6-4077-9c8e-1bb88d01c125
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 119b6fa4-6b66-4be9-a859-c06096931aad
+			defaultHierarchy: LocalDateTable_ce0dad3f-a68a-4a9d-9915-350256b62170.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaUtilCalc
+		dataType: int64
+		formatString: 0
+		lineageTag: ae2741da-548c-4659-b705-8aabc1630f64
+		summarizeBy: sum
+		sourceColumn: DiaUtilCalc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Calendario = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="DECLARE @DataInicial DATE = DATEADD(DAY, 1, EOMONTH(DATEADD(MONTH, -4, GETDATE())));#(lf)DECLARE @DataFinal DATE = EOMONTH(DATEADD(MONTH, 0, GETDATE()));#(lf)SELECT #(lf)#(tab)CAST(Data AS DATE) Calendario,#(lf)#(tab)DiaSemana,#(lf)#(tab)DiaSemanaNome,#(lf)#(tab)DiaSemanaAno,#(lf)#(tab)Mes,#(lf)#(tab)MesNome,#(lf)#(tab)Ano,#(lf)#(tab)MMYYYY MesAno,#(lf)#(tab)CAST(DiaUtil AS INT) AS DiaUtil#(lf)FROM dbo.Dim_Data#(lf)WHERE data BETWEEN @DataInicial AND @DataFinal;"]),
+				    #"Consultas Mescladas" = Table.NestedJoin(Fonte, {"Calendario"}, Feriados, {"Data"}, "Feriados", JoinKind.LeftOuter),
+				    #"Feriados Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "Feriados", {"Data"}, {"Data"}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Feriados Expandido", "DiaUtilCalc", each if [Data] = null then [DiaUtil] else 0, Int64.Type)
+				in
+				    #"Personalização Adicionada"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

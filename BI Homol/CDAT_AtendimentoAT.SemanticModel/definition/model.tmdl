@@ -1,0 +1,32 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["f_PDB381","d_Calendario","d_Regioes","Medidas","MediasOS","Feriados"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation __PBI_ServiceStoredInTmdl = reserved
+
+ref table f_PDB381
+ref table d_Calendario
+ref table d_Regioes
+ref table Medidas
+ref table MediasOS
+ref table DateTableTemplate_dd5bc854-8d72-4548-a305-9fb02790dc90
+ref table LocalDateTable_43be0b17-1b2e-4b0c-842d-f4aa8334ece3
+ref table LocalDateTable_99a159c0-df76-4f0e-83f0-90d2dc34348d
+ref table LocalDateTable_640a8f43-041c-40b4-808e-9d0af91434c5
+ref table LocalDateTable_05717c63-dbd4-4775-89ca-bcdd094934f5
+ref table LocalDateTable_0d9c99da-79c4-43d8-9c8a-5a469ba84fd7
+ref table LocalDateTable_ce0dad3f-a68a-4a9d-9915-350256b62170
+
+ref cultureInfo pt-BR
+

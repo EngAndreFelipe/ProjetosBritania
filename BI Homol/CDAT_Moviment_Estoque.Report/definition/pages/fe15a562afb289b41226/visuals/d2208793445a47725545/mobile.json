@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.2.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 360,
+    "z": 1,
+    "height": 396,
+    "width": 324
+  },
+  "objects": {
+    "columnWidth": [
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "78.99847361037274D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Fato_Mov_Geral_WMS.DataImplantacao"
+        }
+      }
+    ]
+  }
+}

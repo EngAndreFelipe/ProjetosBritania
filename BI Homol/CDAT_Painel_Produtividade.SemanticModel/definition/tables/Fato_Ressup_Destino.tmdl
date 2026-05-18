@@ -1,0 +1,240 @@
+table Fato_Ressup_Destino
+	lineageTag: a962c766-f1bf-4d45-a856-6a8b8b758b85
+
+	column Documento
+		dataType: double
+		lineageTag: ace12aed-b70c-4ea0-8f63-b03544550a18
+		summarizeBy: sum
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroDocumento
+		dataType: string
+		lineageTag: 7a6fea77-4edb-4eb9-930c-d082b3d04bd9
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHRImplant
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b47955a5-0f22-4763-a3bc-a54378bb9cea
+		summarizeBy: none
+		sourceColumn: DtHRImplant
+
+		variation Variation
+			isDefault
+			relationship: 1a87314d-55c1-46ac-802d-345f457d3e1f
+			defaultHierarchy: LocalDateTable_b03a93f2-e9eb-4889-b03d-7d59eebfa3c4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario
+		dataType: string
+		lineageTag: fd750ad8-a613-4776-978a-f6aface0ab48
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 0f7fbd2b-40f3-4b10-b293-8110e10a8c89
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Situacao
+		dataType: string
+		lineageTag: 4dde3ce6-4c77-42d7-a9fa-0d80a8195da5
+		summarizeBy: none
+		sourceColumn: Situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdMovto
+		dataType: double
+		lineageTag: fc339b95-a4a5-442c-bf83-730656341940
+		summarizeBy: sum
+		sourceColumn: IdMovto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdeItemMov
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d4945e2-d24b-47be-a10b-2829243d62ba
+		summarizeBy: sum
+		sourceColumn: QtdeItemMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoItem
+		dataType: string
+		lineageTag: 1a70f43b-77e2-4a96-a785-d5c48e74d89f
+		summarizeBy: none
+		sourceColumn: SituacaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: db0bf782-aecb-46fd-8d0d-172b985b68b2
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: 46f9de4c-d387-4dce-a901-52e40cb2480c
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: 40234b0b-6f06-48a9-b3b1-5a0391543d37
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHrInicioTarefa
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9f0995e9-e28e-4b8c-9209-0f07240509d4
+		summarizeBy: none
+		sourceColumn: DtHrInicioTarefa
+
+		variation Variation
+			isDefault
+			relationship: e354dee7-3b2f-4b8a-ba70-1b36719f1519
+			defaultHierarchy: LocalDateTable_a1b6336c-e65a-48ca-acdc-c298c705075b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHrFimTarefa
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1ce5726b-bdef-47f0-a533-21b8a968cbb3
+		summarizeBy: none
+		sourceColumn: DtHrFimTarefa
+
+		variation Variation
+			isDefault
+			relationship: 9af898b8-d38d-4d43-a5b1-83a3de4189dc
+			defaultHierarchy: LocalDateTable_8ae40c25-35d0-43fe-a7f9-41713fc5230a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 515d62a1-8b2b-42a6-a527-3267ab72b2a0
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 2676a1f8-fdd8-4be2-8df2-8baa61204418
+			defaultHierarchy: LocalDateTable_38ad8dca-53e6-4478-9c98-ca3a6a17fe07.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtHrFimTarefaAjustada
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 62c6a467-5df6-44d3-b706-0ef3e51368b1
+		summarizeBy: none
+		sourceColumn: DtHrFimTarefaAjustada
+
+		variation Variation
+			isDefault
+			relationship: b6a75b8f-82a5-49ef-a748-24cd35222dc9
+			defaultHierarchy: LocalDateTable_8e8a30c2-e533-4d90-a817-53ef26eb8ef8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaHoraFim
+		dataType: string
+		lineageTag: a5cfa2bf-378d-460a-95e2-ab52ef80d086
+		summarizeBy: none
+		sourceColumn: FaixaHoraFim
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoriaEndereco
+		dataType: string
+		lineageTag: 663c5462-1c38-4281-a6b4-876609949cb6
+		summarizeBy: none
+		sourceColumn: CategoriaEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Matrícula
+		dataType: int64
+		formatString: 0
+		lineageTag: a006381a-4073-4925-9981-8c24444676c3
+		summarizeBy: sum
+		sourceColumn: Matrícula
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: fcb388b7-837d-4e2c-8feb-6a664ef6ceb8
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario_Nome
+		dataType: string
+		lineageTag: f30fa965-da0c-4d2d-88f0-54b1da520dbf
+		summarizeBy: none
+		sourceColumn: Usuario_Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Função
+		dataType: string
+		lineageTag: 9a3cf25f-75f3-43b8-8789-2b21d78a6fa5
+		summarizeBy: none
+		sourceColumn: Função
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: string
+		lineageTag: 1793ed9b-68b7-49bd-8473-36be085fdf47
+		summarizeBy: none
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Ressup_Destino = m
+		mode: import
+		queryGroup: 'Tabelas Fato'
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)        DECLARE @RangeStart DATETIME = '2025-01-01';#(lf)        DECLARE @RangeEnd DATETIME = GETDATE();#(lf)#(lf)        SELECT #(lf)            Documento,#(lf)            UPPER(NumeroDocumento) AS NumeroDocumento,#(lf)            CAST(DataImplantacao AS DATETIME) + CAST(HoraCriacaoDoc AS DATETIME) AS DtHRImplant,#(lf)            Usuario,#(lf)            UPPER(Item) AS Item,#(lf)            Situacao,#(lf)            IdMovto,#(lf)            QtdeItemMov,#(lf)            SituacaoItem,#(lf)            Usuario2,#(lf)            UPPER(Endereco) AS Endereco,#(lf)            UPPER(Local) AS Local,#(lf)            CAST(DtInicioTarefa AS DATETIME) + CAST(HoraInicio AS DATETIME) AS DtHrInicioTarefa,#(lf)            CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME) AS DtHrFimTarefa,#(lf)            DataCarga,#(lf)            CASE #(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 0 AND 3 THEN CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME) - 1#(lf)                ELSE CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)#(lf)            END AS DtHrFimTarefaAjustada,#(lf)            CASE #(lf)                WHEN CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME) IS NULL THEN 'Ressuprimento Pendente'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 0 AND 0 THEN '00 às 01'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 1 AND 1 THEN '01 às 02'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 2 AND 2 THEN '02 às 03'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 3 AND 3 THEN '03 às 04'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 4 AND 4 THEN '04 às 05'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 5 AND 5 THEN '05 às 06'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 6 AND 6 THEN '06 às 07'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 7 AND 7 THEN '07 às 08'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 8 AND 8 THEN '08 às 09'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 9 AND 9 THEN '09 às 10'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 10 AND 10 THEN '10 às 11'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 11 AND 11 THEN '11 às 12'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 12 AND 12 THEN '12 às 13'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 13 AND 13 THEN '13 às 14'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 14 AND 14 THEN '14 às 15'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 15 AND 15 THEN '15 às 16'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 16 AND 16 THEN '16 às 17'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 17 AND 17 THEN '17 às 18'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 18 AND 18 THEN '18 às 19'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 19 AND 19 THEN '19 às 20'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 20 AND 20 THEN '20 às 21'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 21 AND 21 THEN '21 às 22'#(lf)                WHEN DATEPART(HOUR, CAST(DtFimTarefa AS DATETIME) + CAST(HoraFim AS DATETIME)) BETWEEN 22 AND 22 THEN '22 às 23'#(lf)                ELSE '23 às 00'#(lf)            END AS FaixaHoraFim,#(lf)            CASE #(lf)                WHEN UPPER(Endereco) LIKE '%PCK%' OR UPPER(Endereco) LIKE '%ADT%' OR UPPER(Endereco) LIKE '%RAS%' OR UPPER(Endereco) LIKE '%TEM%' OR UPPER(Endereco) LIKE '%TRN%' OR UPPER(Endereco) LIKE '%WWW%' THEN 'PICKING'#(lf)                WHEN UPPER(Endereco) LIKE '%RUA%' OR UPPER(Endereco) LIKE '%VAL%' THEN 'AÉREO'#(lf)                WHEN UPPER(Endereco) LIKE '%DRI%' OR UPPER(Endereco) LIKE '%FAT%' THEN 'DRIVE-IN'#(lf)                ELSE NULL#(lf)            END AS CategoriaEndereco#(lf)            #(lf)            #(lf)#(lf)        FROM #(lf)            logistica.Fato_Mov_Estoque_PA_AT#(lf)        WHERE #(lf)            (Local = 'AAT' OR Local = 'REC') AND#(lf)            Origem = 'Transferência Destino' AND#(lf)            Movimento = 'Entrada'#(lf)            AND DataImplantacao > @RangeStart#(lf)            AND DataImplantacao <= @RangeEnd;#(lf)            #(lf)    "]),
+				    DimUsuarios = Dim_Usuarios,
+				    LinhasFiltradas = Table.SelectRows(Fonte, each [DtHRImplant] > #datetime(2025, 1, 1, 0, 0, 0)),
+				    Resultado = Table.Join(LinhasFiltradas, "Usuario2", DimUsuarios, "Usuario_Nome", JoinKind.LeftOuter),
+				    #"Texto Aparado" = Table.TransformColumns(Resultado,{{"Usuario2", Text.Trim, type text}})
+				in
+				    #"Texto Aparado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

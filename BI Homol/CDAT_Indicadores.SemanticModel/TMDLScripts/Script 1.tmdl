@@ -1,0 +1,8 @@
+createOrReplace
+
+	ref table Medidas
+
+		measure '% Realizado' = DIVIDE(SUM(d_Resultado[RealizadoNumerador]), SUM(d_Resultado[RealizadoDenominador]))
+			formatString: 0.00%;-0.00%;0.00%
+			lineageTag: f75c69cf-c19b-475d-b67f-1750a3759521
+

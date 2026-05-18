@@ -1,0 +1,38 @@
+relationship 433c3bd1-6322-44f7-97c6-7d6fa21be4f1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_Calendario.Calendario
+	toColumn: LocalDateTable_43be0b17-1b2e-4b0c-842d-f4aa8334ece3.Date
+
+relationship a70120fb-4e90-4811-b406-4c711b5ec97f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_PDB381.DataImplantacao
+	toColumn: LocalDateTable_99a159c0-df76-4f0e-83f0-90d2dc34348d.Date
+
+relationship 7fa502d2-eb14-437f-8324-3754a513202b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_PDB381.DataOS
+	toColumn: LocalDateTable_640a8f43-041c-40b4-808e-9d0af91434c5.Date
+
+relationship eee7eb14-2a80-4c74-b051-9b5a7bb2dbe4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_PDB381.DtFaturamento
+	toColumn: LocalDateTable_05717c63-dbd4-4775-89ca-bcdd094934f5.Date
+
+relationship 937882a4-f059-4fba-a6d9-8ea5c0fdb487
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_PDB381.DataEmbarque
+	toColumn: LocalDateTable_0d9c99da-79c4-43d8-9c8a-5a469ba84fd7.Date
+
+relationship 8e9c97c1-bf67-22d8-96ef-421d657b41ca
+	fromColumn: f_PDB381.DataSaida
+	toColumn: d_Calendario.Calendario
+
+relationship 26f022bb-1df1-a8c4-80e7-cb1099d42675
+	fromColumn: f_PDB381.EstadoEntrega
+	toColumn: d_Regioes.Sigla
+
+relationship 119b6fa4-6b66-4be9-a859-c06096931aad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_Calendario.Data
+	toColumn: LocalDateTable_ce0dad3f-a68a-4a9d-9915-350256b62170.Date
+

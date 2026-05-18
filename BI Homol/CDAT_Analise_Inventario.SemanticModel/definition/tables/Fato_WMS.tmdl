@@ -1,0 +1,131 @@
+table Fato_WMS
+	lineageTag: cfd0ab0f-6d87-42a9-961d-062159abbc82
+
+	measure UltimaCargaEstoque = MAX(Fato_WMS[DataCarga])
+		formatString: General Date
+		lineageTag: f689b8da-72a0-4818-9314-5582f21191b9
+
+	measure ContagemEnderecosCronograma = CALCULATE(DISTINCTCOUNT(Fato_WMS[Endereco]), TREATAS(VALUES(Fato_Cronograma[Código]), Fato_WMS[Item]))
+		formatString: 0
+		lineageTag: a7f3650e-9a6d-47db-a8de-45ae2381fcdb
+
+	measure ContPCK =
+			
+			COALESCE(CALCULATE (
+			    COUNTROWS ( Fato_WMS ),
+			    Fato_WMS[TipoEnd] = "Picking"
+			),0)
+		formatString: 0
+		lineageTag: 06af728e-d0f1-4043-86ac-8b4d7c24855f
+
+	measure ContRUA =
+			
+			COALESCE(CALCULATE (
+			    COUNTROWS ( Fato_WMS ),
+			    Fato_WMS[TipoEnd] = "Porta-Palete"
+			),0)
+		formatString: 0
+		lineageTag: 68e4bc20-e5f7-4040-963d-135cbd793253
+
+	measure ContDRI =
+			
+			COALESCE(CALCULATE (
+			    COUNTROWS ( Fato_WMS ),
+			    Fato_WMS[TipoEnd] = "Drive-In"
+			),0)
+		formatString: 0
+		lineageTag: 807322e5-80ec-4e4a-b8f5-e11af967f47e
+
+	column Estab
+		dataType: string
+		lineageTag: 2f0bf2df-47f8-4a89-b5c9-f97a6e7c9708
+		summarizeBy: none
+		sourceColumn: Estab
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: c6fee2fb-1fec-48fa-b453-d6478a4359cb
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: ffc6ee89-da6d-4866-8d87-d84b61af40e1
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: 91bd8d1e-f76b-4ea6-8c08-a115587975ed
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: 1a7e5276-1b0e-42b8-b2c5-c839a38fa140
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e022f45-54c3-4e10-83a6-ba2cc44ee1bb
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7f3de002-db72-4423-b08c-0b5e4b2331a0
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 9b31b2f1-08b9-4c56-86c5-b29d46b10b3c
+			defaultHierarchy: LocalDateTable_a9fdee9e-5341-4e5a-8cb7-ec7664baf72b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoEnd =
+			
+			VAR EnderecoNorm =
+			    UPPER ( TRIM ( Fato_WMS[Endereco] ) )
+			RETURN
+			SWITCH (
+			    TRUE (),
+			    LEFT ( EnderecoNorm, 3 ) = "PCK", "Picking",
+			    LEFT ( EnderecoNorm, 6 ) = "RUA/25", "Drive-In",
+			    LEFT ( EnderecoNorm, 3 ) = "RUA", "Porta-Palete",
+			    LEFT ( EnderecoNorm, 3 ) = "FAT" || LEFT ( EnderecoNorm, 3 ) = "DRI", "Drive-In",
+			    BLANK ()
+			)
+		lineageTag: ecb48dc3-08a9-454e-bd69-37171ad12dda
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_WMS = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)Estab, #(lf)[Local], #(lf)Item, #(lf)Descricao, #(lf)Endereco, #(lf)CAST(Disponivel AS INT) AS Total, #(lf)DataCarga#(lf)#(lf)From #(lf)DW.logistica.Fato_ESWM9022#(lf)#(lf)Where Estab = '15' #(lf)And [Local] = 'aat'"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

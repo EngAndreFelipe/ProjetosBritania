@@ -1,0 +1,359 @@
+table Fato_Pedidos
+	lineageTag: 22f5ac79-17e4-47f8-89de-f5e5d087ef30
+
+	measure ContagemPedidos = DISTINCTCOUNT(Fato_Pedidos[NumeroPedido])
+		formatString: 0
+		lineageTag: bc348d96-75ee-4d78-8298-8801a30e073c
+
+	measure ContagemItens = DISTINCTCOUNT(Fato_Pedidos[Id])
+		formatString: 0
+		lineageTag: a6519beb-14c9-4dbc-9fc7-71af5b87fa24
+
+	measure SomaPeças = SUM(Fato_Pedidos[QuantidadePedida])
+		formatString: 0
+		lineageTag: 3ac158aa-f83c-43d6-95f0-1e4063777b67
+
+	column CodItem
+		dataType: string
+		lineageTag: 70bdd358-772c-4fc6-9812-cae140f42299
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 56273b88-fb65-4eaf-8bfc-61b94ce999b0
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column PesoBruto
+		dataType: double
+		lineageTag: d264b9ca-d9af-418a-be64-a77774bcd329
+		summarizeBy: sum
+		sourceColumn: PesoBruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: b503f017-424d-4635-b0bb-ad1131fc7ece
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: ce419274-600e-46c4-a9bf-8c86094e9fdc
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denominacao
+		dataType: string
+		lineageTag: 3c45994a-b7ea-447c-8609-a66fc5fb117a
+		summarizeBy: none
+		sourceColumn: Denominacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 18bc40c9-e2bf-4ef0-8798-fd7c2a6c1189
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: bde02100-eb67-4980-8f1b-c36b8180aa08
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 06d2f180-0915-4b08-869b-c1a6c70480b0
+			defaultHierarchy: LocalDateTable_c8edd533-bafb-4374-aa33-6a7a1b652e4b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataOS
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: db38238a-aaa6-4e0e-8be3-41981e6c7204
+		summarizeBy: none
+		sourceColumn: DataOS
+
+		variation Variation
+			isDefault
+			relationship: 9dd4d2e0-a008-4f92-a664-5b8318e3d8a8
+			defaultHierarchy: LocalDateTable_dbf636af-97bd-48bc-91ef-179034b17d97.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CreditoPosto
+		dataType: string
+		lineageTag: b3649a96-99bf-49e4-8df1-1ca76e9a90b4
+		summarizeBy: none
+		sourceColumn: CreditoPosto
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreditoCliente
+		dataType: string
+		lineageTag: 9d488077-7578-483a-a972-4c24f87b5a99
+		summarizeBy: none
+		sourceColumn: CreditoCliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 53fdbda5-ccae-40e0-bf14-a520c6afcac1
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: cbd82314-18ec-4e06-8550-6145319f0d30
+			defaultHierarchy: LocalDateTable_e960cd90-f99e-497c-afc9-bf6e121f48f9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NumeroOS
+		dataType: string
+		lineageTag: d93c0f18-c2c7-454d-ba9a-5c9784487c3b
+		summarizeBy: none
+		sourceColumn: NumeroOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodEmitente
+		dataType: int64
+		formatString: 0
+		lineageTag: 853a3ab6-6ade-4682-925f-265aed63daae
+		summarizeBy: sum
+		sourceColumn: CodEmitente
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: 87ea51ac-f2bd-4f6e-ba63-9cfbef21e996
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoEntrega
+		dataType: string
+		lineageTag: efd4c267-9c9d-4aea-9b30-5ba785d4cf4a
+		summarizeBy: none
+		sourceColumn: EstadoEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: faf806e5-e127-4760-bb1c-ff48e43bea98
+		summarizeBy: count
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeCaixaMaster
+		dataType: int64
+		formatString: 0
+		lineageTag: b5f098ec-69ae-4504-91ac-353f99d85159
+		summarizeBy: sum
+		sourceColumn: QuantidadeCaixaMaster
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inventario
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 710dbeaa-b454-4b07-88a4-c03304817c8f
+		summarizeBy: none
+		sourceColumn: Inventario
+
+		annotation SummarizationSetBy = Automatic
+
+	column NatOperacao
+		dataType: string
+		lineageTag: 369c7a5e-f830-4d17-8625-981683c94fe7
+		summarizeBy: none
+		sourceColumn: NatOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadePedida
+		dataType: int64
+		formatString: 0
+		lineageTag: 9707c05c-e15b-46b2-a7c8-acf92f7b7a14
+		summarizeBy: sum
+		sourceColumn: QuantidadePedida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeAtendida
+		dataType: int64
+		formatString: 0
+		lineageTag: fbdbcc36-5392-4bed-961b-59ee753da610
+		summarizeBy: sum
+		sourceColumn: QuantidadeAtendida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeAlocada
+		dataType: int64
+		formatString: 0
+		lineageTag: b4b130a9-145d-4528-93a1-0a391d65f588
+		summarizeBy: sum
+		sourceColumn: QuantidadeAlocada
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeCarteira
+		dataType: int64
+		formatString: 0
+		lineageTag: 163505f1-65a3-4dfd-a20c-beba2c558149
+		summarizeBy: sum
+		sourceColumn: QuantidadeCarteira
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtFaturamento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f0b4b37e-ce5a-4a02-9404-b86c9a26039e
+		summarizeBy: none
+		sourceColumn: DtFaturamento
+
+		variation Variation
+			isDefault
+			relationship: 35d19561-026d-43a1-8fd8-9b7e2fb1cb2e
+			defaultHierarchy: LocalDateTable_2152fe8e-8b58-48d3-b4bf-eb41d9a6e157.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Embarque
+		dataType: double
+		lineageTag: 2cd57c35-66cd-4de1-9521-57d4f6d3c0c3
+		summarizeBy: sum
+		sourceColumn: Embarque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataEmbarque
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d88fe8d0-1165-4679-9a76-d636d4e3ead6
+		summarizeBy: none
+		sourceColumn: DataEmbarque
+
+		variation Variation
+			isDefault
+			relationship: 250b25c0-b843-430f-9cd2-32c9603d12f5
+			defaultHierarchy: LocalDateTable_69ea58c6-ace8-4226-a9cf-6c6b1a52c8dc.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NotaFiscal
+		dataType: string
+		lineageTag: aa299db5-f04b-497d-b808-ad1c48950b14
+		summarizeBy: none
+		sourceColumn: NotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstabNotaFiscal
+		dataType: string
+		lineageTag: dfc7c5b8-0355-4e18-8b3e-c18897b90e58
+		summarizeBy: none
+		sourceColumn: EstabNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column PedidoCompleto
+		dataType: string
+		lineageTag: 0b1bd9da-5941-4239-8713-de080586d92b
+		summarizeBy: none
+		sourceColumn: PedidoCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitPedido
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e964ab1-1569-45dc-ab01-0c38cc1e69cb
+		summarizeBy: sum
+		sourceColumn: SitPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitItem
+		dataType: string
+		lineageTag: b6801018-2096-45da-bd43-4b63496286d1
+		summarizeBy: none
+		sourceColumn: SitItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: db6e3425-e02e-4be7-af3d-f1ecf84ce5b7
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 6b7ec70c-dbc5-4e63-bd20-6f13e8bb2e98
+			defaultHierarchy: LocalDateTable_0e44c299-a5aa-47d8-81d7-25c83a3ec4b0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitCreditoPed
+		dataType: string
+		lineageTag: 82b9f060-397a-48d1-8152-cce9fd818a11
+		summarizeBy: none
+		sourceColumn: SitCreditoPed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Pedidos = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT PDB.[NumeroPedido]#(lf)      ,CAST(PDB.[DataImplantacao] AS date) AS [DataImplantacao]#(lf)      ,PDB.[NumeroOS]#(lf)      ,CAST(PDB.[DataOS] AS date) AS [DataOS]#(lf)      ,PDB.[CodEmitente]#(lf)      ,PDB.[NomeMatriz]#(lf)      ,PDB.[Cidade]#(lf)      ,PDB.[EstadoEntrega]#(lf)      ,IT.Id#(lf)      ,PDB.[CodItem]#(lf)      ,PDB.[DescItem]#(lf)      ,CAST(IT.QuantidadeCaixaMaster AS INT) AS QuantidadeCaixaMaster#(lf)      ,CAST(IT.PesoBruto AS float) AS PesoBruto#(lf)      ,PDB.[Inventario]#(lf)      ,PDB.[NatOperacao]#(lf)      ,PDB.[Denominacao]#(lf)      ,CAST(PDB.[QuantidadePedida] AS INT) AS [QuantidadePedida]#(lf)      ,CAST(PDB.[QuantidadeAtendida] AS INT) AS [QuantidadeAtendida]#(lf)      ,CAST(PDB.[QuantidadeAlocada] AS INT) AS [QuantidadeAlocada]#(lf)      ,CAST(PDB.[QuantidadeCarteira] AS INT) AS [QuantidadeCarteira]#(lf)      ,CAST(PDB.[DtFaturamento] AS date) AS [DtFaturamento]#(lf)      ,PDB.[Embarque]#(lf)      ,CAST(PDB.[DataEmbarque] AS date) AS [DataEmbarque]#(lf)      ,CAST(PDB.[DataSaida] AS date) AS [DataSaida]#(lf)      ,PDB.[NotaFiscal]#(lf)      ,PDB.[SerieNotaFiscal]#(lf)      ,PDB.[EstabNotaFiscal]#(lf)      ,PDB.[PedidoCompleto]#(lf)      ,PDB.[SitPedido]#(lf)      ,PDB.[CreditoCliente]#(lf)      ,PDB.[SitItem]#(lf)      ,CAST(PDB.[DataCarga] AS datetime) AS [DataCarga]#(lf)      ,PDB.[SitCreditoPed]#(lf)      ,PDB.[CreditoPosto]#(lf)  FROM [DW].[logistica].[Fato_PDB381] AS PDB#(lf)#(lf)  LEFT JOIN DW.dbo.Dim_Item AS IT#(lf)  ON IT.CodItem = PDB.CodItem#(lf)#(lf)  WHERE LEN(PDB.CodItem) = 9#(lf)  AND (PDB.CodItem LIKE '0%' OR PDB.CodItem LIKE '10%')#(lf)  AND PDB.CodItem NOT LIKE '02%'#(lf)  AND PDB.DataImplantacao > '2026-01-01'#(lf)"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataImplantacao", type date}, {"DataOS", type date}, {"DtFaturamento", type date}, {"DataEmbarque", type date}, {"DataSaida", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

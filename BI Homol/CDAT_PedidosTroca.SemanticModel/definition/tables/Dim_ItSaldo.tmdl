@@ -1,0 +1,103 @@
+table Dim_ItSaldo
+	lineageTag: 9943c387-424c-466b-afd2-c43f6539908f
+
+	column Item
+		dataType: string
+		lineageTag: fad87cb9-1043-49b3-b124-94aa7a387109
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column AT2
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e5380c7-6d73-478f-af22-b33e10d2e914
+		summarizeBy: none
+		sourceColumn: AT2
+
+		annotation SummarizationSetBy = Automatic
+
+	column EX2
+		dataType: int64
+		formatString: 0
+		lineageTag: a1477cf1-2d5b-4628-9c51-940375eae750
+		summarizeBy: none
+		sourceColumn: EX2
+
+		annotation SummarizationSetBy = Automatic
+
+	column EX3
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e556e2f-1200-4644-ae3a-9ca6cb882083
+		summarizeBy: none
+		sourceColumn: EX3
+
+		annotation SummarizationSetBy = Automatic
+
+	column AT4
+		dataType: int64
+		formatString: 0
+		lineageTag: 01c7b93e-9e57-4d13-b3c9-3b7bf1d07b99
+		summarizeBy: none
+		sourceColumn: AT4
+
+		annotation SummarizationSetBy = Automatic
+
+	column EX4
+		dataType: int64
+		formatString: 0
+		lineageTag: b7e4308a-c418-4cb9-989b-d66f5d8b761d
+		summarizeBy: none
+		sourceColumn: EX4
+
+		annotation SummarizationSetBy = Automatic
+
+	column AAT
+		dataType: int64
+		formatString: 0
+		lineageTag: f9093b15-374b-4dae-a67a-9cfe5cc71efc
+		summarizeBy: none
+		sourceColumn: AAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column PK4
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dc69658-21b2-4bb0-8467-262a0d147947
+		summarizeBy: none
+		sourceColumn: PK4
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoTotal = (Dim_ItSaldo[AAT]) + (Dim_ItSaldo[AT2]) + (Dim_ItSaldo[AT4]) + (Dim_ItSaldo[EX2]) + (Dim_ItSaldo[EX4]) + (Dim_ItSaldo[EX3]) + (Dim_ItSaldo[PK4])
+		formatString: 0
+		lineageTag: 8103448e-1293-4dee-8af6-d33061ae2103
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidaSaldo =
+			SWITCH(
+			                TRUE(),
+			                    Dim_ItSaldo[SaldoTotal] = 0, "Sem saldo",
+			                    Dim_ItSaldo[SaldoTotal] > 0, "Com saldo")
+		lineageTag: a9301ae5-2b56-45a9-a843-e1edd29bb8fe
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_ItSaldo = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)    [it-codigo] AS Item,#(lf)    CAST(ISNULL([AT2], 0) AS INT) AS AT2,#(lf)    CAST(ISNULL([EX2], 0) AS INT) AS EX2,#(lf)    CAST(ISNULL([EX3], 0) AS INT) AS EX3,#(lf)    CAST(ISNULL([AT4], 0) AS INT) AS AT4,#(lf)    CAST(ISNULL([EX4], 0) AS INT) AS EX4,#(lf)    CAST(ISNULL([AAT], 0) AS INT) AS AAT,#(lf)    CAST(ISNULL([PK4], 0) AS INT) AS PK4#(lf)FROM (#(lf)    SELECT#(lf)        [it-codigo],#(lf)        [cod-depos],#(lf)        [qtidade-atu]#(lf)    FROM STAGE.tot.SaldoEstoq#(lf)    WHERE#(lf)        LEN([it-codigo]) = 9#(lf)        AND (#(lf)            [it-codigo] LIKE '0%' #(lf)            OR [it-codigo] LIKE '10%'#(lf)        )#(lf)        AND [it-codigo] NOT LIKE '02%'#(lf)) AS src#(lf)PIVOT (#(lf)    SUM([qtidade-atu]) #(lf)    FOR [cod-depos] IN (#(lf)        [AT2], [EX2], [EX3], #(lf)        [AT4], [EX4], [AAT], [PK4]#(lf)    )#(lf)) AS pvt;"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

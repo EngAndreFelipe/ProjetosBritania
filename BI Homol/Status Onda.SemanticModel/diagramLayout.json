@@ -1,0 +1,60 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Fato_Onda",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 588,
+            "y": 0
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "5c60bade-c00f-407c-98ed-39878acf6b7b",
+          "size": {
+            "height": 145,
+            "width": 204
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 277,
+            "y": 0
+          },
+          "nodeIndex": "Dim_Ordenacao_Status",
+          "nodeLineageTag": "ad5cfe5a-10d5-40ca-b20f-bd3f54eba10a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

@@ -1,0 +1,395 @@
+table f_Sgm
+	lineageTag: 50e237a8-4ca1-433f-a159-8b9aabebd147
+
+	column IdIndicador
+		dataType: string
+		lineageTag: d469c65d-ecd6-4c10-9b29-5035936bb586
+		summarizeBy: none
+		sourceColumn: IdIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeIndicador
+		dataType: string
+		lineageTag: 6fb7926e-7a64-4309-b51c-e4596763b494
+		summarizeBy: none
+		sourceColumn: NomeIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Formula
+		dataType: string
+		lineageTag: 78c8916d-7c47-4b33-b39d-58447a2ac3ff
+		summarizeBy: none
+		sourceColumn: Formula
+
+		annotation SummarizationSetBy = Automatic
+
+	column Peso
+		dataType: int64
+		formatString: 0
+		lineageTag: 48d14041-2a9c-4284-87b5-e8fbc59775ea
+		summarizeBy: sum
+		sourceColumn: Peso
+
+		annotation SummarizationSetBy = Automatic
+
+	column SetorId
+		dataType: int64
+		formatString: 0
+		lineageTag: 24ee986e-c06a-43f8-9f7c-2a730dc6dfd4
+		summarizeBy: count
+		sourceColumn: SetorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeSetor
+		dataType: string
+		lineageTag: 7871dd88-0350-4d62-8a48-d81e1f81eb36
+		summarizeBy: none
+		sourceColumn: NomeSetor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b9bfacd-93a3-4bb1-bd63-2220fe4b7e9f
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 646d2799-fa61-4c9c-bd5d-f18b5166a8c3
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetaIndicador
+		dataType: double
+		lineageTag: c760c90c-2d60-44b6-9972-0ae5b8172198
+		summarizeBy: sum
+		sourceColumn: MetaIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MetaIndicadorAcumulado
+		dataType: double
+		lineageTag: 8e2f9352-ee6f-4607-8c03-6169b6c5744d
+		summarizeBy: sum
+		sourceColumn: MetaIndicadorAcumulado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RealizadoDenominador
+		dataType: double
+		lineageTag: c79fda9b-a249-4113-b2bc-b9f0f29561f2
+		summarizeBy: sum
+		sourceColumn: RealizadoDenominador
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RealizadoNumerador
+		dataType: double
+		lineageTag: 72cd7199-52e4-4917-82ee-21f64f1305c0
+		summarizeBy: sum
+		sourceColumn: RealizadoNumerador
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TipoIndicador
+		dataType: string
+		lineageTag: 15dfdc0c-4216-4813-94ae-4a6ed7e5ef14
+		summarizeBy: none
+		sourceColumn: TipoIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Formato
+		dataType: string
+		lineageTag: 871caeb1-d7f5-493b-a916-96137ec0a8bc
+		summarizeBy: none
+		sourceColumn: Formato
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChvId
+		dataType: string
+		lineageTag: 40b4f6fc-8d58-459b-a410-e4e1af1d947e
+		summarizeBy: none
+		sourceColumn: ChvId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2ed8d6ac-c1f7-40db-ba59-64bcb3509bf5
+		summarizeBy: none
+		sourceColumn: MesAno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meta_Indicador =
+			
+			VAR chvDiaUtil = LOOKUPVALUE(IncicadoresCalc[DiasUteis],IncicadoresCalc[ChvID], 'f_Sgm'[ChvId])
+			VAR MetaCalc = IF(ISBLANK(chvDiaUtil), 'f_Sgm'[MetaIndicador], ('f_Sgm'[MetaIndicador] / 21) * chvDiaUtil)
+			RETURN
+			    MetaCalc
+		lineageTag: 23ea4702-b25a-4df8-9afe-18e53884f454
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RealNumerador = 'f_Sgm'[RealizadoNumerador] + LOOKUPVALUE(IncicadoresCalc[RealizadoNumerador], IncicadoresCalc[ChvID], 'f_Sgm'[ChvId])
+		lineageTag: 33ce6a97-cb54-4205-8b5c-a557218d2a71
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RealDenominador = 'f_Sgm'[RealizadoDenominador] + LOOKUPVALUE(IncicadoresCalc[RealizadoDenominador], IncicadoresCalc[ChvID], 'f_Sgm'[ChvId])
+		lineageTag: 923f6ee7-567a-4081-a0b3-7cd356a77683
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column %_AtingAcm =
+			
+			VAR div = IF(f_Sgm[Formato] = "#,#0.00", 1, 100)
+			VAR vldMetaAcm = IF(f_Sgm[MetaIndicadorAcumulado] = BLANK(), f_Sgm[Meta_Indicador], f_Sgm[MetaIndicadorAcumulado])
+			VAR cima = f_Sgm[RealizadoAcm]
+			VAR baixo = (DIVIDE(f_Sgm[RealizadoAcm], (vldMetaAcm/div))*-1)
+			VAR fcima = FORMAT(cima, "0.####")
+			VAR fbaixo = FORMAT(baixo, "0.####")
+			RETURN
+			    IF(ISBLANK(f_Sgm[Realizado]), BLANK(),
+			       IF(f_Sgm[TipoIndicador] = "Para baixo", fbaixo, fcima)
+			    )
+		dataType: double
+		lineageTag: f92c1fbc-bcf2-471e-9ccc-a938e8e8a72b
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column %_AtingReal =
+			
+			VAR div = IF(f_Sgm[Formato] = "#,#0.00", 1, 100)
+			VAR cima  = DIVIDE(f_Sgm[Realizado], (f_Sgm[Meta_Indicador]/div))
+			VAR baixo = (DIVIDE(f_Sgm[Realizado], (f_Sgm[Meta_Indicador]/div))*-1)+2
+			VAR fcima = FORMAT(cima, "0.##")
+			VAR fbaixo = FORMAT(baixo, "0.##")
+			RETURN
+			    IF(ISBLANK(f_Sgm[Realizado]), BLANK(),
+			        IF(f_Sgm[TipoIndicador] = "Para baixo", fbaixo, fcima)
+			    )
+		dataType: double
+		lineageTag: afc4242b-b303-423c-961e-a55e175a3ead
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DenAcumulado = ```
+			
+			VAR acm = 
+			    CALCULATE(
+			        SUM(f_Sgm[RealDenominador]),
+			        FILTER(
+			            ALL(f_Sgm),
+			            f_Sgm[IdIndicador] = EARLIER(f_Sgm[IdIndicador]) &&
+			            f_Sgm[Ano] = EARLIER(f_Sgm[Ano]) &&  -- Filtro para manter o ano
+			            f_Sgm[MesAno] <= EARLIER(f_Sgm[MesAno])
+			        )
+			    )
+			RETURN
+			    IF(ISBLANK(f_Sgm[RealDenominador]), BLANK(), IF(ISBLANK(acm), 0, acm))
+			```
+		lineageTag: 796a468e-af99-409a-861d-083f2afab29d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FiltroIndicadores = ```
+			
+			 VAR codId = FORMAT(f_Sgm[IdIndicador]*1, "0000") & " - " 
+			 VAR caract = LEN(f_Sgm[NomeIndicador])
+			 VAR nomeId = f_Sgm[NomeIndicador]
+			 VAR esq = LEFT(nomeId, 15)
+			 VAR dir = RIGHT(nomeId, 15)
+			 RETURN
+			    IF(caract > 30, codId & esq & " ... " & dir,
+			        codId & nomeId
+			    )
+			```
+		lineageTag: 6940f603-626b-4598-8481-07158ae75c74
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormtMesAno = FORMAT(f_Sgm[MesAno], "mmm"&"/"&"yyyy")
+		lineageTag: 54eeac2d-0dd3-4d9d-83e1-6b1d94be60aa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indicadores = ```
+			
+			 VAR codId = FORMAT(f_Sgm[IdIndicador]*1, "0000") & " - " 
+			 VAR nomeId = f_Sgm[NomeIndicador]
+			 RETURN
+			    codId & nomeId
+			```
+		lineageTag: 4a2a5809-2470-475c-a535-d3d7a7cdc962
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumAcumulado = ```
+			
+			VAR acm = 
+			    CALCULATE(
+			        SUM(f_Sgm[RealNumerador]),
+			        FILTER(
+			            ALL(f_Sgm),
+			            f_Sgm[IdIndicador] = EARLIER(f_Sgm[IdIndicador]) &&
+			            f_Sgm[Ano] = EARLIER(f_Sgm[Ano]) &&  -- Filtro para manter o ano
+			            f_Sgm[MesAno] <= EARLIER(f_Sgm[MesAno])
+			        )
+			    )
+			RETURN
+			    IF(ISBLANK(f_Sgm[RealNumerador]), BLANK(), IF(ISBLANK(acm), 0, acm))
+			
+			```
+		lineageTag: 0ab2e9b6-80ed-43ad-9a01-c8aa0f6dd296
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PontuacaoAcumulado =
+			
+			VAR pont = SWITCH(TRUE(),
+			        f_Sgm[%_AtingAcm]>105, 120,
+			        f_Sgm[%_AtingAcm]>=0.95, 100,
+			        f_Sgm[%_AtingAcm]>=0.85, 70,
+			        f_Sgm[%_AtingAcm]>=0, 0
+			    )
+			VAR vld = ISBLANK(f_Sgm[RealNumerador]) && ISBLANK(f_Sgm[RealDenominador])
+			RETURN
+			    IF(vld = FALSE(), pont, BLANK())
+		formatString: 0
+		lineageTag: 93361cc6-77db-4398-8d26-28049e89a5a6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column PontuacaoMes =
+			SWITCH(TRUE(),
+			    f_Sgm[%_AtingReal]>105, 120,
+			    f_Sgm[%_AtingReal]>=0.95, 100,
+			    f_Sgm[%_AtingReal]>=0.85, 70,
+			    f_Sgm[%_AtingReal]>=0, 0
+			)
+		formatString: 0
+		lineageTag: 7c9731e9-e385-4420-95e3-f05355d1efc3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealAcumulado =
+			
+			VAR  realacm = DIVIDE(f_Sgm[NumAcumulado],f_Sgm[DenAcumulado],0)
+			VAR  frealacm = FORMAT(realacm, "0.##")
+			
+			RETURN
+			    IF(f_Sgm[NumAcumulado] <> BLANK(), frealacm , BLANK())
+		dataType: double
+		lineageTag: 8f2b08a1-7539-4531-b3eb-84ef72ce3434
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Realizado =
+			
+			//VAR real = DIVIDE(f_Sgm[RealNumerador], f_Sgm[RealDenominador], 0)
+			VAR real = IF(f_Sgm[RealNumerador] = 0 && f_Sgm[RealDenominador] = 0, 1, DIVIDE(f_Sgm[RealNumerador], f_Sgm[RealDenominador], 0))
+			VAR frt = FORMAT(real, "0.####")
+			RETURN
+			    IF(ISBLANK(f_Sgm[RealNumerador]), BLANK(), frt)
+		dataType: double
+		lineageTag: e26819d1-5579-497b-8a64-d4a2de23696a
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RealizadoAcm =
+			
+			VAR real = DIVIDE(f_Sgm[NumAcumulado], f_Sgm[DenAcumulado], 0)
+			VAR frt = FORMAT(real, "0.####")
+			RETURN
+			    IF(ISBLANK(f_Sgm[RealNumerador]), BLANK(), frt)
+		dataType: double
+		lineageTag: 166ec501-9cd2-4bd1-8407-f3d39aefb9b4
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition f_Sgm = m
+		mode: import
+		queryGroup: SGM
+		source = ```
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)SELECT  *#(lf)#(tab),CAST(IdIndicador AS VARCHAR) + '.' + CAST(Ano AS VARCHAR) + '.' + CAST(Mes AS VARCHAR) ChvId#(lf)#(tab),CAST(CAST(Ano AS VARCHAR) + '-' + CAST(Mes AS VARCHAR) + '-01' AS DATE) MesAno#(lf)FROM AT.GestaoMetas#(lf)WHERE  SetorId = 2#(lf)AND Ano > YEAR(GETDATE())-2"]),
+				    TipoAlterado = Table.TransformColumnTypes(Fonte,{{"IdIndicador", type text}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(TipoAlterado,{{"Formato", "Format"}, {"TipoIndicador", "TpIndicador"}}),
+				    Personalizar1 = Table.SelectRows(TipoAlterado, each ([Formula] <> "Total de peças movimentadas (Exp + Rec) / Qtde de Colaboradores Operacionais")),
+				    #"Valor Substituído" = Table.ReplaceValue(Table.ReplaceValue(Personalizar1,"0,0","0.0",Replacer.ReplaceText,{"Formato"}),"#.#0.00","#,#0.00",Replacer.ReplaceText,{"Formato"})
+				    
+				in
+				    #"Valor Substituído"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

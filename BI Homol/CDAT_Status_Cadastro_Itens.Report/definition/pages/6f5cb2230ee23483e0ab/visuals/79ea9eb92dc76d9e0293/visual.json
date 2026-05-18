@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "79ea9eb92dc76d9e0293",
+  "position": {
+    "x": 0,
+    "y": 52.967581047381543,
+    "z": 2,
+    "height": 68.229426433915208,
+    "width": 214.56359102244389,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "textSlicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Endereco"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Endereco",
+              "nativeQueryRef": "Endereço",
+              "displayName": "Endereço"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,130 @@
+table Tabela
+	lineageTag: 0b144ee0-2700-4bc2-894d-cd20366c0ebd
+
+	measure 'quantidade saída' = SUM('FATO_FTB101_Saída'[QuantidadeFaturada])
+		formatString: #,0
+		lineageTag: c1cbcc98-12ef-4560-9f1a-aec24ed55fa1
+
+	measure disponibilidade =
+			
+			VAR EstoqueInicial =LOOKUPVALUE(FATO_EXB023_Entrada[QtdeNFE],FATO_EXB023_Entrada[Item],SELECTEDVALUE('FATO_FTB101_Saída'[CodItem]))
+			RETURN
+			EstoqueInicial
+		formatString: 0
+		lineageTag: 58cc59f8-076b-4273-980b-25df6a6eaaf6
+
+	measure 'quantidade entrada' = SUM(FATO_EXB023_Entrada[QtdeNFE])
+		formatString: #,0
+		lineageTag: b56bd5a0-1a71-4c64-b5c3-597f99bd1379
+
+	measure saldo = [quantidade entrada] -[quantidade saída]
+		formatString: #,0
+		lineageTag: 544a685f-bfaa-483d-a62e-4745288468b9
+
+	measure 'Contagem NF Faturadas' = COUNT('FATO_FTB101_Saída'[NumeroNotaFiscal])
+		formatString: 0
+		lineageTag: 0e913979-fcac-4e91-b01d-9cf7508d3a14
+
+	measure 'Acima 15 Dias Saída' =
+			
+			VAR DataAtual = TODAY()
+			RETURN
+			SUMX(
+			    FILTER(
+			        'FATO_FTB101_Saída',
+			        'FATO_FTB101_Saída'[DtProgEmbarque] = DataAtual + 15
+			    ),
+			    'FATO_FTB101_Saída'[QuantidadeFaturada]
+			)
+		formatString: #,0
+		lineageTag: 2a35647b-e6e5-4d68-b112-e33e6ef80d0a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Sem Agendamento Saída' =
+			
+			COUNTROWS(
+			    FILTER(
+			        'FATO_FTB101_Saída',
+			        ISBLANK('FATO_FTB101_Saída'[DtProgEmbarque])
+			    )
+			)
+		formatString: 0
+		lineageTag: 106407cf-7866-4da7-afe0-d3d5bc18eda2
+
+	measure Bloqueado =
+			
+			VAR DataAtual = TODAY()
+			RETURN
+			SUMX(
+			    FILTER(
+			        'FATO_EXB023_Entrada',
+			        'FATO_EXB023_Entrada'[DataProgramacao] = DataAtual + 15
+			    ),
+			    'Tabela'[saldo]
+			)
+		formatString: #,0
+		lineageTag: 32983d5d-2a8a-455f-84a0-e2f9d313aca4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure QtdPorData =
+			
+			SUMX (
+			    VALUES (FATO_EXB023_Entrada[DataProgramacao]),
+			    CALCULATE (SUM (FATO_EXB023_Entrada[QtdeNFE]))
+			)
+		formatString: 0
+		lineageTag: 3f3f2073-4b4d-4d33-887e-9594d1f9b079
+
+	measure 'Acima 15 Dias Entrada' =
+			
+			VAR DataAtual = TODAY()
+			RETURN
+			SUMX(
+			    FILTER(
+			        'FATO_EXB023_Entrada',
+			        'FATO_EXB023_Entrada'[DataProgramacao] = DataAtual + 15
+			    ),
+			    'FATO_EXB023_Entrada'[QtdeNFE]
+			)
+		formatString: 0
+		lineageTag: d79b42ba-0d86-49b0-ab4d-467f71f857ab
+
+	measure 'Sem Agendamento Entrada' =
+			
+			COUNTROWS(
+			    FILTER(
+			        'FATO_EXB023_Entrada',
+			        ISBLANK('FATO_EXB023_Entrada'[DataProgramacao])
+			    )
+			)
+		formatString: 0
+		lineageTag: 8d09ebdc-6b75-4454-a94e-c8122b1d4dfd
+
+	measure 'Bloqueado Saída' =
+			
+			VAR DataAtual = TODAY()
+			RETURN
+			SUMX(
+			    FILTER(
+			        'FATO_FTB101_Saída',
+			        'FATO_FTB101_Saída'[DtProgEmbarque] = DataAtual + 15
+			    ),
+			    'Tabela'[saldo]
+			)
+		formatString: 0
+		lineageTag: 9efe3878-9f6c-4bc7-9b69-52b0d8debd15
+
+	partition Tabela = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

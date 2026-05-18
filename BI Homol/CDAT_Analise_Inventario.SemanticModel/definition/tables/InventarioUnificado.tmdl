@@ -1,0 +1,216 @@
+table InventarioUnificado
+	lineageTag: 00cfa5aa-d469-4237-80e6-108fad7cf91b
+
+	measure AcuracidadePorRua =
+			
+			VAR PosicoesCorretas =
+			    CALCULATE (
+			        DISTINCTCOUNT ( InventarioUnificado[IdBox] ),
+			        InventarioUnificado[AcuracidadePorPosicaoUltimaData] = "Correto",
+			        FILTER (
+			            InventarioUnificado,
+			            InventarioUnificado[Bloco] IN { "PCK", "RUA", "VAL" }&& NOT ( InventarioUnificado[Rua] IN { "25", "32", "01", "02", "46", "39", "40", "41", "42", "43", "44", "45", "47", "48" } )
+			        )
+			    )
+			VAR PosicoesTotais =
+			    CALCULATE (
+			        DISTINCTCOUNT ( InventarioUnificado[IdBox] ),
+			        NOT ISBLANK ( InventarioUnificado[AcuracidadePorPosicaoUltimaData] ),
+			        FILTER (
+			            InventarioUnificado,
+			            InventarioUnificado[Bloco] IN { "PCK", "RUA", "VAL" }
+			                && NOT ( InventarioUnificado[Rua] IN { "25", "32", "01", "02", "46", "39", "40", "41", "42", "43", "44", "45", "47", "48" } )
+			        )
+			    )
+			RETURN
+			DIVIDE ( PosicoesCorretas, PosicoesTotais )
+		lineageTag: 6e929ef3-fade-4715-9ada-42c5e9028e68
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemEnderecosGeral =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(InventarioUnificado[IdBox]),
+			    KEEPFILTERS( InventarioUnificado[Bloco] IN {"RUA", "VAL", "PCK"} ),
+			    KEEPFILTERS( NOT ( InventarioUnificado[RUA] IN {"25",  "32"} ) )
+			)
+		formatString: 0
+		lineageTag: e1de79be-8ba2-458d-a166-682fd51ad73b
+
+	measure ContagemEnderecosPCKGeral = CALCULATE(DISTINCTCOUNT(InventarioUnificado[IdBox]),InventarioUnificado[Bloco]="PCK")
+		formatString: 0
+		lineageTag: 9ae75a9e-eef4-4de0-8711-0f1f2549b483
+
+	measure ContagemEnderecosRUAGeral =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(InventarioUnificado[IdBox]),
+			    -- Mantém apenas Bloco = RUA ou VAL
+			    KEEPFILTERS( InventarioUnificado[Bloco] IN {"RUA", "VAL"} ),
+			    -- Exclui RUA 25, 31 e 32
+			    KEEPFILTERS( NOT ( InventarioUnificado[RUA] IN {"25", "31", "32"} ) )
+			)
+		formatString: 0
+		lineageTag: 3b58d8d3-7781-4338-9e5a-b2f6339161ed
+
+	measure AcuraciaPorRua =
+			
+			VAR PosicoesCorretas =
+			    CALCULATE (
+			        DISTINCTCOUNT ( InventarioUnificado[IdBox] ),
+			        InventarioUnificado[AcuracidadePorPosicaoUltimaData] = "Correto",
+			        InventarioUnificado[Bloco] IN { "PCK", "RUA", "VAL" },
+			        TREATAS (
+			            SELECTCOLUMNS ( UltimaDataPorBoxCiclo, "IdBox", [IdBox], "UltimaData", [UltimaData] ),
+			            InventarioUnificado[IdBox],
+			            InventarioUnificado[DataInventario]
+			        )
+			    )
+			VAR PosicoesTotais =
+			    CALCULATE (
+			        DISTINCTCOUNT ( InventarioUnificado[IdBox] ),
+			        NOT ISBLANK ( InventarioUnificado[AcuracidadePorPosicaoUltimaData] ),
+			        InventarioUnificado[Bloco] IN { "PCK", "RUA", "VAL" },
+			        TREATAS (
+			            SELECTCOLUMNS ( UltimaDataPorBoxCiclo, "IdBox", [IdBox], "UltimaData", [UltimaData] ),
+			            InventarioUnificado[IdBox],
+			            InventarioUnificado[DataInventario]
+			        )
+			    )
+			RETURN
+			DIVIDE ( PosicoesCorretas, PosicoesTotais )
+		lineageTag: f1c687ec-8fe8-46e0-a8fe-7dd4752efdcf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdBox
+		lineageTag: 53dde8bd-2d80-4059-bba7-483c78f3e7c6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IdBox]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataInventario
+		formatString: Short Date
+		lineageTag: 389bf206-cd48-40df-a2e0-b60560975ff7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DataInventario]
+
+		variation Variation
+			isDefault
+			relationship: 746b5b4a-2bc8-4131-989d-944a89b39a48
+			defaultHierarchy: LocalDateTable_c64b43ce-1ea7-40ab-a5da-4dd35c5de16e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorPosicaoUltimaData
+		lineageTag: 78d4831c-1099-4d26-b910-2b68fa5099af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AcuracidadePorPosicaoUltimaData]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno =
+			
+			FORMAT ( InventarioUnificado[DataInventario], "YYYY-MM" )
+		lineageTag: 2b5bb0e6-0250-44a8-9f2a-b9ce0f9d58f5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano = ```
+			
+			YEAR ( InventarioUnificado[DataInventario] )
+			
+			```
+		formatString: 0
+		lineageTag: b2c91089-9b86-498e-8e12-cbd2c49e8326
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes = ```
+			
+			MONTH ( InventarioUnificado[DataInventario] )
+			
+			```
+		formatString: 0
+		lineageTag: 90b6843b-5755-4e2b-8dd8-58afc472abb2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMes =
+			
+			FORMAT (InventarioUnificado[DataInventario], "MMMM")
+		lineageTag: 0597e19b-1e15-4a5e-aa15-5a3a94f04d78
+		summarizeBy: none
+		sortByColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloco
+		lineageTag: 2d911bc9-5139-4f0b-8c3f-11176422e28d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Bloco]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		lineageTag: 425c844a-f89a-4770-b057-8a74ea20e822
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Rua]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ciclo
+		lineageTag: acb3e8b2-7908-4676-bec1-bb127ce5909c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ciclo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EquipeContagem
+		lineageTag: fc12f5a4-8d30-43b3-9c10-fe85b1409c72
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EquipeContagem]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InventarioUnificado = calculated
+		mode: import
+		source =
+				
+				UNION (
+				    SELECTCOLUMNS (
+				        Fato_InvPrimeiroCiclo,
+				        "IdBox", Fato_InvPrimeiroCiclo[IdBox],
+				        "Bloco", Fato_InvPrimeiroCiclo[Bloco],
+				        "Rua", Fato_InvPrimeiroCiclo[Rua],
+				        "DataInventario", Fato_InvPrimeiroCiclo[DataInventario],
+				        "AcuracidadePorPosicaoUltimaData", Fato_InvPrimeiroCiclo[AcuracidadePorPosicaoUltimaData], "EquipeContagem", Fato_InvPrimeiroCiclo[EquipeContagem],
+				        "Ciclo", "Primeiro"
+				    ),
+				    SELECTCOLUMNS (
+				        Fato_InvSegundoCiclo,
+				        "IdBox", Fato_InvSegundoCiclo[IdBox],
+				        "Bloco", Fato_InvSegundoCiclo[Bloco],
+				        "Rua", Fato_InvSegundoCiclo[Rua],
+				        "DataInventario", Fato_InvSegundoCiclo[DataInventario],
+				        "AcuracidadePorPosicaoUltimaData", Fato_InvSegundoCiclo[AcuracidadePorPosicaoUltimaData], "EquipeContagem", Fato_InvSegundoCiclo[EquipeContagem],
+				        "Ciclo", "Segundo"
+				    )
+				)
+
+	annotation PBI_Id = 0050578e071c4b35b2d47c5e4248b51e
+

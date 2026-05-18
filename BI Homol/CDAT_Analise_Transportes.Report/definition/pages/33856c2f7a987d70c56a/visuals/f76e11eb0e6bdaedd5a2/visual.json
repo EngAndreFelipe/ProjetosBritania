@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f76e11eb0e6bdaedd5a2",
+  "position": {
+    "x": 72.718204488778056,
+    "y": 444.38902743142143,
+    "z": 3000,
+    "height": 275.61097256857852,
+    "width": 601.49625935162089,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Reenvio"
+                    }
+                  },
+                  "Property": "CodItem"
+                }
+              },
+              "queryRef": "Max(Fato_Reenvio.CodItem)",
+              "nativeQueryRef": "Código",
+              "displayName": "Código"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Reenvio"
+                    }
+                  },
+                  "Property": "DescItem"
+                }
+              },
+              "queryRef": "Fato_Reenvio.DescItem",
+              "nativeQueryRef": "DescItem"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Reenvio"
+                    }
+                  },
+                  "Property": "QuantidadeAlocada"
+                }
+              },
+              "queryRef": "Fato_Reenvio.QuantidadeAlocada",
+              "nativeQueryRef": "Qtde",
+              "displayName": "Qtde"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "446D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Reenvio.DescItem"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Max(Fato_Reenvio.CodItem)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

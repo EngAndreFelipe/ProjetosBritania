@@ -1,0 +1,233 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6c059389390db0023901",
+  "position": {
+    "x": 220.84788029925187,
+    "y": 324.98753117206979,
+    "z": 4,
+    "height": 395.01246882793015,
+    "width": 1059.3516209476309,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Endereco"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Endereco",
+              "nativeQueryRef": "Endereco"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Item"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Item",
+              "nativeQueryRef": "Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Descricao"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Descricao",
+              "nativeQueryRef": "Descricao"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fato_Cadastro"
+                  }
+                },
+                "Property": "Endereco"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.96218742166232D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Item"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "511.43889993674475D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Descricao"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "119.52866000789155D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Endereco"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4accc1f6502a3693099e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Cadastro"
+              }
+            },
+            "Property": "Endereco"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Fato_Cadastro",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "f"
+                              }
+                            },
+                            "Property": "Endereco"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'///'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "0f208ff6ed608691901b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Cadastro"
+              }
+            },
+            "Property": "Item"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3add9778c2132d1e2582",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Cadastro"
+              }
+            },
+            "Property": "Descricao"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

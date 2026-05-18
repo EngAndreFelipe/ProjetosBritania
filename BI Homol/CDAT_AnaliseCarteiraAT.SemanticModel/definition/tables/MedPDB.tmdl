@@ -1,0 +1,75 @@
+table MedPDB
+	lineageTag: db8c9393-1dc2-4729-ba7c-58522a1d42c4
+
+	measure QtdePedida = SUM(f_dwPDB381[QuantidadePedida])
+		lineageTag: 46aa5964-601e-4383-a2b8-311042723304
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure QtdBloq = CALCULATE([QtdePedida], f_dwPDB381[ChvBloqUnico_] <> BLANK() , f_dwPDB381[PedAlocado] = "NÃO")
+		formatString: #,0
+		lineageTag: c09ce4e7-b4cd-42a2-9311-9a5f3ab2005b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure QtdeLiberada = [QtdePedida] - [QtdBloq]
+		lineageTag: e210d230-91d8-467f-9438-64f0e441e54d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TempoBloq = CALCULATE(SUM(f_dwPDB381[QuantidadePedida]), ALL(d_Calendario[Calendario]))
+		lineageTag: 8ca06246-2f8b-4601-8ce6-0a017825d69a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure QtdAlocada = CALCULATE(SUM(f_dwPDB381[QuantidadeAlocada]), f_dwPDB381[Alocado] = "Sim")
+		lineageTag: 880a0797-05a7-4984-ab8b-50ce98143467
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure QtdCarteira = CALCULATE(SUM(f_dwPDB381[QuantidadeCarteira]), f_dwPDB381[ChvBloq] = "0000000000")
+		formatString: 0
+		lineageTag: b7c57d7d-a582-44da-81b4-c93e5c0b1a9e
+
+	measure QtdeDisponivel = CALCULATE([QtdePedida], f_dwPDB381[ChvBloqUnico_] = BLANK(), f_dwPDB381[Alocado] = "Não")
+		lineageTag: 5b5d3371-aa0f-4d34-8764-de7a807004d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure QtdeDocBloq = COALESCE(CALCULATE(DISTINCTCOUNT(f_dwPDB381[Embarque]), f_dwPDB381[ChvBloqUnico_] <> BLANK(), f_dwPDB381[PedAlocado] = "NÃO", FILTER(f_dwPDB381, f_dwPDB381[Embarque]<>0)),0)
+		formatString: 0
+		lineageTag: a1a540bb-a4b4-4363-a850-e1b8ba1a77c6
+
+	measure P_QtdeSku = DISTINCTCOUNT(f_dwPDB381[CodItem])
+		formatString: #,0
+		lineageTag: 476fbc85-6d1c-4120-b519-15fba4402747
+
+	measure MediaDiasBloq = ROUNDUP(CALCULATE(AVERAGEX(f_dwPDB381,DATEDIFF(f_dwPDB381[DataImplantacao],TODAY(),DAY)), FILTER(f_dwPDB381, f_dwPDB381[ChvBloq_] <> BLANK() && f_dwPDB381[PedAlocado] = "NÃO")),0)
+		lineageTag: 9b4dba19-5877-4899-803a-db79bf914f16
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: c42e13b9-2de3-4e91-b8d3-232507f9321d
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MedPDB = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

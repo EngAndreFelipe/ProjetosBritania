@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Depósitos"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0dc845f8-0ab0-4d8f-b5fe-06e2a75b138e"
+  }
+}

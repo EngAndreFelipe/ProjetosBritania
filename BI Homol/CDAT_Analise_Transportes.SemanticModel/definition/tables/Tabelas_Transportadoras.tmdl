@@ -1,0 +1,194 @@
+table Tabelas_Transportadoras
+	lineageTag: 8602c391-5ceb-4598-9b2a-d89f44073e5b
+
+	column Cod_Transportadora
+		dataType: string
+		lineageTag: 1e1df02e-16fc-4a0a-ab2c-5fc508a25db4
+		summarizeBy: none
+		sourceColumn: Cod_Transportadora
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Transportadora
+		dataType: string
+		lineageTag: 5c3445ab-b9eb-4cff-ad41-5ab2307bb515
+		summarizeBy: none
+		sourceColumn: Nome_Transportadora
+
+		annotation SummarizationSetBy = Automatic
+
+	column Num_Tabela
+		dataType: string
+		lineageTag: cf0ddc92-91d9-4552-b125-42771da0ffc2
+		summarizeBy: none
+		sourceColumn: Num_Tabela
+
+		annotation SummarizationSetBy = Automatic
+
+	column Num_Rota
+		dataType: string
+		lineageTag: 457853b0-e384-4bde-a0e0-22fe9d078693
+		summarizeBy: none
+		sourceColumn: Num_Rota
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Origem
+		dataType: string
+		lineageTag: 1294ba1f-cfef-442c-b217-fce65ba3cea4
+		summarizeBy: none
+		sourceColumn: Tipo_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade_Origem
+		dataType: string
+		lineageTag: 2049ddab-2623-4091-ad37-73d9c65a23e0
+		summarizeBy: none
+		sourceColumn: Cidade_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF_Origem
+		dataType: string
+		lineageTag: 28638bcc-6761-4257-bcd0-656a8714215c
+		summarizeBy: none
+		sourceColumn: UF_Origem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Destino
+		dataType: string
+		lineageTag: cb2c62dd-5dad-44bd-a3cb-6729ba6a1652
+		summarizeBy: none
+		sourceColumn: Tipo_Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Regiao_Destino
+		dataType: string
+		lineageTag: a11e4222-56cc-4973-b45f-d742fae873a0
+		summarizeBy: none
+		sourceColumn: Nome_Regiao_Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade_Destino_Expandida
+		dataType: string
+		lineageTag: 0681ff00-b0ed-4765-9dde-48bc4e3f66a1
+		summarizeBy: none
+		sourceColumn: Cidade_Destino_Expandida
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF_Destino
+		dataType: string
+		lineageTag: 1df940a3-9a82-4886-9839-a5a42f62bc84
+		summarizeBy: none
+		sourceColumn: UF_Destino
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cod_Faixa
+		dataType: string
+		lineageTag: dae61579-a749-4da2-82b1-82317ea383f2
+		summarizeBy: none
+		sourceColumn: Cod_Faixa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Limite_Peso_Faixa
+		dataType: double
+		lineageTag: f9da74b4-84b7-42ca-92e0-c16f074cf8f3
+		summarizeBy: sum
+		sourceColumn: Limite_Peso_Faixa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unidade_Medida
+		dataType: string
+		lineageTag: 5741eafd-8051-4410-bf34-26201e5e0d22
+		summarizeBy: none
+		sourceColumn: Unidade_Medida
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prazo_Entrega
+		dataType: double
+		formatString: 0
+		lineageTag: 58e19772-06ae-4b3f-9e04-13350258a6f3
+		summarizeBy: sum
+		sourceColumn: Prazo_Entrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Prazo
+		dataType: string
+		lineageTag: ffede2bb-0b09-4e8f-a442-fcb24bcc4f22
+		summarizeBy: none
+		sourceColumn: Tipo_Prazo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cod_Componente
+		dataType: string
+		lineageTag: d1c3cf39-6da2-4b9f-87dd-fc41a6ec73b0
+		summarizeBy: none
+		sourceColumn: Cod_Componente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor_Fixo
+		dataType: double
+		lineageTag: 8caa29e5-551c-4ed9-89f4-8900cc2e14db
+		summarizeBy: sum
+		sourceColumn: Valor_Fixo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Valor_Unitario
+		dataType: double
+		lineageTag: 4610fb9e-a5e4-4fc1-90d9-5c7715e8d893
+		summarizeBy: sum
+		sourceColumn: Valor_Unitario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Valor_Minimo
+		dataType: double
+		lineageTag: 879cea06-25bc-48dc-9cf0-3fa34ba0ee73
+		summarizeBy: sum
+		sourceColumn: Valor_Minimo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Percentual_Ad_Valorem
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3ace082c-25fd-4af7-9b44-17285a3a6931
+		summarizeBy: sum
+		sourceColumn: Percentual_Ad_Valorem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tabelas_Transportadoras = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT DISTINCT #(lf)    EMI.GU3_CDEMIT AS Cod_Transportadora,#(lf)    EMI.GU3_NMabrv AS Nome_Transportadora,#(lf)    ROT.GV8_NRTAB AS Num_Tabela,#(lf)    ROT.GV8_NRROTA AS Num_Rota,#(lf)    #(lf)    -- GEOGRAFIA (Origem)#(lf)    ROT.GV8_TPORIG AS Tipo_Origem,#(lf)    CID_ORI.GU7_NMCID AS Cidade_Origem,#(lf)    CID_ORI.GU7_CDUF AS UF_Origem,#(lf)#(lf)    -- GEOGRAFIA (Destino - Resiliente)#(lf)    ROT.GV8_TPDEST AS Tipo_Destino,#(lf)    #(lf)    -- REGRA DE NOMENCLATURA: Padronização da Capital RJ#(lf)    CASE #(lf)        WHEN RTRIM(REG_NOME.GU9_NMREG) = 'CAP RJ BRASPRESS' THEN 'CAPITAL RJ'#(lf)        ELSE REG_NOME.GU9_NMREG #(lf)    END AS Nome_Regiao_Destino,#(lf)#(lf)    -- Se a cidade for NULL, marcamos como Interior para o seu cálculo de fallback no Power BI#(lf)    ISNULL(CID_DES_REGIAO.GU7_NMCID, 'INTERIOR ' + RTRIM(CID_DES_REGIAO.GU7_CDUF)) AS Cidade_Destino_Expandida,#(lf)    CID_DES_REGIAO.GU7_CDUF AS UF_Destino,#(lf)#(lf)    -- FÍSICA#(lf)    FAIXA.GV7_CDFXTV AS Cod_Faixa,#(lf)    FAIXA.GV7_QTFXFI AS Limite_Peso_Faixa, #(lf)    FAIXA.GV7_UNICAL AS Unidade_Medida,   #(lf)#(lf)    -- TEMPO#(lf)    PRAZO.GV6_QTPRAZ AS Prazo_Entrega,#(lf)    PRAZO.GV6_TPPRAZ AS Tipo_Prazo, #(lf)#(lf)    -- FINANCEIRO#(lf)    VAL.GV1_CDCOMP AS Cod_Componente, #(lf)    VAL.GV1_VLFIXN AS Valor_Fixo,#(lf)    VAL.GV1_VLUNIN AS Valor_Unitario,#(lf)    VAL.GV1_VLMINN AS Valor_Minimo,#(lf)    VAL.GV1_PCNORM AS Percentual_Ad_Valorem#(lf)#(lf)FROM [STAGE].[gfe].[GV8] AS ROT#(lf)#(lf)-- Matriz Virtual#(lf)INNER JOIN (#(lf)    VALUES #(lf)        ('24563', '34', '4'),#(lf)        ('2991149', '1', '5'),#(lf)        ('4141302', '2', '5'),#(lf)        ('16528', '8', '10'),#(lf)        ('1905811', '10', '4'),#(lf)        ('111957', '28', '1'),#(lf)        ('97710', '2', '1'),#(lf)        ('97710', '3', '1')#(lf)) AS FILTRO(CDEMIT, NRTAB, NRNEG)#(lf)    ON RTRIM(FILTRO.CDEMIT) = RTRIM(ROT.GV8_CDEMIT) #(lf)    AND RTRIM(FILTRO.NRTAB) = RTRIM(ROT.GV8_NRTAB)#(lf)#(lf)INNER JOIN [STAGE].[gfe].[GU3] AS EMI ON EMI.GU3_CDEMIT = ROT.GV8_CDEMIT #(lf)INNER JOIN [STAGE].[gfe].[GU7] AS CID_ORI ON CID_ORI.GU7_NRCID = ROT.GV8_NRCIOR #(lf)#(lf)-- Geografia de Destino#(lf)LEFT JOIN [STAGE].[gfe].[GU9] AS REG_NOME ON REG_NOME.GU9_NRREG = ROT.GV8_NRREDS#(lf)LEFT JOIN [STAGE].[gfe].[GUA] AS GUA_DES ON GUA_DES.GUA_NRREG = ROT.GV8_NRREDS #(lf)LEFT JOIN [STAGE].[gfe].[GU7] AS CID_DES_REGIAO ON CID_DES_REGIAO.GU7_NRCID = GUA_DES.GUA_NRCID #(lf)#(lf)-- Financeiro#(lf)INNER JOIN [STAGE].[gfe].[GV1] AS VAL #(lf)    ON RTRIM(VAL.GV1_CDEMIT) = RTRIM(ROT.GV8_CDEMIT) #(lf)    AND RTRIM(VAL.GV1_NRTAB) = RTRIM(ROT.GV8_NRTAB) #(lf)    AND RTRIM(VAL.GV1_NRROTA) = RTRIM(ROT.GV8_NRROTA)#(lf)    AND VAL.GV1_NRNEG = FILTRO.NRNEG #(lf)#(lf)INNER JOIN [STAGE].[gfe].[GV7] AS FAIXA#(lf)    ON FAIXA.GV7_CDEMIT = VAL.GV1_CDEMIT#(lf)    AND FAIXA.GV7_NRTAB = VAL.GV1_NRTAB#(lf)    AND FAIXA.GV7_NRNEG = VAL.GV1_NRNEG #(lf)    AND FAIXA.GV7_CDFXTV = VAL.GV1_CDFXTV#(lf)#(lf)LEFT JOIN [STAGE].[gfe].[GV6] AS PRAZO#(lf)    ON PRAZO.GV6_CDEMIT = VAL.GV1_CDEMIT#(lf)    AND PRAZO.GV6_NRTAB = VAL.GV1_NRTAB#(lf)    AND PRAZO.GV6_NRNEG = VAL.GV1_NRNEG#(lf)    AND PRAZO.GV6_NRROTA = VAL.GV1_NRROTA#(lf)    AND PRAZO.GV6_CDFXTV = VAL.GV1_CDFXTV#(lf)#(lf)WHERE #(lf)    ROT.GV8_TPORIG = '1' #(lf)    AND ROT.GV8_TPDEST IN ('2', '3');"]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([Cod_Transportadora] <> "97710         "))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

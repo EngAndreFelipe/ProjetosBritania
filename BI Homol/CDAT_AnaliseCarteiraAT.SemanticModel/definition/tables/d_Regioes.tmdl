@@ -1,0 +1,39 @@
+table d_Regioes
+	lineageTag: bf8722e6-3130-46e9-8b50-d0a625c0fd1f
+
+	column UnidadeFederativa
+		dataType: string
+		lineageTag: 4e7d0832-aa41-4228-b385-55f4039db67e
+		summarizeBy: none
+		sourceColumn: UnidadeFederativa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sigla
+		dataType: string
+		lineageTag: c48d9a02-f8eb-43f4-87ff-48bad41cdbf4
+		summarizeBy: none
+		sourceColumn: Sigla
+
+		annotation SummarizationSetBy = Automatic
+
+	column Região
+		dataType: string
+		lineageTag: 556f0e42-e929-4a6a-be40-3dc6101914f1
+		summarizeBy: none
+		sourceColumn: Região
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_Regioes = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bZJBboMwEEWvglinhyAkQY1KsOwsKkUsJsFKLIGNDEhVbxN10RW73sAX6wy0SXDYsJj/5/P87cMhjE5WhoswivGzM7aVYb7AaQlnAw0Jb6NQyOZfq6B2V5LYdKeCT6PHpXSiLOGiACfLyM+KJdghK1770ko1rVWtCTaykBZK1FcbckrdWvOS3Yzrpnb94BSgW4OWtcCP6O5ZiVHuSmBJNpeQggV9cV+0mz4xpoDRiTVNM+j7+YSbJygQpCPcVMxaFXYUJHgkRURp4rGyv0ZYNOkQx+D6I9XIlj4iiXrc4kNcOY6l1VAduxOBs6eGmYLO9SS9+hJXeA4ZbEFLZWmbbz1MciT4V3ThgUdOtO3mku6+sRguHiC50YX70cMD4dnkzNxgSdUg8IlAFw1BDC1YbJPC4odEgTcZMOhKAhfMAxfSnlVNsOKpkb05YbLSdDH7KQs9q3f6fNQ4A/dNzyXPfwE=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [UnidadeFederativa = _t, Sigla = _t, Região = _t])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

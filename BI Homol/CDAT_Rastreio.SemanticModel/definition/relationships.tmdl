@@ -1,0 +1,21 @@
+relationship 0879a137-d147-4f6e-ac8b-bb1eb17651ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Rastreio.DataImplantacao
+	toColumn: LocalDateTable_8f8ddc41-36b0-4d1e-b79b-4ed9d3cbcd8c.Date
+
+relationship c2be39d9-d9e9-4a70-a589-3c8cb9d047e8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: TabelaFinal.DataImplantacao
+	toColumn: LocalDateTable_9d0f22f7-9099-4a1c-b25f-6aa8b166c0fa.Date
+
+relationship 9f1fcd27-8cb7-4f69-9380-2bf189072a11
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Rastreio.DataCarga
+	toColumn: LocalDateTable_2c185bb6-7477-4122-b683-def9928b40e1.Date
+
+relationship 7df0e754-b605-1e77-f626-4b17e650d043
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Fato_Rastreio.Item
+	toColumn: TabelaFinal.Item
+

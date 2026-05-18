@@ -1,0 +1,89 @@
+table Fato_WMS
+	lineageTag: fea18e8e-1041-40ac-8402-d9e9dd14f762
+
+	column IdItem
+		dataType: int64
+		formatString: 0
+		lineageTag: 302a2a49-75e9-4ae8-8da7-32e93fcdf28c
+		summarizeBy: none
+		sourceColumn: IdItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 1f5c73bf-e895-48a6-8e30-a5e9dd8974c3
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ebe6632-7c15-44bf-be36-229bba80f668
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdBox
+		dataType: double
+		lineageTag: 6c4a1b25-9909-4cc5-a6a3-e62d56a4fa7e
+		summarizeBy: sum
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bloco
+		dataType: string
+		lineageTag: 8c5b79b3-97c5-4965-8313-df40794027ff
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: 04fa907b-3ed6-43b1-b627-7b13c9e492d2
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: 2deae5ae-a0da-4fee-9f80-dc418956851e
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: 3e5fc485-36ad-4519-ad39-59c7442ae542
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem = RELATED(Dim_Item[DescItem])
+		lineageTag: 97b0774b-8283-44c9-b4b5-8547943c1a43
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_WMS = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="WITH EnderecoSeparado AS (#(lf)    SELECT #(lf)        Endereco,#(lf)        Item,#(lf)        Local,#(lf)        Total,#(lf)        PARSENAME(REPLACE(Endereco, '/', '.'), 4) AS Bloco,#(lf)        PARSENAME(REPLACE(Endereco, '/', '.'), 3) AS Rua,#(lf)        PARSENAME(REPLACE(Endereco, '/', '.'), 2) AS Nivel,#(lf)        PARSENAME(REPLACE(Endereco, '/', '.'), 1) AS Coluna#(lf)    FROM DW.logistica.Fato_ESWM9022#(lf))#(lf)SELECT #(lf)    I.Id AS IdItem,#(lf)    E.Item,#(lf)    CAST(E.Total AS INT) AS Saldo,#(lf)    O.[id-box] AS IdBox,#(lf)    O.[cod-bloco] AS Bloco,#(lf)    O.[cod-rua] AS Rua,#(lf)    O.[cod-nivel] AS Nivel,#(lf)    O.[cod-coluna] AS Coluna#(lf)FROM EnderecoSeparado E#(lf)LEFT JOIN STAGE.tot.wmbox O#(lf)    ON E.Bloco  = O.[cod-bloco]#(lf)   AND E.Rua    = O.[cod-rua]#(lf)   AND E.Nivel  = O.[cod-nivel]#(lf)   AND E.Coluna = O.[cod-coluna]#(lf)LEFT JOIN DW.dbo.Dim_Item AS I ON I.CodItem = E.Item#(lf)WHERE E.Local = 'aat';"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

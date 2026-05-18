@@ -1,0 +1,45 @@
+table MedEstoque
+	lineageTag: 492b5c7e-f4de-437a-8d13-b5e0ede419f3
+
+	measure TotalItemOnda = CALCULATE(SUM(f_dwMovEstoqueAT[QtdeItemMov]), ALLSELECTED(f_dwMovEstoqueAT))
+		formatString: #,0
+		lineageTag: 228bcfca-d459-4627-add1-15c548729e8a
+
+	measure QtdePecas = SUM(f_dwMovEstoqueAT[QtdeItemMov])
+		formatString: #,0
+		lineageTag: 504f3cb1-ae0f-4d9d-be73-fdbd57215128
+
+	measure QtdeDocto = DISTINCTCOUNT(f_dwMovEstoqueAT[ONDA])
+		formatString: 0
+		lineageTag: 9a21f872-bc71-400e-b1f2-ab43223c07f0
+
+	measure PercOnda = [QtdePecas]/[TotalItemOnda]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b4c28226-7147-4d7d-8a5b-0e014b49d9fc
+
+	measure QtdeSku = DISTINCTCOUNT(f_dwMovEstoqueAT[Item])
+		formatString: #,0
+		lineageTag: f87b8f4a-941a-48c8-806b-c31688a8c755
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: 8a3569fd-fd24-4f00-b992-2b95e2dea893
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MedEstoque = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

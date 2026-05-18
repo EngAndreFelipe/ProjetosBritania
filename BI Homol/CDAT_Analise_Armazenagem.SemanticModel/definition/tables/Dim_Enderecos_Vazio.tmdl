@@ -1,0 +1,345 @@
+table Dim_Enderecos_Vazio
+	lineageTag: 31918f00-f315-4854-8054-c533ba8e3d68
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: month
+		rollingWindowPeriods: 12
+		incrementalGranularity: day
+		incrementalPeriods: 60
+		sourceExpression = ```
+			let
+			    Fonte = Value.NativeQuery(
+			        Sql.Database("PR-S188\DW", "Stage"),
+			        "
+			        SELECT 
+			            CONCAT(w.[cod-bloco], '/', w.[cod-rua], '/', w.[cod-nivel], '/', w.[cod-coluna]) AS Localizacao,
+			            w.[id-box] AS IdBox, 
+			
+			            CASE w.[cdn-tipo-box]
+			                WHEN 1 THEN 'PORTA PALETE'
+			                WHEN 2 THEN 'PICKING'
+			                WHEN 3 THEN 'SEPARAÇÃO'
+			                WHEN 4 THEN 'DOCA'
+			                WHEN 5 THEN 'INUTILIZADO'
+			                WHEN 6 THEN 'RESERVA'
+			                WHEN 7 THEN 'TRANSITÓRIO RETRABALHO'
+			                ELSE 'DESCONHECIDO'
+			            END AS TipoEndereco,
+			
+			            w.[cod-local] AS CodLocal, 
+			            w.[cod-bloco] AS CodBloco, 
+			            w.[cod-rua] AS CodRua, 
+			            w.[cod-nivel] AS CodNivel, 
+			            w.[cod-coluna] AS CodColuna,                    
+			
+			            CASE w.[log-bloq-armaz]
+			                WHEN 0 THEN 'NAO'
+			                WHEN 1 THEN 'SIM'
+			                ELSE 'DESCONHECIDO'
+			            END AS BloqArmaz,
+			
+			            CASE w.[log-bloq-retir]
+			                WHEN 0 THEN 'NAO'
+			                WHEN 1 THEN 'SIM'
+			                ELSE 'DESCONHECIDO'
+			            END AS BloqRetir,
+			
+			            w.[ind-status-box] AS IndStatusBox,            
+			            w.[ind-posicao-box] AS IndPosicaoBox, 
+			            w.[int-2] AS Prioridade, 
+			
+			            CASE w.[idi-classif-abc]
+			                WHEN '1' THEN 'A'
+			                WHEN '2' THEN 'B'
+			                WHEN '3' THEN 'C'
+			                ELSE CAST(w.[idi-classif-abc] AS varchar)
+			            END AS ClasseABC,
+			
+			            CASE 
+			                WHEN f.Endereco IS NOT NULL THEN 'OCUPADO'
+			                ELSE 'VAZIO'
+			            END AS StatusEndereco,
+			
+			            ISNULL(f.DataCarga, GETDATE()) AS DataCarga,
+			            ISNULL(f.TotalPecas, 0) AS TotalPecas,
+			            ISNULL(f.TotalItem, 0) AS TotalItem
+			
+			        FROM Stage.tot.WmBox w
+			        LEFT JOIN (
+			            SELECT 
+			                Endereco,
+			                DataCarga,
+			                SUM(Disponivel) AS TotalPecas,
+			                COUNT(*) AS TotalItem
+			            FROM DW.logistica.Fato_ESWM9022
+			            WHERE [Local] = 'AAT'
+			            GROUP BY Endereco, DataCarga
+			        ) f
+			            ON LTRIM(RTRIM(f.Endereco)) = LTRIM(RTRIM(CONCAT(w.[cod-bloco], '/', w.[cod-rua], '/', w.[cod-nivel], '/', w.[cod-coluna])))
+			
+			        WHERE 
+			            w.[cod-local] = 'AAT'
+			            AND w.[cdn-tipo-box] <> 5
+			        ",
+			        null,
+			        [EnableFolding = true]
+			    ),
+			
+			    // Filtro por intervalo de datas
+			    #"FiltrarPorData" = Table.SelectRows(Fonte, each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+			in
+			    FiltrarPorData
+			```
+
+	column Localizacao
+		dataType: string
+		lineageTag: e2973d1b-6339-45d3-afa5-7d3304cda542
+		summarizeBy: none
+		sourceColumn: Localizacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdBox
+		dataType: double
+		lineageTag: 5ba5dbcd-5959-44e0-aab2-073b87c51c55
+		summarizeBy: sum
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TipoEndereco
+		dataType: string
+		lineageTag: 6d10b46d-c440-4e9b-b7e6-fab2f402f8a0
+		summarizeBy: none
+		sourceColumn: TipoEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodLocal
+		dataType: string
+		lineageTag: 3b6f10a2-fdbd-47e7-b76a-a74462bb189d
+		summarizeBy: none
+		sourceColumn: CodLocal
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodBloco
+		dataType: string
+		lineageTag: ecb9a551-ea99-4162-b276-cc9d81d6ece9
+		summarizeBy: none
+		sourceColumn: CodBloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodRua
+		dataType: string
+		lineageTag: b716ccd3-c260-4f0a-9b7b-8c1bf0d2159e
+		summarizeBy: none
+		sourceColumn: CodRua
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodNivel
+		dataType: string
+		lineageTag: ce7048a8-ff70-43ee-ae6f-a03697050d7a
+		summarizeBy: none
+		sourceColumn: CodNivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodColuna
+		dataType: string
+		lineageTag: 3742a14b-61e8-4845-8547-b4e3e45699a9
+		summarizeBy: none
+		sourceColumn: CodColuna
+
+		annotation SummarizationSetBy = Automatic
+
+	column BloqArmaz
+		dataType: string
+		lineageTag: 108d59b4-e087-4ec2-90da-d10697836a84
+		summarizeBy: none
+		sourceColumn: BloqArmaz
+
+		annotation SummarizationSetBy = Automatic
+
+	column BloqRetir
+		dataType: string
+		lineageTag: 34e243f0-3127-48a8-8b3c-f5308fcbdbfd
+		summarizeBy: none
+		sourceColumn: BloqRetir
+
+		annotation SummarizationSetBy = Automatic
+
+	column IndStatusBox
+		dataType: int64
+		formatString: 0
+		lineageTag: 64e5bafc-16fa-4a18-9e7e-bf51b5a89551
+		summarizeBy: sum
+		sourceColumn: IndStatusBox
+
+		annotation SummarizationSetBy = Automatic
+
+	column IndPosicaoBox
+		dataType: int64
+		formatString: 0
+		lineageTag: 43ed630a-9d02-4b35-9bc3-5f2c81ab745d
+		summarizeBy: sum
+		sourceColumn: IndPosicaoBox
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade
+		dataType: int64
+		formatString: 0
+		lineageTag: 113c021c-983a-4c2c-8e10-ee1a50fb7f43
+		summarizeBy: sum
+		sourceColumn: Prioridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClasseABC
+		dataType: string
+		lineageTag: 0655149f-558e-48d2-92b7-2d84ddbdd9a2
+		summarizeBy: none
+		sourceColumn: ClasseABC
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusEndereco
+		dataType: string
+		lineageTag: faf61e96-86de-4cf7-a418-d7c42e7d708e
+		summarizeBy: none
+		sourceColumn: StatusEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d46a7a03-1b94-4fdf-9dc9-831dcd06f8c3
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 01dbde22-43cc-4e7b-b18f-99cf356cad83
+			defaultHierarchy: LocalDateTable_6bfb9c4b-3ba5-4f54-bf3f-a445563338e0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPecas
+		dataType: double
+		lineageTag: d0c5d3ae-1c9e-42a9-aaad-b6c0d3121ccd
+		summarizeBy: sum
+		sourceColumn: TotalPecas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalItem
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fc0a7ce-203f-4158-b021-84e09700381d
+		summarizeBy: sum
+		sourceColumn: TotalItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Enderecos_Vazio = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Value.NativeQuery(
+				        Sql.Database("PR-S188\DW", "Stage"),
+				        "
+				        SELECT 
+				            CONCAT(w.[cod-bloco], '/', w.[cod-rua], '/', w.[cod-nivel], '/', w.[cod-coluna]) AS Localizacao,
+				            w.[id-box] AS IdBox, 
+				
+				            CASE w.[cdn-tipo-box]
+				                WHEN 1 THEN 'PORTA PALETE'
+				                WHEN 2 THEN 'PICKING'
+				                WHEN 3 THEN 'SEPARAÇÃO'
+				                WHEN 4 THEN 'DOCA'
+				                WHEN 5 THEN 'INUTILIZADO'
+				                WHEN 6 THEN 'RESERVA'
+				                WHEN 7 THEN 'TRANSITÓRIO RETRABALHO'
+				                ELSE 'DESCONHECIDO'
+				            END AS TipoEndereco,
+				
+				            w.[cod-local] AS CodLocal, 
+				            w.[cod-bloco] AS CodBloco, 
+				            w.[cod-rua] AS CodRua, 
+				            w.[cod-nivel] AS CodNivel, 
+				            w.[cod-coluna] AS CodColuna,                    
+				
+				            CASE w.[log-bloq-armaz]
+				                WHEN 0 THEN 'NAO'
+				                WHEN 1 THEN 'SIM'
+				                ELSE 'DESCONHECIDO'
+				            END AS BloqArmaz,
+				
+				            CASE w.[log-bloq-retir]
+				                WHEN 0 THEN 'NAO'
+				                WHEN 1 THEN 'SIM'
+				                ELSE 'DESCONHECIDO'
+				            END AS BloqRetir,
+				
+				            w.[ind-status-box] AS IndStatusBox,            
+				            w.[ind-posicao-box] AS IndPosicaoBox, 
+				            w.[int-2] AS Prioridade, 
+				
+				            CASE w.[idi-classif-abc]
+				                WHEN '1' THEN 'A'
+				                WHEN '2' THEN 'B'
+				                WHEN '3' THEN 'C'
+				                ELSE CAST(w.[idi-classif-abc] AS varchar)
+				            END AS ClasseABC,
+				
+				            CASE 
+				                WHEN f.Endereco IS NOT NULL THEN 'OCUPADO'
+				                ELSE 'VAZIO'
+				            END AS StatusEndereco,
+				
+				            ISNULL(f.DataCarga, GETDATE()) AS DataCarga,
+				            ISNULL(f.TotalPecas, 0) AS TotalPecas,
+				            ISNULL(f.TotalItem, 0) AS TotalItem
+				
+				        FROM Stage.tot.WmBox w
+				        LEFT JOIN (
+				            SELECT 
+				                Endereco,
+				                DataCarga,
+				                SUM(Disponivel) AS TotalPecas,
+				                COUNT(*) AS TotalItem
+				            FROM DW.logistica.Fato_ESWM9022
+				            WHERE [Local] = 'AAT'
+				            GROUP BY Endereco, DataCarga
+				        ) f
+				            ON LTRIM(RTRIM(f.Endereco)) = LTRIM(RTRIM(CONCAT(w.[cod-bloco], '/', w.[cod-rua], '/', w.[cod-nivel], '/', w.[cod-coluna])))
+				
+				        WHERE 
+				            w.[cod-local] = 'AAT'
+				            AND w.[cdn-tipo-box] <> 5
+				        ",
+				        null,
+				        [EnableFolding = true]
+				    ),
+				
+				    // Filtro por intervalo de datas
+				    #"FiltrarPorData" = Table.SelectRows(Fonte, each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+				in
+				    FiltrarPorData
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_IsMQueryFoldable = True
+

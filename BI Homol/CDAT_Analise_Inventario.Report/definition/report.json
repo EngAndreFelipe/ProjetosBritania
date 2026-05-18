@@ -1,0 +1,311 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": {
+        "visual": "1.8.95",
+        "report": "2.0.95",
+        "page": "1.3.95"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "textFilter25A4896A83E0487089E2B90C9AE57C8A",
+    "SmartFilterProByOKViz00000000000000000000000000000000",
+    "calendarVisual74934D05B71F4C31B0F79D925EE89638",
+    "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61",
+    "Datepicker_1687358625",
+    "InforiverFilterF39DAE8D57A743EF89F5C3809DEE2B69",
+    "PBI_CV_16948668_E17D_454B_8664_2F2C470EA8C1",
+    "textSearchSlicerF85E2E78BE4A4D7D9F99ED75B5D71C85"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Imagem84591893970276487.svg",
+          "path": "Imagem84591893970276487.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem98355530204363385.svg",
+          "path": "Imagem98355530204363385.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem204865257189978334.svg",
+          "path": "Imagem204865257189978334.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem3164935682502645.svg",
+          "path": "Imagem3164935682502645.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem422342413228771485.svg",
+          "path": "Imagem422342413228771485.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem508227147625140607.svg",
+          "path": "Imagem508227147625140607.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem630580126305223165.svg",
+          "path": "Imagem630580126305223165.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem77574738739320109.svg",
+          "path": "Imagem77574738739320109.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem101909727929184981.svg",
+          "path": "Imagem101909727929184981.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem118513279843821734.svg",
+          "path": "Imagem118513279843821734.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem12055425903966261236.svg",
+          "path": "Imagem12055425903966261236.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem136527992093235842.svg",
+          "path": "Imagem136527992093235842.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem1407772966516532454.svg",
+          "path": "Imagem1407772966516532454.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem153763047057371407.svg",
+          "path": "Imagem153763047057371407.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem168020887706184522.svg",
+          "path": "Imagem168020887706184522.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem1709486344688335535.svg",
+          "path": "Imagem1709486344688335535.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem1843028268865821895.svg",
+          "path": "Imagem1843028268865821895.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Calend_rio3708413412768339.png",
+          "path": "Calend_rio3708413412768339.png",
+          "type": "Image"
+        },
+        {
+          "name": "Calend_rio9526691017440732.svg",
+          "path": "Calend_rio9526691017440732.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem193156681822375563.svg",
+          "path": "Imagem193156681822375563.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem204930961709359968.svg",
+          "path": "Imagem204930961709359968.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem214358275637331518.svg",
+          "path": "Imagem214358275637331518.svg",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB4477669803637113.png",
+          "path": "FundoPadraoBISemLogoB4477669803637113.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB6689681546716721.png",
+          "path": "FundoPadraoBISemLogoB6689681546716721.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB09751585136330165.png",
+          "path": "FundoPadraoBISemLogoB09751585136330165.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB6308002215552929.png",
+          "path": "FundoPadraoBISemLogoB6308002215552929.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB060186314128041984.png",
+          "path": "FundoPadraoBISemLogoB060186314128041984.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB856645517691559.png",
+          "path": "FundoPadraoBISemLogoB856645517691559.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB14261527442799637.png",
+          "path": "FundoPadraoBISemLogoB14261527442799637.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB3584913894707078.png",
+          "path": "FundoPadraoBISemLogoB3584913894707078.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB3430790523961269.png",
+          "path": "FundoPadraoBISemLogoB3430790523961269.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB8216015609312506.png",
+          "path": "FundoPadraoBISemLogoB8216015609312506.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB11835809376709383.png",
+          "path": "FundoPadraoBISemLogoB11835809376709383.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB8525916978229601.png",
+          "path": "FundoPadraoBISemLogoB8525916978229601.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB5711295119080104.png",
+          "path": "FundoPadraoBISemLogoB5711295119080104.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB1229273323630039.png",
+          "path": "FundoPadraoBISemLogoB1229273323630039.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB5827169064082195.png",
+          "path": "FundoPadraoBISemLogoB5827169064082195.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB9641197432882803.png",
+          "path": "FundoPadraoBISemLogoB9641197432882803.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB6669034923133897.png",
+          "path": "FundoPadraoBISemLogoB6669034923133897.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB3876098394755195.png",
+          "path": "FundoPadraoBISemLogoB3876098394755195.png",
+          "type": "Image"
+        },
+        {
+          "name": "images-removebg-preview5920174340646427.png",
+          "path": "images-removebg-preview5920174340646427.png",
+          "type": "Image"
+        },
+        {
+          "name": "FundoPadraoBISemLogoB87748475891306.png",
+          "path": "FundoPadraoBISemLogoB87748475891306.png",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem303182809875942949.png",
+          "path": "Imagem303182809875942949.png",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem2307909067541388215.svg",
+          "path": "Imagem2307909067541388215.svg",
+          "type": "Image"
+        },
+        {
+          "name": "Imagem2431698684580163017.svg",
+          "path": "Imagem2431698684580163017.svg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

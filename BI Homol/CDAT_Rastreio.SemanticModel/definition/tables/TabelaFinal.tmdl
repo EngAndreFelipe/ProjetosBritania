@@ -1,0 +1,184 @@
+table TabelaFinal
+	lineageTag: 5ffcadae-557c-492d-b93c-93f5d05e3008
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 472362d8-de27-4a40-92d7-1412936bdbac
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DataImplantacao]
+
+		variation Variation
+			isDefault
+			relationship: c2be39d9-d9e9-4a70-a589-3c8cb9d047e8
+			defaultHierarchy: LocalDateTable_9d0f22f7-9099-4a1c-b25f-6aa8b166c0fa.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Item
+		lineageTag: 8885b4f7-fe2d-4244-a6c5-9fef69f5923e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Item]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		lineageTag: d67760ca-46e5-4c78-b863-59cee5c10815
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Descricao]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEndereco
+		lineageTag: e1f69779-bc9f-4843-b85d-558302fdc7f3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [IdEndereco]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Endereco
+		lineageTag: 55dfbc1c-857e-43dd-b09f-30a29dff7e0b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Endereco]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo DCV'
+		lineageTag: 5d5b6c57-b19b-47f1-aced-e3fb0dfe7d91
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Saldo DCV]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo AAT'
+		lineageTag: 74d74b20-a5f8-4261-873a-037a8263d719
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Saldo AAT]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo Total'
+		lineageTag: e22ba7c7-1098-4a1d-adaf-631982971c95
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Saldo Total]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Saldo WMS'
+		lineageTag: ae3429de-232d-4b0a-a444-bc950755195d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Saldo WMS]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ordem
+		lineageTag: b0dc8880-4ae9-4c1f-b05c-b9e86d238386
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Ordem]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Preenchimento
+		lineageTag: 315297d1-56b1-4998-b591-755d4986ba44
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Preenchimento]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TabelaFinal = calculated
+		mode: import
+		source =
+				
+				UNION(
+				    // Linhas reais
+				    SELECTCOLUMNS(
+				        Fato_Rastreio,
+				        "DataImplantacao", [DataImplantacao],
+				        "Item", [Item],
+				        "Descricao", [Descricao],
+				        "IdEndereco", [IdEndereco],
+				        "Endereco", [Endereco],
+				        "Saldo DCV", [Saldo DCV],
+				        "Saldo AAT", [Saldo AAT],
+				        "Saldo Total", [Saldo Total],
+				        "Saldo WMS", [Saldo WMS],
+				        "Ordem", [IdEndereco] * 10,
+				        "Preenchimento", "Não"
+				    ),
+				
+				    // Linha em branco 1
+				    SELECTCOLUMNS(
+				        FILTER(Fato_Rastreio, NOT(ISBLANK([Endereco]))),
+				        "DataImplantacao", BLANK(),
+				        "Item", [Item],
+				        "Descricao", BLANK(),
+				        "IdEndereco", [IdEndereco],
+				        "Endereco", BLANK(),
+				        "Saldo DCV", BLANK(),
+				        "Saldo AAT", BLANK(),
+				        "Saldo Total", BLANK(),
+				        "Saldo WMS", BLANK(),
+				        "Ordem", [IdEndereco] * 10 + 1,
+				        "Preenchimento", "Sim"
+				    ),
+				
+				    // Linha em branco 2
+				    SELECTCOLUMNS(
+				        FILTER(Fato_Rastreio, NOT(ISBLANK([Endereco]))),
+				        "DataImplantacao", BLANK(),
+				        "Item", [Item],
+				        "Descricao", BLANK(),
+				        "IdEndereco", [IdEndereco],
+				        "Endereco", BLANK(),
+				        "Saldo DCV", BLANK(),
+				        "Saldo AAT", BLANK(),
+				        "Saldo Total", BLANK(),
+				        "Saldo WMS", BLANK(),
+				        "Ordem", [IdEndereco] * 10 + 2,
+				        "Preenchimento", "Sim"
+				    ),
+				
+				    // Linha em branco 3
+				    SELECTCOLUMNS(
+				        FILTER(Fato_Rastreio, NOT(ISBLANK([Endereco]))),
+				        "DataImplantacao", BLANK(),
+				        "Item", [Item],
+				        "Descricao", BLANK(),
+				        "IdEndereco", [IdEndereco],
+				        "Endereco", BLANK(),
+				        "Saldo DCV", BLANK(),
+				        "Saldo AAT", BLANK(),
+				        "Saldo Total", BLANK(),
+				        "Saldo WMS", BLANK(),
+				        "Ordem", [IdEndereco] * 10 + 3,
+				        "Preenchimento", "Sim"
+				    )
+				)
+
+	annotation PBI_Id = 16e06f2e47a04c97b380a4376bdc6fb9
+

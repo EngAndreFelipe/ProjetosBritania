@@ -1,0 +1,26 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["dwGTB201","tbRegiões","MetaCustoFrete","Medidas"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dwGTB201
+ref table tbRegiões
+ref table tbNatOperacao
+ref table MetaCustoFrete
+ref table Medidas
+ref table DateTableTemplate_569037f8-1d7f-477f-b0c0-088d90ae54c5
+ref table LocalDateTable_345e99c4-201d-4063-b45f-c4206e39ca79
+ref table LocalDateTable_15d4b179-ec90-475e-a4e1-c526754202fd
+ref table LocalDateTable_d9514c1e-865c-4d9e-88e1-50c45af0dd03
+
+ref cultureInfo pt-BR
+

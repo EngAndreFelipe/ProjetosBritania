@@ -1,0 +1,29 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transformar Arquivo de bi at logistica'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transformar Arquivo de bi at logistica\Consultas Auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["Fato_WMS","Tabela_Minimo","Parâmetro1","Transformar o Arquivo de Exemplo","Arquivo de Amostra","Transformar Arquivo"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_WMS
+ref table DateTableTemplate_6bfcc94d-5e19-4bb9-91fe-c13827fe8d40
+ref table LocalDateTable_cb47d27e-5d9d-4ea7-acbb-edf04e714223
+ref table Tabela_Minimo
+
+ref cultureInfo pt-BR
+

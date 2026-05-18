@@ -1,0 +1,395 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f3df8f349851a0db2373",
+  "position": {
+    "x": 67.112462006079028,
+    "y": 120.60790273556232,
+    "z": 1000,
+    "height": 599.14893617021278,
+    "width": 1212.8875379939211,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "NumeroNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.NumeroNotaFiscal",
+              "nativeQueryRef": "NumeroNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "SerieNotaFiscal"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.SerieNotaFiscal",
+              "nativeQueryRef": "SerieNotaFiscal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "VlFretePrevisto"
+                }
+              },
+              "queryRef": "Sum(Fato_Provisionamento.VlFretePrevisto)",
+              "nativeQueryRef": "VlFretePrevisto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "PesoBruto"
+                }
+              },
+              "queryRef": "Sum(Fato_Provisionamento.PesoBruto)",
+              "nativeQueryRef": "PesoBruto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "PesoReal"
+                }
+              },
+              "queryRef": "Sum(Fato_Provisionamento.PesoReal)",
+              "nativeQueryRef": "PesoReal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "ValorCTE"
+                }
+              },
+              "queryRef": "Sum(Fato_Provisionamento.ValorCTE)",
+              "nativeQueryRef": "ValorCTE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "NomeMatrizTransportador"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.NomeMatrizTransportador",
+              "nativeQueryRef": "NomeMatrizTransportador"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "CidadeDestino"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.CidadeDestino",
+              "nativeQueryRef": "CidadeDestino"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Provisionamento"
+                    }
+                  },
+                  "Property": "EstadoDestino"
+                }
+              },
+              "queryRef": "Fato_Provisionamento.EstadoDestino",
+              "nativeQueryRef": "EstadoDestino"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 7,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "db24e80db913b0c47eae",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "NumeroNotaFiscal"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "742f5704e06a055e3b08",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "SerieNotaFiscal"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a608e7524eb93872c3cb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "VlFretePrevisto"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "924a43d4518154ca6082",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "PesoBruto"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3679b8c1877326212e03",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "PesoReal"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "65b6a2dd05045b6cdc30",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "NomeMatrizTransportador"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e85500fd177379988e46",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "EstadoDestino"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3a45bb3a50d7153cda1a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "CidadeDestino"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "87819cec2341ab8005cb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_Provisionamento"
+              }
+            },
+            "Property": "ValorCTE"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

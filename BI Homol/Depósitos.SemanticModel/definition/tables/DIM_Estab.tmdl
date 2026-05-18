@@ -1,0 +1,34 @@
+table DIM_Estab
+	excludeFromModelRefresh
+	lineageTag: 345f6f34-bd19-4765-9cd1-5fb34325d082
+
+	column codEstabel
+		dataType: string
+		lineageTag: d91672a2-0888-4a04-b866-383af23700d3
+		summarizeBy: none
+		sourceColumn: codEstabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescEstabelec
+		dataType: string
+		lineageTag: feba7782-9eb5-4e3d-acbd-3b929bb7aa2f
+		summarizeBy: none
+		sourceColumn: DescEstabelec
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_Estab-c14dc7a9-6483-4707-a596-a5bd249e1dd9 = m
+		mode: import
+		queryGroup: DIM
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMjQyVdJRcgryDHH083RUcPVxDQnyd/H3dQ0O8XT2D1YI1ndUio0FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [codEstabel = _t, DescEstabelec = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"codEstabel", type text}, {"DescEstabelec", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

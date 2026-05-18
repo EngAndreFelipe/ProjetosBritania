@@ -1,0 +1,561 @@
+table Fato_AcompEntregas
+	lineageTag: 6a945886-0ac7-4a44-b8b3-36b65def0186
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: 47dcf3e8-9b00-43ca-9277-478d5f6f1e1b
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNotaFiscal
+		dataType: string
+		lineageTag: 6b6795d6-9e73-4985-8cf6-895e591dc386
+		summarizeBy: none
+		sourceColumn: NumeroNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoNotaFiscal
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 03443bbf-88d0-4e5e-9821-fe51b24bff8c
+		summarizeBy: none
+		sourceColumn: DataEmissaoNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoFrete
+		dataType: string
+		lineageTag: 190e327d-a2f6-401f-8a82-d09e593e8de7
+		summarizeBy: none
+		sourceColumn: TipoFrete
+
+		annotation SummarizationSetBy = Automatic
+
+	column CidadeDestino
+		dataType: string
+		lineageTag: fd2f7cf4-7e5c-49f3-a587-35a5c676fc98
+		summarizeBy: none
+		sourceColumn: CidadeDestino
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoDestino
+		dataType: string
+		lineageTag: 7bb740ad-2545-41c5-a6ef-e8cd70f5fe01
+		summarizeBy: none
+		sourceColumn: EstadoDestino
+
+		annotation SummarizationSetBy = Automatic
+
+	column VlFretePrevisto
+		dataType: double
+		lineageTag: 2bdfff63-2d35-47ba-94aa-084e504d87f5
+		summarizeBy: sum
+		sourceColumn: VlFretePrevisto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VlFretePago
+		dataType: double
+		lineageTag: 7369f7e0-b805-4f41-8952-f300b09eb067
+		summarizeBy: sum
+		sourceColumn: VlFretePago
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalNota
+		dataType: double
+		lineageTag: ba496560-799a-4d6e-97af-1429e78318a3
+		summarizeBy: sum
+		sourceColumn: TotalNota
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroRomaneio
+		dataType: string
+		lineageTag: c95342be-6110-426e-a2b8-17f57df2dac3
+		summarizeBy: none
+		sourceColumn: NumeroRomaneio
+
+		annotation SummarizationSetBy = Automatic
+
+	column PesoBruto
+		dataType: double
+		lineageTag: 1a079834-a253-4c83-9517-38452eb1d7d6
+		summarizeBy: sum
+		sourceColumn: PesoBruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ocorrencia
+		dataType: string
+		lineageTag: cdd55115-1ca6-417d-85ed-cd7952e9e329
+		summarizeBy: none
+		sourceColumn: Ocorrencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column ObservacaoCarga
+		dataType: string
+		lineageTag: 6af7d15c-15db-4fc1-a792-2fc15973fa77
+		summarizeBy: none
+		sourceColumn: ObservacaoCarga
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 46ad4c3d-8c5b-415b-aac5-c9a51279b3d4
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 8adc34af-c373-4a75-a21d-81f798bd2f51
+			defaultHierarchy: LocalDateTable_b08e5d6f-ce72-4b1c-a9fd-427fddb06e38.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatrizTransportador
+		dataType: string
+		lineageTag: dd33a890-69cd-4978-ad6e-5b2edd09190b
+		summarizeBy: none
+		sourceColumn: NomeMatrizTransportador
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEnvioFinanceiro
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1e176758-68d4-42a6-a158-f05c755d6426
+		summarizeBy: none
+		sourceColumn: DataEnvioFinanceiro
+
+		variation Variation
+			isDefault
+			relationship: 20f7c338-ef4d-4b45-ad86-e4acdf968529
+			defaultHierarchy: LocalDateTable_9837a401-1484-4e5e-a645-e90d501960e9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: 1487a010-5a1f-4d14-886b-7591b6fb0a7f
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: 25462f2e-26f7-4f69-99ab-fba7ce50b7be
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroOS
+		dataType: string
+		lineageTag: 2e0b6662-3cc5-4adf-8ec6-d4bd1dc0aede
+		summarizeBy: none
+		sourceColumn: NumeroOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e2fbe1fa-92d9-4927-bb55-0ead11342e92
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: 3d3aba82-f5fe-41d6-8628-37af8894b860
+			defaultHierarchy: LocalDateTable_790910d8-a1b8-42dd-a509-72103541a054.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEntrega
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 31d86951-2f23-450f-9e2b-3ced1cce8ab8
+		summarizeBy: none
+		sourceColumn: DataEntrega
+
+		variation Variation
+			isDefault
+			relationship: c8ae899d-a988-4325-98a1-48475b34973c
+			defaultHierarchy: LocalDateTable_c229282d-75f3-40a1-a56d-6bd1f2d6ec8a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCancelamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 521cdd96-6ef9-47ca-8e29-a336fa3dcf6f
+		summarizeBy: none
+		sourceColumn: DataCancelamento
+
+		variation Variation
+			isDefault
+			relationship: c0ad65b4-37fd-4383-a075-9e3f40bfe48f
+			defaultHierarchy: LocalDateTable_12495ad4-5d2f-43e2-83a2-41448580077d.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TransTime
+		dataType: double
+		formatString: 0
+		lineageTag: 89b9af95-cfd5-4af9-a260-06ab0bbd0cb5
+		summarizeBy: sum
+		sourceColumn: TransTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column OS
+		dataType: string
+		lineageTag: b78ec7a8-a287-48e3-8892-efa918711823
+		summarizeBy: none
+		sourceColumn: OS
+
+		annotation SummarizationSetBy = Automatic
+
+	column TempoEntrega = ```
+			
+			VAR DataSaida = Fato_AcompEntregas[DataSaida]
+			VAR DataEntrega = Fato_AcompEntregas[DataEntrega]
+			VAR DataEmissaoNF = Fato_AcompEntregas[DataEmissaoNotaFiscal]
+			
+			VAR DataInicial = 
+			    IF(
+			        ISBLANK(DataSaida) && NOT ISBLANK(DataEntrega),
+			        Fato_AcompEntregas[DataEmissaoNotaFiscal],
+			        DataSaida
+			    )
+			
+			VAR DiasUteis = 
+			    COUNTROWS(
+			        FILTER(
+			            Dim_Data,
+			            Dim_Data[Data] > DataInicial &&
+			            Dim_Data[Data] <= DataEntrega &&
+			            Dim_Data[DiaUtil] = TRUE()
+			        )
+			    )
+			
+			RETURN
+			    IF(
+			        ISBLANK(DataSaida) && ISBLANK(DataEntrega),
+			        BLANK(),
+			        IF(
+			            ISBLANK(DataEntrega),
+			            BLANK(),
+			            IF(
+			                DataSaida = DataEntrega,
+			                0,
+			                DiasUteis
+			            )
+			        )
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: 2b9619dc-4dfb-46a0-bd8c-47fe9fdde4b9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataPrevisaoEntrega
+		dataType: dateTime
+		isHidden
+		formatString: Short Date
+		lineageTag: 3bbd39e2-ffa1-4e5b-a3cb-09858d0cd1e7
+		summarizeBy: none
+		sourceColumn: DataPrevisaoEntrega
+
+		variation Variation
+			isDefault
+			relationship: 0768c946-95bf-4b27-a6cc-83a3eb86e758
+			defaultHierarchy: LocalDateTable_fb2a1a17-8135-47d3-8d1a-e9cec4dba736.'Hierarquia de datas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status =
+			
+			VAR DataEntrega = Fato_AcompEntregas[DataEntrega]
+			VAR DataProgEntrega = Fato_AcompEntregas[DataProgEntrega]
+			VAR TempoEntrega = Fato_AcompEntregas[TempoEntrega]
+			VAR TransTime = Fato_AcompEntregas[TransTime]
+			RETURN
+			    IF (
+			        ISBLANK(DataEntrega),
+			        "Entrega Pendente",
+			        IF (
+			            NOT ISBLANK(DataProgEntrega),
+			            IF (
+			                TempoEntrega <= TransTime || DataProgEntrega >= DataEntrega,
+			                "Entregue no Prazo",
+			                "Entregue em Atraso"
+			            ),
+			            IF (
+			                TempoEntrega <= TransTime,
+			                "Entregue no Prazo",
+			                "Entregue em Atraso"
+			            )
+			        )
+			    )
+		lineageTag: e4d14e2b-10fb-40f7-a019-b27f2a42dd98
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtVolumes
+		dataType: int64
+		formatString: 0
+		lineageTag: b26eb9a9-32c9-492b-aed5-2327b9aafa17
+		summarizeBy: sum
+		sourceColumn: QtVolumes
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoNota
+		dataType: string
+		lineageTag: 8d7ec07b-28bf-4a6a-9229-45d512f85e50
+		summarizeBy: none
+		sourceColumn: TipoNota
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataProgEntrega
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 68ffa8c7-183f-4ba9-b995-db2357ccf28c
+		summarizeBy: none
+		sourceColumn: DataProgEntrega
+
+		variation Variation
+			isDefault
+			relationship: 2f0baacd-645a-4ddc-bafe-b2da5bda37f6
+			defaultHierarchy: LocalDateTable_4025d062-76ce-4d94-aa5a-c85e3761d122.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrazoEntrega =
+			
+			VAR DataInicial = COALESCE(Fato_AcompEntregas[DataSaida], Fato_AcompEntregas[DataEmissaoNotaFiscal])
+			VAR DiasTransito = Fato_AcompEntregas[TransTime]
+			RETURN
+			    CALCULATE (
+			        MAXX (
+			            TOPN (
+			                DiasTransito,
+			                FILTER (
+			                    ALL ( Dim_Data ),
+			                    Dim_Data[Data] > DataInicial &&
+			                    Dim_Data[DiaUtil] = TRUE
+			                ),
+			                Dim_Data[Data],
+			                ASC
+			            ),
+			            Dim_Data[Data]
+			        )
+			    )
+		formatString: Short Date
+		lineageTag: f16ecefc-ab6b-435f-9ba8-0ffbfcecc08e
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: e935a4c4-0638-4d44-b5a6-4b027b9e186c
+			defaultHierarchy: LocalDateTable_5bb63558-222d-457c-a095-a82fd22295a6.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StatusNota = ```
+			
+			VAR Prazo = Fato_AcompEntregas[TransTime]
+			VAR DiasUteisRestantes = Fato_AcompEntregas[DiasUteisRestantes]
+			VAR DataPrazo = Fato_AcompEntregas[PrazoEntrega]
+			VAR DataSaida = Fato_AcompEntregas[DataSaida]
+			VAR StatusEntrega = Fato_AcompEntregas[Status]
+			VAR Porcentagem = ROUND(DIVIDE(DiasUteisRestantes, Prazo, 0), 2)
+			RETURN
+			    IF(
+			        StatusEntrega = "Entrega Pendente",
+			        IF(
+			            ISBLANK(DataSaida),
+			            "Não Expedida",
+			            IF(
+			                ISBLANK(DataPrazo),
+			                "Sem Prazo Definido",
+			                IF(
+			                    DataPrazo < TODAY(),
+			                    "Atraso",
+			                    SWITCH(
+			                        TRUE(),
+			                        Prazo <= 5 && Porcentagem < 0.4, "Risco de Atraso",
+			                        Prazo <= 5 && Porcentagem < 0.6, "Atenção",
+			                        Prazo <= 5, "Sob Controle",
+			
+			                        Prazo <= 15 && Porcentagem < 0.3, "Risco de Atraso",
+			                        Prazo <= 15 && Porcentagem < 0.6, "Atenção",
+			                        Prazo <= 15, "Sob Controle",
+			
+			                        Prazo > 15 && Porcentagem <= 0.2, "Risco de Atraso",
+			                        Prazo > 15 && Porcentagem < 0.4, "Atenção",
+			                        Prazo > 15, "Sob Controle",
+			
+			                        TRUE, "Sob Controle"
+			                    )
+			                )
+			            )
+			        ),
+			        "Entregue"
+			    )
+			
+			```
+		lineageTag: 73387908-638a-460b-91ae-b01f3b902a5e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasUteisRestantes = ```
+			
+			VAR StatusEntrega = Fato_AcompEntregas[Status]
+			VAR PrazoEntrega = Fato_AcompEntregas[PrazoEntrega]
+			VAR Hoje = TODAY()
+			
+			VAR DiasRestantes =
+			    CALCULATE(
+			        COUNTROWS(Dim_Data),
+			        FILTER(
+			            Dim_Data,
+			            Dim_Data[Data] > Hoje &&
+			            Dim_Data[Data] <= PrazoEntrega &&
+			            Dim_Data[DiaUtil] = TRUE()
+			        )
+			    )
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			
+			        // Já entregue
+			        StatusEntrega IN { "Entregue no Prazo", "Entregue em Atraso" },
+			            0,
+			
+			        // Prazo é hoje
+			        StatusEntrega = "Entrega Pendente" && PrazoEntrega = Hoje,
+			            0,
+			
+			        // Prazo ainda está à frente
+			        StatusEntrega = "Entrega Pendente" && Hoje < PrazoEntrega,
+			            DiasRestantes,
+			
+			        // Prazo já passou
+			        StatusEntrega = "Entrega Pendente" && Hoje > PrazoEntrega,
+			            0,
+			
+			        BLANK()
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: cb849ef9-d79d-4e14-a0a8-5ea90c459b5f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasUteisAtraso = ```
+			
+			VAR StatusEntrega = Fato_AcompEntregas[Status]
+			VAR PrazoEntrega = Fato_AcompEntregas[PrazoEntrega]
+			VAR TempoEntrega = Fato_AcompEntregas[TempoEntrega]
+			VAR TransTime = Fato_AcompEntregas[TransTime]
+			VAR Hoje = TODAY()
+			
+			VAR AtrasoNaoEntregue =
+			    CALCULATE(
+			        COUNTROWS(Dim_Data),
+			        FILTER(
+			            Dim_Data,
+			            Dim_Data[Data] > PrazoEntrega &&
+			            Dim_Data[Data] <= Hoje &&
+			            Dim_Data[DiaUtil] = TRUE()
+			        )
+			    )
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			
+			        // Entregue no prazo → sem atraso
+			        StatusEntrega = "Entregue no Prazo", 
+			            0,
+			
+			        // Entregue em atraso → compara tempo real com tempo previsto
+			        StatusEntrega = "Entregue em Atraso" && NOT ISBLANK(TempoEntrega) && NOT ISBLANK(TransTime),
+			            MAX(0, TempoEntrega - TransTime),
+			
+			        // Entrega pendente → prazo ainda não venceu (Hoje <= PrazoEntrega)
+			        StatusEntrega = "Entrega Pendente" && NOT ISBLANK(PrazoEntrega) && Hoje <= PrazoEntrega,
+			            0,
+			
+			        // Entrega pendente → prazo já passou
+			        StatusEntrega = "Entrega Pendente" && NOT ISBLANK(PrazoEntrega) && Hoje > PrazoEntrega,
+			            AtrasoNaoEntregue,
+			
+			        // Qualquer outro caso → sem informação
+			        BLANK()
+			    )
+			
+			```
+		lineageTag: 7a62017e-17ce-4307-ae72-560ae6494a28
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NatOperacao
+		dataType: string
+		lineageTag: 5cd18f61-db22-4913-9e8c-908b8f0425e4
+		summarizeBy: none
+		sourceColumn: NatOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_AcompEntregas = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT  #(lf)    NF.[SERIE] AS SerieNotaFiscal,#(lf)    NF.[nr-nota-fis] AS NumeroNotaFiscal,#(lf)    NF.[dt-emis-nota] AS DataEmissaoNotaFiscal,#(lf)    NE.[qt-volumes] AS QtVolumes,#(lf)    CASE #(lf)        WHEN NE.[qt-volumes] IS NULL OR NE.[qt-volumes] = 0 THEN 'Complemento'#(lf)        ELSE 'Master'#(lf)    END AS TipoNota,#(lf)    F.SituacaoNota AS SituacaoNota,#(lf)    NF.[nat-operacao] AS NatOperacao,#(lf)    N.[Denominacao],#(lf)    NF.[dt-saida] AS DataSaida,#(lf)    COALESCE(NULLIF(NF.[dt-entr-cli], ''), FAT_APPLY.DataEntregaCliente) AS DataEntrega,#(lf)    NF.[dt-cancela] AS DataCancelamento,#(lf)    FAT_APPLY.DataPrevisaoEntrega AS DataPrevisaoEntrega,#(lf)    NF.[nome-ab-cli] AS Representante,#(lf)    F.TipoFrete AS TipoFrete,#(lf)    UPPER(NF.[cidade]) AS CidadeDestino,#(lf)    NF.[estado] AS EstadoDestino,#(lf)    F.VlFretePrevisto AS VlFretePrevisto,#(lf)    F.[VlFretePago],#(lf)    NF.[vl-tot-nota] AS TotalNota,#(lf)    F.[QuantidadeFaturada],#(lf)    F.[QuantidadeDevolvida],#(lf)    F.[QuantidadeAbatida],#(lf)    F.[ValorFreteReentrega],#(lf)    F.[ValorFreteDevolucao],#(lf)    F.[NumeroRomaneio],#(lf)    F.[SituacaoCalculo],#(lf)    F.[UsuarioCalculo],#(lf)    F.[VolumeM3] * 167 AS PesoCubico,#(lf)    F.[PesoBruto],#(lf)    F.[Ocorrencia],#(lf)    F.ObservacaoCarga AS ObservacaoCarga,#(lf)    NF.[cod-chave-aces-nf-eletro] AS ChaveNFe,#(lf)    NF.[nome-transp] AS NomeTransportadoraNF,#(lf)    NF.[DataCarga],#(lf)    F.[NomeMatrizTransportador],#(lf)    F.[CodigoFrete],#(lf)    F.[DataEnvioFinanceiro],#(lf)    PDB.[NumeroPedido],#(lf)    PDB.[NomeMatriz],#(lf)    PDB.[NumeroOS],#(lf)    CASE #(lf)        WHEN LTRIM(RTRIM(PDB.[NumeroOS])) IS NULL OR LTRIM(RTRIM(PDB.[NumeroOS])) = '' THEN 'NÃO'#(lf)        ELSE 'SIM'#(lf)    END AS OS,#(lf)    GV6.GV6_QTPRAZ AS TransTime,#(lf)    FAT_APPLY.[DataProgEntrega] #(lf)FROM [STAGE].[tot].[NotaFiscal] NF#(lf)LEFT JOIN [DW].[dbo].[Dim_Natureza] N #(lf)       ON NF.[nat-operacao] = N.[NatOperacao]#(lf)OUTER APPLY (#(lf)    SELECT TOP 1 FAT.*#(lf)    FROM [DW].[dbo].[Fato_Faturamento] FAT#(lf)    WHERE NF.[SERIE] = FAT.[SerieNotaFiscal]#(lf)      AND NF.[nr-nota-fis] = FAT.[NumeroNotaFiscal]#(lf)    ORDER BY FAT.[DataProgEntrega]#(lf)) FAT_APPLY#(lf)LEFT JOIN [DW].[auditoria].[Fato_CustosFrete_Faturamento] F #(lf)       ON NF.[SERIE] = F.[SerieNotaFiscal] #(lf)      AND NF.[nr-nota-fis] = F.[NumeroNotaFiscal]#(lf)LEFT JOIN [STAGE].[tot].[NotaEmbal] NE #(lf)       ON NF.[SERIE] = NE.[serie] #(lf)      AND NF.[nr-nota-fis] = NE.[nr-nota-fis]#(lf)LEFT JOIN (#(lf)    SELECT #(lf)        SerieNotaFiscal,#(lf)        NotaFiscal,#(lf)        STRING_AGG(NumeroPedido, ' / ') AS NumeroPedido,#(lf)        MIN(NomeMatriz) AS NomeMatriz,#(lf)        CASE #(lf)            WHEN COUNT(NULLIF(LTRIM(RTRIM(NumeroOS)), '')) = 0 THEN NULL#(lf)            ELSE STRING_AGG(NumeroOS, ' / ')#(lf)        END AS NumeroOS#(lf)    FROM [DW].[logistica].[Fato_PDB381]#(lf)    GROUP BY SerieNotaFiscal, NotaFiscal#(lf)) PDB #(lf)       ON NF.[SERIE] = PDB.SerieNotaFiscal #(lf)      AND NF.[nr-nota-fis] = PDB.NotaFiscal#(lf)LEFT JOIN STAGE.gfe.GWH nrclc #(lf)       ON NF.[SERIE] = nrclc.GWH_SERDC #(lf)      AND NF.[nr-nota-fis] = nrclc.GWH_NRDC#(lf)      AND ISNULL(LTRIM(RTRIM(nrclc.D_E_L_E_T_)), '') = ''#(lf)LEFT JOIN STAGE.gfe.GWG gwgchv #(lf)       ON nrclc.GWH_NRCALC = gwgchv.GWG_NRCALC#(lf)LEFT JOIN STAGE.gfe.GV6 GV6 #(lf)       ON gwgchv.GWG_NRTAB = GV6.GV6_NRTAB #(lf)      AND gwgchv.GWG_NRNEG = GV6.GV6_NRNEG #(lf)      AND gwgchv.GWG_CDFXTV = GV6.GV6_CDFXTV #(lf)      AND gwgchv.GWG_NRROTA = GV6.GV6_NRROTA#(lf)      AND gwgchv.GWG_CDEMIT = GV6.GV6_CDEMIT#(lf)      AND ISNULL(LTRIM(RTRIM(GV6.D_E_L_E_T_)), '') = ''#(lf)WHERE NF.[cod-estabel] = '15'#(lf)  AND NF.[SERIE] IN (5, 21)#(lf)  AND NF.[dt-emis-nota] BETWEEN '2025-07-01' AND GETDATE()#(lf)  AND F.SituacaoNota = 'Faturada'#(lf)  AND NF.[dt-cancela] IS NULL"]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DataEmissaoNotaFiscal] > RangeStart and [DataEmissaoNotaFiscal] <= RangeEnd),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Linhas Filtradas", {"SerieNotaFiscal", "NumeroNotaFiscal"}),
+				    #"Columns removed by Measure Killer"= Table.SelectColumns(#"Duplicatas Removidas",{"SerieNotaFiscal", "NumeroNotaFiscal", "DataEmissaoNotaFiscal", "QtVolumes", "TipoNota", "NatOperacao", "DataSaida", "DataEntrega", "DataCancelamento", "DataPrevisaoEntrega", "TipoFrete", "CidadeDestino", "EstadoDestino", "VlFretePrevisto", "VlFretePago", "TotalNota", "NumeroRomaneio", "PesoBruto", "Ocorrencia", "ObservacaoCarga", "DataCarga", "NomeMatrizTransportador", "DataEnvioFinanceiro", "NumeroPedido", "NomeMatriz", "NumeroOS", "OS", "TransTime", "DataProgEntrega"})
+				in
+				    #"Columns removed by Measure Killer"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

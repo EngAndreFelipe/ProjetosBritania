@@ -1,0 +1,35 @@
+table d_NatOperacao
+	lineageTag: 3098b007-dfc2-4d7b-943a-3a398adc5ff1
+
+	column NatOperacao
+		lineageTag: 907b6a3a-1182-4392-9718-20c316aa9263
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [NatOperacao]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoNat =
+			IF(SEARCH("VENDA", d_NatOperacao[Denominacao], 1, 0)>0, "VENDA",
+			    IF(SEARCH("GARANTIA", d_NatOperacao[Denominacao], 1, 0)>0, "GARANTIA",
+			    IF(SEARCH("CORTESIA", d_NatOperacao[Denominacao], 1, 0)>0, "CORTESIA",
+			    IF(OR(SEARCH("DOAÇÃO", d_NatOperacao[Denominacao], 1, 0)>0,SEARCH("BONIF", d_NatOperacao[Denominacao], 1, 0)>0), "BONIF/DOAÇÃO/BRINDE", "AMOSTRA/TESTE/EXPO"))))
+		lineageTag: 01c66fe6-1b34-4464-ac50-5764030c7738
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denominacao
+		lineageTag: 78fce88b-17de-4b39-bed3-5a529585cd7b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Denominacao]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_NatOperacao = calculated
+		mode: import
+		source = DISTINCT(SELECTCOLUMNS(f_dwPDB381,"NatOperacao",f_dwPDB381[NatOperacao],"Denominacao",f_dwPDB381[Denominacao]))
+
+	annotation PBI_Id = 79b9d7ebb6da456db0a4979a1853bcb0
+

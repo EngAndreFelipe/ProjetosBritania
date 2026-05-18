@@ -1,0 +1,106 @@
+table Medidas
+	lineageTag: 2abc4bda-f5e3-4c21-9bfd-bd1d6bb39e02
+
+	measure TotalCTE =
+			
+			SUMX(
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            Fato_Faturas,
+			            "EmissorCTE", Fato_Faturas[EmissorCTE],
+			            "SerieCTE", Fato_Faturas[SerieCTE],
+			            "NumCTE", Fato_Faturas[NumCTE],
+			            "ValorCTE", Fato_Faturas[ValorCTE]
+			        )
+			    ),
+			    [ValorCTE]
+			)
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 010ffca2-c6d5-4584-81ac-54d3a7ea6bd9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure FreteNota = SUM(Fato_Faturas[ValorFreteNota])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 71d623c8-f24f-40f6-9820-eccedb8c60f8
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure FretePorFatura = ```
+			
+			SUMX(
+			    SUMMARIZE(
+			        Fato_Faturas,
+			        Fato_Faturas[NumeroFatura],
+			        Fato_Faturas[SerieFatura],
+			        Fato_Faturas[CodEmissorFatura],
+			        "FreteUnico", MAX(Fato_Faturas[ValorFatura])
+			    ),
+			    [FreteUnico]
+			)
+			
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: d4639b4a-06dd-40f2-a7e8-ba187cc22fa6
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure TotalDiverg =
+			
+			SUMX(
+			    DISTINCT(
+			        SELECTCOLUMNS(
+			            Fato_Faturas,
+			            "EmissorCTE", Fato_Faturas[EmissorCTE],
+			            "SerieCTE", Fato_Faturas[SerieCTE],
+			            "NumCTE", Fato_Faturas[NumCTE],
+			            "ValorDiverg", Fato_Faturas[ValorDivergente]
+			        )
+			    ),
+			    [ValorDiverg]
+			)
+		lineageTag: 8c51c1a2-d331-48ce-be28-d885beca645b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure PeçasFaturadas = SUM(Fato_Faturas[qtFaturada])
+		formatString: 0
+		lineageTag: 4ad46a35-56f4-4c25-be91-8d7a083aec8e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure FreteNotaUnico =
+			
+			SUMX(
+			    SUMMARIZE(
+			        Fato_Faturas,
+			        Fato_Faturas[SerieNotaFiscal],
+			        Fato_Faturas[NumeroNotaFiscal],
+			        Fato_Faturas[CodItem],
+			        Fato_Faturas[GWM_SEQGW8],
+			        "ValorFrete", MAX(Fato_Faturas[ValorFreteNota])
+			    ),
+			    [ValorFrete]
+			)
+		lineageTag: 451a184d-c02d-46f2-8f22-a78cf3c88c67
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: e45a06e0-eea5-4c6c-a7a0-c5089454babb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = e1dc8e74226c4be4baed9a8c7c281434
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

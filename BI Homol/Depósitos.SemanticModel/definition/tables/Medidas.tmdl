@@ -1,0 +1,88 @@
+table Medidas
+	lineageTag: f9c20d5a-150e-40b2-8d46-fd021d4081f4
+
+	measure '# PROD' =
+			
+			CALCULATE(SUM(Fato_Sapp[Realizado]),
+			FILTER(Fato_Sapp, Fato_Sapp[Data] >= DATE(YEAR(TODAY()),MONTH(TODAY()),1)))
+			+
+			CALCULATE(SUM(Fato_PcPMaster[produzido]),
+			FILTER(Fato_PcPMaster,Fato_PcPMaster[data-programacao] >= DATE(YEAR(TODAY()),MONTH(TODAY()),1)))
+		formatString: #,0
+		lineageTag: a80fced7-6557-4103-97e8-41af599c7811
+
+	measure '# Reportada' =
+			CALCULATE(SUM(Fato_Movimento[QTD]),
+			FILTER(Fato_Movimento,Fato_Movimento[espDocto] = "ACA" && Fato_Movimento[DATA] = 1))
+		formatString: #,0
+		lineageTag: dd6eb6b8-e81f-43d7-bf3d-5656e23efe17
+
+	measure '# CONS NFT' =
+			CALCULATE(SUM(Fato_Movimento[QTD]),
+			FILTER(Fato_Movimento,Fato_Movimento[espDocto] = "NFT"))
+		formatString: 0
+		lineageTag: 7ace6c7d-93e9-442d-8b71-da7bd92eccd8
+
+	measure '# CONS REQ' =
+			CALCULATE(SUM(Fato_Movimento[QTD]),
+			FILTER(Fato_Movimento,Fato_Movimento[espDocto] = "REQ"))
+		formatString: 0
+		lineageTag: daa4b54d-1656-4f25-a759-56ed2e1fc56e
+
+	measure '# CONS' = ```
+			ABS(CALCULATE(SUM(Fato_Movimento[QTD]),
+			FILTER(Fato_Movimento,//Fato_Movimento[espDocto] = "NFT" &&
+			 Fato_Movimento[DATA] = 1)
+			)
+			+
+			CALCULATE(SUM(Fato_Movimento[QTD]),
+			FILTER(Fato_Movimento,Fato_Movimento[espDocto] = "REQ" &&
+			 Fato_Movimento[DATA] = 1)
+			)) 
+			```
+		formatString: #,0
+		lineageTag: e040a6ae-a849-4e45-bf27-d3bce89a0fe8
+
+	measure '# Inicial' = SUM(Fato_Estoque[saldoInicial])
+		formatString: #,0
+		lineageTag: 77112d3c-821e-47cd-9380-1a718f4b5eba
+
+	measure '# PROD SAPP' =
+			CALCULATE(SUM(Fato_Sapp[Realizado])
+			//,FILTER(Fato_Sapp, Fato_Sapp[Data] >= DATE(YEAR(TODAY()),MONTH(TODAY()),1))
+			)
+		formatString: #,0
+		lineageTag: 68691d48-90a9-43c5-8ccf-654745cda831
+
+	measure '# PROD PCP' =
+			CALCULATE(SUM(Fato_PCPMaster2[producao]))
+			-
+			CALCULATE(SUM(Fato_PCPMaster2[producao]),FILTER(Fato_PCPMaster2,Fato_PCPMaster2[Tipo]="Refugo"))
+		formatString: #,0
+		lineageTag: 99569db6-ed49-404b-85a1-98c941f03a7f
+
+	measure '# VAR ESTOQUE' = [# CONS] - [# Reportada]
+		formatString: #,0
+		lineageTag: d3b9d3f0-7ab9-4cf7-8e4f-b776eb10d437
+
+	measure '# PCP x Rep' = [# Reportada] - [# PROD PCP]
+		formatString: #,0
+		lineageTag: 1ff6feb3-f097-4dc4-9852-a7aae1866416
+
+	column Column
+		formatString: 0
+		lineageTag: 7e04165d-57ab-4a3a-89b4-4fac6f2c4d81
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas-f0acce68-56f3-46be-be75-37195493fe86 = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = a96782459d524960a7945e3f5b973588
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

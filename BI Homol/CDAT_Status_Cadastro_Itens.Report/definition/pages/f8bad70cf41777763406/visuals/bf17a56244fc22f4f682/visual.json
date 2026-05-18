@@ -1,0 +1,283 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bf17a56244fc22f4f682",
+  "position": {
+    "x": 0,
+    "y": 52.967581047381543,
+    "z": 0,
+    "height": 667.0324189526184,
+    "width": 1280.1995012468828,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Item"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Item",
+              "nativeQueryRef": "Item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Descricao"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Descricao",
+              "nativeQueryRef": "Descricao"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Endereco"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Endereco",
+              "nativeQueryRef": "Endereco"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Altura"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Altura",
+              "nativeQueryRef": "Altura"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Largura"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Largura",
+              "nativeQueryRef": "Largura"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Comprimento"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Comprimento",
+              "nativeQueryRef": "Comprimento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Peso_Liquido"
+                }
+              },
+              "queryRef": "Sum(Fato_Cadastro.Peso_Liquido)",
+              "nativeQueryRef": "Peso_Liquido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Peso_Bruto"
+                }
+              },
+              "queryRef": "Sum(Fato_Cadastro.Peso_Bruto)",
+              "nativeQueryRef": "Peso_Bruto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "Fato_Cadastro.Status",
+              "nativeQueryRef": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fato_Cadastro"
+                    }
+                  },
+                  "Property": "DATA_ALTERACAO"
+                }
+              },
+              "queryRef": "Fato_Cadastro.DATA_ALTERACAO",
+              "nativeQueryRef": "DATA_ALTERACAO"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fato_Cadastro"
+                  }
+                },
+                "Property": "Status"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "504.2425767564653D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Descricao"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "101.1867448872153D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Comprimento"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "66.46504086207315D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Largura"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.27355923056166D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Altura"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "115.57511576503825D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Status"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.17326044794743D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fato_Cadastro.Item"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.10224393060518D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fato_Cadastro.Peso_Liquido)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

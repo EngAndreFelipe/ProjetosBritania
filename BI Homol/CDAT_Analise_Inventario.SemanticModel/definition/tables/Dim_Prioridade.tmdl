@@ -1,0 +1,63 @@
+table Dim_Prioridade
+	excludeFromModelRefresh
+	lineageTag: af26d85c-d4a3-4f97-be90-37bf9395df54
+
+	column IdBox
+		dataType: double
+		lineageTag: 432c1495-af31-44b7-8820-2186613bf451
+		summarizeBy: none
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bloco
+		dataType: string
+		lineageTag: a8a2d8e1-09e1-49cf-9621-689291109bc4
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: b2d55a7f-9d50-4f2d-9156-c1ba503ec231
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: 50ec8c4e-a780-4c85-accd-a5df221bb24f
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: f39f1f50-3611-465d-92f5-0c366a103df7
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Prioridade = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\BI AT LOGISTICA\",
+				    Fonte = Folder.Files(CaminhoBase),
+				    Enderecos_Prioridade_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "Cronograma_Inventario\",Name="Enderecos_Prioridade.xlsx"]}[Content],
+				    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(Enderecos_Prioridade_xlsx),
+				    Tabela1_Table = #"Pasta de Trabalho Importada do Excel"{[Item="Tabela1",Kind="Table"]}[Data]
+				
+				in
+				    Tabela1_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

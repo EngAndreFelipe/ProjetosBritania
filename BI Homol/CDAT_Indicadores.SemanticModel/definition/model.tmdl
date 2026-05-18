@@ -1,0 +1,49 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup AltPlanilha
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup AtlDiaria
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup SGM
+
+	annotation PBI_QueryGroupOrder = 2
+
+annotation PBI_QueryOrder = ["dCalendario","Medidas","f_IndicadoresDW","Pasta","f_2457DocExp","Parametros","f_3917VendaDat","f_Feriados","f_AtendimentoOS","f_Sgm"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+
+ref table dCalendario
+ref table DateTableTemplate_7c406d16-b480-4e96-b341-769445896979
+ref table Medidas
+ref table f_IndicadoresDW
+ref table LocalDateTable_c2378660-fcbc-4756-834b-1f2d18a931c0
+ref table Parametros
+ref table LocalDateTable_29461e08-70e8-4ec5-a563-0b667c1e5492
+ref table f_2457DocExp
+ref table f_3917VendaDat
+ref table f_Feriados
+ref table LocalDateTable_1d7fd03f-8b7f-4ca2-8427-c4b3ad910a59
+ref table f_AtendimentoOS
+ref table LocalDateTable_1783c574-fda5-4858-b2b9-c10b83588090
+ref table LocalDateTable_d9735d93-40c4-4f97-af1a-c678b5fbad50
+ref table LocalDateTable_4c7dcb5b-0725-4b64-aabb-afefc8e9bd77
+ref table IncicadoresCalc
+ref table LocalDateTable_83939d6e-e3e8-4be0-8f63-0ba57d9f42e9
+ref table f_Sgm
+ref table LocalDateTable_274a89ac-ffa4-477e-9fc7-20f0bc1679d8
+
+ref cultureInfo pt-BR
+

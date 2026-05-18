@@ -1,0 +1,37 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["RangeStart","RangeEnd","Dim_Data","Dim_Item","Fato_Mov_Geral_WMS","Fato_Estoque_WMS","Fato_Mov_Geral_Contabil","Fato_Estoque_Contabil"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_Mov_Geral_WMS
+ref table DateTableTemplate_ea22f117-ff02-47aa-92e8-83d26d99ab6f
+ref table LocalDateTable_7ea804ce-b069-444a-b4c2-3ee537ed4700
+ref table LocalDateTable_5d809942-3869-4c40-a202-1e62ce2e290e
+ref table Fato_Estoque_WMS
+ref table LocalDateTable_96b0f800-a4d8-42f3-890c-2fe5e6292e5f
+ref table Dim_Data
+ref table LocalDateTable_eecb96a8-17b3-4138-bec6-baa2e01eeb3d
+ref table Medidas
+ref table LocalDateTable_cc98d65d-eca4-4959-a4bb-5b6986532799
+ref table LocalDateTable_4c7d519a-b28c-4d90-8ae2-11973850742c
+ref table LocalDateTable_056b00b2-05b3-4637-9196-2cabf520add4
+ref table Dim_Item
+ref table LocalDateTable_8c8c6ff5-f2c8-4a12-b095-20ed27237e3a
+ref table Fato_Mov_Geral_Contabil
+ref table LocalDateTable_75c570e8-9cb8-4932-aa27-b367c64e5737
+ref table LocalDateTable_a3233ff8-c91e-44e1-940e-68141962a075
+ref table Fato_Estoque_Contabil
+ref table LocalDateTable_fbc20dcc-1983-4bb4-8f1b-1e2f167cbcb2
+ref table LocalDateTable_36a48b97-6d3d-478d-9c0a-c92727d88045
+
+ref cultureInfo pt-BR
+

@@ -1,0 +1,183 @@
+table f_dwMovEstoqueAT
+	lineageTag: 2d1c2740-529c-4d39-9962-f501c352cc9d
+
+	column NumeroDocumento
+		dataType: string
+		lineageTag: fabca554-96bd-403f-ae53-0ff5d04d9b39
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3113ce5f-b41e-4f9a-a7dc-ab8975a10852
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Situacao
+		dataType: string
+		lineageTag: 47b3471f-5221-44e1-a46e-b2bb347e1c45
+		summarizeBy: none
+		sourceColumn: Situacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeItemMov
+		dataType: int64
+		formatString: #,0
+		lineageTag: 05d2c10d-fc7f-42a4-bbba-cd016dc1cf51
+		summarizeBy: sum
+		sourceColumn: QtdeItemMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoItem
+		dataType: string
+		lineageTag: 1399bebb-974d-4fdc-918c-c026edd48cd3
+		summarizeBy: none
+		sourceColumn: SituacaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: 398b027b-0682-4d2e-bb24-08fa04a687db
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusItem
+		dataType: string
+		lineageTag: a793ef23-fddc-481b-a6b7-a4c6a1fd3c9d
+		summarizeBy: none
+		sourceColumn: StatusItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Embarque
+		dataType: double
+		lineageTag: e8136496-def3-4b8d-a4c8-729cbb806594
+		summarizeBy: sum
+		sourceColumn: Embarque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DtInicioTarefa
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 903b9c63-349f-41b2-8d11-b96753295099
+		summarizeBy: none
+		sourceColumn: DtInicioTarefa
+
+		variation Variation
+			isDefault
+			relationship: 70b6f1a0-a6c5-4c0f-9fa8-20b5f2bff6c8
+			defaultHierarchy: LocalDateTable_949fe13d-ae33-400e-9734-dad3c153c372.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtFimTarefa
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5c93e22e-2574-4b48-9f0c-6f337c3c32d9
+		summarizeBy: none
+		sourceColumn: DtFimTarefa
+
+		variation Variation
+			isDefault
+			relationship: b3f93d27-3a20-4005-9229-7cf7742b9a1a
+			defaultHierarchy: LocalDateTable_ddcecbc1-fb52-43fe-a8af-33476ed2cc91.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 8de1d9e0-5329-479f-ac4d-3e31e93d899e
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 23035cd5-eaa9-4b33-946f-02a30c2dc1eb
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column ONDA
+		dataType: string
+		lineageTag: c2aa37e5-b2b9-40d7-a3ce-3c051bddd82e
+		summarizeBy: none
+		sourceColumn: ONDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoOperacao
+		dataType: string
+		lineageTag: 00057934-311d-41e9-958c-33c90bce3068
+		summarizeBy: none
+		sourceColumn: TipoOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Movimento
+		dataType: string
+		lineageTag: b2fd92ab-08a6-4059-9fe5-2bc42a3cbb2c
+		summarizeBy: none
+		sourceColumn: Movimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column StsNumeroRomaneio
+		dataType: string
+		lineageTag: c6971394-035e-456a-a791-08be9c8675bc
+		summarizeBy: none
+		sourceColumn: StsNumeroRomaneio
+
+		annotation SummarizationSetBy = Automatic
+
+	column StsNotaFiscal
+		dataType: string
+		lineageTag: 9fcab015-d81c-4e1e-9933-86b9470f838f
+		summarizeBy: none
+		sourceColumn: StsNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: 5fc401ea-e1f3-4739-996c-e1e0ed91dbf4
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoOpAlterado
+		dataType: string
+		lineageTag: 3dd8344f-153f-4863-815f-3c5bd13ad0de
+		summarizeBy: none
+		sourceColumn: TipoOpAlterado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_dwMovEstoqueAT = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="DECLARE @DtImpPedidoPDB DATE = CAST(DATEADD(DAY, -90, GETDATE()) AS DATE);#(lf)DECLARE @DtImpDocOnda DATE = CAST(DATEADD(DAY, -10, GETDATE()) AS DATE);#(lf)#(lf)-- Tab Busca Número Onda da STAGE#(lf)WITH DocOnda AS (#(lf)#(tab)SELECT doc,#(lf)#(tab)#(tab)num_onda#(lf)#(tab)FROM (#(lf)#(tab)#(tab)SELECT  #(lf)#(tab)#(tab)#(tab)CAST([id-docto] AS INT) doc,#(lf)#(tab)#(tab)#(tab)[num-docto] num_onda#(lf)#(tab)#(tab)FROM STAGE.tot.WmsDoctoItemAgru WITH (NOLOCK)#(lf)#(tab)#(tab)WHERE  [dt-implan-docto] >= @DtImpDocOnda#(lf)#(lf)#(tab)#(tab)UNION  -- UNION Documento + Documento Original e Número da ONDA#(lf)#(tab)#(tab)#(lf)#(tab)#(tab)SELECT  #(lf)#(tab)#(tab)#(tab)CAST([id-docto-orig] AS INT) doc,#(lf)#(tab)#(tab)#(tab)[num-docto] num_onda#(lf)#(tab)#(tab)FROM STAGE.tot.WmsDoctoItemAgru WITH (NOLOCK)#(lf)#(tab)#(tab)WHERE [dt-implan-docto] >= @DtImpDocOnda#(lf)#(tab)#(tab)) AS tb_onda#(lf)),#(lf)Consultas AS(#(lf)#(tab)SELECT  DISTINCT#(lf)#(tab)#(tab)pdb.Embarque,#(lf)#(tab)#(tab)pdb.NotaFiscal,#(lf)#(tab)#(tab)pdb.SerieNotaFiscal,#(lf)#(tab)#(tab)ft.NumeroRomaneio,#(lf)#(tab)#(tab)pdb.DataSaida,#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN pdb.NotaFiscal IS NULL OR pdb.NotaFiscal = '' THEN 'NÃO'#(lf)#(tab)#(tab)#(tab)ELSE 'SIM'#(lf)#(tab)#(tab)END StsNotaFiscal,#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)WHEN ft.NumeroRomaneio IS NULL OR ft.NumeroRomaneio = '' THEN 'NÃO'#(lf)#(tab)#(tab)#(tab)ELSE 'SIM'#(lf)#(tab)#(tab)END StsNumeroRomaneio#(lf)#(tab)FROM logistica.Fato_PDB381 pdb WITH (NOLOCK)#(lf)#(tab)#(tab)LEFT JOIN (#(lf)#(tab)#(tab)#(tab)SELECT DISTINCT#(lf)#(tab)#(tab)#(tab)#(tab)NumeroNotaFiscal,#(lf)#(tab)#(tab)#(tab)#(tab)SerieNotaFiscal,#(lf)#(tab)#(tab)#(tab)#(tab)NumeroRomaneio#(lf)#(tab)#(tab)#(tab)FROM auditoria.Fato_CustosFrete_Faturamento ft WITH (NOLOCK)#(lf)#(tab)#(tab)#(tab)WHERE IdEstab = '8'#(lf)#(tab)#(tab)#(tab)#(tab)AND SerieNotaFiscal IN('5','21')#(lf)#(tab)#(tab)#(tab)#(tab)AND DataEmissaoNotaFiscal >= @DtImpPedidoPDB#(lf)#(tab)#(tab))ft #(lf)#(tab)#(tab)#(tab)ON pdb.NotaFiscal = ft.NumeroNotaFiscal#(lf)#(tab)#(tab)#(tab)#(tab)AND pdb.SerieNotaFiscal = ft.SerieNotaFiscal#(lf)#(tab)WHERE DataImplantacao >= @DtImpPedidoPDB#(lf)#(tab)#(tab)AND pdb.EstabNotaFiscal = '15'#(lf)#(tab)#(tab)AND pdb.SerieNotaFiscal IN('5','21')#(lf)#(tab)#(tab)--AND Embarque = '3404663'#(lf)),#(lf)validacao AS(#(lf)#(tab)SELECT DISTINCT#(lf)#(tab)#(tab)Embarque,#(lf)#(tab)#(tab)StsNotaFiscal,#(lf)#(tab)#(tab)StsNumeroRomaneio,#(lf)#(tab)#(tab)DataSaida#(lf)#(tab)FROM Consultas#(lf))#(lf)SELECT  #(lf)#(tab)COALESCE(do.num_onda, 'SEM DOC') ONDA,#(lf)#(tab)est.NumeroDocumento,#(lf)#(tab)est.DataImplantacao,#(lf)#(tab)est.Movimento,#(lf)#(tab)est.Item,#(lf)#(tab)est.DescItem,#(lf)#(tab)est.QtdeItemMov,#(lf)#(tab)CASE#(lf)#(tab)#(tab)WHEN est.Origem = 'Consolidação' THEN 'Separação'#(lf)#(tab)#(tab)WHEN est.Origem = 'Pré-Faturamento' THEN 'Conferência'#(lf)#(tab)END TipoOperacao,#(lf)#(tab)est.Situacao,#(lf)#(tab)est.SituacaoItem,#(lf)#(tab)est.Endereco,#(lf)#(tab)est.DtInicioTarefa,#(lf)#(tab)est.DtFimTarefa,#(lf)#(tab)est.Usuario2,#(lf)#(tab)vl.Embarque,#(lf)#(tab)vl.StsNumeroRomaneio,#(lf)#(tab)vl.StsNotaFiscal,#(lf)#(tab)CASE#(lf)#(tab)#(tab)CASE #(lf)#(tab)#(tab)#(tab)WHEN vl.StsNumeroRomaneio = 'SIM' THEN 'Em Romaneio'#(lf)#(tab)#(tab)#(tab)WHEN vl.StsNotaFiscal = 'SIM' THEN 'Nota Fiscal'#(lf)#(tab)#(tab)#(tab)WHEN est.Origem = 'Pré-Faturamento' AND est.SituacaoItem <> 'Concluído' THEN est.SituacaoItem#(lf)#(tab)#(tab)#(tab)WHEN est.Origem = 'Pré-Faturamento' THEN est.SituacaoItem#(lf)#(tab)#(tab)#(tab)WHEN est.Origem = 'Consolidação' AND est.Usuario2 <> '' AND est.DtInicioTarefa IS NOT NULL THEN 'Em Processo'#(lf)#(tab)#(tab)#(tab)WHEN est.Origem = 'Consolidação' AND est.Usuario2 <> '' AND est.DtInicioTarefa IS NULL THEN 'Iniciado'#(lf)#(tab)#(tab)#(tab)ELSE 'Pendente'#(lf)#(tab)#(tab)END#(lf)#(tab)#(tab)WHEN 'Em Romaneio' THEN 'Em Romaneio'#(lf)#(tab)#(tab)WHEN 'Nota Fiscal' THEN 'Nota Fiscal'#(lf)#(tab)#(tab)WHEN 'Pendente' THEN 'Separação'#(lf)#(tab)#(tab)WHEN est.SituacaoItem THEN 'Conferência'#(lf)#(tab)#(tab)ELSE 'Separação'#(lf)#(tab)END TipoOpAlterado,#(lf)#(tab)CASE #(lf)#(tab)#(tab)WHEN vl.StsNumeroRomaneio = 'SIM' THEN 'Em Romaneio'#(lf)#(tab)#(tab)WHEN vl.StsNotaFiscal = 'SIM' THEN 'Nota Fiscal'#(lf)#(tab)#(tab)WHEN est.Origem = 'Pré-Faturamento' AND est.SituacaoItem <> 'Concluído' THEN est.SituacaoItem#(lf)#(tab)#(tab)WHEN est.Origem = 'Pré-Faturamento' THEN est.SituacaoItem#(lf)#(tab)#(tab)WHEN est.Origem = 'Consolidação' AND est.Usuario2 <> '' AND est.DtInicioTarefa IS NOT NULL THEN 'Em Processo'#(lf)#(tab)#(tab)WHEN est.Origem = 'Consolidação' AND est.Usuario2 <> '' AND est.DtInicioTarefa IS NULL THEN 'Iniciado'#(lf)#(tab)#(tab)ELSE 'Pendente'#(lf)#(tab)END StatusItem#(lf)FROM logistica.VW_Fato_Mov_Estoque_PA_AT est WITH (NOLOCK)#(lf)#(tab)LEFT JOIN DocOnda do  #(lf)#(tab)#(tab)ON est.Documento = do.doc #(lf)#(tab)LEFT JOIN validacao vl#(lf)#(tab)#(tab)ON CAST(vl.Embarque AS VARCHAR) = est.NumeroDocumento#(lf)WHERE est.Local = 'AAT'#(lf)#(tab)AND est.NumeroDocumento <> 'SALDO'#(lf)#(tab)AND do.num_onda <> 'SEM DOC'#(lf)#(tab)AND est.Origem IN('Pré-Faturamento','Consolidação')#(lf)#(tab)AND NOT (est.Origem = 'Consolidação' AND est.SituacaoItem = 'Concluído' AND  Situacao = 'Atualizado')#(lf)#(tab)AND Movimento = 'Saida'#(lf)#(tab)AND vl.DataSaida IS NULL#(lf)#(tab)AND DataImplantacao >= @DtImpDocOnda;"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

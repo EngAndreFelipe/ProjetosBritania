@@ -1,0 +1,23 @@
+table Att
+	lineageTag: fb27b48c-70bc-4ea8-ab64-a77da5949947
+
+	column 'Data e Hora'
+		dataType: string
+		lineageTag: 75cbd0d2-ddc5-4305-af68-2cf9a8931b00
+		summarizeBy: none
+		sourceColumn: Data e Hora
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Att = m
+		mode: import
+		source =
+				let
+				    Fonte = DateTime.LocalNow(),
+				    #"Convertido para Tabela" = #table(1, {{Fonte}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Convertido para Tabela",{{"Column1", "Data e Hora"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,26 @@
+table Dim_Item
+	lineageTag: 02d121ec-370e-48e8-b3de-d4c3033ff476
+
+	column CodItem
+		dataType: string
+		lineageTag: ba702542-9c3e-40f7-b5e1-46c7944edae4
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Item = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)        SELECT DISTINCT#(lf)            UPPER(LTRIM(RTRIM(CodItem))) AS CodItem,#(lf)            DescItem,#(lf)            Id#(lf)        FROM#(lf)            dbo.Dim_Item#(lf)#(lf)        WHERE#(lf)                CodItem NOT IN ('#N/D', '''', '-', '') AND#(lf)                CodItem NOT IN ('0000', '00000000A', '000001', '00002', '00003', '00004', '00005', '00006', '00007', '00008', '00010') AND#(lf)                ProdutoAcabado = 0 AND#(lf)                CodGrupoEstoque IN (0, 1, 2, 27, 7, 14, 16, 19, 15) AND#(lf)                CHARINDEX(',', CodItem) = 0 AND#(lf)                LEN(REPLACE(CodItem, '0', '')) > 0 AND#(lf)                DescGrupoEstoque <> 'AMOSTRAS'#(lf)            ORDER BY#(lf)                CodItem ASC;#(lf)    "]),
+				    #"Texto Aparado" = Table.TransformColumns(Fonte,{{"CodItem", Text.Trim, type text}}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Texto Aparado", {"CodItem"}),
+				    ColunasRemovidas= Table.SelectColumns(#"Duplicatas Removidas",{"CodItem"})
+				in
+				    ColunasRemovidas
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

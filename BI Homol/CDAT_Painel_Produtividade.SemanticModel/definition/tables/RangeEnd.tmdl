@@ -1,0 +1,26 @@
+table RangeEnd
+	lineageTag: 03cc3a37-59b0-4409-8500-53c4644bfded
+
+	column RangeEnd
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fba78e52-b16a-4568-8aa0-4569aa0535cd
+		summarizeBy: none
+		sourceColumn: RangeEnd
+
+		variation Variation
+			isDefault
+			relationship: d33d3c98-0bb4-48d1-bc63-73cdc48ccec4
+			defaultHierarchy: LocalDateTable_4a289b7a-fcd8-40bb-b369-d22a5506183c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RangeEnd = m
+		mode: import
+		queryGroup: Parâmetros
+		source = #datetime(2033, 12, 31, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = DateTime
+

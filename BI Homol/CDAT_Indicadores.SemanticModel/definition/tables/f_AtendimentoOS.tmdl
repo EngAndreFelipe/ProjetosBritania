@@ -1,0 +1,131 @@
+table f_AtendimentoOS
+	lineageTag: 945af2fb-3ba6-47e8-a1b9-d73b511bc779
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 14dc67d5-ca0b-4980-8c27-98d5033ed3b9
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 366bb9d2-5b44-4ae5-b5c1-27613632cafc
+			defaultHierarchy: LocalDateTable_1783c574-fda5-4858-b2b9-c10b83588090.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7b9bd173-71b2-4375-a771-972b0a95756b
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: e8a160fc-1e98-4418-977e-d5215837653e
+			defaultHierarchy: LocalDateTable_d9735d93-40c4-4f97-af1a-c678b5fbad50.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column QuantidadeAtendida
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d009085-8d79-4f1d-9fe3-f22becc71511
+		summarizeBy: sum
+		sourceColumn: QuantidadeAtendida
+
+		annotation SummarizationSetBy = Automatic
+
+	column Log_Erro
+		dataType: string
+		lineageTag: b1f39336-f6c0-4942-adf9-bf40d53ee26c
+		summarizeBy: none
+		sourceColumn: Log_Erro
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasCorridos
+		dataType: int64
+		formatString: 0
+		lineageTag: c1218642-49ce-4eef-ad89-b430bd022534
+		summarizeBy: sum
+		sourceColumn: DiasCorridos
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasUteisOs =
+			
+			var DtInicial = 'f_AtendimentoOS'[DataImplantacao]
+			var DtFinal = 'f_AtendimentoOS'[DataSaida]
+			var DiasUteis = CALCULATE(SUM(dCalendario[DiaUtilCalc]), FILTER(dCalendario, dCalendario[Calendario] >='f_AtendimentoOS'[DataImplantacao] && dCalendario[Calendario] <= 'f_AtendimentoOS'[DataSaida]))
+			RETURN
+			    DiasUteis -1
+		formatString: 0
+		lineageTag: 194078f3-bca2-4ded-af75-2a56dcbd0f30
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status = f_AtendimentoOS[DiasCorridos] < 3
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e63f6bdf-a4ee-436a-9f85-da4f729f7e98
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusOs = f_AtendimentoOS[DiasUteisOs] < 3
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e35cbbce-0028-4668-a526-ca85647bf89a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_2385 = "2385"
+		lineageTag: 671b1fd7-c351-4064-ac22-df10b54b1691
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_2386 = "2386"
+		lineageTag: 88cff563-f4be-4127-8530-0803a3584911
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DtIndicador
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 51411f88-efae-4c48-ae63-1624a729602e
+		summarizeBy: none
+		sourceColumn: DtIndicador
+
+		variation Variation
+			isDefault
+			relationship: 520177ea-7150-47f1-b80b-89c60234bcce
+			defaultHierarchy: LocalDateTable_83939d6e-e3e8-4be0-8f63-0ba57d9f42e9.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition f_AtendimentoOS = m
+		mode: import
+		queryGroup: AtlDiaria
+		source =
+				let
+				    ID2985_86 = Sql.Database("PR-S188\DW", "DW", [Query="DECLARE @DataImplantacao DATE = EOMONTH(DATEADD(MONTH, - 4, GETDATE()));#(lf)DECLARE @MES INT;#(lf)DECLARE @ANO INT;#(lf)DECLARE @ID INT;#(lf)#(lf)-- ANO#(lf)SELECT @ANO = MIN(Ano)#(lf)FROM DW.AT.GestaoMetas#(lf)WHERE IdIndicador = '2985' --  AT.CD.2985 - ATENDIMENTO DE PEÇAS COM OS EM ATÉ DOIS DIAS ÚTEIS#(lf)#(tab)AND MetaIndicador IS NOT NULL#(lf)#(tab)AND RealizadoNumerador IS NULL;#(lf)#(lf)-- MES#(lf)SELECT @MES = MIN(Mes)#(lf)FROM DW.AT.GestaoMetas#(lf)WHERE IdIndicador = '2985' --  AT.CD.2985 - ATENDIMENTO DE PEÇAS COM OS EM ATÉ DOIS DIAS ÚTEIS#(lf)#(tab)AND MetaIndicador IS NOT NULL#(lf)#(tab)AND RealizadoNumerador IS NULL#(lf)#(tab)AND Ano = @ANO;#(lf)#(lf)#(lf)-- Valida se tabela Temp existe e Deleta#(lf)IF OBJECT_ID('tempdb..#Filtered_PDB') IS NOT NULL#(lf)#(tab)DROP TABLE #Filtered_PDB;#(lf)#(lf)#(lf)SELECT p.NumeroPedido#(lf)#(tab),p.DataImplantacao#(lf)#(tab),p.CodEmitente#(lf)#(tab),p.QuantidadeAtendida#(lf)#(tab),p.DataSaida#(lf)#(tab),p.NotaFiscal#(lf)#(tab),p.SerieNotaFiscal#(lf)#(tab),p.EstabNotaFiscal#(lf)#(tab),p.SitCreditoPed#(lf)#(tab),p.CreditoPosto#(lf)#(tab),p.PedidoCompleto#(lf)#(tab),p.SitPedido#(lf)#(tab),p.CreditoCliente#(lf)#(tab),p.SitCredenciamento#(lf)INTO #Filtered_PDB#(lf)FROM DW.logistica.Fato_PDB381 p WITH (NOLOCK)#(lf)--Desconsidera Notas Canceladas#(lf)LEFT JOIN auditoria.Fato_CustosFrete_Faturamento acf WITH (NOLOCK) #(lf)#(tab)ON p.NotaFiscal = acf.NumeroNotaFiscal#(lf)#(tab)#(tab)AND p.SerieNotaFiscal = acf.SerieNotaFiscal#(lf)#(tab)#(tab)AND acf.DataEmissaoNotaFiscal >= @DataImplantacao#(lf)WHERE p.DataImplantacao > @DataImplantacao#(lf)#(tab)AND p.DataSaida BETWEEN DATEFROMPARTS(@ANO, @MES, 1) #(lf)#(tab)#(tab)#(tab)AND EOMONTH(DATEFROMPARTS(@ANO, @MES, 1))#(lf)#(tab)AND p.SitPedido IN ('2','3','5')#(lf)#(tab)AND p.SerieNotaFiscal IN (5,21)#(lf)#(tab)AND p.NumeroOS <> ''#(lf)#(tab)AND acf.IdDataCancelamento IS NULL;#(lf)#(lf)-- Consulta Log de Erro FTB400#(lf)WITH ConsLog AS (#(lf)#(tab)SELECT DISTINCT lg.POSTO#(lf)#(tab)#(tab),FORMAT(lg.DATA_ARQUIVO, 'yyyyMM') AS ANO_MES#(lf)#(tab)#(tab),lg.PEDIDO + CAST(lg.POSTO AS VARCHAR) AS ChvPedCliente#(lf)#(tab)#(tab),'Log Erro' AS LOG_ERRO#(lf)#(tab)FROM STAGE.excel.LogErroFTB400 lg WITH (NOLOCK)#(lf)#(tab)WHERE DATA_ARQUIVO BETWEEN DATEFROMPARTS(@ANO, @MES, 1) #(lf)#(tab)#(tab)#(tab)AND EOMONTH(DATEFROMPARTS(@ANO, @MES, 1))#(lf)#(lf)#(tab)#(tab)AND NOT EXISTS (#(lf)#(tab)#(tab)#(tab)SELECT 1#(lf)#(tab)#(tab)#(tab)FROM (#(lf)#(tab)#(tab)#(tab)#(tab)VALUES ('Estado diferente')#(lf)#(tab)#(tab)#(tab)#(tab)#(tab),('Natureza em garantia e emite duplicata')#(lf)#(tab)#(tab)#(tab)#(tab)#(tab),('Emitente fora da faixa')#(lf)#(tab)#(tab)#(tab)#(tab)#(tab),('atendido total ou cance')#(lf)#(tab)#(tab)#(tab)#(tab)#(tab),('embarcado ou faturado')#(lf)#(tab)#(tab)#(tab)#(tab)#(tab),('')#(lf)#(tab)#(tab)#(tab)#(tab)) AS l(Descricao)#(lf)#(tab)#(tab)#(tab)WHERE CHARINDEX(l.Descricao, lg.LOG_DE_ERRO) > 0#(lf)#(tab)#(tab)#(tab))#(lf)),#(lf)tbPdbCalc AS (#(lf)#(tab)SELECT #(lf)#(tab)pdb.DataImplantacao#(lf)#(tab),CAST(pdb.DataSaida AS DATE) DataSaida#(lf)#(tab),CAST(pdb.QuantidadeAtendida AS INT) AS QuantidadeAtendida#(lf)#(tab),CASE #(lf)#(tab)#(tab)WHEN UPPER(pdb.SitCredenciamento) = 'N'#(lf)#(tab)#(tab)#(tab)THEN 'LogErro'#(lf)#(tab)#(tab)WHEN pdb.SitCreditoPed = 'Não Aprovado' #(lf)#(tab)#(tab)#(tab)THEN 'LogErro'#(lf)#(tab)#(tab)ELSE cl.LOG_ERRO#(lf)#(tab)END AS Log_Erro#(lf)#(tab), DATEDIFF(DAY, pdb.DataImplantacao, pdb.DataSaida) DiasCorridos#(lf)FROM #Filtered_PDB pdb#(lf)#(tab)LEFT JOIN dbo.Dim_SituacaoPedido sp WITH (NOLOCK) ON pdb.SitPedido = sp.CodSitPed#(lf)#(tab)LEFT JOIN ConsLog cl WITH (NOLOCK) ON FORMAT(pdb.DataSaida, 'yyyyMM') = cl.ANO_MES#(lf)#(tab)#(tab)AND pdb.NumeroPedido + CAST(pdb.CodEmitente AS VARCHAR) = cl.ChvPedCliente#(lf))#(lf)#(lf)SELECT DATEFROMPARTS(@ANO, @MES, 1) DtIndicador#(lf)#(tab),*#(lf)FROM tbPdbCalc"]),
+				    TipoAlterado =
+				        Table.TransformColumnTypes(ID2985_86,{{"DataImplantacao", type date}, {"DataSaida", type date}, {"DtIndicador", type date}})
+				in
+				    TipoAlterado
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

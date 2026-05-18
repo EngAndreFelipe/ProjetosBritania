@@ -1,0 +1,26 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Fato_Pedidos","Dim_ItSaldo"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fato_Pedidos
+ref table DateTableTemplate_008cd581-9cce-4061-ace7-d0e3843c07c5
+ref table LocalDateTable_c8edd533-bafb-4374-aa33-6a7a1b652e4b
+ref table LocalDateTable_dbf636af-97bd-48bc-91ef-179034b17d97
+ref table LocalDateTable_e960cd90-f99e-497c-afc9-bf6e121f48f9
+ref table Dim_ItSaldo
+ref table LocalDateTable_2152fe8e-8b58-48d3-b4bf-eb41d9a6e157
+ref table LocalDateTable_69ea58c6-ace8-4226-a9cf-6c6b1a52c8dc
+ref table LocalDateTable_0e44c299-a5aa-47d8-81d7-25c83a3ec4b0
+
+ref cultureInfo pt-BR
+

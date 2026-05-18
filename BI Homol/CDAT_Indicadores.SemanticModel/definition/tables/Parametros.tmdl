@@ -1,0 +1,39 @@
+table Parametros
+	lineageTag: 5c31b7ec-7791-47ba-914e-6fa397615541
+
+	column IdIndicador
+		dataType: string
+		lineageTag: d819ade6-89b0-4d43-a874-25c3b9685340
+		summarizeBy: none
+		sourceColumn: IdIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoIndicador
+		dataType: string
+		lineageTag: 97d572d7-0859-4fc2-bac9-e2a312b8ae87
+		summarizeBy: none
+		sourceColumn: TipoIndicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Formato
+		dataType: string
+		lineageTag: 9c7ae324-a674-47ca-b960-03b39019a172
+		summarizeBy: none
+		sourceColumn: Formato
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parametros = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fZAxCoAwDEWvIhW3ImnS1vYW7uJQnTqI4OTxVQTRwncLPN7PT4ZBuaC06tOWqjkv6ZypJWrUqE8UMfKPNqW8rx/oGWca/kk17AlC5ohNtq7DhdhRqda6vviNY3A4OQYPoRjBncRYKju914r8HCSWwCvGAw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [IdIndicador = _t, TipoIndicador = _t, Formato = _t])
+				in
+				    Fonte
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

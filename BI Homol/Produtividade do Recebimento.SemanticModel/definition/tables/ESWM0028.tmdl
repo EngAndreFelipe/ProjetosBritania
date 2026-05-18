@@ -1,0 +1,160 @@
+table ESWM0028
+	lineageTag: f071501d-5de4-474a-ac1c-a0dc24478231
+
+	column NumeroDocumento
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: 32f37b90-9a8c-4868-b09d-9f237d370e9f
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieDocumento
+		dataType: string
+		sourceProviderType: varchar(5)
+		lineageTag: 3350e1c2-13e6-48e6-bf03-20f975f5e1aa
+		summarizeBy: none
+		sourceColumn: SerieDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column NaturezaOperacao
+		dataType: string
+		sourceProviderType: varchar(12)
+		lineageTag: a2884899-30ea-462a-9e98-0edb5ff32dcc
+		summarizeBy: none
+		sourceColumn: NaturezaOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoEmitente
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6be996bb-9834-467a-b84f-3d68da9d98d1
+		summarizeBy: sum
+		sourceColumn: CodigoEmitente
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 195011f3-ad90-4653-95a5-a85b15d43140
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroNotaVenda
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: 70b05b3d-41e7-49cb-bb6c-a76f625e424e
+		summarizeBy: none
+		sourceColumn: NumeroNotaVenda
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaVenda
+		dataType: string
+		sourceProviderType: varchar(12)
+		lineageTag: f0694ed0-84e9-4274-9eb8-215d262ad684
+		summarizeBy: none
+		sourceColumn: SerieNotaVenda
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoItem
+		dataType: string
+		sourceProviderType: varchar(32)
+		lineageTag: f4ed9663-a72e-45d6-9873-48adfc094581
+		summarizeBy: none
+		sourceColumn: CodigoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescricaoItem
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: 2a8cf50b-83a4-436e-be48-f0650a9b67a6
+		summarizeBy: none
+		sourceColumn: DescricaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantidadeWMS
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b93ea6b9-2db7-46a0-86f2-959f8d222c56
+		summarizeBy: sum
+		sourceColumn: QuantidadeWMS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QuantidadeRecebimento
+		dataType: double
+		formatString: #,0
+		sourceProviderType: float
+		lineageTag: ad038f44-6818-41b0-98ba-cfdf894cdf53
+		summarizeBy: sum
+		sourceColumn: QuantidadeRecebimento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column QuantidadeDiferenca
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 36e11c0a-4dc2-4389-87b4-7d0979a0bcc4
+		summarizeBy: sum
+		sourceColumn: QuantidadeDiferenca
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroWms
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: 0d2617c5-a5a6-40b7-bfb8-e20c73ba592b
+		summarizeBy: none
+		sourceColumn: NumeroWms
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: c51f5ee3-0b69-44c5-87fe-253f00e01819
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario
+		dataType: string
+		sourceProviderType: varchar(24)
+		lineageTag: 154f4768-9a31-407e-be13-b02c00ea6b69
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ESWM0028 = m
+		mode: directQuery
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT * FROM logistica.Fato_ESWM0028 WHERE Usuario IS NOT NULL"])
+				in
+				    Fonte
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

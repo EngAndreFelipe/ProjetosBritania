@@ -1,0 +1,49 @@
+table Dim_Item
+	lineageTag: 1a2ac6dc-97ff-49a7-9245-18976992f9cc
+
+	column CodItem
+		dataType: string
+		lineageTag: 6b75090f-0068-4265-b435-366ab4545fcf
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 921ac977-03aa-4b7c-9283-9308ea2ddb3f
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodObsoleto
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bf74fa0-f9c0-47d5-a46d-0fc4ae38428a
+		summarizeBy: sum
+		sourceColumn: CodObsoleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescGrupoEstoque
+		dataType: string
+		lineageTag: 1fc06ba9-452c-47a6-acfe-6fa633f101fb
+		summarizeBy: none
+		sourceColumn: DescGrupoEstoque
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Item-b6971999-d6ab-44b2-ae83-125e818879c3 = m
+		mode: import
+		queryGroup: NOVO
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT CodItem,#(lf)       DescItem,#(lf)       CodObsoleto,#(lf)       DescGrupoEstoque#(lf)FROM dbo.Dim_Item WITH(NOLOCK)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

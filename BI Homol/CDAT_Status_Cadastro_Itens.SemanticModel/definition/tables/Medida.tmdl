@@ -1,0 +1,63 @@
+table Medida
+	lineageTag: b25f7b81-0efc-42fb-8aef-51f1ba333113
+
+	measure TotalItens = DISTINCTCOUNT(Fato_Cadastro[Item])
+		formatString: 0
+		lineageTag: 09066842-453d-41b6-89dd-b39eccb3a605
+
+	measure 'Itens Distintos por Endereco' =
+			
+			VAR TabelaResumo =
+			    SUMMARIZE (
+			        Fato_Cadastro,
+			        Fato_Cadastro[Endereco],
+			        Fato_Cadastro[Item]
+			    )
+			RETURN
+			COUNTROWS ( TabelaResumo )
+		formatString: 0
+		lineageTag: e0d7f479-710f-4384-8b13-e9ff07f89463
+
+	measure 'Itens Cadastrados por Endereco' =
+			
+			VAR TabelaResumo =
+			    SUMMARIZE (
+			        Fato_Cadastro,
+			        Fato_Cadastro[Endereco],
+			        Fato_Cadastro[Item],
+			        Fato_Cadastro[Status]
+			    )
+			RETURN
+			COUNTROWS (
+			    FILTER ( TabelaResumo, [Status] = "Cadastrado" )
+			)
+		formatString: 0
+		lineageTag: 4a8d616d-d5db-42dd-a6d2-23d2347c7c8f
+
+	measure 'Percentual Cadastrado por Endereco' =
+			
+			DIVIDE (
+			    [Itens Cadastrados por Endereco],
+			    [Itens Distintos por Endereco]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9490b833-4891-430b-a9fa-d00830505cef
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: f18e8f6b-1902-46e5-8563-490cc65b1d02
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medida = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 24e0c61c32e3402ca540821bc0b8d3ec
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

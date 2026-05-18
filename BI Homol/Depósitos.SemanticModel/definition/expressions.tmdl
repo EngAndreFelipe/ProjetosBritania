@@ -1,0 +1,8 @@
+expression Server = "PR-S188\DW" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 9a88f3b4-2501-4aeb-9425-efd77fa043fc
+	queryGroup: AUX
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

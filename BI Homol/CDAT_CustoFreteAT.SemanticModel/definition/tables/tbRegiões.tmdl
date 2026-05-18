@@ -1,0 +1,47 @@
+table tbRegiões
+	lineageTag: ed9896a4-6dae-4c43-acb1-9b020ce804ad
+
+	column UnidadeFederativa
+		dataType: string
+		lineageTag: 9576b44b-de91-481e-b0b5-3f8fd3d3f9af
+		summarizeBy: none
+		sourceColumn: UnidadeFederativa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sigla
+		dataType: string
+		lineageTag: eb89a71f-0811-491c-a64e-0dd931bfb566
+		summarizeBy: none
+		sourceColumn: Sigla
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: 7ef3158b-55cb-4e67-bd45-a5fecf69da23
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Região
+		dataType: string
+		lineageTag: 30ab1369-a111-4280-a39c-7bafa08f7345
+		summarizeBy: none
+		sourceColumn: Região
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbRegiões = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("lZNNbsIwEIWvErGmhwghREUNWDaLSojFQCxqKbEjJ5Gq3gZ10RW73sAX64wDBRYEs8mP/b15nmd7vR7FOytH41Gc4IPLvXLfJloY29Jg/96MkSphb6Ah8O0WLGRzZvtPj1dQuwPRbLhsBV9G93XzQXICHwpwZBIH2CcSrLdP0gB6qprWqtZEM1lICyXOT2dXukTq1pqX5Ul780v6tKnd0RcQoFuDSCqu5KI7u56/SJQZ5Q7Ud7Z8wioHC/oDSZzMQ5LIAZeVWdM0XrJ6yutfGhXUBgWTi2cqKNzaKMNMFXWaZw9TYad9Y/HgYUAM3HFL54FNAlIgXveF+c0aSu9f9pC0Gqptt6OkWMjBYQo6dyT6NYDmCnOU0Ry0VJY8+PxhHqTJcO2oKy5B8EWg3UXat8rF3e650YX71f6O8eVg+tzghlYe5IMgXQeIEmjB4kkgs+Suv6AhBl1JyQj2MBkh7V7VfjRkq1Zmh4tRms7harg9ur/vV0T6WeMcuJ/+2t38bjZ/", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [UnidadeFederativa = _t, Sigla = _t, Descricao = _t, Região = _t])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,98 @@
+table Dim_ContabilGeral
+	lineageTag: b36a1cdb-fc85-4355-9bbb-a85a87850532
+
+	column Item
+		dataType: string
+		lineageTag: 8ebd4836-9f31-4d7e-a5a9-6c455002ef5b
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column AAT
+		dataType: int64
+		formatString: 0
+		lineageTag: 36a0c92b-7bb5-4dbc-9607-a0d1f05f8062
+		summarizeBy: sum
+		sourceColumn: AAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DCV
+		dataType: int64
+		formatString: 0
+		lineageTag: eda0bc5a-7f0e-4db5-8a73-9ab3fead6350
+		summarizeBy: sum
+		sourceColumn: DCV
+
+		annotation SummarizationSetBy = Automatic
+
+	column REC
+		dataType: int64
+		formatString: 0
+		lineageTag: 08e37520-f5e7-44a2-973f-f6d61f882c9e
+		summarizeBy: sum
+		sourceColumn: REC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RCB
+		dataType: int64
+		formatString: 0
+		lineageTag: fc6bfa1c-4142-49d8-aebb-a8f063b375bf
+		summarizeBy: sum
+		sourceColumn: RCB
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAT
+		dataType: int64
+		formatString: 0
+		lineageTag: 03967c8b-e623-4ea0-a106-66aabed2ebfd
+		summarizeBy: sum
+		sourceColumn: NAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEV
+		dataType: int64
+		formatString: 0
+		lineageTag: b0daf14a-52e7-4b50-af12-15dffd9efd4a
+		summarizeBy: sum
+		sourceColumn: DEV
+
+		annotation SummarizationSetBy = Automatic
+
+	column WMS = COALESCE(RELATED(Dim_WMS[Quantidade]),0)
+		formatString: 0
+		lineageTag: 111618ed-4487-4d02-9171-d4496c9ea449
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SomaContábil = Dim_ContabilGeral[AAT] + Dim_ContabilGeral[DCV]
+		formatString: 0
+		lineageTag: e60a33fa-7f71-4eda-9d6e-76dc0709f175
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Divergência = Dim_ContabilGeral[WMS] - [SomaContábil]
+		formatString: 0
+		lineageTag: ac1901a7-c976-4c2d-8389-99756eaea421
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_ContabilGeral = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)    [it-codigo] AS Item,#(lf)    CAST(ISNULL([AAT],0) AS INT) AS AAT,#(lf)    CAST(ISNULL([DCV],0) AS INT) AS DCV,#(lf)    CAST(ISNULL([REC],0) AS INT) AS REC,#(lf)    CAST(ISNULL([RCB],0) AS INT) AS RCB,#(lf)    CAST(ISNULL([NAT],0) AS INT) AS NAT,#(lf)    CAST(ISNULL([DEV],0) AS INT) AS DEV#(lf)FROM (#(lf)    SELECT #(lf)        [it-codigo],#(lf)        [cod-depos],#(lf)        [qtidade-atu]#(lf)    FROM STAGE.tot.SaldoEstoq#(lf)    WHERE [cod-estabel] = '15'#(lf)) AS src#(lf)PIVOT (#(lf)    SUM([qtidade-atu]) #(lf)    FOR [cod-depos] IN ([AAT], [DCV], [REC], [RCB], [NAT], [DEV])#(lf)) AS pvt"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,540 @@
+table Fato_InvPrimeiroCiclo
+	excludeFromModelRefresh
+	lineageTag: 435e8b7e-c7e5-4fc0-a4b3-caa487155e27
+
+	measure QtdCorretosPrimeiroCiclo = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox]),
+			    Fato_InvPrimeiroCiclo[AcuracidadePorPosicaoUltimaData] = "Correto"
+			)
+			
+			```
+		formatString: 0
+		lineageTag: fcd554c6-e89d-4e05-ad54-6b76e6c3dc4e
+
+	measure QtdIncorretosPrimeiroCiclo =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox]),
+			    Fato_InvPrimeiroCiclo[AcuracidadePorPosicaoUltimaData] = "Incorreto"
+			)
+		formatString: 0
+		lineageTag: 3cbbecfc-b816-491e-968a-c4f403522c3c
+
+	measure TaxaAcuracia = DIVIDE([QtdCorretosPrimeiroCiclo], Fato_InvPrimeiroCiclo[ContagemEnderecosPrimeiroCiclo], 0)
+		lineageTag: bba25199-6374-4210-a711-f333f537d0a5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemEnderecosPrimeiroCiclo = ```
+			
+			    DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox])
+			```
+		formatString: 0
+		lineageTag: ab93aaaf-196d-4409-97fe-62a9cf26af90
+
+	measure QtdCorretosAcumuladoPrimeiroCiclo = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox]),
+			    FILTER(
+			        ALLSELECTED(Fato_InvPrimeiroCiclo),
+			        Fato_InvPrimeiroCiclo[DataInventario] <= MAX(Fato_InvPrimeiroCiclo[DataInventario]) &&
+			        Fato_InvPrimeiroCiclo[AcuracidadePorPosicaoUltimaData] = "Correto"
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		lineageTag: de42cd48-d2bc-44a4-94ee-09892c9d1960
+
+	measure TaxaAcuraciaAcumulada =
+			
+			DIVIDE([QtdCorretosAcumuladoPrimeiroCiclo], [ContagemEnderecosAcumuladoPrimeiroCiclo], 0)
+		lineageTag: 6807bc1c-f611-48e0-acf0-b900774de763
+
+	measure ContagemEnderecosAcumuladoPrimeiroCiclo = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox]),
+			    FILTER(
+			        ALLSELECTED(Fato_InvPrimeiroCiclo),
+			        Fato_InvPrimeiroCiclo[DataInventario] <= MAX(Fato_InvPrimeiroCiclo[DataInventario])
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: c0f2021f-d995-4d80-8b37-251f8eb4c5e4
+
+	measure AcuracidadePorRuaPrimeiroCiclo =
+			
+			VAR PosicoesCorretas =
+			    CALCULATE(
+			        DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox]),
+			        Fato_InvPrimeiroCiclo[AcuracidadePorPosicaoUltimaData] = "Correto",
+			        (Fato_InvPrimeiroCiclo[Bloco] IN {"PCK","RUA","VAL"})
+			    )
+			VAR PosicoesTotais =
+			    CALCULATE(
+			        DISTINCTCOUNT(Fato_InvPrimeiroCiclo[IdBox]),
+			        NOT ISBLANK(Fato_InvPrimeiroCiclo[AcuracidadePorPosicaoUltimaData]),
+			        (Fato_InvPrimeiroCiclo[Bloco] IN {"PCK","RUA","VAL"})
+			    )
+			RETURN
+			DIVIDE(PosicoesCorretas, PosicoesTotais)
+		lineageTag: f955ff4d-6cdb-4623-9608-3d7df1cc7ae1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataInventario
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 99aa0014-8f41-4b11-8333-801fee3be6fa
+		summarizeBy: none
+		sourceColumn: DataInventario
+
+		variation Variation
+			isDefault
+			relationship: 9324a0f9-64d3-4bd6-a957-59a039eefa02
+			defaultHierarchy: LocalDateTable_fd317b11-6f69-4a54-b618-ba80129e0ee0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NumeroInventario
+		dataType: double
+		lineageTag: 5645eb2a-622d-489d-af8a-369989556110
+		summarizeBy: sum
+		sourceColumn: NumeroInventario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SituacaoInv
+		dataType: string
+		lineageTag: 6cdf5417-016e-4fa3-82a1-11513617d265
+		summarizeBy: none
+		sourceColumn: SituacaoInv
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdBox
+		dataType: double
+		lineageTag: 18feef76-c15b-4e1f-9fef-cdebaeef453b
+		summarizeBy: sum
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Bloco
+		dataType: string
+		lineageTag: e1e1ee59-cfce-43bd-a891-89f730b08848
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: bd3ddcf4-48e6-46e2-b7cd-4ad9694551d3
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: b67794fc-c367-4b78-a702-fa71fff7bc58
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: bd9e3f3d-a88b-4613-a115-c74be3c2c51a
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoEnd
+		dataType: string
+		lineageTag: 2be4029c-3662-4034-9e57-3ec250f2a3e7
+		summarizeBy: none
+		sourceColumn: SituacaoEnd
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 9793e8be-bc76-4ff8-bda6-8e47f3aa45e2
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 18ab33dd-f575-4e32-b78f-60b19ce37934
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoItem
+		dataType: string
+		lineageTag: 91655092-b00e-4855-ac32-a264a01944ca
+		summarizeBy: none
+		sourceColumn: SituacaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		dataType: double
+		lineageTag: abdf82ca-cdb3-45f3-bf9a-2d1145503b19
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada1
+		dataType: double
+		lineageTag: 210007c0-7627-4fb8-91f0-bb554a1f91fb
+		summarizeBy: sum
+		sourceColumn: QtdApurada1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada2
+		dataType: double
+		lineageTag: 4236f114-780c-4cae-9f63-45f4150e537e
+		summarizeBy: sum
+		sourceColumn: QtdApurada2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada3
+		dataType: double
+		lineageTag: 0225627c-45b4-47a8-a705-91fad358bd68
+		summarizeBy: sum
+		sourceColumn: QtdApurada3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UltimaContagem
+		dataType: double
+		lineageTag: 7f265de9-2d5d-418c-8dbf-9c66e0d75423
+		summarizeBy: sum
+		sourceColumn: UltimaContagem
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdFinal
+		dataType: double
+		lineageTag: 2dd06ac9-63d8-4ce7-a8c7-cc9ce3e25157
+		summarizeBy: sum
+		sourceColumn: QtdFinal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Divergencia
+		dataType: double
+		lineageTag: bf749167-2275-4ee8-ba6d-840a8cdfa873
+		summarizeBy: sum
+		sourceColumn: Divergencia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Acuracidade
+		dataType: string
+		lineageTag: f9f5f763-75e4-418a-a494-1e9b9b86e86f
+		summarizeBy: none
+		sourceColumn: Acuracidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoContagem1
+		dataType: string
+		lineageTag: af1bbf60-2092-4df6-91d9-84056ec5f957
+		summarizeBy: none
+		sourceColumn: SituacaoContagem1
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoContagem2
+		dataType: string
+		lineageTag: ff09069d-4eb1-4fee-9b94-25ae382c2f59
+		summarizeBy: none
+		sourceColumn: SituacaoContagem2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoContagem3
+		dataType: string
+		lineageTag: bea2a26d-0697-45b3-b1dc-8b300de7c1f0
+		summarizeBy: none
+		sourceColumn: SituacaoContagem3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario1
+		dataType: string
+		lineageTag: 29fdce4e-94fa-4d44-b0dd-2267ec0f7569
+		summarizeBy: none
+		sourceColumn: Usuario1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: 33454845-82a8-4a74-a49a-cdeae44b5b50
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario3
+		dataType: string
+		lineageTag: 0e9df962-278d-44bf-a95b-611bd48f1b9d
+		summarizeBy: none
+		sourceColumn: Usuario3
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataLeitura
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fdcca2e5-66ec-4d85-b8ad-3413b6a14e9a
+		summarizeBy: none
+		sourceColumn: DataLeitura
+
+		variation Variation
+			isDefault
+			relationship: 75334de4-67bb-4bbe-8249-99d3552c5793
+			defaultHierarchy: LocalDateTable_cb5eef7a-70f7-47c0-bb02-e072a03cabcb.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column HoraLeitura1
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: db8b4a3c-21db-4af1-a77b-a8eca09443da
+		summarizeBy: none
+		sourceColumn: HoraLeitura1
+
+		variation Variation
+			isDefault
+			relationship: 6d4b3898-5ef1-4260-aea4-08fc8ce86dd7
+			defaultHierarchy: LocalDateTable_dd020afa-1179-4cb7-bea3-6ae6d86e9ddf.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraLeitura2
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c2f73d54-54c1-4d99-bbc0-59ce43948429
+		summarizeBy: none
+		sourceColumn: HoraLeitura2
+
+		variation Variation
+			isDefault
+			relationship: 128d2e95-58dc-4a9f-9755-183bb8963e56
+			defaultHierarchy: LocalDateTable_dd541b59-fcd0-46af-81c3-cb04c4e1f7f5.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraLeitura3
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5ae5f9b5-4a97-45f9-8026-0e860f4dcc06
+		summarizeBy: none
+		sourceColumn: HoraLeitura3
+
+		variation Variation
+			isDefault
+			relationship: 1c01ea99-4821-42c8-b5f2-b3e30c3b9da9
+			defaultHierarchy: LocalDateTable_8d1d81fe-ac81-4a58-96a9-1bae1154c5b7.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c81c5106-96dc-4567-956d-8905ac9a14c2
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 397de045-7f5e-44f6-b5b3-a1b1d29e80ca
+			defaultHierarchy: LocalDateTable_34e98de1-027e-45e4-8267-e083ec0c5820.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorItemUltimaData
+		dataType: string
+		lineageTag: a6b08b58-e70a-49a3-9c08-4b472950f49c
+		summarizeBy: none
+		sourceColumn: AcuracidadePorItemUltimaData
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorPosicaoUltimaData
+		dataType: string
+		lineageTag: bf5c1232-d4fa-46d9-8703-aad9fe2a35b8
+		summarizeBy: none
+		sourceColumn: AcuracidadePorPosicaoUltimaData
+
+		annotation SummarizationSetBy = Automatic
+
+	column DivergenciaAjustada
+		dataType: double
+		lineageTag: 10cecda3-1bf7-4763-8674-cd692a90914a
+		summarizeBy: sum
+		sourceColumn: DivergenciaAjustada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorAjuste
+		dataType: double
+		lineageTag: 48c0b3b2-f9ad-4a34-a6cb-71eb31613f5b
+		summarizeBy: sum
+		sourceColumn: ValorAjuste
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorContado
+		dataType: double
+		lineageTag: 02091ad5-8d60-40e8-bf74-90d4ca2ae5fb
+		summarizeBy: sum
+		sourceColumn: ValorContado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorSaldo
+		dataType: double
+		lineageTag: b6002b06-e19c-4d7c-954d-4fcdc3602981
+		summarizeBy: sum
+		sourceColumn: ValorSaldo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ContagemMaisRecente
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7c05b8a4-b4f1-42aa-b40a-ec2c69c1070e
+		summarizeBy: none
+		sourceColumn: ContagemMaisRecente
+
+		variation Variation
+			isDefault
+			relationship: 8e04f290-f6cc-4852-b5a8-edc6e360fb88
+			defaultHierarchy: LocalDateTable_2387c83a-2da5-4e58-9247-77a6b5fd4d3f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveDocumento
+		dataType: string
+		lineageTag: 2c5d9904-7cb2-44fd-8872-e5507c9e66da
+		summarizeBy: none
+		sourceColumn: ChaveDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContagemId
+		dataType: double
+		lineageTag: 8f4f67fe-efe0-4290-9406-908c57ff9911
+		summarizeBy: count
+		sourceColumn: ContagemId
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FaixaAjuste
+		dataType: string
+		lineageTag: c135bb62-1594-4f29-b74f-32696828e450
+		summarizeBy: none
+		sourceColumn: FaixaAjuste
+
+		annotation SummarizationSetBy = Automatic
+
+	column EquipeContagem =
+			
+			VAR DataInv = Fato_InvPrimeiroCiclo[DataInventario]
+			VAR Usuario = Fato_InvPrimeiroCiclo[Usuario1]
+			RETURN
+			    CALCULATE(
+			        SELECTEDVALUE(Dim_Usuarios[Equipe]),
+			        FILTER(
+			            Dim_Usuarios,
+			            Dim_Usuarios[Usuario] = Usuario &&
+			            DataInv >= Dim_Usuarios[De] &&
+			            DataInv <= Dim_Usuarios[Até]
+			        )
+			    )
+		lineageTag: fbe83ca2-416d-4584-af70-45b69d92a8c6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorPosicao = ```
+			
+			    CALCULATE(
+			        MAX(Fato_InvPrimeiroCiclo[Acuracidade]),
+			        ALLEXCEPT(Fato_InvPrimeiroCiclo, Fato_InvPrimeiroCiclo[IdBox], Fato_InvPrimeiroCiclo[ChaveDocumento])
+			    )
+			```
+		lineageTag: 33d124e2-7bb9-40b7-92be-4946611543ab
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_InvPrimeiroCiclo = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\bi at logistica",
+				    Fonte = Folder.Files(CaminhoBase),
+				    PrimeiroCiclo_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "\Cronograma_Inventario\",Name="PrimeiroCiclo.xlsx"]}[Content],
+				    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(PrimeiroCiclo_xlsx),
+				    TabelaPrimeiroCiclo_Table = #"Pasta de Trabalho Importada do Excel"{[Item="TabelaPrimeiroCiclo",Kind="Table"]}[Data]
+				in
+				    TabelaPrimeiroCiclo_Table
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

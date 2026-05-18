@@ -1,0 +1,48 @@
+table Dim_ATE
+	lineageTag: 39f25d88-b921-4b84-8645-c4877ada4434
+
+	column Item
+		dataType: string
+		lineageTag: 1c0cdc58-ea1a-41f9-86a7-df5324a0b6c9
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 1629156c-27f6-4cd4-b953-af8956aa340a
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 30f5e65c-5dbe-4da8-a5d6-fc22b3dec086
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Depósito
+		dataType: string
+		lineageTag: 09b31a18-baa5-4486-95c2-e20409853f75
+		summarizeBy: none
+		sourceColumn: Depósito
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_ATE = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)  S.[it-codigo] AS 'Item',#(lf)  I.[DescItem] AS 'Descrição',#(lf)  SUM(CONVERT(INT,S.[qtidade-atu],0)) AS 'Quantidade',#(lf)  UPPER(S.[cod-depos]) AS 'Depósito'#(lf)FROM #(lf)  STAGE.tot.SaldoEstoq AS S#(lf)LEFT JOIN #(lf)  DW.dbo.Dim_Item AS I ON S.[it-codigo] = I.[CodItem]#(lf)WHERE #(lf)  S.[cod-depos] = 'ate'#(lf)  AND S.[cod-estabel] = '15' #(lf)  AND S.[qtidade-atu] <> 0#(lf)  AND CodItem NOT LIKE ''#(lf)#(lf)GROUP BY S.[it-codigo], I.[DescItem], S.[cod-depos]#(lf)#(lf)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

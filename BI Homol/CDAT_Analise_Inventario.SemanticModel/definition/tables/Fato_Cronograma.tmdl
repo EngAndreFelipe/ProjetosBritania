@@ -1,0 +1,164 @@
+table Fato_Cronograma
+	lineageTag: dfceeda4-2b27-49fb-bd53-228888712e21
+
+	measure DivergenciaPecas = SUM(Fato_Cronograma[SaldoWMS]) - SUM(Fato_Cronograma[SaldoContabil])
+		formatString: 0
+		lineageTag: c5459614-bdec-4e9f-821b-9666e9de71a8
+
+	measure DivergenciaValor = SUM(Fato_Cronograma[CustoPeça]) * [DivergenciaPecas]
+		lineageTag: 78b4a14e-b44f-4552-8572-e437f9a78662
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemItens = DISTINCTCOUNT(Fato_Cronograma[Código])
+		formatString: 0
+		lineageTag: 56697c3b-0ceb-47cd-9c02-e98521d47d23
+
+	measure SomaContabil = SUM(Fato_Cronograma[SaldoContabil])
+		formatString: 0
+		lineageTag: 8f479aad-c8ca-4093-8252-c90982d3bf1f
+
+	measure SomaWMS = SUM(Fato_Cronograma[SaldoWMS])
+		formatString: 0
+		lineageTag: e4c4dd42-37c8-46fb-9e7b-cdd851b37360
+
+	measure DivergenciaValorTotal = SUMX(Fato_Cronograma,[DivergenciaValor])
+		lineageTag: 8bfb8383-5033-4d7a-935a-23101e501e84
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DivergenciaABSPecas = SUMX(Fato_Cronograma, ABS([DivergenciaPecas]))
+		formatString: 0
+		lineageTag: 1df94c2d-483d-4afa-8ac6-42b95eda3591
+
+	measure DivergenciaValorTotalABS = SUMX(Fato_Cronograma,ABS([DivergenciaValor]))
+		lineageTag: bd8541e0-d292-4b6d-b72b-968b806ca897
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Código
+		dataType: string
+		lineageTag: 854ef873-dc49-4e23-b486-b49e7709ba81
+		summarizeBy: none
+		sourceColumn: Código
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Curva ABC'
+		dataType: string
+		lineageTag: 7ab0af01-4dc0-4606-a8cf-e60164505f73
+		summarizeBy: none
+		sourceColumn: Curva ABC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 907a77d3-cf84-47b9-9bde-7c0aefb0195a
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Inventário '
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cb498023-d1bb-4153-9fbb-0d46b464021c
+		summarizeBy: none
+		sourceColumn: "Data Inventário "
+
+		variation Variation
+			isDefault
+			relationship: bcb38082-68e4-4e3a-91b3-6f4afb26763c
+			defaultHierarchy: LocalDateTable_eefa9f2d-fbbd-4779-b1c9-d2d96f47703b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Família
+		dataType: int64
+		formatString: 0
+		lineageTag: 10adee6f-1b22-405a-87b3-6a7251be92f7
+		summarizeBy: sum
+		sourceColumn: Família
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoContabil = COALESCE(RELATED(Dim_DCV[Quantidade]),0) + COALESCE(RELATED(Dim_AAT[Quantidade]),0) + COALESCE(RELATED(Dim_ATE[Quantidade]),0)
+		formatString: 0
+		lineageTag: 8139e418-920a-41a6-9eb3-5a7bb4b89bd7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoWMS = COALESCE(RELATED(Dim_WMS[Quantidade]),0)
+		formatString: 0
+		lineageTag: aac8b982-7946-4eec-a189-7c80ec1675d4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia = DAY(Fato_Cronograma[Data Inventário ])
+		formatString: 0
+		lineageTag: 18e25c15-08fe-4ce6-bed1-a4697e37943a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mês = FORMAT(Fato_Cronograma[Data Inventário ], "MMMM")
+		lineageTag: a0b8e2ac-5dbc-421f-b716-1d3a266756f8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano = FORMAT(Fato_Cronograma[Data Inventário ], "yyyy")
+		lineageTag: 6ea5fd9f-1b01-473d-b001-29cd7bc81299
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustoPeça = COALESCE(VALUE(RELATED(Dim_Precos[Custo])),0)
+		lineageTag: 81f83d88-dcfe-4918-95d9-1470222c2df8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Tipo
+		dataType: string
+		lineageTag: fe286497-b754-408f-be7a-3847168ae18c
+		summarizeBy: none
+		sourceColumn: Tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chave
+		dataType: string
+		lineageTag: ae71c27b-1151-4c7c-b5b5-bd9a2f5cb169
+		summarizeBy: none
+		sourceColumn: Chave
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Cronograma = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\BI AT LOGISTICA\",
+				    Fonte = Folder.Files(CaminhoBase),
+				    Cronograma_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "Cronograma_Inventario\",Name="Cronograma.xlsx"]}[Content],
+				    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(Cronograma_xlsx),
+				    Cronograma_Sheet = #"Pasta de Trabalho Importada do Excel"{[Item="Cronograma",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Cronograma_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código", type any}, {"Curva ABC", type text}, {"Qtde Produtos", type text}, {"Data Inventário ", type date}, {"Família", Int64.Type}}),
+				    #"Linhas Classificadas" = Table.Sort(#"Tipo Alterado",{{"Data Inventário ", Order.Ascending}}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Linhas Classificadas",{{"Qtde Produtos", "Descrição"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

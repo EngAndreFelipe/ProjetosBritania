@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_Moviment_Estoque"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3fc24db4-c071-4000-912d-8ca1bbb7367e"
+  }
+}

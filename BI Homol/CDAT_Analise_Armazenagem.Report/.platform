@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "CDAT_Analise_Armazenagem"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "977be501-c525-40e3-8c99-5bda9c9d09a5"
+  }
+}

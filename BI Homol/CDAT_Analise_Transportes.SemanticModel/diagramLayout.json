@@ -1,0 +1,215 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 284,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 104.11016499785165
+          },
+          "nodeIndex": "Fato_NotaCobranca",
+          "nodeLineageTag": "2e404614-20dd-49c3-905a-7172262f5a73",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 154.11016499785165
+          },
+          "nodeIndex": "Medidas",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 603,
+            "y": 399.11016499785165
+          },
+          "nodeIndex": "Dim_Data",
+          "nodeLineageTag": "27fec2d4-7431-474e-85eb-7e9d420e6ca2",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 861,
+            "y": 112.11016499785165
+          },
+          "nodeIndex": "Fato_AcompEntregas",
+          "nodeLineageTag": "6a945886-0ac7-4a44-b8b3-36b65def0186",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1271,
+            "y": 104.11016499785165
+          },
+          "nodeIndex": "Dim_Estado",
+          "nodeLineageTag": "ad480582-20ae-41ae-b44e-bb131a2b48f3",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1628,
+            "y": 104.11016499785165
+          },
+          "nodeIndex": "Fato_NF_SemDataSaida",
+          "nodeLineageTag": "eb9768d7-15d1-4b79-bd2b-68e34b250fcb",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1045,
+            "y": 427.11016499785165
+          },
+          "nodeIndex": "Fato_AnaliseEntrega",
+          "nodeLineageTag": "084c4c27-1cb4-4740-a65c-3bcf4a24984a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2246.18475118063,
+            "y": 272.35014322918767
+          },
+          "nodeIndex": "Dim_Data_Fin",
+          "nodeLineageTag": "3d97d2c5-b767-480a-a4c6-63ca92d98461",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1962,
+            "y": 191.41525240653223
+          },
+          "nodeIndex": "Fato_Faturas",
+          "nodeLineageTag": "eb4b67c2-9a1a-4b5b-9370-5f6d3efc637b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2530.3616394153596,
+            "y": 223.6751358616248
+          },
+          "nodeIndex": "Fato_Itens_Cobrados",
+          "nodeLineageTag": "39af9ed6-2d54-4f5a-a7f7-b8b5f91a00ad",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2764.3616394153596,
+            "y": 257.54519413407854
+          },
+          "nodeIndex": "Fato_Provisionamento",
+          "nodeLineageTag": "d1b5738c-c486-490f-84f8-0558fe765497",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3048.3616394153596,
+            "y": 257.54519413407854
+          },
+          "nodeIndex": "Fato_Reenvio",
+          "nodeLineageTag": "3d96b87b-3850-4bef-8c17-9829c8c5e24f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3616.3616394153596,
+            "y": 319.04519413407849
+          },
+          "nodeIndex": "Dim_Regioes",
+          "nodeLineageTag": "1265fa72-038b-4329-80c4-08a268c1f575",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3900.3616394153596,
+            "y": 245.04519413407849
+          },
+          "nodeIndex": "Tabelas_Transportadoras",
+          "nodeLineageTag": "8602c391-5ceb-4598-9b2a-d89f44073e5b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4468.36163941536,
+            "y": 234.20338833261724
+          },
+          "nodeIndex": "Peso_Simulado",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

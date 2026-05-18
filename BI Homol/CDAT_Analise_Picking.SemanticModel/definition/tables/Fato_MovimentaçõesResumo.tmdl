@@ -1,0 +1,72 @@
+table Fato_MovimentaçõesResumo
+	lineageTag: bb650b7c-5371-4a1a-bf18-0cb78f4bc174
+
+	column Id
+		formatString: 0
+		lineageTag: fb6c4a1b-0ab7-4974-b0b6-a632153b082f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fato_Movimentações[Id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		lineageTag: ac213a53-3982-4157-9872-f03a5cc35198
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fato_Movimentações[Item]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		lineageTag: 2e2027f1-1a85-4c27-bef9-9b24bc506352
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fato_Movimentações[Endereco]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeEntrada
+		formatString: 0
+		lineageTag: e6ef44af-b53b-4cc2-a4cc-71c57297f0e7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QtdeEntrada]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeSaida
+		formatString: 0
+		lineageTag: ab1b3cbf-9762-4547-969e-f730c40a4574
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QtdeSaida]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_MovimentaçõesResumo = calculated
+		mode: import
+		source =
+				
+				SUMMARIZECOLUMNS(
+				    'Fato_Movimentações'[Id],
+				    'Fato_Movimentações'[Item],
+				    'Fato_Movimentações'[Endereco],
+				    "QtdeEntrada", COALESCE(
+				        CALCULATE(
+				            SUM('Fato_Movimentações'[QtdeItemMov]),
+				            'Fato_Movimentações'[Movimento] = "Entrada"
+				        ),
+				        0
+				    ),
+				    "QtdeSaida", COALESCE(
+				        CALCULATE(
+				            SUM('Fato_Movimentações'[QtdeItemMov]),
+				            'Fato_Movimentações'[Movimento] = "Saida"
+				        ),
+				        0
+				    )
+				)
+
+	annotation PBI_Id = 55e2fd1c54db4e95831ff3fa4ae20920
+

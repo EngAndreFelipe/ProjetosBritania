@@ -1,0 +1,239 @@
+table Fato_NF_SemDataSaida
+	lineageTag: eb9768d7-15d1-4b79-bd2b-68e34b250fcb
+
+	column DataEmissaoNotaFiscal
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 338573a3-3ed3-40ce-bb8d-87c785f8097c
+		summarizeBy: none
+		sourceColumn: DataEmissaoNotaFiscal
+
+		variation Variation
+			isDefault
+			relationship: 8d1d91f2-501e-4f14-8720-8b9d91b2f79b
+			defaultHierarchy: LocalDateTable_a9d1ee3d-eafe-4a31-a265-a2de3b4890b5.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c7da9c76-ab68-49d6-a77e-43f77e17e9e5
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		variation Variation
+			isDefault
+			relationship: 95622e2f-df8e-4422-914f-c8b84db29318
+			defaultHierarchy: LocalDateTable_ba526a62-25a7-4891-ae73-2f07d8576ed3.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEntrega
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bdcf4297-d73e-45e4-a8bc-cbd4d18f4864
+		summarizeBy: none
+		sourceColumn: DataEntrega
+
+		variation Variation
+			isDefault
+			relationship: 7ca34c5c-1a4c-41bb-8084-0cffc50d4413
+			defaultHierarchy: LocalDateTable_bdfcafee-d1d7-4357-b668-3f3b81da0669.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DENTCliFATURA
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 167dd358-d316-4914-92d9-07b7880d9f19
+		summarizeBy: none
+		sourceColumn: DENTCliFATURA
+
+		variation Variation
+			isDefault
+			relationship: 6d30b812-e3e2-48c0-ada6-46538146dc70
+			defaultHierarchy: LocalDateTable_678611ae-e4d0-4d63-b913-76e333a166b6.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCancelamento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d96c80e7-5cae-4124-94f8-1895c4ecf4e8
+		summarizeBy: none
+		sourceColumn: DataCancelamento
+
+		variation Variation
+			isDefault
+			relationship: e1690455-bd28-43ee-a705-3bdb04a54db0
+			defaultHierarchy: LocalDateTable_147c63d7-918d-4d1e-9318-dbf08c7547d3.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataPrevisaoEntrega
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1b2fa13c-eed8-422c-8ac3-da935b8d55e8
+		summarizeBy: none
+		sourceColumn: DataPrevisaoEntrega
+
+		variation Variation
+			isDefault
+			relationship: f7667e9f-710c-4e9f-87d5-0ed46b79bfcb
+			defaultHierarchy: LocalDateTable_a0d9313d-55a2-445d-8c24-40809a5f36f1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bf252aeb-40b4-4b7c-873f-aaf011f8dadd
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 3853081f-1190-43fe-97a6-e085a62691f0
+			defaultHierarchy: LocalDateTable_99bd9d8e-0f3a-4c13-956e-71ab43bab86a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEnvioFinanceiro
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 41b7069e-884b-4fad-bc3f-310f1721b3c8
+		summarizeBy: none
+		sourceColumn: DataEnvioFinanceiro
+
+		variation Variation
+			isDefault
+			relationship: 8e6b7b96-b08a-4425-8e6a-d3ea7e4b09f0
+			defaultHierarchy: LocalDateTable_e3a32ea2-2bbe-478b-9359-63c92ca62f94.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataProgEntrega
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 90b20648-755e-4f78-86ac-981b30b1470c
+		summarizeBy: none
+		sourceColumn: DataProgEntrega
+
+		variation Variation
+			isDefault
+			relationship: f7821664-d3e4-4cb3-8e93-8352a2dc4e02
+			defaultHierarchy: LocalDateTable_ba68edc6-10a5-4478-a712-17e4eb2439d1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_NF_SemDataSaida = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="
+				        SELECT  
+				            F.[SerieNotaFiscal],
+				            F.[NumeroNotaFiscal],
+				            F.[DataEmissaoNotaFiscal],
+				            NE.[qt-volumes] AS QtVolumes,
+				            CASE 
+				                WHEN NE.[qt-volumes] IS NULL OR NE.[qt-volumes] = 0 THEN 'Complemento'
+				                ELSE 'Master'
+				            END AS TipoNota,
+				            F.[SituacaoNota],
+				            N.[NatOperacao],
+				            N.[Denominacao],
+				            DS.[Data] AS DataSaida,
+				            DE.[Data] AS DataEntrega,
+				            FAT.DataEntregaCliente as DENTCliFATURA,
+				            DC.[Data] AS DataCancelamento,
+				            DP.[Data] AS DataPrevisaoEntrega,
+				            R.[NomeAbrev] AS Representante,
+				            
+				            F.[TipoFrete],
+				            UPPER(F.[CidadeDestino]) AS CidadeDestino,
+				            F.[EstadoDestino],
+				            F.[VlFretePrevisto],
+				            F.[VlFretePago],
+				            F.[TotalNota],
+				            F.[QuantidadeFaturada],
+				            F.[QuantidadeDevolvida],
+				            F.[QuantidadeAbatida],
+				            F.[ValorFreteReentrega],
+				            F.[ValorFreteDevolucao],
+				            F.[NumeroRomaneio],
+				            F.[SituacaoCalculo],
+				            F.[UsuarioCalculo],
+				            F.[VolumeM3] * 167 AS PesoCubico,
+				            F.[PesoBruto],
+				            F.[Ocorrencia],
+				            F.[ObservacaoCarga],
+				            F.[ChaveNFe],
+				            F.[NomeTransportadoraNF],
+				            F.[DataCarga],
+				            F.[NomeMatrizTransportador],
+				            F.[CodigoFrete],
+				            F.[DataEnvioFinanceiro],
+				            PDB.[NumeroPedido],
+				            PDB.[NomeMatriz],
+				            PDB.[NumeroOS],
+				            CASE 
+				                WHEN LTRIM(RTRIM(PDB.[NumeroOS])) IS NULL OR LTRIM(RTRIM(PDB.[NumeroOS])) = '' THEN 'NÃO'
+				                ELSE 'SIM'
+				            END AS OS,
+				            GV6.GV6_QTPRAZ AS TransTime,
+				            FAT.[DataProgEntrega] 
+				        FROM [DW].[auditoria].[Fato_CustosFrete_Faturamento] F
+				        LEFT JOIN [DW].[dbo].[Dim_Natureza] N ON F.[IdNatureza] = N.[IdNatureza]
+				        OUTER APPLY (
+				            SELECT TOP 1 FAT.*
+				            FROM [DW].[dbo].[Fato_Faturamento] FAT
+				            WHERE F.[SerieNotaFiscal] = FAT.[SerieNotaFiscal]
+				            AND F.[NumeroNotaFiscal] = FAT.[NumeroNotaFiscal]
+				            ORDER BY FAT.[DataProgEntrega]
+				        ) FAT
+				
+				        LEFT JOIN [DW].[dbo].[Dim_Representante] R ON F.[IdRepresentante] = R.[Id]
+				        LEFT JOIN [DW].[dbo].[Dim_Data] DS ON F.[IdDataSaida] = DS.[Id]
+				        LEFT JOIN [DW].[dbo].[Dim_Data] DE ON F.[IdDataEntrega] = DE.[Id]
+				        LEFT JOIN [DW].[dbo].[Dim_Data] DC ON F.[IdDataCancelamento] = DC.[Id]
+				        LEFT JOIN [DW].[dbo].[Dim_Data] DP ON F.[IdDataPrevisEntrega] = DP.[Id]
+				        LEFT JOIN [STAGE].[tot].[NotaEmbal] NE ON F.[SerieNotaFiscal] = NE.[serie] AND F.[NumeroNotaFiscal] = NE.[nr-nota-fis]
+				        LEFT JOIN (
+				            SELECT 
+				                SerieNotaFiscal,
+				                NotaFiscal,
+				                STRING_AGG(NumeroPedido, ' / ') AS NumeroPedido,
+				                MIN(NomeMatriz) AS NomeMatriz,
+				                CASE 
+				                    WHEN COUNT(NULLIF(LTRIM(RTRIM(NumeroOS)), '')) = 0 THEN NULL
+				                    ELSE STRING_AGG(NumeroOS, ' / ')
+				                END AS NumeroOS
+				            FROM [DW].[logistica].[Fato_PDB381]
+				            GROUP BY SerieNotaFiscal, NotaFiscal
+				        ) PDB ON F.SerieNotaFiscal = PDB.SerieNotaFiscal AND F.NumeroNotaFiscal = PDB.NotaFiscal
+				        LEFT JOIN STAGE.gfe.GWH nrclc ON F.SerieNotaFiscal = nrclc.GWH_SERDC AND F.NumeroNotaFiscal = nrclc.GWH_NRDC
+				        LEFT JOIN STAGE.gfe.GWG gwgchv ON nrclc.GWH_NRCALC = gwgchv.GWG_NRCALC
+				        LEFT JOIN STAGE.gfe.GV6 GV6 ON gwgchv.GWG_NRTAB = GV6.GV6_NRTAB AND gwgchv.GWG_NRNEG = GV6.GV6_NRNEG AND gwgchv.GWG_CDFXTV = GV6.GV6_CDFXTV AND gwgchv.GWG_NRROTA = GV6.GV6_NRROTA AND gwgchv.GWG_CDEMIT = GV6.GV6_CDEMIT
+				        
+				        WHERE F.[IdEstab] = 8
+				          AND F.[SerieNotaFiscal] IN (5, 21)
+				          AND F.[DataEmissaoNotaFiscal] BETWEEN '2025-01-01' AND GETDATE()
+				          AND DS.[Data] IS NULL
+				          AND F.[SituacaoNota] = 'Faturada'
+				          AND F.[IdDataCancelamento] IS NULL
+				          AND nrclc.D_E_L_E_T_ = ''
+				          AND GV6.D_E_L_E_T_ = ''
+				    "]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each [DataEmissaoNotaFiscal] > RangeStart and [DataEmissaoNotaFiscal] <= RangeEnd),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Linhas Filtradas", {"SerieNotaFiscal", "NumeroNotaFiscal"}),
+				    #"Columns removed by Measure Killer"= Table.SelectColumns(#"Duplicatas Removidas",{"DataEmissaoNotaFiscal","DataCarga","DataProgEntrega","DataSaida","DataPrevisaoEntrega","DataCancelamento","DataEntrega","DataEnvioFinanceiro","DENTCliFATURA"})
+				in
+				    #"Columns removed by Measure Killer"
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

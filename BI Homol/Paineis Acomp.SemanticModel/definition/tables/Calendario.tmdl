@@ -1,0 +1,121 @@
+table Calendario
+	lineageTag: 5005914f-1786-4748-a8c0-0d75a15e9d46
+	dataCategory: Time
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: b0bca3e7-3b54-4a69-80f2-e81b25891e88
+		summarizeBy: count
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: bde9a27d-57ad-4faa-a989-f0eb9bf67bf1
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Dia
+		dataType: string
+		lineageTag: bfeac4ea-60a1-459c-b541-a8557b2e8ce8
+		summarizeBy: none
+		sourceColumn: Dia
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: 7e9c044a-75f9-4e8b-b9de-d8792a59d25f
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNome
+		dataType: string
+		lineageTag: 86368af0-9629-4934-b218-b3931afe065f
+		summarizeBy: none
+		sourceColumn: MesNome
+		sortByColumn: Mes
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: string
+		lineageTag: 359a6abf-5e7a-4e79-a7bf-a76fd0f3d255
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semestre
+		dataType: string
+		lineageTag: 84d206ed-94f8-449f-ba4f-0a3c59b48058
+		summarizeBy: none
+		sourceColumn: Semestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: string
+		lineageTag: 8660175e-30e5-4da4-812b-858da52f1a52
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Feriado
+		dataType: int64
+		formatString: 0
+		lineageTag: bd00ee61-42f3-4c12-812c-ae2fbecbb824
+		summarizeBy: sum
+		sourceColumn: Feriado
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaUtil
+		dataType: int64
+		formatString: 0
+		lineageTag: c356cbb1-254a-47f4-b574-5b06c2b1237e
+		summarizeBy: sum
+		sourceColumn: DiaUtil
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes/Ano = FORMAT('Calendario'[Data],"MM/YYYY")
+		lineageTag: be1aab62-9d92-458e-bcb9-588e5818adc7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia 2' = FORMAT(Calendario[Data],"dd")
+		lineageTag: 359f7385-4003-4285-9d9f-04e47405622f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendario = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)#(tab)Id,#(lf)#(tab)[Data],#(lf)#(tab)DiaMes Dia,#(lf)#(tab)Mes,#(lf)#(tab)MesNome,#(lf)#(tab)Trimestre,#(lf)#(tab)Semestre,#(lf)#(tab)Ano,#(lf)#(tab)Feriado,#(lf)#(tab)DiaUtil#(lf)FROM dbo.Dim_Data"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}, {"Feriado", Int64.Type}, {"DiaUtil", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

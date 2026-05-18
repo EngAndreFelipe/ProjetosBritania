@@ -1,0 +1,133 @@
+table IncicadoresCalc
+	lineageTag: 5d687e77-f99a-400b-a598-f946829dbb59
+
+	column IdIndicador
+		lineageTag: b964eed2-9b52-4ee5-b28b-15451bb4aa73
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IdIndicador]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		formatString: 0
+		lineageTag: 36d27628-9453-4de6-9c8e-d491cf6d07d8
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Ano]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		formatString: 0
+		lineageTag: 32a95c51-0268-44da-b1a0-b4cd870050c0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column RealizadoNumerador
+		lineageTag: d59da954-b82a-46de-8526-1954ab7a5165
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [RealizadoNumerador]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RealizadoDenominador
+		lineageTag: 4542193a-3252-4c3c-9bda-00fb89c83a79
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [RealizadoDenominador]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MesAno
+		formatString: General Date
+		lineageTag: d16bf2ab-e6a4-4cbc-ab0a-a8007a9eb8b3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MesAno]
+
+		variation Variation
+			isDefault
+			relationship: 289eb9e7-cd2a-4875-8f00-0d2f6915071d
+			defaultHierarchy: LocalDateTable_274a89ac-ffa4-477e-9fc7-20f0bc1679d8.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasUteis
+		lineageTag: ba7315a1-bf16-4834-a04b-d78f705728c5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DiasUteis]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ChvID
+		lineageTag: c259a76e-5d9e-4b4f-ac85-ab85fb9cc530
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ChvId]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition IncicadoresCalc = calculated
+		mode: import
+		source = ```
+				
+				VAR tb1 = SUMMARIZE(f_AtendimentoOS,f_AtendimentoOS[ID_2385], "IdIndicador", "2385", "Ano", YEAR(MAX(f_AtendimentoOS[DtIndicador])), "Mes", MONTH(MAX(f_AtendimentoOS[DtIndicador])), "MesAno", MAX(f_AtendimentoOS[DtIndicador]),
+				    "RealizadoNumerador", SUMX(FILTER(f_AtendimentoOS, f_AtendimentoOS[Status] = TRUE()),f_AtendimentoOS[QuantidadeAtendida]),
+				    "RealizadoDenominador", SUM(f_AtendimentoOS[QuantidadeAtendida])
+				)
+				VAR tb2 = SUMMARIZE(f_AtendimentoOS,f_AtendimentoOS[ID_2386], "IdIndicador", "2386", "Ano", YEAR(MAX(f_AtendimentoOS[DtIndicador])), "Mes", MONTH(MAX(f_AtendimentoOS[DtIndicador])),"MesAno", MAX(f_AtendimentoOS[DtIndicador]),
+				    "RealizadoNumerador", SUMX(FILTER(f_AtendimentoOS, f_AtendimentoOS[StatusOs] = TRUE()),f_AtendimentoOS[QuantidadeAtendida]),
+				    "RealizadoDenominador", SUMX(FILTER(f_AtendimentoOS, f_AtendimentoOS[StatusOs] = TRUE()),f_AtendimentoOS[QuantidadeAtendida]) + 
+				        SUMX(FILTER(f_AtendimentoOS, f_AtendimentoOS[StatusOs] <> TRUE() && f_AtendimentoOS[Log_Erro] = BLANK()),f_AtendimentoOS[QuantidadeAtendida])
+				)
+				VAR tb3 = UNION(tb1, tb2)
+				VAR addChave = ADDCOLUMNS(tb3, "ChvID", [IdIndicador] &"."& [Ano] &"."& [Mes])
+				VAR addColDiasUteis = ADDCOLUMNS(addChave, "DiasUteis", BLANK())
+				VAR tb = SELECTCOLUMNS(addColDiasUteis, [IdIndicador], [Ano], [Mes], [RealizadoNumerador], [RealizadoDenominador], [MesAno], [DiasUteis], [ChvID])
+				
+				VAR tb_padrao =
+				    SELECTCOLUMNS(
+				        tb,
+				        "IdIndicador", [IdIndicador],
+				        "Ano", [Ano],
+				        "Mes", [Mes],
+				        "RealizadoNumerador", [RealizadoNumerador],
+				        "RealizadoDenominador", [RealizadoDenominador],
+				        "MesAno", [MesAno],
+				        "DiasUteis", [DiasUteis],
+				        "ChvID", [ChvID]
+				    )
+				
+				VAR dw_padrao =
+				    SELECTCOLUMNS(
+				        f_IndicadoresDW,
+				        "IdIndicador", [IdIndicador],
+				        "Ano", [Ano],
+				        "Mes", [Mes],
+				        "RealizadoNumerador", [RealizadoNumerador],
+				        "RealizadoDenominador", [RealizadoDenominador],
+				        "MesAno", [MesAno],
+				        "DiasUteis", [DiasUteis],
+				        "ChvID", [ChvID]
+				    )
+				
+				RETURN
+				    UNION(tb_padrao, dw_padrao)
+				
+				
+				```
+
+	annotation PBI_Id = 3b46784dfd72411cb588a5ac34c86874
+

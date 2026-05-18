@@ -1,0 +1,115 @@
+table MediasOS
+	lineageTag: 2826d9be-3913-40d2-afb5-f0cff3e0ad6b
+
+	measure PercDiaCorrido =
+			
+			VAR _qtde = CALCULATE([QtdePçOS], f_PDB381[DiasCorridos] < 3)
+			VAR _qtdeTotal = [QtdePçOS]
+			
+			RETURN
+			    DIVIDE(_qtde, _qtdeTotal)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3faaa10f-35ca-4e50-8c7c-e22b38d28abd
+
+	measure PercDiaCorridoAcm =
+			
+			VAR _qtdeAcm = CALCULATE([QtdePçOS],
+			        FILTER(ALLSELECTED(f_PDB381),
+			            f_PDB381[DiasCorridos] <= MAX(f_PDB381[DiasCorridos])
+			        )
+			    )
+			VAR _qtdeTotal = CALCULATE([QtdePçOS], ALLSELECTED(f_PDB381[DiasCorridos]))
+			
+			RETURN
+			    DIVIDE(_qtdeAcm, _qtdeTotal)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f30180f6-114b-43f5-b3d8-260444b1ca13
+
+	measure PercDiaUtil = ```
+			
+			VAR _qtde = CALCULATE([QtdePçOsUtil], f_PDB381[DiasUteis_OS] < 3)
+			       
+			VAR _qtdeTotal = [QtdePçOsUtil]
+			
+			RETURN
+			    DIVIDE(_qtde, _qtdeTotal)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2e348553-5454-44b6-a17e-f9a6555def2b
+
+	measure PercDiaUtilAcm =
+			
+			VAR _qtdeAcm = CALCULATE([QtdePçOsUtil],
+			        FILTEr(ALLSELECTED(f_PDB381),
+			            f_PDB381[DiasUteis_OS] <= MAX(f_PDB381[DiasUteis_OS])
+			        )
+			    )
+			VAR _qtdeTotal = CALCULATE([QtdePçOsUtil], ALLSELECTED(f_PDB381[DiasUteis_OS]))
+			
+			RETURN
+			    DIVIDE(_qtdeAcm, _qtdeTotal)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f49e5863-2190-48eb-b01c-45c5bbf6eef8
+
+	measure PercIRP =
+			
+			VAR _QtdeNotasComOS_IRP =
+			    CALCULATE ([QtdeNotas],ALLSELECTED(f_PDB381), NOT ISBLANK(f_PDB381[IRP]), f_PDB381[PedidoOS] = "COM OS" )
+			VAR _QtdeNotasComOS =
+			    CALCULATE (
+			        [QtdeNotas],
+			        ALLSELECTED(f_PDB381),
+			        f_PDB381[PedidoOS] = "COM OS"
+			    )
+			RETURN
+			    DIVIDE ( _QtdeNotasComOS_IRP, _QtdeNotasComOS )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fa4659cd-cb81-4836-bc6b-e478a340deb7
+
+	measure PercOS_D1 =
+			
+			VAR total = CALCULATE([QtdePeças], ALL(f_PDB381[DiasExp]), f_PDB381[PedidoOS] = "COM OS")
+			VAR noprazo = CALCULATE([QtdePeças], ALL(f_PDB381[DiasExp]), f_PDB381[DiasExp] < 2, f_PDB381[PedidoOS] = "COM OS")
+			RETURN
+			    DIVIDE(noprazo, total)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b8a7d04a-97ae-4fdf-b484-f2dae4e1c051
+
+	measure QtdeNotasOS = CALCULATE(DISTINCTCOUNT(f_PDB381[NotaFiscal]), f_PDB381[PedidoOS] = "COM OS")
+		formatString: #,0
+		lineageTag: 2dc6aadd-5587-4a81-bf2b-c1f445123ffe
+
+	measure QtdeNotasUteisOS = CALCULATE(DISTINCTCOUNT(f_PDB381[NotaFiscal]), f_PDB381[PedidoOS] = "COM OS", f_PDB381[ValidaBloqPedido] = 0)
+		formatString: #,0
+		lineageTag: 586e7910-029b-4b2f-ba41-a17d65a9a93b
+
+	measure QtdePçOS = CALCULATE([QtdePeças], f_PDB381[PedidoOS] = "COM OS")
+		formatString: #,0
+		lineageTag: 45da6fa2-f98a-4736-bfca-c2eb5d984bf8
+
+	measure QtdePçOsUtil = CALCULATE([QtdePçOS], f_PDB381[ValidaBloqPedido] = 0)
+		formatString: #,0
+		lineageTag: 6678cd3f-b447-423b-b458-6899a5dd7511
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: 0539f303-4a03-4023-a317-40c3fc7d2ea1
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MediasOS = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

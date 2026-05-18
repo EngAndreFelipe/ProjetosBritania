@@ -1,0 +1,35 @@
+relationship 06d2f180-0915-4b08-869b-c1a6c70480b0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Pedidos.DataImplantacao
+	toColumn: LocalDateTable_c8edd533-bafb-4374-aa33-6a7a1b652e4b.Date
+
+relationship 9dd4d2e0-a008-4f92-a664-5b8318e3d8a8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Pedidos.DataOS
+	toColumn: LocalDateTable_dbf636af-97bd-48bc-91ef-179034b17d97.Date
+
+relationship cbd82314-18ec-4e06-8550-6145319f0d30
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Pedidos.DataSaida
+	toColumn: LocalDateTable_e960cd90-f99e-497c-afc9-bf6e121f48f9.Date
+
+relationship 35d19561-026d-43a1-8fd8-9b7e2fb1cb2e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Pedidos.DtFaturamento
+	toColumn: LocalDateTable_2152fe8e-8b58-48d3-b4bf-eb41d9a6e157.Date
+
+relationship 250b25c0-b843-430f-9cd2-32c9603d12f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Pedidos.DataEmbarque
+	toColumn: LocalDateTable_69ea58c6-ace8-4226-a9cf-6c6b1a52c8dc.Date
+
+relationship 6b7ec70c-dbc5-4e63-bd20-6f13e8bb2e98
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_Pedidos.DataCarga
+	toColumn: LocalDateTable_0e44c299-a5aa-47d8-81d7-25c83a3ec4b0.Date
+
+relationship d926b69f-6942-092f-c895-f482f307ac91
+	crossFilteringBehavior: bothDirections
+	fromColumn: Fato_Pedidos.CodItem
+	toColumn: Dim_ItSaldo.Item
+

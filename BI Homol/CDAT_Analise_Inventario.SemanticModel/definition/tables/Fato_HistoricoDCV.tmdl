@@ -1,0 +1,85 @@
+table Fato_HistoricoDCV
+	lineageTag: 04ade9fe-1224-498b-a45b-6cc2e647c241
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2a57642a-7cff-4de1-9bb7-8e7c2173fc95
+		summarizeBy: none
+		sourceColumn: Data
+
+		variation Variation
+			isDefault
+			relationship: 649a5a69-4016-433a-92b7-9d4e36f39fee
+			defaultHierarchy: LocalDateTable_299a5e95-0437-4442-aaf7-8ae7fe72d44b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CodigoDeposito
+		dataType: string
+		lineageTag: 592369f8-20cd-4bd8-b4e9-56d6581590f8
+		summarizeBy: none
+		sourceColumn: CodigoDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: e94639ef-5e6b-49ea-bb46-945945f24091
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 0efbd807-51db-40ed-9dda-725113c62e64
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c6cbe59-d8ef-496c-ac89-054187d0c8cd
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custo
+		dataType: double
+		lineageTag: 562be0d6-a267-4858-a25e-027836d1d9d5
+		summarizeBy: sum
+		sourceColumn: Custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorTotal
+		dataType: double
+		lineageTag: ed142c15-f9e9-4cda-92cf-cfb1b6ecf836
+		summarizeBy: sum
+		sourceColumn: ValorTotal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fato_HistoricoDCV = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="WITH UltimaDataMes AS (#(lf)    SELECT #(lf)        YEAR(Dt.Data) AS Ano,#(lf)        MONTH(Dt.Data) AS Mes,#(lf)        MAX(Dt.Data) AS UltimaData#(lf)    FROM [DW].[dbo].[VW_SALDO_ESTOQUE] AS S#(lf)    INNER JOIN dw.dbo.Dim_Data AS Dt ON Dt.Id = S.IdData#(lf)    WHERE S.CodigoDeposito IN ('DCV')   -- filtro aplicado já na CTE#(lf)      AND Dt.Data >= DATEADD(YEAR, -1, CAST(GETDATE() AS DATE))#(lf)    GROUP BY YEAR(Dt.Data), MONTH(Dt.Data)#(lf))#(lf)SELECT #(lf)    CONVERT(VARCHAR(10), Dt.Data, 103) AS Data,#(lf)    S.[CodigoDeposito],#(lf)    S.[CodItem],#(lf)    S.[DescItem],#(lf)    CAST(S.[QuantidadeTotal] AS INT) AS Quantidade,#(lf)#(lf)    -- custo formatado#(lf)    FORMAT(#(lf)        MAX(IE.[val-unit-mat-m]) + MAX(IE.[val-unit-mob-m]) + MAX(IE.[val-unit-ggf-m]),#(lf)        'N4', 'pt-BR'#(lf)    ) AS Custo,#(lf)#(lf)    -- valor total formatado#(lf)    FORMAT(#(lf)        (MAX(IE.[val-unit-mat-m]) + MAX(IE.[val-unit-mob-m]) + MAX(IE.[val-unit-ggf-m]))#(lf)        * CAST(S.[QuantidadeTotal] AS INT),#(lf)        'N4', 'pt-BR'#(lf)    ) AS ValorTotal#(lf)#(lf)FROM [DW].[dbo].[VW_SALDO_ESTOQUE] AS S#(lf)INNER JOIN dw.dbo.Dim_Data AS Dt ON Dt.Id = S.IdData#(lf)LEFT JOIN STAGE.tot.ItemEstab AS IE ON S.CodItem = IE.[it-codigo]#(lf)INNER JOIN UltimaDataMes U #(lf)    ON YEAR(Dt.Data) = U.Ano #(lf)   AND MONTH(Dt.Data) = U.Mes #(lf)   AND Dt.Data = U.UltimaData#(lf)WHERE S.CodigoDeposito IN ('DCV')#(lf)   AND IE.[cod-estabel] = '15'#(lf)GROUP BY Dt.Data, S.CodigoDeposito, S.CodItem, S.DescItem, S.QuantidadeTotal;"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}, {"CodigoDeposito", type text}, {"CodItem", type text}, {"DescItem", type text}, {"Quantidade", Int64.Type}, {"Custo", type number}, {"ValorTotal", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

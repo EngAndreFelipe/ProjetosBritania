@@ -1,0 +1,173 @@
+table Fato_Mov_Geral_Contabil
+	lineageTag: eefe6b7e-0151-40c7-afc1-60ad88878a7d
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: year
+		rollingWindowPeriods: 5
+		incrementalGranularity: day
+		incrementalPeriods: 30
+		pollingExpression = let MaxDATA_ALTERACAO = List.Max(Fato_Mov_Geral_Contabil[DATA_ALTERACAO]), accountForNull = if MaxDATA_ALTERACAO = null then #datetime(1901, 01, 01, 00, 00, 00) else MaxDATA_ALTERACAO in accountForNull
+		sourceExpression =
+			let
+			    Fonte = Sql.Database("PR-S188\DW", "STAGE", [Query="SELECT #(lf)    Mov.[cod-estabel],#(lf)    Mov.[cod-depos],#(lf)    CASE #(lf)        WHEN LEN(Mov.[it-codigo]) < 6 #(lf)            THEN RIGHT(REPLICATE('0', 6) + Mov.[it-codigo], 6)#(lf)        ELSE Mov.[it-codigo]#(lf)    END AS [it-codigo],#(lf)    IT.DescItem,#(lf)    CASE Mov.[tipo-trans]#(lf)        WHEN 1 THEN 'Entrada'#(lf)        WHEN 2 THEN 'Saida'#(lf)        ELSE 'NULL'#(lf)    END AS TipoTrans,#(lf)    Mov.[ct-codigo],#(lf)    CONVERT(VARCHAR(10), Mov.[dt-trans], 103) AS DataTransf,#(lf)    CASE Mov.[esp-docto]#(lf)        WHEN 5 THEN 'DEV'#(lf)        WHEN 6 THEN 'DIV'#(lf)        WHEN 15 THEN 'INV'#(lf)        WHEN 20 THEN 'NFD'#(lf)        WHEN 21 THEN 'NFE'#(lf)        WHEN 22 THEN 'NFS'#(lf)        WHEN 23 THEN 'NFT'#(lf)        WHEN 28 THEN 'REQ'#(lf)        WHEN 31 THEN 'RRQ'#(lf)        WHEN 33 THEN 'TRA'#(lf)        ELSE ''#(lf)    END AS EspDocto,#(lf)    CASE Mov.[esp-docto]#(lf)        WHEN 5 THEN 'Devolução de peças'#(lf)        WHEN 6 THEN 'Transações diversas'#(lf)        WHEN 15 THEN 'Ajuste de inventário'#(lf)        WHEN 20 THEN 'Nota fiscal de devolução'#(lf)        WHEN 21 THEN 'Nota fiscal de entrada'#(lf)        WHEN 22 THEN 'Nota fiscal de saída'#(lf)        WHEN 23 THEN 'Nota fiscal de transferência'#(lf)        WHEN 28 THEN 'Ajuste de saída de saldo'#(lf)        WHEN 31 THEN 'Ajuste de entrada de saldo'#(lf)        WHEN 33 THEN 'Transferência entre depósitos'#(lf)        ELSE ''#(lf)    END AS DescEspDocto,#(lf)    Mov.[serie-docto],#(lf)    CAST(Mov.[quantidade] AS INT) AS Quantidade,#(lf)    Mov.[nro-docto],#(lf)    Mov.[cod-emitente],#(lf)    Mov.[nat-operacao],#(lf)    Mov.[usuario],#(lf)    Mov.[nr-trans],#(lf)    ISNULL(Mov.[hr-trans], '00:00:00') AS HrTrans,#(lf)    Mov.[ct-saldo],#(lf)    CAST(Mov.[valor-mat-m] AS decimal(10,2)) AS ValorMatM,#(lf)    CAST(Mov.[valor-mob-m] AS decimal(10,2)) AS ValorMobM,#(lf)    CAST(Mov.[valor-ggf-m] AS decimal(10,2)) AS ValorGgfM,#(lf)    CAST(Mov.[valor-mob-p] AS decimal(10,2)) AS ValorMobP,#(lf)    CAST(Mov.[valor-ggf-p] AS decimal(10,2)) AS ValorGgfP,#(lf)    Mov.[cod-prog-orig],#(lf)    Mov.[refer-contab],#(lf)    CONVERT(VARCHAR(10), Mov.[dt-contab], 103) AS DataContab,#(lf)    CONVERT(VARCHAR(10), Mov.[dt-criacao], 103) AS DataCriacao,#(lf)    Mov.[DATA_ALTERACAO],#(lf)    CAST(Mov.[valor-icm] AS decimal(10,2)) AS ValorIcm,#(lf)    CAST(Mov.[valor-ipi] AS decimal(10,2)) AS ValorIpi,#(lf)    CAST(Mov.[valor-iss] AS decimal(10,2)) AS ValorIss,#(lf)    CAST(Mov.[val-cofins] AS decimal(10,2)) AS ValorCofins,#(lf)    CAST(Mov.[valor-pis] AS decimal(10,2)) AS ValorPis,#(lf)    CAST(Mov.[dt-trans] AS DATETIME) + ISNULL(CAST(Mov.[hr-trans] AS DATETIME), 0) AS DataHoraTransf#(lf)FROM [STAGE].[tot].[MovtoEstoq] AS Mov#(lf)LEFT JOIN [DW].[dbo].[Dim_Item] AS IT#(lf)    ON IT.CodItem = CASE #(lf)        WHEN LEN(Mov.[it-codigo]) < 6 #(lf)            THEN RIGHT(REPLICATE('0', 6) + Mov.[it-codigo], 6)#(lf)        ELSE Mov.[it-codigo]#(lf)    END#(lf)WHERE Mov.[cod-estabel] = '15'#(lf)  AND Mov.[dt-trans] BETWEEN '2020-01-01' AND GETDATE()#(lf)  AND Mov.[cod-depos] IN ('AAT','ATE','DCV','DES','DAT','AIR','REC','RCB','DEV','NAT','LGR')#(lf)  AND Mov.[esp-docto] IN (5,6,15,20,21,22,23,28,31,33)#(lf)  AND Mov.[quantidade] <> 0;"]),
+			    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataTransf", type datetime}}),
+			    #"Linhas Filtradas"= Table.SelectRows(#"Tipo Alterado", each [DataTransf] > RangeStart and [DataTransf] <= RangeEnd),
+			    #"Texto em Maiúscula" = Table.TransformColumns(#"Linhas Filtradas",{{"cod-depos", Text.Upper, type text}}),
+			    ColunasRemovidas= Table.SelectColumns(#"Texto em Maiúscula",{"DataHoraTransf","TipoTrans","Quantidade","DataCriacao","DescEspDocto","it-codigo","DataTransf","nro-docto","serie-docto","usuario","DescItem","DATA_ALTERACAO","cod-depos"})
+			in
+			    ColunasRemovidas
+
+	measure ÚltimaCarga = MAX(Fato_Mov_Geral_Contabil[DATA_ALTERACAO])
+		formatString: General Date
+		lineageTag: e85ba704-c4f3-4366-a822-c42e4d833fd9
+
+	column cod-depos
+		dataType: string
+		lineageTag: 0d86ebd7-bef8-4625-9b04-7060a6124f0a
+		summarizeBy: none
+		sourceColumn: cod-depos
+
+		annotation SummarizationSetBy = Automatic
+
+	column it-codigo
+		dataType: string
+		lineageTag: dda7268b-5367-4c59-b6c8-a1dcb97e4203
+		summarizeBy: none
+		sourceColumn: it-codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoTrans
+		dataType: string
+		lineageTag: 17d50baf-2b27-4c58-a71b-3effa0e265e3
+		summarizeBy: none
+		sourceColumn: TipoTrans
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataTransf
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9c7b3b80-005d-40d0-b408-8a8501be21a6
+		summarizeBy: none
+		sourceColumn: DataTransf
+
+		variation Variation
+			isDefault
+			relationship: 4146f91b-2411-49be-ad5a-66d1fb920184
+			defaultHierarchy: LocalDateTable_75c570e8-9cb8-4932-aa27-b367c64e5737.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column serie-docto
+		dataType: string
+		lineageTag: 3008664c-0364-4d61-a49a-755c8e7a9e5a
+		summarizeBy: none
+		sourceColumn: serie-docto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: a518cc21-9392-4ed7-900d-ab30fff9dea5
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column nro-docto
+		dataType: string
+		lineageTag: 722cfa9b-be7e-4908-8aad-4ee45c025ecb
+		summarizeBy: none
+		sourceColumn: nro-docto
+
+		annotation SummarizationSetBy = Automatic
+
+	column usuario
+		dataType: string
+		lineageTag: 1eeff9e3-b37d-4c44-9402-13bcf0b949a5
+		summarizeBy: none
+		sourceColumn: usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCriacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4e2c7be9-7310-482f-ad1f-b19569aefbf8
+		summarizeBy: none
+		sourceColumn: DataCriacao
+
+		variation Variation
+			isDefault
+			relationship: c2bf58ef-a7de-4ebe-a77b-d7b66edcda6e
+			defaultHierarchy: LocalDateTable_fbc20dcc-1983-4bb4-8f1b-1e2f167cbcb2.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DATA_ALTERACAO
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e628d7e5-1617-4f53-90fc-61da2e6dc06f
+		summarizeBy: none
+		sourceColumn: DATA_ALTERACAO
+
+		variation Variation
+			isDefault
+			relationship: 4d9456e9-f996-4dd4-aaca-9ec47b722bfb
+			defaultHierarchy: LocalDateTable_a3233ff8-c91e-44e1-940e-68141962a075.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataHoraTransf
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 998c8f79-9031-420c-8ae8-f835c2b4d2a3
+		summarizeBy: none
+		sourceColumn: DataHoraTransf
+
+		variation Variation
+			isDefault
+			relationship: ffa706c0-7464-4900-856f-f7e1e92d22ab
+			defaultHierarchy: LocalDateTable_36a48b97-6d3d-478d-9c0a-c92727d88045.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescEspDocto
+		dataType: string
+		lineageTag: 39c951ec-22d4-43a6-b6b8-c5de0a4f8382
+		summarizeBy: none
+		sourceColumn: DescEspDocto
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 15b9f98b-db2c-4098-ac86-d9f5b4224751
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Mov_Geral_Contabil = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "STAGE", [Query="SELECT #(lf)    Mov.[cod-estabel],#(lf)    Mov.[cod-depos],#(lf)    CASE #(lf)        WHEN LEN(Mov.[it-codigo]) < 6 #(lf)            THEN RIGHT(REPLICATE('0', 6) + Mov.[it-codigo], 6)#(lf)        ELSE Mov.[it-codigo]#(lf)    END AS [it-codigo],#(lf)    IT.DescItem,#(lf)    CASE Mov.[tipo-trans]#(lf)        WHEN 1 THEN 'Entrada'#(lf)        WHEN 2 THEN 'Saida'#(lf)        ELSE 'NULL'#(lf)    END AS TipoTrans,#(lf)    Mov.[ct-codigo],#(lf)    CONVERT(VARCHAR(10), Mov.[dt-trans], 103) AS DataTransf,#(lf)    CASE Mov.[esp-docto]#(lf)        WHEN 5 THEN 'DEV'#(lf)        WHEN 6 THEN 'DIV'#(lf)        WHEN 15 THEN 'INV'#(lf)        WHEN 20 THEN 'NFD'#(lf)        WHEN 21 THEN 'NFE'#(lf)        WHEN 22 THEN 'NFS'#(lf)        WHEN 23 THEN 'NFT'#(lf)        WHEN 28 THEN 'REQ'#(lf)        WHEN 31 THEN 'RRQ'#(lf)        WHEN 33 THEN 'TRA'#(lf)        ELSE ''#(lf)    END AS EspDocto,#(lf)    CASE Mov.[esp-docto]#(lf)        WHEN 5 THEN 'Devolução de peças'#(lf)        WHEN 6 THEN 'Transações diversas'#(lf)        WHEN 15 THEN 'Ajuste de inventário'#(lf)        WHEN 20 THEN 'Nota fiscal de devolução'#(lf)        WHEN 21 THEN 'Nota fiscal de entrada'#(lf)        WHEN 22 THEN 'Nota fiscal de saída'#(lf)        WHEN 23 THEN 'Nota fiscal de transferência'#(lf)        WHEN 28 THEN 'Ajuste de saída de saldo'#(lf)        WHEN 31 THEN 'Ajuste de entrada de saldo'#(lf)        WHEN 33 THEN 'Transferência entre depósitos'#(lf)        ELSE ''#(lf)    END AS DescEspDocto,#(lf)    Mov.[serie-docto],#(lf)    CAST(Mov.[quantidade] AS INT) AS Quantidade,#(lf)    Mov.[nro-docto],#(lf)    Mov.[cod-emitente],#(lf)    Mov.[nat-operacao],#(lf)    Mov.[usuario],#(lf)    Mov.[nr-trans],#(lf)    ISNULL(Mov.[hr-trans], '00:00:00') AS HrTrans,#(lf)    Mov.[ct-saldo],#(lf)    CAST(Mov.[valor-mat-m] AS decimal(10,2)) AS ValorMatM,#(lf)    CAST(Mov.[valor-mob-m] AS decimal(10,2)) AS ValorMobM,#(lf)    CAST(Mov.[valor-ggf-m] AS decimal(10,2)) AS ValorGgfM,#(lf)    CAST(Mov.[valor-mob-p] AS decimal(10,2)) AS ValorMobP,#(lf)    CAST(Mov.[valor-ggf-p] AS decimal(10,2)) AS ValorGgfP,#(lf)    Mov.[cod-prog-orig],#(lf)    Mov.[refer-contab],#(lf)    CONVERT(VARCHAR(10), Mov.[dt-contab], 103) AS DataContab,#(lf)    CONVERT(VARCHAR(10), Mov.[dt-criacao], 103) AS DataCriacao,#(lf)    Mov.[DATA_ALTERACAO],#(lf)    CAST(Mov.[valor-icm] AS decimal(10,2)) AS ValorIcm,#(lf)    CAST(Mov.[valor-ipi] AS decimal(10,2)) AS ValorIpi,#(lf)    CAST(Mov.[valor-iss] AS decimal(10,2)) AS ValorIss,#(lf)    CAST(Mov.[val-cofins] AS decimal(10,2)) AS ValorCofins,#(lf)    CAST(Mov.[valor-pis] AS decimal(10,2)) AS ValorPis,#(lf)    CAST(Mov.[dt-trans] AS DATETIME) + ISNULL(CAST(Mov.[hr-trans] AS DATETIME), 0) AS DataHoraTransf#(lf)FROM [STAGE].[tot].[MovtoEstoq] AS Mov#(lf)LEFT JOIN [DW].[dbo].[Dim_Item] AS IT#(lf)    ON IT.CodItem = CASE #(lf)        WHEN LEN(Mov.[it-codigo]) < 6 #(lf)            THEN RIGHT(REPLICATE('0', 6) + Mov.[it-codigo], 6)#(lf)        ELSE Mov.[it-codigo]#(lf)    END#(lf)WHERE Mov.[cod-estabel] = '15'#(lf)  AND Mov.[dt-trans] BETWEEN '2020-01-01' AND GETDATE()#(lf)  AND Mov.[cod-depos] IN ('AAT','ATE','DCV','DES','DAT','AIR','REC','RCB','DEV','NAT','LGR')#(lf)  AND Mov.[esp-docto] IN (5,6,15,20,21,22,23,28,31,33)#(lf)  AND Mov.[quantidade] <> 0;"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataTransf", type datetime}}),
+				    #"Linhas Filtradas"= Table.SelectRows(#"Tipo Alterado", each [DataTransf] > RangeStart and [DataTransf] <= RangeEnd),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Linhas Filtradas",{{"cod-depos", Text.Upper, type text}}),
+				    ColunasRemovidas= Table.SelectColumns(#"Texto em Maiúscula",{"DataHoraTransf","TipoTrans","Quantidade","DataCriacao","DescEspDocto","it-codigo","DataTransf","nro-docto","serie-docto","usuario","DescItem","DATA_ALTERACAO","cod-depos"})
+				in
+				    ColunasRemovidas
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

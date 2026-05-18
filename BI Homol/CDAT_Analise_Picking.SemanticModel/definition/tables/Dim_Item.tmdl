@@ -1,0 +1,68 @@
+table Dim_Item
+	excludeFromModelRefresh
+	lineageTag: 15291a3f-b3b8-4a3c-9b8c-754fdea07342
+
+	measure Média_Semanal_Peças =
+			
+			AVERAGEX(
+			    VALUES(Dim_Data[AnoSemana]),
+			    [TotalPeças]
+			)
+		lineageTag: 4c38d33f-034f-4fb8-a62f-d9f080b20b17
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemItens = DISTINCTCOUNT(Dim_Item[Id])
+		formatString: 0
+		lineageTag: 3dd66b99-24b8-4b93-9aba-79aee99e2859
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: c91e6c6f-eae1-4156-ae66-24c8309938a9
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 18cf1c3a-6177-4220-9ad1-8fd22b41236f
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 32345237-3d61-425d-8e30-a75dd5a52f03
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusCadastro = IF(COUNTROWS(FILTER(Dim_ItemXPicking, Dim_ItemXPicking[Item] = Dim_Item[CodItem])) > 0, "Cadastrado", "Não Cadastrado")
+		lineageTag: 5c0f13d6-d6ed-47b5-a5da-0629e76d8ab0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo = COALESCE(RELATED(Dim_WMS[Quantidade]),0)
+		formatString: 0
+		lineageTag: 537da167-bab5-41de-b0f6-0e69acf2b8ad
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Item = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="    SELECT DISTINCT#(lf)        Id,#(lf)        CodItem,#(lf)        UPPER(DescItem) AS DescItem#(lf)    FROM DW.dbo.Dim_Item#(lf)    WHERE CodItem NOT IN ('#N/D', '''', '-', '')#(lf)        AND CodItem NOT IN ('0000', '00000000A', '000001', '00002', '00003', '00004', '00005', '00006', '00007', '00008', '00010')#(lf)        AND CHARINDEX(',', CodItem) = 0#(lf)        AND LEN(REPLACE(CodItem, '0', '')) > 0#(lf)        AND DescGrupoEstoque <> 'AMOSTRAS'#(lf)        AND CodItem NOT LIKE '%A%'#(lf)        AND NOT (#(lf)        CodFamiliaComl = '07672'#(lf)        AND (#(lf)             DescItem LIKE 'DISPLAY%'#(lf)          OR DescItem LIKE 'TELA LCD%'#(lf)        )#(lf)      );#(lf)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

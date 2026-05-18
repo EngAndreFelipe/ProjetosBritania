@@ -1,0 +1,55 @@
+relationship c3e1b213-a609-427d-9095-175a6b61eef4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_dwPDB381.DataOS
+	toColumn: LocalDateTable_8dea3743-3ef0-4966-8a84-b1b109ba99a5.Date
+
+relationship b1e652ca-7ecc-4894-9d3e-aa4c2e4b91e2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_dwPDB381.DtFaturamento
+	toColumn: LocalDateTable_0189923f-52d8-4a66-ac88-829e91b1c4f1.Date
+
+relationship 10a315b8-8071-4151-9fc5-6bfc7ffffc59
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_dwPDB381.DataEmbarque
+	toColumn: LocalDateTable_b70c4b26-7176-4402-8e91-ee1c1cabbd9e.Date
+
+relationship 2e7246c2-9969-4c4d-a8ee-e4a97cdd9e0c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_dwPDB381.DataSaida
+	toColumn: LocalDateTable_2ad588a1-8746-45de-8d8f-eff162cca553.Date
+
+relationship 83cd3f63-f122-79dd-4851-e495cdecbbae
+	fromColumn: f_dwPDB381.EstadoEntrega
+	toColumn: d_Regioes.Sigla
+
+relationship 70b6f1a0-a6c5-4c0f-9fa8-20b5f2bff6c8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_dwMovEstoqueAT.DtInicioTarefa
+	toColumn: LocalDateTable_949fe13d-ae33-400e-9734-dad3c153c372.Date
+
+relationship b3f93d27-3a20-4005-9229-7cf7742b9a1a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_dwMovEstoqueAT.DtFimTarefa
+	toColumn: LocalDateTable_ddcecbc1-fb52-43fe-a8af-33476ed2cc91.Date
+
+relationship b113be57-0580-4c59-9d18-875f5b205349
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_Calendario.Calendario
+	toColumn: LocalDateTable_df97912d-175e-489b-a021-245a2f9bf09c.Date
+
+relationship 86adc1d5-5a6b-9b56-39b7-dfe89d48f7ff
+	fromColumn: f_dwPDB381.DataImplantacao
+	toColumn: d_Calendario.Calendario
+
+relationship 5861520b-fc39-2c33-c50b-3f7111204605
+	fromColumn: f_dwMovEstoqueAT.DataImplantacao
+	toColumn: d_Calendario.Calendario
+
+relationship 38619f44-6ccd-a698-082b-7d95cf948eca
+	fromColumn: f_dwPDB381.NatOperacao
+	toColumn: d_NatOperacao.NatOperacao
+
+relationship 29fb6a19-69fd-fab3-0945-423f6594321a
+	fromColumn: f_dwPDB381.ChvBloqUnico_
+	toColumn: d_DescricaoBloquio.ChvBloqUnico
+

@@ -1,0 +1,56 @@
+table Dim_WMS
+	lineageTag: 9163c136-b9d8-414b-aef6-e0f1cc18509c
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7607041b-9d2e-4e58-af7d-e02fe3ba877c
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 77849a22-3fe8-4f92-9516-7fc491b9ecee
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: f6002332-e45e-435e-8cd2-434d1abe444d
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: e90b2cec-eca5-45d9-889c-e125d934f56f
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quantidade Ajustada' = COALESCE(Dim_WMS[Quantidade], 0)
+		formatString: 0
+		lineageTag: b7fdcd26-acfc-4ee0-96a2-d2eb833517fc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_WMS = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="   SELECT#(lf)        I.Id,#(lf)        W.Item AS CodItem,#(lf)        W.Descricao,#(lf)        SUM(CAST(W.Total - Reservado AS INT)) AS Quantidade#(lf)    FROM DW.logistica.Fato_ESWM9022 AS W#(lf)    LEFT JOIN DW.dbo.Dim_Item AS I ON I.CodItem = W.Item#(lf)    WHERE W.Estab = '15' AND W.Local = 'AAT'#(lf)    GROUP BY I.Id, W.Item, W.Descricao#(lf)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

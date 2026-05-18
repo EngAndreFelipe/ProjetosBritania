@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_Rastreio"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d02ac51c-d2fc-4be1-9653-ca9b4432d9d5"
+  }
+}

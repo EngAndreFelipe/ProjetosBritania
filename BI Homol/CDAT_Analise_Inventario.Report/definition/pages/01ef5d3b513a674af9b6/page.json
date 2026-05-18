@@ -1,0 +1,158 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "01ef5d3b513a674af9b6",
+  "displayName": "Cronograma",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e5639e44c98e346a0592",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fato_InvSegundoCiclo"
+              }
+            },
+            "Property": "EquipeContagem"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Fato_InvSegundoCiclo",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "EquipeContagem"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'INV-GERAL'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "06e93b2c246c07cb31e4",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.1
+                  }
+                }
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'FundoPadraoBISemLogoB.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "FundoPadraoBISemLogoB5711295119080104.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fill'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "009d0508f8adef5a2a3a",
+      "target": "b520be057899a79b5b1a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "794e626cda2b88a84378",
+      "target": "b520be057899a79b5b1a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "78e80554020b2760fc28",
+      "target": "b520be057899a79b5b1a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "586f1786b6a170f0c5ae",
+      "target": "b520be057899a79b5b1a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "26d90ddd75c2a65e113d",
+      "target": "b520be057899a79b5b1a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8a733a745757ab400b86",
+      "target": "b520be057899a79b5b1a",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+table 'Query Capacidade'
+	lineageTag: 9082ba60-f27c-40cd-8366-8a52e53cecb4
+
+	column Capacidade
+		dataType: string
+		lineageTag: a349cf93-a9b5-41e2-a6d4-d036171cf342
+		summarizeBy: none
+		sourceColumn: Capacidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recebimento
+		dataType: int64
+		formatString: 0
+		lineageTag: 4609b755-2650-403e-89f8-f488f8aaad4c
+		summarizeBy: sum
+		sourceColumn: Recebimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expedição
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ba73a08-f0a1-40d3-a650-9ef7bb1afb13
+		summarizeBy: sum
+		sourceColumn: Expedição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: a4a64202-0894-4c6d-a8df-251133b70e9f
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: d/m/yyyy
+		lineageTag: f8e9bcec-abd3-425a-b7a2-ba7c627ec685
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition 'Query Capacidade' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="WITH DateSequence AS (#(lf)    SELECT #(lf)        0 AS DayOffset#(lf)    UNION ALL#(lf)    SELECT #(lf)        DayOffset + 1#(lf)    FROM #(lf)        DateSequence#(lf)    WHERE #(lf)        DayOffset < 9#(lf))#(lf)SELECT#(lf)    'Valor Dado Pela Area' AS Capacidade,#(lf)#(tab)(SELECT COUNT(QtdeNFE)#(lf)#(tab)#(tab)FROM logistica.Fato_EXB023#(lf)#(tab)#(tab)WHERE CONVERT(DATE, GETDATE() + DayOffset) = CONVERT(DATE, GETDATE())) AS Recebimento,#(lf)    (SELECT COUNT(DataSaida)#(lf)#(tab)#(tab)FROM logistica.Fato_FTB101#(lf)#(tab)#(tab)WHERE CONVERT(DATE, DataSaida) = CONVERT(DATE, GETDATE() + DayOffset)) AS Expedição,#(lf)    (SELECT COUNT(QtdeNFE)#(lf)#(tab)#(tab)FROM logistica.Fato_EXB023#(lf)#(tab)#(tab)WHERE CONVERT(DATE, GETDATE() + DayOffset) = CONVERT(DATE, GETDATE())) - #(lf)    (SELECT COUNT(DataSaida)#(lf)#(tab)#(tab)FROM logistica.Fato_FTB101#(lf)#(tab)#(tab)WHERE CONVERT(DATE, DataSaida) = CONVERT(DATE, GETDATE() + DayOffset)) AS Saldo,#(lf)    CONVERT(DATE, GETDATE() + DayOffset) AS 'Data'#(lf)FROM #(lf)    DateSequence#(lf)ORDER BY 'Data'#(lf)OPTION (MAXRECURSION 10);"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

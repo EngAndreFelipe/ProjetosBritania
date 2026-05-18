@@ -1,0 +1,50 @@
+table Fato_Estoque
+	lineageTag: 71ad67e9-0ed5-4b72-b822-176eae71de14
+
+	column QuantidadeDisponivel
+		dataType: double
+		lineageTag: 05747314-230c-4f30-975a-6580455edfdf
+		summarizeBy: sum
+		sourceColumn: QuantidadeDisponivel
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CodItem
+		dataType: string
+		lineageTag: 5a3ae005-bcbe-49fb-81cf-fc6aa08b2bb9
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoDeposito
+		dataType: string
+		lineageTag: eed4b1e5-b527-4f30-b941-9686b03de775
+		summarizeBy: none
+		sourceColumn: CodigoDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodEstab
+		dataType: string
+		lineageTag: 6adc8aa3-ed72-41b2-b914-65a1ae1f0b5b
+		summarizeBy: none
+		sourceColumn: CodEstab
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Estoque-1c701a9a-f92f-47ef-b59f-0bfb8fdd8e43 = m
+		mode: import
+		queryGroup: NOVO
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT F.QuantidadeDisponivel,#(lf)       D.CodigoDeposito,#(lf)       E.CodEstab,#(lf)       i.CodItem#(lf)FROM Fato_SaldoEstoque F#(lf)JOIN Dim_Localizacao L ON L.IdLocalizacao = F.IdLocalizacao#(lf)JOIN Dim_Estabelecimento E ON E.Id = L.idEstab#(lf)JOIN Dim_Deposito D ON D.IdDeposito = L.IdDeposito#(lf)JOIN dbo.Dim_Item i ON F.IdItem = i.Id#(lf)JOIN dbo.Dim_Data dt on dt.id = f.iddata#(lf)where dt.Data >= DATEFROMPARTS(YEAR(GETDATE()) - 2, 1, 1)"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

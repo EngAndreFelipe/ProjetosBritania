@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_AnaliseCarteiraAT"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "90551672-a5c2-4470-976d-81260ab1d3da"
+  }
+}

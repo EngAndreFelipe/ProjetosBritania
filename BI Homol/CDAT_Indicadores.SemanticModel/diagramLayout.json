@@ -1,0 +1,150 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "ece30b35-2e10-4a55-91f1-71deed10ccac",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 939.17349187783464,
+            "y": 382.39690456444583
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "ef5562db-4022-417d-9f35-d46ecee152c4",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 1019.8543083813995,
+            "y": 0
+          },
+          "nodeIndex": "f_2457DocExp",
+          "nodeLineageTag": "a78bfd58-6716-48ba-b40d-a2068793d1f1",
+          "size": {
+            "height": 275.93680988244154,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 270.44846402212761,
+            "y": 478.57898325567425
+          },
+          "nodeIndex": "f_Sgm",
+          "nodeLineageTag": "50e237a8-4ca1-433f-a159-8b9aabebd147",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 308.30969421583131,
+            "y": 0
+          },
+          "nodeIndex": "f_IndicadoresDW",
+          "nodeLineageTag": "4ca3d477-313c-461a-8a95-ad837bf994db",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 546.04534449083076,
+            "y": 308.21367932167027
+          },
+          "nodeIndex": "Parametros",
+          "nodeLineageTag": "5c31b7ec-7791-47ba-914e-6fa397615541",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1303.8543083813995,
+            "y": 239.19845228222289
+          },
+          "nodeIndex": "f_3917VendaDat",
+          "nodeLineageTag": "6655d877-8f30-446b-a91c-a4547b97ace1",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1587.8543083813995,
+            "y": 287.19845228222289
+          },
+          "nodeIndex": "f_Feriados",
+          "nodeLineageTag": "58ca219f-9efa-4e4c-9b9a-283a311ab2f0",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1871.8543083813995,
+            "y": 239.19845228222289
+          },
+          "nodeIndex": "f_AtendimentoOS",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2155.8543083813993,
+            "y": 239.19845228222289
+          },
+          "nodeIndex": "IncicadoresCalc",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 75.333333333333329,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

@@ -1,0 +1,238 @@
+table 'Estoque Meta'
+	lineageTag: ec288329-d35b-42cd-8be2-d093915813e4
+
+	measure '2950 / Indicador' =
+			
+			CALCULATE(DIVIDE(SUM('Estoque Meta'[SaldoForaMeta]),1),
+			ENDOFMONTH('Calendario'[Data]))
+		formatString: 0
+		lineageTag: 89b99723-adf3-43f5-a023-022357e0e065
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '- FM' = SUM('Estoque Meta'[SaldoForaMeta])
+		formatString: 0
+		lineageTag: dbc91ddb-9645-4afd-8147-4e046b22b3e5
+
+	measure '- DM' = SUM('Estoque Meta'[SaldoDentroMeta])
+		formatString: 0
+		lineageTag: fbbb001d-8182-4c8a-979b-650f2d1acfe3
+
+	measure '- %' =
+			
+			var soma = [- DM]+[- FM]
+			return [- DM]/soma
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a62def7d-cd97-4675-9cf2-f77b7ae814b9
+
+	column CodEstab
+		dataType: string
+		lineageTag: 3225b3de-4eaa-457b-a358-6c1c3ca3bb81
+		summarizeBy: none
+		sourceColumn: CodEstab
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 87e8b11a-3f15-4238-a55b-fc1db6cccf2f
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CodItem
+		dataType: string
+		lineageTag: d8b1bddb-0877-42bf-a211-32dd853ab0e4
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasMeta
+		dataType: int64
+		formatString: 0
+		lineageTag: 55d6697d-062b-428e-8eae-d8eb98dca1b7
+		summarizeBy: sum
+		sourceColumn: DiasMeta
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoForaMeta
+		dataType: double
+		formatString: #,0
+		lineageTag: 141e64d8-33ff-469b-baae-5488ebf8a0be
+		summarizeBy: sum
+		sourceColumn: SaldoForaMeta
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoDentroMeta
+		dataType: double
+		formatString: 0
+		lineageTag: 56221b41-f064-465f-bc6f-635e913448a5
+		summarizeBy: sum
+		sourceColumn: SaldoDentroMeta
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoFinalAtual
+		dataType: double
+		formatString: 0
+		lineageTag: a9b7b8d7-2a23-4e37-85bb-205b68257eed
+		summarizeBy: sum
+		sourceColumn: SaldoFinalAtual
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoInicial
+		dataType: double
+		formatString: 0
+		lineageTag: 92c743de-755c-4a89-9475-4f33a97f9cac
+		summarizeBy: sum
+		sourceColumn: SaldoInicial
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdData
+		dataType: int64
+		formatString: 0
+		lineageTag: a400558b-f8e6-4e54-8d4e-e1c13afd1551
+		summarizeBy: sum
+		sourceColumn: IdData
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdItem
+		dataType: int64
+		formatString: 0
+		lineageTag: 229fe114-1355-46e1-a089-2879cf931711
+		summarizeBy: sum
+		sourceColumn: IdItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEstabelec
+		dataType: int64
+		formatString: 0
+		lineageTag: db106aed-619a-47b9-952b-f99a2d6dce29
+		summarizeBy: sum
+		sourceColumn: IdEstabelec
+
+		annotation SummarizationSetBy = Automatic
+
+	column Empresa
+		dataType: string
+		lineageTag: c88df105-e99d-44bd-a677-760c06e7f39a
+		summarizeBy: none
+		sourceColumn: Empresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdDeposito
+		dataType: int64
+		formatString: 0
+		lineageTag: 1add484b-9013-4432-b880-9bf0f4d42664
+		summarizeBy: sum
+		sourceColumn: IdDeposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column Deposito
+		dataType: string
+		lineageTag: d82e673a-4123-4495-b284-d413a6d57ccc
+		summarizeBy: none
+		sourceColumn: Deposito
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntradasPeriodo
+		dataType: double
+		lineageTag: 0138c86e-0e13-4f79-8852-6830df8e742b
+		summarizeBy: sum
+		sourceColumn: EntradasPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SaidasPeriodo
+		dataType: double
+		lineageTag: 0a6253f3-ecc1-4b68-8217-9205afcd1382
+		summarizeBy: sum
+		sourceColumn: SaidasPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Custo
+		dataType: double
+		lineageTag: b621fca5-2650-4a43-b60d-44babc597e06
+		summarizeBy: sum
+		sourceColumn: Custo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorForaMeta
+		dataType: double
+		lineageTag: 5285c032-afc2-4a0a-a514-f7a680ad868f
+		summarizeBy: sum
+		sourceColumn: ValorForaMeta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ValorDentroMeta
+		dataType: double
+		lineageTag: 3926d064-c5e1-45ba-8283-bfe5396e5a37
+		summarizeBy: sum
+		sourceColumn: ValorDentroMeta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Setor
+		dataType: string
+		lineageTag: 21ad1883-e84d-4bc0-be75-de8ab0a98d3e
+		summarizeBy: none
+		sourceColumn: Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Responsavel
+		dataType: string
+		lineageTag: eb583d4a-e13e-474d-8c16-cb85dfa32aa9
+		summarizeBy: none
+		sourceColumn: Responsavel
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 59ef3e4e-3814-41aa-9662-e141664ff2e7
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Estoque Meta-439eec11-d1fa-452e-ac2e-60bd75714e5f' = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)#(tab)em.[IdData],#(lf)#(tab)DDT.DataMascara AS 'Data',#(lf)#(tab)em.[IdItem],#(lf)#(tab)DI.CodItem,#(lf)#(tab)DI.DescItem,#(lf)#(tab)em.[IdEstabelec],#(lf)#(tab)de.CodEstab,#(lf)#(tab)de.Empresa,#(lf)#(tab)em.[IdDeposito],#(lf)#(tab)UPPER(DD.CodigoDeposito) AS 'Deposito',#(lf)#(tab)em.[DiasMeta],#(lf)#(tab)cast(em.[SaldoFinalAtual] as float) SaldoFinalAtual,#(lf)#(tab)cast(em.[SaldoInicial] as float) SaldoInicial,   #(lf)#(tab)cast(em.[EntradasPeriodo] as float) EntradasPeriodo,#(lf)#(tab)cast(em.[SaidasPeriodo] as float) SaidasPeriodo,     #(lf)#(tab)cast(em.[SaldoForaMeta]#(tab)as float) SaldoForaMeta,    #(lf)#(tab)cast(em.[SaldoDentroMeta] as float) SaldoDentroMeta,#(lf)#(tab)cast(em.[Custo]#(tab)as float) Custo,     #(lf)#(tab)cast(em.[ValorForaMeta] as float) ValorForaMeta,    #(lf)#(tab)cast(em.[ValorDentroMeta] as float) ValorDentroMeta,#(lf)#(tab)em.[Setor],#(lf)#(tab)em.[Responsavel]#(lf)from Fato_EstoqueMeta EM#(lf)left join Dim_Data DDT ON DDT.Id = EM.IdData#(lf)left join Dim_Item DI ON DI.Id = EM.IdItem#(lf)left join Dim_Deposito DD ON  DD.IdDeposito = EM.IdDeposito#(lf)left join Dim_Estabelecimento DE ON DE.Id = EM.IdEstabelec#(lf)WHERE EM.IdEstabelec = '5'#(lf)AND EM.SaldoDentroMeta > 0#(lf)AND EM.SaldoForaMeta > 0"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Data", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

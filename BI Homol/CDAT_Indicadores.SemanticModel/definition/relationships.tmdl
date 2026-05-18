@@ -1,0 +1,76 @@
+relationship a41bb56f-c73f-411a-95c6-870e61f0ee05
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Calendario
+	toColumn: LocalDateTable_c2378660-fcbc-4756-834b-1f2d18a931c0.Date
+
+relationship 8f979680-84f1-3559-df15-119db01ac056
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Parametros.IdIndicador
+	toColumn: f_IndicadoresDW.IdIndicador
+
+relationship e7491e15-7105-4dfc-90e1-b4593cf07156
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_IndicadoresDW.MesAno
+	toColumn: LocalDateTable_29461e08-70e8-4ec5-a563-0b667c1e5492.Date
+
+relationship AutoDetected_48f9c4f6-4512-41ce-ad03-775c7f6d47b4
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: f_2457DocExp.IdIndicador
+	toColumn: Parametros.IdIndicador
+
+relationship AutoDetected_5fdc3ee7-8635-4434-abb7-2df34ad3bd31
+	isActive: false
+	fromColumn: f_IndicadoresDW.Ano
+	toColumn: f_2457DocExp.Ano
+
+relationship AutoDetected_599ba3eb-4816-4616-8847-07a0f3efdee1
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: f_3917VendaDat.Ano
+	toColumn: f_2457DocExp.Ano
+
+relationship AutoDetected_d5022241-6716-4e6d-80a5-02fa34f1005f
+	isActive: false
+	fromColumn: f_IndicadoresDW.Mes
+	toColumn: f_3917VendaDat.Mes
+
+relationship 08b81e82-da4a-47d4-9547-4670b6cc4f19
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_Feriados.Data
+	toColumn: LocalDateTable_1d7fd03f-8b7f-4ca2-8427-c4b3ad910a59.Date
+
+relationship 366bb9d2-5b44-4ae5-b5c1-27613632cafc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_AtendimentoOS.DataImplantacao
+	toColumn: LocalDateTable_1783c574-fda5-4858-b2b9-c10b83588090.Date
+
+relationship e8a160fc-1e98-4418-977e-d5215837653e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_AtendimentoOS.DataSaida
+	toColumn: LocalDateTable_d9735d93-40c4-4f97-af1a-c678b5fbad50.Date
+
+relationship 12d3dba4-5d92-490d-94a7-c914b79d9eee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dCalendario.Data
+	toColumn: LocalDateTable_4c7dcb5b-0725-4b64-aabb-afefc8e9bd77.Date
+
+relationship 520177ea-7150-47f1-b80b-89c60234bcce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: f_AtendimentoOS.DtIndicador
+	toColumn: LocalDateTable_83939d6e-e3e8-4be0-8f63-0ba57d9f42e9.Date
+
+relationship AutoDetected_649e3812-da9a-4345-8c5a-221317880580
+	fromColumn: f_Sgm.IdIndicador
+	toColumn: Parametros.IdIndicador
+
+relationship 289eb9e7-cd2a-4875-8f00-0d2f6915071d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: IncicadoresCalc.MesAno
+	toColumn: LocalDateTable_274a89ac-ffa4-477e-9fc7-20f0bc1679d8.Date
+
+relationship 2b315674-8405-16d3-c3b3-74cbe51c1750
+	fromColumn: f_Sgm.MesAno
+	toColumn: dCalendario.Calendario
+

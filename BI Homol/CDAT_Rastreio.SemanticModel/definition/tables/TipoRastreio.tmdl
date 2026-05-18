@@ -1,0 +1,17 @@
+table TipoRastreio
+	lineageTag: fb122e78-57f3-412b-9e57-e18ae7fc79cd
+
+	column Rastreio
+		lineageTag: 209618af-dc2b-494c-a39b-d7155671f4fc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Rastreio]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TipoRastreio = calculated
+		mode: import
+		source = DATATABLE("Rastreio", STRING, {{"1° Rastreio"}, {"2° Rastreio"}})
+
+	annotation PBI_Id = 1b6baf39b7e8401fb0d7325c4b909c95
+

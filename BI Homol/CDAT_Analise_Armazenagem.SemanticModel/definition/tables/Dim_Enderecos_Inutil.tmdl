@@ -1,0 +1,191 @@
+table Dim_Enderecos_Inutil
+	lineageTag: 2f4bbbf8-8e57-462b-8612-35508739dd04
+
+	column Localizacao
+		dataType: string
+		lineageTag: 598130ef-7c67-4665-8b1e-cc6f8f8536c1
+		summarizeBy: none
+		sourceColumn: Localizacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdBox
+		dataType: double
+		formatString: 0
+		lineageTag: 38855ebc-bb18-4db9-ab18-0d9119272ce5
+		summarizeBy: sum
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column TipoEndereco
+		dataType: string
+		lineageTag: 5d6b567e-a2b5-4ba2-88dd-cd287a2698b4
+		summarizeBy: none
+		sourceColumn: TipoEndereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-local
+		dataType: string
+		lineageTag: 097b126e-aa88-4909-8b28-700c847ac521
+		summarizeBy: none
+		sourceColumn: cod-local
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-bloco
+		dataType: string
+		lineageTag: 1ae4ab2c-22aa-4187-8e0d-67b97f2b7e1f
+		summarizeBy: none
+		sourceColumn: cod-bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-rua
+		dataType: string
+		lineageTag: fa47705e-f2bb-41f6-a265-32d69a68f39a
+		summarizeBy: none
+		sourceColumn: cod-rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-nivel
+		dataType: string
+		lineageTag: 9f94ede7-794d-4411-a2b6-3457434291e9
+		summarizeBy: none
+		sourceColumn: cod-nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column cod-coluna
+		dataType: string
+		lineageTag: 2ebf9d9b-80ae-454d-b2ee-4ed611bc0bb2
+		summarizeBy: none
+		sourceColumn: cod-coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloq_Armaz
+		dataType: string
+		lineageTag: 236f487b-8ae3-46ac-86a7-eecf79150e8c
+		summarizeBy: none
+		sourceColumn: Bloq_Armaz
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloq_Retir
+		dataType: string
+		lineageTag: a0cf3e73-c13f-42b0-90e3-127668a3faf5
+		summarizeBy: none
+		sourceColumn: Bloq_Retir
+
+		annotation SummarizationSetBy = Automatic
+
+	column ind-status-box
+		dataType: int64
+		formatString: 0
+		lineageTag: 18176033-27dc-46c5-a40f-192bb3b4f65b
+		summarizeBy: sum
+		sourceColumn: ind-status-box
+
+		annotation SummarizationSetBy = Automatic
+
+	column ind-posicao-box
+		dataType: int64
+		formatString: 0
+		lineageTag: bc81de9e-d910-45ef-aa11-bb02dff1137e
+		summarizeBy: sum
+		sourceColumn: ind-posicao-box
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade
+		dataType: int64
+		formatString: 0
+		lineageTag: d9488358-c414-4259-bc43-6feb1b2b5cef
+		summarizeBy: sum
+		sourceColumn: Prioridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classe_ABC
+		dataType: string
+		lineageTag: 82a13377-3eec-44f7-8a97-ecf67ef55171
+		summarizeBy: none
+		sourceColumn: Classe_ABC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Enderecos_Inutil = m
+		mode: import
+		source = ```
+				let
+				    Fonte = Value.NativeQuery(
+				        Sql.Database("PR-S188\DW", "Stage"),
+				        "
+				        SELECT 
+				            CONCAT([cod-bloco], '/', [cod-rua], '/', [cod-nivel], '/', [cod-coluna]) AS Localizacao,
+				            [id-box] AS IdBox, 
+				            CASE [cdn-tipo-box]
+				                WHEN 1 THEN 'PORTA PALETE'
+				                WHEN 2 THEN 'PICKING'
+				                WHEN 3 THEN 'SEPARAÇÃO'
+				                WHEN 4 THEN 'DOCA'
+				                WHEN 5 THEN 'INUTILIZADO'
+				                WHEN 6 THEN 'RESERVA'
+				                WHEN 7 THEN 'TRANSITÓRIO RETRABALHO'
+				                ELSE 'DESCONHECIDO'
+				            END AS TipoEndereco,
+				            [cod-local], 
+				            [cod-bloco], 
+				            [cod-rua], 
+				            [cod-nivel], 
+				            [cod-coluna], 
+				                     
+				            
+				            CASE [log-bloq-armaz]
+				                            WHEN 0 THEN 'NAO'
+				                            WHEN 1 THEN 'SIM'
+				                            ELSE 'DESCONHECIDO'
+				                        END AS Bloq_Armaz,
+				
+				                        CASE [log-bloq-retir]
+				                            WHEN 0 THEN 'NAO'
+				                            WHEN 1 THEN 'SIM'
+				                            ELSE 'DESCONHECIDO'
+				                        END AS Bloq_Retir,
+				 
+				            [ind-status-box],            
+				            [ind-posicao-box], 
+				            [int-2] AS Prioridade, 
+				            
+				            
+				
+				            
+				            CAST(
+				                CASE [idi-classif-abc]
+				                    WHEN '1' THEN 'A'
+				                    WHEN '2' THEN 'B'
+				                    WHEN '3' THEN 'C'
+				                    ELSE CAST([idi-classif-abc] AS varchar)
+				                END AS varchar
+				            ) AS Classe_ABC
+				        FROM tot.WmBox
+				        WHERE 
+				            [cod-local] IN ('AAT')
+				            AND [cdn-tipo-box] = 5
+				        ",
+				        null,
+				        [EnableFolding=true]
+				    )
+				in
+				    Fonte
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

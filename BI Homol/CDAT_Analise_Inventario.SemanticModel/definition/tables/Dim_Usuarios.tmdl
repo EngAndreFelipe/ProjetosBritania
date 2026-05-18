@@ -1,0 +1,78 @@
+table Dim_Usuarios
+	lineageTag: 01ee3d3d-b31a-4f99-a8ce-05ea2cac2b78
+
+	column Usuario
+		dataType: string
+		lineageTag: d1b70d16-b196-41d9-9813-0bf50af9309e
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: string
+		lineageTag: f4d07624-81bc-4769-a347-fac3ad2b6708
+		summarizeBy: none
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipe
+		dataType: string
+		lineageTag: f09c9795-76ae-4304-9110-d78c3e9f7518
+		summarizeBy: none
+		sourceColumn: Equipe
+
+		annotation SummarizationSetBy = Automatic
+
+	column De
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0667a493-4aba-4073-bb6c-6b87237b420f
+		summarizeBy: none
+		sourceColumn: De
+
+		variation Variation
+			isDefault
+			relationship: a41b21ff-8c5a-476f-9733-ef34dd633994
+			defaultHierarchy: LocalDateTable_21d0e7bc-84b3-441f-8274-0d65db93ca43.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Até
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e5286dd9-2728-4ade-b7f5-f28ce252e4f7
+		summarizeBy: none
+		sourceColumn: Até
+
+		variation Variation
+			isDefault
+			relationship: 245b7951-8382-4a08-8ac4-58e02126cc72
+			defaultHierarchy: LocalDateTable_2c6bb081-3f1d-4519-b8da-5ec9b24568b2.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Dim_Usuarios = m
+		mode: import
+		source =
+				let
+				    CaminhoBase = "\\10.0.10.7\compartilhado\BI AT LOGISTICA\",
+				    Fonte = Folder.Files(CaminhoBase),
+				    Dim_Usuarios_xlsx = Fonte{[#"Folder Path"=CaminhoBase & "Cronograma_Inventario\",Name="Dim_Usuarios.xlsx"]}[Content],
+				    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(Dim_Usuarios_xlsx),
+				    Dim_Usuarios_Sheet = #"Pasta de Trabalho Importada do Excel"{[Item="Dim_Usuarios2",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Dim_Usuarios_Sheet, [PromoteAllScalars=true]),
+				    #"Valor Substituído" =  Table.TransformColumns(#"Cabeçalhos Promovidos",{"Até",each if _ = null then DateTime.Date(DateTime.LocalNow()) else _}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Valor Substituído",{{"De", type date}, {"Até", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

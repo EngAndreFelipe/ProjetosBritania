@@ -1,0 +1,9 @@
+relationship 64fa2258-3c16-4c2b-83f2-49cf655900a0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fato_WMS.DataCarga
+	toColumn: LocalDateTable_cb47d27e-5d9d-4ea7-acbb-edf04e714223.Date
+
+relationship d75578b2-1b07-d27f-d292-844ef86baa4a
+	fromColumn: Fato_WMS.Item
+	toColumn: Tabela_Minimo.Item
+

@@ -1,0 +1,114 @@
+table Fato_WMS
+	lineageTag: 4f27dd64-888b-442a-bb94-93278aa7a938
+
+	measure SaldoPorItem =
+			
+			CALCULATE(
+			    SUM(Fato_WMS[Total]),
+			    ALLEXCEPT(Fato_WMS, Fato_WMS[Item])
+			)
+		formatString: 0
+		lineageTag: 9f0d5729-faad-43c3-8049-000ce325f583
+
+	measure PrecisaRepor =
+			
+			VAR Saldo = [SaldoPorItem]
+			VAR Minimo = MAX(Fato_WMS[MinimoItem])
+			RETURN
+			IF(
+			    ISBLANK(Saldo) || ISBLANK(Minimo),
+			    BLANK(),
+			    IF(Saldo < Minimo, "Sim", "Não")
+			)
+		formatString: 0
+		lineageTag: f8df708e-5c23-4e17-8a61-bb1f53a167e6
+
+	column Estab
+		dataType: string
+		lineageTag: 8aa2ab95-650c-43d1-8124-30b6d568add1
+		summarizeBy: none
+		sourceColumn: Estab
+
+		annotation SummarizationSetBy = Automatic
+
+	column Local
+		dataType: string
+		lineageTag: 1c56232e-ac66-4948-ba92-bc75b7a8a00b
+		summarizeBy: none
+		sourceColumn: Local
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 7ed5be82-104b-40be-9c16-8ec830c1c360
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descricao
+		dataType: string
+		lineageTag: 5ecec002-ec83-428c-baa0-6b6abb578371
+		summarizeBy: none
+		sourceColumn: Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: d325544f-8d56-44b6-85bb-7538c88f9d85
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: int64
+		formatString: 0
+		lineageTag: dacf7a9a-30b5-448a-92ef-4dbd170d2337
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9a8a30a1-f8c5-45bc-b78d-768259b959f9
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 64fa2258-3c16-4c2b-83f2-49cf655900a0
+			defaultHierarchy: LocalDateTable_cb47d27e-5d9d-4ea7-acbb-edf04e714223.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MinimoItem
+		dataType: int64
+		formatString: 0
+		lineageTag: ae13f9bf-c469-43fb-a833-3db9436c0760
+		summarizeBy: sum
+		sourceColumn: MinimoItem
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_WMS = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="select Estab, Local, Item, Descricao, Endereco, CAST(Total AS INT) AS Total, DataCarga#(lf)from DW.logistica.Fato_ESWM9022#(lf)where Estab = '15' #(lf)and Local = 'aat'#(lf)and Item LIKE '8%'"]),
+				    #"Consultas Mescladas" = Table.NestedJoin(Fonte, {"Item"}, Tabela_Minimo, {"Item"}, "Tabela_Minimo", JoinKind.LeftOuter),
+				    #"Tabela_Minimo Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "Tabela_Minimo", {"Mínimo"}, {"Tabela_Minimo.Mínimo"}),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Tabela_Minimo Expandido",{{"Tabela_Minimo.Mínimo", "MinimoItem"}})
+				in
+				    #"Colunas Renomeadas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

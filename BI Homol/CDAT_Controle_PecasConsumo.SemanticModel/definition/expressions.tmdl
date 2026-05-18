@@ -1,0 +1,48 @@
+expression Parâmetro1 = #"Arquivo de Amostra" meta [IsParameterQuery=true, BinaryIdentifier=#"Arquivo de Amostra", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 4b605c25-f61c-4f96-b2d3-32b7cc45c6a4
+	queryGroup: 'Transformar Arquivo de bi at logistica\Consultas Auxiliares'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transformar o Arquivo de Exemplo' =
+		let
+		    Fonte = Excel.Workbook(Parâmetro1, null, true),
+		    #"media mês_Sheet" = Fonte{[Item="media mês",Kind="Sheet"]}[Data],
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"media mês_Sheet", [PromoteAllScalars=true])
+		in
+		    #"Cabeçalhos Promovidos"
+	lineageTag: bd15f8f3-2966-4827-a1cc-5ef0f879ed6c
+	queryGroup: 'Transformar Arquivo de bi at logistica'
+
+	annotation PBI_ResultType = Table
+
+expression 'Arquivo de Amostra' =
+		let
+		    Fonte = Folder.Files("\\10.0.10.7\compartilhado\bi at logistica"),
+		    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([Name] = "QtdMínimaCaixas.xlsx")),
+		    Navegação1 = #"Linhas Filtradas"{0}[Content]
+		in
+		    Navegação1
+	lineageTag: 2b769a6c-cdad-4ca1-a2fe-c25d109bf68a
+	queryGroup: 'Transformar Arquivo de bi at logistica\Consultas Auxiliares'
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transformar Arquivo' =
+		let
+		    Fonte = (Parâmetro1 as binary) => let
+		    Fonte = Excel.Workbook(Parâmetro1, null, true),
+		    #"media mês_Sheet" = Fonte{[Item="media mês",Kind="Sheet"]}[Data],
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"media mês_Sheet", [PromoteAllScalars=true])
+		in
+		    #"Cabeçalhos Promovidos"
+		in
+		    Fonte
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transformar o Arquivo de Exemplo""}" ]
+	lineageTag: 5fbe69d8-c750-4586-934a-05045c39b61d
+	queryGroup: 'Transformar Arquivo de bi at logistica\Consultas Auxiliares'
+
+	annotation PBI_ResultType = Function
+

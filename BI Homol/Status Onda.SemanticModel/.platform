@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Status Onda"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cbdb4027-dfad-469d-b50a-c08b3c55fb9d"
+  }
+}

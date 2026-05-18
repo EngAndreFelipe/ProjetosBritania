@@ -1,0 +1,555 @@
+table Fato_InvSegundoCiclo
+	lineageTag: 143cb120-9420-4f83-a5c8-52cb45f15f88
+
+	measure UltimaCargaInventario = MAX(Fato_InvSegundoCiclo[DataCarga])
+		formatString: General Date
+		lineageTag: 7c763402-ada0-4b43-9e0e-67a512393e31
+
+	measure ContagemEnderecosPCK = CALCULATE(DISTINCTCOUNT(Fato_InvSegundoCiclo[IdBox]),Fato_InvSegundoCiclo[Bloco]="PCK")
+		formatString: 0
+		lineageTag: 44f1d14d-901d-4ff2-80b0-a302d855189c
+
+	measure ContagemEnderecosRUA =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_InvSegundoCiclo[IdBox]),
+			    -- Mantém apenas Bloco = RUA ou VAL
+			    KEEPFILTERS( Fato_InvSegundoCiclo[Bloco] IN {"RUA", "VAL"} ),
+			    -- Exclui RUA 25, 31 e 32
+			    KEEPFILTERS( NOT ( Fato_InvSegundoCiclo[RUA] IN {"25", "31", "32"} ) )
+			)
+		formatString: 0
+		lineageTag: a3bb9e6d-b95f-4e35-8871-861bf48ade86
+
+	measure ContagemEnderecos =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_InvSegundoCiclo[IdBox]),
+			    KEEPFILTERS( Fato_InvSegundoCiclo[Bloco] IN {"RUA", "VAL", "PCK"} ),
+			    KEEPFILTERS( NOT ( Fato_InvSegundoCiclo[RUA] IN {"25",  "32"} ) )
+			)
+		formatString: 0
+		lineageTag: 89e19896-5af1-4ee2-9c26-6b4cdbea4e84
+
+	measure ContagemSKUs = DISTINCTCOUNT(Fato_InvSegundoCiclo[Item])
+		formatString: 0
+		lineageTag: 58f1a577-bda8-45e7-b7d0-7801c7330dcc
+
+	measure PercentualAjuste =
+			
+			VAR ValorAjustado = SUM(Fato_InvSegundoCiclo[ValorAjuste])
+			VAR ValorSaldo = SUM(Fato_InvSegundoCiclo[ValorSaldo])
+			VAR PercentualAjustado = DIVIDE(ValorAjustado, ValorSaldo)
+			RETURN
+			IF(
+			    ValorSaldo = 0,
+			    BLANK(),
+			    1 - PercentualAjustado
+			)
+		lineageTag: 6176c049-3c84-4d50-b94b-0087e9267172
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemItensInv = DISTINCTCOUNT(Fato_InvSegundoCiclo[Item])
+		formatString: 0
+		lineageTag: 3fef71cf-5b62-4e39-99c4-d39b7b5faf9e
+
+	measure SomaPeças =
+			
+			SUM(Fato_InvSegundoCiclo[QtdApurada1]) +
+			SUM(Fato_InvSegundoCiclo[QtdApurada2]) +
+			SUM(Fato_InvSegundoCiclo[QtdApurada3])
+		lineageTag: 4e763605-903a-483c-b0c4-d7ea26b5460f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AcuracidadePorRuaSegundoCiclo =
+			
+			VAR PosicoesCorretas =
+			    CALCULATE(
+			        DISTINCTCOUNT(Fato_InvSegundoCiclo[IdBox]),
+			        Fato_InvSegundoCiclo[AcuracidadePorPosicaoUltimaData] = "Correto",
+			        (Fato_InvSegundoCiclo[Bloco] IN {"PCK","RUA","VAL"})
+			    )
+			VAR PosicoesTotais =
+			    CALCULATE(
+			        DISTINCTCOUNT(Fato_InvSegundoCiclo[IdBox]),
+			        NOT ISBLANK(Fato_InvSegundoCiclo[AcuracidadePorPosicaoUltimaData]),
+			        (Fato_InvSegundoCiclo[Bloco] IN {"PCK","RUA","VAL"})
+			    )
+			RETURN
+			DIVIDE(PosicoesCorretas, PosicoesTotais)
+		lineageTag: 7c02688c-7b8d-4856-bc11-7a71b0308444
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MediaEnderecosDia =
+			
+			DIVIDE(
+			    DISTINCTCOUNT(Fato_InvSegundoCiclo[IdBox]),
+			        DISTINCTCOUNT(Fato_InvSegundoCiclo[DataInventario]))
+		lineageTag: 15122997-1e18-4da2-8360-273bf7d62ed4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DiasContados = ```
+			
+			    DISTINCTCOUNT(Fato_InvSegundoCiclo[DataInventario])
+			```
+		formatString: 0
+		lineageTag: 726c1f5c-3ffd-4c62-9ff1-696a7af116b0
+
+	measure PrevisãoDeDias = [TotalEnderecos] / [MediaEnderecosDia]
+		lineageTag: 85d87bd4-c265-497f-ace0-59050b92da17
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure DataInicio = MIN(Fato_InvSegundoCiclo[DataInventario])
+		formatString: General Date
+		lineageTag: 42fe891c-926a-4994-8bba-b1fe4e629c73
+
+	column DataInventario
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 001ebe5e-3bea-4b40-b6a1-cb26f0436c08
+		summarizeBy: none
+		sourceColumn: DataInventario
+
+		variation Variation
+			isDefault
+			relationship: 871f712f-3bbc-4d07-a7e9-f7cd0bfc3475
+			defaultHierarchy: LocalDateTable_3d05d529-8c9f-4790-b798-c100531e07da.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NumeroInventario
+		dataType: int64
+		formatString: 0
+		lineageTag: 5809774b-d076-4765-9435-d13de5ac9c19
+		summarizeBy: sum
+		sourceColumn: NumeroInventario
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoInv
+		dataType: string
+		lineageTag: 7a751221-fb86-44ee-958b-07371aafd262
+		summarizeBy: none
+		sourceColumn: SituacaoInv
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdBox
+		dataType: int64
+		formatString: 0
+		lineageTag: 71670cfd-7e80-4141-b77d-12e823e04600
+		summarizeBy: none
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bloco
+		dataType: string
+		lineageTag: 544e3f2f-5692-4231-94c4-d4fe591059ca
+		summarizeBy: none
+		sourceColumn: Bloco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rua
+		dataType: string
+		lineageTag: d9861a1d-ab4b-416e-9246-e204fea753fe
+		summarizeBy: none
+		sourceColumn: Rua
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel
+		dataType: string
+		lineageTag: 5b984295-934b-4403-9cc5-2deb1891a64e
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coluna
+		dataType: string
+		lineageTag: 3ca6bb4c-9eac-436e-a1f2-96d32c1d19da
+		summarizeBy: none
+		sourceColumn: Coluna
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoEnd
+		dataType: string
+		lineageTag: b73154e3-ea06-4908-92b6-83c63ad003a0
+		summarizeBy: none
+		sourceColumn: SituacaoEnd
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 67e4466d-8031-40df-8914-0b94a26f98e4
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: 07e23cf7-e7b6-49ff-bf43-7e010fc26754
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoItem
+		dataType: string
+		lineageTag: fdbeefce-9074-4c85-b4b4-2c40d4c9ffd3
+		summarizeBy: none
+		sourceColumn: SituacaoItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ef77efb-ac2b-4135-b995-cdc74da76548
+		summarizeBy: sum
+		sourceColumn: Saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdApurada1
+		dataType: double
+		lineageTag: 0efa43ae-5ef7-4c40-a023-f1a208029bf5
+		summarizeBy: sum
+		sourceColumn: QtdApurada1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada2
+		dataType: double
+		lineageTag: c1d1f8f9-3168-4cff-a1e3-64ad7d5dd7ba
+		summarizeBy: sum
+		sourceColumn: QtdApurada2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtdApurada3
+		dataType: double
+		lineageTag: 57b37fa9-22b1-4ab3-9d6c-e89d12eeec76
+		summarizeBy: sum
+		sourceColumn: QtdApurada3
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UltimaContagem
+		dataType: int64
+		formatString: 0
+		lineageTag: f488dc9a-c6b5-4066-9265-f48a0f54d2fc
+		summarizeBy: sum
+		sourceColumn: UltimaContagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdFinal
+		dataType: int64
+		formatString: 0
+		lineageTag: b9c1374d-9c5f-47e0-a3a5-92c969ce5f39
+		summarizeBy: sum
+		sourceColumn: QtdFinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Divergencia
+		dataType: int64
+		formatString: 0
+		lineageTag: 20e2abe7-bf35-46d1-a729-ce6959664d6c
+		summarizeBy: sum
+		sourceColumn: Divergencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Acuracidade
+		dataType: string
+		lineageTag: 1f23e90d-6519-42eb-bc58-f9b9f3ad41d9
+		summarizeBy: none
+		sourceColumn: Acuracidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoContagem1
+		dataType: string
+		lineageTag: 7df15c8e-f3d3-4ce5-9cb4-42fca99f37f5
+		summarizeBy: none
+		sourceColumn: SituacaoContagem1
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoContagem2
+		dataType: string
+		lineageTag: 2c10fa42-44c7-43c9-9dce-3c8f55c71039
+		summarizeBy: none
+		sourceColumn: SituacaoContagem2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SituacaoContagem3
+		dataType: string
+		lineageTag: b8035580-3039-4638-8725-c871cf099a49
+		summarizeBy: none
+		sourceColumn: SituacaoContagem3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario1
+		dataType: string
+		lineageTag: 5120f148-484b-4e8a-8127-efda3be53213
+		summarizeBy: none
+		sourceColumn: Usuario1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: 78e1450c-769b-4f75-b6bf-15ffda84bf2f
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario3
+		dataType: string
+		lineageTag: ad2676a5-447d-49a7-95e8-faca9eb47016
+		summarizeBy: none
+		sourceColumn: Usuario3
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataLeitura
+		dataType: string
+		lineageTag: 95f80eb5-6fb4-4e30-a68f-cc6be9a1d6ab
+		summarizeBy: none
+		sourceColumn: DataLeitura
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraLeitura1
+		dataType: string
+		lineageTag: 1765ae91-7797-4062-8b3f-d5bd0a663472
+		summarizeBy: none
+		sourceColumn: HoraLeitura1
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraLeitura2
+		dataType: string
+		lineageTag: b557cbcc-a738-4e41-8d5c-ed30f61eb887
+		summarizeBy: none
+		sourceColumn: HoraLeitura2
+
+		annotation SummarizationSetBy = Automatic
+
+	column HoraLeitura3
+		dataType: string
+		lineageTag: 13ef2b09-803e-465c-9101-7e47aab2c26a
+		summarizeBy: none
+		sourceColumn: HoraLeitura3
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0065669e-2665-4c52-83b9-73f00a6939a5
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 92b5c8fe-b9cd-4399-a461-d3419759515a
+			defaultHierarchy: LocalDateTable_62ec6fa2-646f-4cb0-82d3-f45c8f7a1544.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorPosicaoUltimaData =
+			
+			VAR DataMaisRecente =
+			    CALCULATE(
+			        MAX(Fato_InvSegundoCiclo[DataInventario]),
+			        ALLEXCEPT(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[IdBox])
+			    )
+			VAR AcuracidadeFinal =
+			    CALCULATE(
+			        MAX(Fato_InvSegundoCiclo[Acuracidade]),
+			        Fato_InvSegundoCiclo[DataInventario] = DataMaisRecente,
+			        ALLEXCEPT(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[IdBox])
+			    )
+			RETURN
+			    IF(AcuracidadeFinal = "Correto", "Correto", "Incorreto")
+		lineageTag: 53f6275e-cc6d-45d6-840a-7bb6c42559e5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorItemUltimaData =
+			
+			VAR DataMaisRecente =
+			    CALCULATE(
+			        MAX(Fato_InvSegundoCiclo[DataInventario]),
+			        ALLEXCEPT(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[Item])
+			    )
+			VAR AcuracidadeFinal =
+			    CALCULATE(
+			        MAX(Fato_InvSegundoCiclo[Acuracidade]),
+			        Fato_InvSegundoCiclo[DataInventario] = DataMaisRecente,
+			        ALLEXCEPT(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[Item])
+			    )
+			RETURN
+			    IF(AcuracidadeFinal = "Correto", "Correto", "Incorreto")
+		lineageTag: d3343ca7-f9fb-4ce4-a185-c189dd15ced4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValorSaldo = RELATED(Dim_Precos[Custo]) * Fato_InvSegundoCiclo[Saldo]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: e424239c-4829-48ac-9186-97e0a7ceb8ea
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column ValorContado = RELATED(Dim_Precos[Custo]) * Fato_InvSegundoCiclo[QtdFinal]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 1005927e-db56-4974-a1c1-b50d761db07e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column ValorAjuste = RELATED(Dim_Precos[Custo]) * Fato_InvSegundoCiclo[DivergenciaAjustada]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: f735faa0-efda-4729-985c-4c4a2c8565fa
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	column DivergenciaAjustada = ABS(VALUE(Fato_InvSegundoCiclo[Divergencia]))
+		lineageTag: d4805984-dd13-4330-bbd8-dcb0c93a83e3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ContagemMaisRecente =
+			
+			VAR DataMaisRecente =
+			    CALCULATE(
+			        MAX(Fato_InvSegundoCiclo[DataInventario]),
+			        ALLEXCEPT(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[IdBox]),
+			        Fato_InvSegundoCiclo[EquipeContagem] = "INV-GERAL"
+			    )
+			RETURN
+			    DataMaisRecente
+		formatString: General Date
+		lineageTag: 1f7a35e0-b6e0-48cc-a0b9-0f749765e01f
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: de8e8c80-64e8-4c44-aa8e-563420dcf35c
+			defaultHierarchy: LocalDateTable_ac565b3d-4e77-40dc-85d8-badceef43f2b.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChaveDocumento =
+			
+			Fato_InvSegundoCiclo[NumeroInventario] & "-" & FORMAT(Fato_InvSegundoCiclo[DataInventario], "YYYYMMDD")
+		lineageTag: e03ef443-cc15-4d37-babb-76b4d639a177
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContagemId =
+			
+			VAR CurrentIdBox = Fato_InvSegundoCiclo[idbox]
+			RETURN
+			    CALCULATE(
+			        DISTINCTCOUNT(Fato_InvSegundoCiclo[ChaveDocumento]),
+			        FILTER(
+			            Fato_InvSegundoCiclo,
+			            Fato_InvSegundoCiclo[idbox] = CurrentIdBox
+			        )
+			    )
+		formatString: 0
+		lineageTag: f8a6960c-b88f-49f4-ada1-9db48c24278c
+		summarizeBy: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column EquipeContagem =
+			
+			VAR DataInv = Fato_InvSegundoCiclo[DataInventario]
+			VAR Usuario = Fato_InvSegundoCiclo[Usuario1]
+			RETURN
+			    CALCULATE(
+			        SELECTEDVALUE(Dim_Usuarios[Equipe]),
+			        FILTER(
+			            Dim_Usuarios,
+			            Dim_Usuarios[Usuario] = Usuario &&
+			            DataInv >= Dim_Usuarios[De] &&
+			            DataInv <= Dim_Usuarios[Até]
+			        )
+			    )
+		lineageTag: 16f20f86-4b2e-4b27-ad3a-32b1d85edaed
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcuracidadePorPosicao = ```
+			
+			    CALCULATE(
+			        MAX(Fato_InvSegundoCiclo[Acuracidade]),
+			        ALLEXCEPT(Fato_InvSegundoCiclo, Fato_InvSegundoCiclo[IdBox], Fato_InvSegundoCiclo[ChaveDocumento])
+			    )
+			```
+		lineageTag: 0cb7246b-d054-4223-aa13-b5abb80608e8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidaEndereco = IF(COUNTROWS(FILTER(Dim_Endereco, Dim_Endereco[IdBox] = Fato_InvSegundoCiclo[IdBox])) > 0, "Válido", "Não válido")
+		lineageTag: 0e1ca2d3-3751-4c5e-a997-b5ef72b03892
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_InvSegundoCiclo = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf)    CONVERT(VARCHAR(10), E.[dt-inventario], 103) AS DataInventario,#(lf)    E.[num-seq-invent] AS NumeroInventario,#(lf)#(lf)    -- Situação do inventário#(lf)    CASE V.[ind-sit-invent]#(lf)        WHEN 1 THEN 'Não iniciado'#(lf)        WHEN 2 THEN 'Em processo'#(lf)        WHEN 3 THEN 'Concluído'#(lf)        WHEN 4 THEN 'Atualizado'#(lf)        ELSE 'Desconhecido'#(lf)    END AS SituacaoInv,#(lf)#(lf)    E.[id-box] AS IdBox,#(lf)    E.[cod-bloco] AS Bloco,#(lf)    E.[cod-rua] AS Rua,#(lf)    E.[cod-nivel] AS Nivel,#(lf)    E.[cod-coluna] AS Coluna,#(lf)#(lf)    -- Situação do endereço#(lf)    CASE E.[ind-sit-inv-end]#(lf)        WHEN 1 THEN 'Não iniciado'#(lf)        WHEN 2 THEN 'Em processo'#(lf)        WHEN 3 THEN 'Concluído'#(lf)        WHEN 4 THEN 'Atualizado'#(lf)        ELSE 'Desconhecido'#(lf)    END AS SituacaoEnd,#(lf)#(lf)    I.[cod-item] AS Item,#(lf)    T.[DescItem] AS DescItem,#(lf)#(lf)    -- Situação do item#(lf)    CASE I.[ind-sit-inv-item]#(lf)        WHEN 1 THEN 'Não iniciado'#(lf)        WHEN 2 THEN 'Em processo'#(lf)        WHEN 3 THEN 'Concluído'#(lf)        WHEN 4 THEN 'Atualizado'#(lf)        ELSE 'Desconhecido'#(lf)    END AS SituacaoItem,#(lf)#(lf)    -- Saldo ajustado#(lf)    CASE #(lf)        WHEN I.[cod-item] IS NULL AND I.[ind-sit-inv-item] NOT IN (1,2,3,4) AND E.[ind-sit-inv-end] = 4 THEN 0#(lf)        WHEN ISNUMERIC(I.[qtd-saldo]) = 1 THEN CAST(I.[qtd-saldo] AS INT)#(lf)        ELSE 0#(lf)    END AS Saldo,#(lf)#(lf)    -- QtdApurada1 ajustada#(lf)    CASE #(lf)        WHEN I.[cod-item] IS NULL AND I.[ind-sit-inv-item] NOT IN (1,2,3,4) AND E.[ind-sit-inv-end] = 4 THEN 0#(lf)        WHEN ISNUMERIC(PARSENAME(REPLACE(I.[qtd-apurada], ';', '.'), 3)) = 1 THEN #(lf)            CAST(PARSENAME(REPLACE(I.[qtd-apurada], ';', '.'), 3) AS FLOAT)#(lf)        ELSE 0#(lf)    END AS QtdApurada1,#(lf)#(lf)    -- QtdApurada2 ajustada#(lf)    CASE #(lf)        WHEN I.[cod-item] IS NULL AND I.[ind-sit-inv-item] NOT IN (1,2,3,4) AND E.[ind-sit-inv-end] = 4 THEN 0#(lf)        WHEN ISNUMERIC(PARSENAME(REPLACE(I.[qtd-apurada], ';', '.'), 2)) = 1 THEN #(lf)            CAST(PARSENAME(REPLACE(I.[qtd-apurada], ';', '.'), 2) AS FLOAT)#(lf)        ELSE 0#(lf)    END AS QtdApurada2,#(lf)#(lf)    -- QtdApurada3 permanece original com proteção#(lf)    CASE #(lf)        WHEN ISNUMERIC(PARSENAME(REPLACE(I.[qtd-apurada], ';', '.'), 1)) = 1 THEN #(lf)            CAST(PARSENAME(REPLACE(I.[qtd-apurada], ';', '.'), 1) AS FLOAT)#(lf)        ELSE 0#(lf)    END AS QtdApurada3,#(lf)#(lf)    E.[num-ult-contagem] AS UltimaContagem,#(lf)#(lf)    -- QtdFinal ajustada#(lf)    CASE #(lf)        WHEN I.[cod-item] IS NULL AND I.[ind-sit-inv-item] NOT IN (1,2,3,4) AND E.[ind-sit-inv-end] = 4 THEN 0#(lf)        WHEN ISNUMERIC(I.[qtd-final]) = 1 THEN CAST(I.[qtd-final] AS INT)#(lf)        ELSE 0#(lf)    END AS QtdFinal,#(lf)#(lf)    -- Divergencia ajustada#(lf)    CASE #(lf)        WHEN ISNUMERIC(I.[qtd-final]) = 1 AND ISNUMERIC(I.[qtd-saldo]) = 1 THEN #(lf)            CAST(I.[qtd-final] AS INT) - CAST(I.[qtd-saldo] AS INT)#(lf)        ELSE 0#(lf)    END AS Divergencia,#(lf)#(lf)    -- Coluna Acuracidade corrigida#(lf)CASE#(lf)    WHEN #(lf)        (#(lf)            I.[cod-item] IS NULL AND #(lf)            I.[ind-sit-inv-item] NOT IN (1,2,3,4) AND #(lf)            E.[ind-sit-inv-end] = 4#(lf)        )#(lf)        OR (#(lf)            ISNUMERIC(I.[qtd-final]) = 0 AND #(lf)            ISNUMERIC(I.[qtd-saldo]) = 0#(lf)        )#(lf)        THEN 'Correto'#(lf)    WHEN #(lf)        ISNUMERIC(I.[qtd-final]) = 1 AND #(lf)        ISNUMERIC(I.[qtd-saldo]) = 1 AND #(lf)        CAST(I.[qtd-final] AS INT) - CAST(I.[qtd-saldo] AS INT) = 0#(lf)        THEN 'Correto'#(lf)    ELSE 'Incorreto'#(lf)END AS Acuracidade,#(lf)#(lf)    -- Situação das contagens#(lf)    CASE PARSENAME(REPLACE(E.[ind-status-contagem], ';', '.'), 3)#(lf)        WHEN '1' THEN 'Não Contado'#(lf)        WHEN '2' THEN 'Em processo'#(lf)        WHEN '3' THEN 'Concluído'#(lf)        ELSE 'Desconhecido'#(lf)    END AS SituacaoContagem1,#(lf)#(lf)    CASE PARSENAME(REPLACE(E.[ind-status-contagem], ';', '.'), 2)#(lf)        WHEN '1' THEN 'Não Contado'#(lf)        WHEN '2' THEN 'Em processo'#(lf)        WHEN '3' THEN 'Concluído'#(lf)        ELSE 'Desconhecido'#(lf)    END AS SituacaoContagem2,#(lf)#(lf)    CASE PARSENAME(REPLACE(E.[ind-status-contagem], ';', '.'), 1)#(lf)        WHEN '1' THEN 'Não Contado'#(lf)        WHEN '2' THEN 'Em processo'#(lf)        WHEN '3' THEN 'Concluído'#(lf)        ELSE 'Desconhecido'#(lf)    END AS SituacaoContagem3,#(lf)#(lf)    -- Usuários#(lf)    LTRIM(RTRIM(LEFT(E.[usuario], CHARINDEX(';', E.[usuario]) - 1))) AS Usuario1,#(lf)    LTRIM(RTRIM(SUBSTRING(E.[usuario], CHARINDEX(';', E.[usuario]) + 1,#(lf)        CHARINDEX(';', E.[usuario], CHARINDEX(';', E.[usuario]) + 1) - CHARINDEX(';', E.[usuario]) - 1))) AS Usuario2,#(lf)    LTRIM(RTRIM(SUBSTRING(E.[usuario], CHARINDEX(';', E.[usuario], CHARINDEX(';', E.[usuario]) + 1) + 1,#(lf)        CHARINDEX(';', E.[usuario] + ';', CHARINDEX(';', E.[usuario], CHARINDEX(';', E.[usuario]) + 1) + 1)#(lf)        - CHARINDEX(';', E.[usuario], CHARINDEX(';', E.[usuario]) + 1) - 1))) AS Usuario3,#(lf)#(lf)    -- Datas e horários#(lf)    CONVERT(VARCHAR(10), CONVERT(DATE, E.[dt-leitura], 101), 103) AS DataLeitura,#(lf)    CONVERT(VARCHAR(8), DATEADD(SECOND, TRY_CAST(PARSENAME(REPLACE(E.[hr-leitura], ';', '.'), 3) AS INT), 0), 108) AS HoraLeitura1,#(lf)    CONVERT(VARCHAR(8), DATEADD(SECOND, TRY_CAST(PARSENAME(REPLACE(E.[hr-leitura], ';', '.'), 2) AS INT), 0), 108) AS HoraLeitura2,#(lf)    CONVERT(VARCHAR(8), DATEADD(SECOND, TRY_CAST(PARSENAME(REPLACE(E.[hr-leitura], ';', '.'), 1) AS INT), 0), 108) AS HoraLeitura3,#(lf)#(lf)    CONVERT(datetime, E.[DataCarga]) AS DataCarga#(lf)#(lf)FROM STAGE.tot.WmInventarioEndereco AS E#(lf)LEFT JOIN STAGE.tot.WmInventarioItem AS I#(lf)    ON E.[dt-inventario] = I.[dt-inventario]#(lf)    AND E.[num-seq-invent] = I.[num-seq-invent]#(lf)    AND E.[id-box] = I.[id-box]#(lf)LEFT JOIN STAGE.tot.WmInventario AS V#(lf)    ON I.[cod-estabel] = V.[cod-estabel]#(lf)    AND I.[cod-local] = V.[cod-local]#(lf)    AND I.[dt-inventario] = V.[dt-inventario]#(lf)    AND I.[num-seq-invent] = V.[num-seq-invent]#(lf)LEFT JOIN DW.dbo.Dim_Item AS T#(lf)    ON I.[cod-item] = T.CodItem#(lf)WHERE E.[cod-estabel] = '15'#(lf)  AND E.[cod-local] = 'aat'#(lf)  AND E.[dt-inventario] >= '2026-02-25'#(lf)  AND E.[ind-sit-inv-end] NOT LIKE '1'#(lf)#(lf)ORDER BY E.[dt-inventario], E.[num-seq-invent];"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataInventario", type date}, {"IdBox", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

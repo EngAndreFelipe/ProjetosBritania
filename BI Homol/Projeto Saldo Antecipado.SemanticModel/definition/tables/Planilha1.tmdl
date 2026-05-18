@@ -1,0 +1,49 @@
+table Planilha1
+	lineageTag: 825f66c6-da29-4bb4-bdd0-e9ed0ea518fd
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 63762c05-559e-46d5-be0b-d0d804b395c5
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Entrada
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b294304-7224-40ce-bc41-3ccf176b13b9
+		summarizeBy: sum
+		sourceColumn: Entrada
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saída
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fa13591-ed95-48b1-88e2-3930cea83147
+		summarizeBy: sum
+		sourceColumn: Saída
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Planilha1 = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("\\10.0.10.7\COMPARTILHADO\BI LOGISTICA CD\CAPACIDADE ANTECIPADO\Capacidade Antecipado.xlsx"), null, true),
+				    Planilha1_Sheet = Fonte{[Item="Planilha1",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Date", type date}, {"Seção", type text}, {"KPI's", type text}, {"Capacidade", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"KPI's"}),
+				    #"Coluna em pivô" = Table.Pivot(#"Colunas Removidas", List.Distinct(#"Colunas Removidas"[Seção]), "Seção", "Capacidade")
+				in
+				    #"Coluna em pivô"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

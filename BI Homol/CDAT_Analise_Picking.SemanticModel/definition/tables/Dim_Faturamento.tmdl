@@ -1,0 +1,33 @@
+table Dim_Faturamento
+	lineageTag: 3f57879c-8892-49eb-aa04-682c877cda27
+
+	column QuantidadeFat
+		dataType: int64
+		formatString: 0
+		lineageTag: cf3375fe-0f53-433f-97c5-de01855a23c8
+		summarizeBy: none
+		sourceColumn: QuantidadeFat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: bf0aa126-b2ca-423d-9981-a90901fec13d
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Faturamento = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT I.Id,#(lf)#(tab)   SUM(CAST(F.QuantidadeFaturada AS INT)) AS QuantidadeFat#(lf)  FROM [DW].[dbo].[Fato_Faturamento] AS F#(lf)  LEFT JOIN DW.dbo.Dim_Item AS I ON I.Id = F.IdItem#(lf)  LEFT JOIN DW.dbo.Dim_Data AS D ON D.Id = F.IdData#(lf)  LEFT JOIN DW.dbo.Dim_Estabelecimento AS E ON E.Id = F.IdEstab#(lf)  LEFT JOIN DW.dbo.Dim_Deposito AS DE ON DE.IdDeposito = F.IdDeposito#(lf)  WHERE CodEstab = '15'#(lf)  AND SerieNotaFiscal IN ('5','21')#(lf)  AND Cancelado = 0#(lf)  AND DataSaida IS NOT NULL#(lf)  AND CAST(F.[DataEmissaoNotaFiscal] AS DATE) >= DATEADD(DAY, -730, GETDATE())#(lf)GROUP BY I.Id"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+expression Feriados =
+		let
+		    Fonte = Folder.Files("\\10.0.10.7\compartilhado\BI AT LOGISTICA"),
+		    #"\\10 0 10 7\compartilhado\BI AT LOGISTICA\_Feriados_CDAT xlsx" = Fonte{[#"Folder Path"="\\10.0.10.7\compartilhado\BI AT LOGISTICA\",Name="Feriados_CDAT.xlsx"]}[Content],
+		    #"Pasta de Trabalho Importada do Excel" = Excel.Workbook(#"\\10 0 10 7\compartilhado\BI AT LOGISTICA\_Feriados_CDAT xlsx"),
+		    Feriados_CDAT_Sheet = #"Pasta de Trabalho Importada do Excel"{[Item="Feriados_CDAT",Kind="Sheet"]}[Data],
+		    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Feriados_CDAT_Sheet, [PromoteAllScalars=true]),
+		    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Data", type datetime}})
+		in
+		    #"Tipo Alterado"
+	lineageTag: 9c40536a-36a9-4f9c-b232-1255e9ff43eb
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

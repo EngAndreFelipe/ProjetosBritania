@@ -1,0 +1,108 @@
+table Dim_ItemXPicking
+	lineageTag: a61b6659-d471-4a9b-a096-e73cab67ffb6
+
+	measure ItensCadastrados =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Fato_Faturamento[CodItem]),
+			    FILTER(
+			        Fato_Faturamento,
+			        Fato_Faturamento[RepetiçõesItem] > 20
+			            && Fato_Faturamento[CodItem] IN VALUES(Dim_ItemXPicking[Item])
+			    )
+			)
+		formatString: 0
+		lineageTag: 214264d2-eb0a-43d7-88d9-7a3a331210c9
+
+	measure PorcentagemItens =
+			
+			DIVIDE([ItensCadastrados], [ItensTotais], 0)
+		lineageTag: 3c489db2-cfb1-4a36-93f5-4eb87af0acb5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ContagemItensPCK = COALESCE(DISTINCTCOUNT(Dim_ItemXPicking[Item]),"Sem erros")
+		formatString: 0
+		lineageTag: 3e2e4973-5fb1-4cd3-80b6-3733c1835530
+
+	column IdBox
+		dataType: int64
+		formatString: 0
+		lineageTag: a2d138ca-7b2e-4746-9d90-8cf10faeb1d6
+		summarizeBy: none
+		sourceColumn: IdBox
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 19ae90fe-f5a6-4904-a5c6-01183a50b3b8
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdMinima
+		dataType: int64
+		lineageTag: b2254cc5-02c7-4f60-8d02-ed3919b01af4
+		summarizeBy: sum
+		sourceColumn: QtdMinima
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RepetiçõesItem =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Dim_ItemXPicking[IdBox]),
+			    FILTER(Dim_ItemXPicking, Dim_ItemXPicking[Item] = EARLIER(Dim_ItemXPicking[Item]))
+			)
+		formatString: 0
+		lineageTag: c1eeff3c-9760-4891-8f42-2c2a82894587
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixaDiasUltimoFat =
+			
+			COALESCE (
+			    CALCULATE (
+			        MAX ( Fato_Faturamento[FaixaDiasUltimoFat] ),
+			        USERELATIONSHIP ( Fato_Faturamento[CodItem], Dim_ItemXPicking[Item] )
+			    ),"Mais de 1 ano")
+		lineageTag: 1cb5aba6-0318-4fd3-bfd6-32054e96702b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdMaxima
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a78f3ee-bfa7-45b2-bb8c-59a854791860
+		summarizeBy: sum
+		sourceColumn: QtdMaxima
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tamanho
+		dataType: string
+		lineageTag: 58d6448e-ac5d-4774-9973-feceb131b518
+		summarizeBy: none
+		sourceColumn: Tamanho
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_ItemXPicking = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT AreaPicking AS IdBox,#(lf)#(tab)   Item,#(lf)#(tab)   QtdMinima,#(lf)#(tab)   CAST(QtdMaxima AS INT) AS QtdMaxima,#(lf)#(tab)   TamanhoAreaPicking AS Tamanho#(lf)FROM DW.logistica.[Fato_WMB210]#(lf)WHERE Local = 'AAT'"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"IdBox", Int64.Type}, {"QtdMinima", Int64.Type}, {"QtdMaxima", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

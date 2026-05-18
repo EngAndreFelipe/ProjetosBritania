@@ -1,0 +1,6 @@
+createOrReplace
+
+	relationship 5b7dd4eb-164a-a6cc-b922-6052da9d81f6
+		fromColumn: d_Resultado.MesAno
+		toColumn: dCalendario.Calendario
+

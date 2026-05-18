@@ -1,0 +1,61 @@
+table Fato_Estoque_WMS
+	lineageTag: babc77fe-9ea7-47af-9f57-ec32f72d4adb
+
+	column Item
+		dataType: string
+		lineageTag: da77fc09-01e0-458f-bbc2-d814627da85c
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endereco
+		dataType: string
+		lineageTag: 283d78c2-45ae-48c8-b3b1-04f95ac5240f
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: double
+		lineageTag: f172a77d-650e-49b7-bdec-21c5730e0aa2
+		summarizeBy: none
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a5754994-7020-45bd-8c79-96ca208fb111
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 7f53f931-bf59-4c26-8932-392f6379ea58
+			defaultHierarchy: LocalDateTable_96b0f800-a4d8-42f3-890c-2fe5e6292e5f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Estoque_WMS = m
+		mode: import
+		source = ```
+				let
+				     
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="#(lf)        DECLARE @RangeStart DATETIME = '2025-01-01';#(lf)        DECLARE @RangeEnd DATETIME = GETDATE();#(lf)        SELECT #(lf)            UPPER(Local) AS Local,#(lf)            LTRIM(RTRIM(Item)) AS Item,#(lf)            Descricao,#(lf)            Classe,#(lf)            Endereco,#(lf)            Embalagem,#(lf)            Bloq,#(lf)            Total,#(lf)            Reservado,#(lf)            Disponivel,#(lf)            DataCarga#(lf)        FROM logistica.Fato_ESWM9022#(lf)        WHERE (UPPER(Local) = 'AAT' OR UPPER(Local) = 'REC')#(lf)          AND DataCarga > @RangeStart AND DataCarga <= @RangeEnd"]),
+				    
+				    // Aplicar os ranges definidos em M
+				    LinhasFiltradas = Table.SelectRows(Fonte, each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd),
+				    ColunasRemovidas= Table.SelectColumns(LinhasFiltradas,{"Endereco","Item","DataCarga","Total"})
+				in
+				    ColunasRemovidas
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

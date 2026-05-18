@@ -1,0 +1,92 @@
+table Dim_ESWM9002
+	lineageTag: 9b5bd35d-cb71-4de3-a564-9a6e455a47fe
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: month
+		rollingWindowPeriods: 12
+		incrementalGranularity: day
+		incrementalPeriods: 60
+		sourceExpression =
+			let
+			    Fonte = Value.NativeQuery(
+			        Sql.Database("PR-S188\DW", "DW"),
+			        "
+			        SELECT *
+			        FROM logistica.Fato_ESWM9022
+			        WHERE [Local] = 'AAT'
+			        ",
+			        null,
+			        [EnableFolding = true]
+			    ),
+			    #"Linhas Agrupadas" = Table.Group(Fonte, {"Endereco", "DataCarga"}, {{"TotalPecas", each List.Sum([Disponivel]), type nullable number}, {"TotalItem", each Table.RowCount(_), Int64.Type}}),
+			    #"Linhas Filtradas" = Table.SelectRows(#"Linhas Agrupadas", each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+			in
+			    #"Linhas Filtradas"
+
+	column Endereco
+		dataType: string
+		lineageTag: 92401cf4-67cc-4fe3-ab02-fa6bb63446aa
+		summarizeBy: none
+		sourceColumn: Endereco
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5959a68a-fdc3-46aa-8efe-5ac040954ce4
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 0ecd3452-92bb-4454-97f1-efe520931c95
+			defaultHierarchy: LocalDateTable_3c3d99f3-45a7-47e8-bd64-6930c9cd2a8a.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPecas
+		dataType: double
+		lineageTag: 767a77dd-30fd-4ce0-9828-f9fcdc767d04
+		summarizeBy: sum
+		sourceColumn: TotalPecas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalItem
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bba64ba-da98-4206-a73c-570f96bf027c
+		summarizeBy: sum
+		sourceColumn: TotalItem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_ESWM9002 = m
+		mode: import
+		source =
+				let
+				    Fonte = Value.NativeQuery(
+				        Sql.Database("PR-S188\DW", "DW"),
+				        "
+				        SELECT *
+				        FROM logistica.Fato_ESWM9022
+				        WHERE [Local] = 'AAT'
+				        ",
+				        null,
+				        [EnableFolding = true]
+				    ),
+				    #"Linhas Agrupadas" = Table.Group(Fonte, {"Endereco", "DataCarga"}, {{"TotalPecas", each List.Sum([Disponivel]), type nullable number}, {"TotalItem", each Table.RowCount(_), Int64.Type}}),
+				    #"Linhas Filtradas" = Table.SelectRows(#"Linhas Agrupadas", each [DataCarga] > RangeStart and [DataCarga] <= RangeEnd)
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_IsMQueryFoldable = True
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

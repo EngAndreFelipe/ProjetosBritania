@@ -1,0 +1,177 @@
+table Fato_Onda
+	lineageTag: 800680f0-73b9-4a0e-93bf-6bda4492555f
+
+	column serie
+		dataType: string
+		lineageTag: 2d0342b8-bad2-4152-8e03-509656d15f32
+		summarizeBy: none
+		sourceColumn: serie
+
+		annotation SummarizationSetBy = Automatic
+
+	column nr-nota-fis
+		dataType: string
+		lineageTag: 5e70e11d-7d54-4b69-8dee-9fce2e2d324c
+		summarizeBy: none
+		sourceColumn: nr-nota-fis
+
+		annotation SummarizationSetBy = Automatic
+
+	column qt-faturada
+		dataType: double
+		lineageTag: 1ca8784d-b42d-4937-9ea5-f8c40174cefc
+		summarizeBy: sum
+		sourceColumn: qt-faturada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column num-docto
+		dataType: string
+		lineageTag: 872b209e-ea81-4269-8b6f-b8b74e009c81
+		summarizeBy: none
+		sourceColumn: num-docto
+
+		annotation SummarizationSetBy = Automatic
+
+	column log-agrupado
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f655ce59-fe03-4d8f-9671-6c5e756e5a45
+		summarizeBy: none
+		sourceColumn: log-agrupado
+
+		annotation SummarizationSetBy = Automatic
+
+	column des-erro
+		dataType: string
+		lineageTag: f8fe9ba1-88e6-4579-b28d-d567a7efd2c8
+		summarizeBy: none
+		sourceColumn: des-erro
+
+		annotation SummarizationSetBy = Automatic
+
+	column dt-geracao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9ce385d7-335c-437b-b714-44fe201acce8
+		summarizeBy: none
+		sourceColumn: dt-geracao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cod-depos
+		dataType: string
+		lineageTag: 736ac232-4aa9-4958-83f1-013c37ade76e
+		summarizeBy: none
+		sourceColumn: cod-depos
+
+		annotation SummarizationSetBy = Automatic
+
+	column StatusOnda
+		dataType: string
+		lineageTag: d6e775d5-d352-49a7-b54e-74e78c9ccdc5
+		summarizeBy: none
+		sourceColumn: StatusOnda
+
+		annotation SummarizationSetBy = Automatic
+
+	column ObservacaoExpedicao
+		dataType: string
+		lineageTag: 356c6054-8c07-4554-8a0c-092b09b8b8a5
+		summarizeBy: none
+		sourceColumn: ObservacaoExpedicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataEmissaoNotaFiscal
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d1ef2f70-e273-4f94-811d-3cda613083e6
+		summarizeBy: none
+		sourceColumn: DataEmissaoNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column HoraEmissaoNotaFiscal
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: a9293fb5-41bd-4c3a-843f-c9a62f821ba6
+		summarizeBy: none
+		sourceColumn: HoraEmissaoNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column DataSaida
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c912e4bd-42cc-4288-b650-854040a6003b
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ordenação Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Fato_Onda'[StatusOnda] = "null", 6,
+			    'Fato_Onda'[StatusOnda] = "Em Separação", 1,
+			    'Fato_Onda'[StatusOnda] = "Conferido Linha", 2,
+			    'Fato_Onda'[StatusOnda] = "Stage Conferência", 3,
+			    'Fato_Onda'[StatusOnda] = "Expedido" , 4,
+			    'Fato_Onda'[StatusOnda] = "Não Integrado", 5)
+		formatString: 0
+		lineageTag: d9368ae1-d540-4761-8754-746fb8e7152a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column TransportadorRomaneio
+		dataType: string
+		lineageTag: 1ac1c1f8-5c87-4946-a04f-808f940b045b
+		summarizeBy: none
+		sourceColumn: TransportadorRomaneio
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescSalesChannel
+		dataType: string
+		lineageTag: b25293d7-477b-42f8-a095-56772ef9b937
+		summarizeBy: none
+		sourceColumn: DescSalesChannel
+
+		annotation SummarizationSetBy = Automatic
+
+	column CubagemPrevista
+		dataType: double
+		lineageTag: 65c0af2e-fb31-43ee-9123-ed7715561388
+		summarizeBy: sum
+		sourceColumn: CubagemPrevista
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fato_Onda = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT#(lf) [log-agrupado] ,#(lf) f.[serie] ,#(lf) f.[nr-nota-fis] ,#(lf) lf.StatusOnda ,#(lf) le.DataEmissaoNotaFiscal ,#(lf) le.HoraEmissaoNotaFiscal ,#(lf) cv.DescSalesChannel ,#(lf) le.TransportadorRomaneio ,#(lf) f.[qt-faturada] ,#(lf) f.[num-docto] ,#(lf) f.[des-erro] ,#(lf) le.DataSaida ,#(lf) f.[dt-geracao] ,#(lf) f.[cod-depos] ,#(lf) lf.CubagemPrevista ,#(lf) lf.ObservacaoExpedicao #(lf)FROM Stage.tot.BrEcomOnda F#(lf)LEFT  JOIN DW.dbo.Dim_Item DI#(lf)#(tab)#(tab)ON DI.CodItem = F.[it-codigo]#(lf)LEFT  JOIN DW.logistica.Fato_FTB101 LF#(lf)#(tab)#(tab)ON LF.CodEstab = F.[cod-estabel]#(lf)#(tab)#(tab)AND LF.SerieNotaFiscal = F.serie#(lf)#(tab)#(tab)AND LF.NumeroNotaFiscal = F.[nr-nota-fis]#(lf)#(tab)#(tab)AND LF.CodItem = F.[it-codigo]#(lf)LEFT  JOIN DW.logistica.Fato_EcomLogisticaExpedicao LE#(lf)#(tab)#(tab)ON LE.SerienotaFiscal = F.[serie]#(lf)#(tab)#(tab)AND LE.NumeroNotaFiscal = F.[nr-nota-fis]#(lf)LEFT  JOIN Stage.tot.VtexSalesChannel CV#(lf)#(tab)#(tab)ON CV.CodSalesChannel = LE.CanalVenda"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataEmissaoNotaFiscal", type date}, {"HoraEmissaoNotaFiscal", type time}, {"dt-geracao", type date},  {"DataSaida", type date},  {"CubagemPrevista", type number}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

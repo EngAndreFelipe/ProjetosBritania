@@ -1,0 +1,40 @@
+table Dim_Regioes
+	lineageTag: 1265fa72-038b-4329-80c4-08a268c1f575
+
+	column Nome_Regiao_Original
+		dataType: string
+		lineageTag: b112a380-4bab-442e-b634-73ea2b1fa851
+		summarizeBy: none
+		sourceColumn: Nome_Regiao_Original
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: a8941076-7253-431a-b472-142f1ce22ae7
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoMunicipio
+		dataType: string
+		lineageTag: c38cecf8-9ce1-400a-a282-2bb2ff8ce33c
+		summarizeBy: none
+		sourceColumn: TipoMunicipio
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Regioes = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="WITH CTE_RegioesPadronizadas AS (#(lf)    -- Passo 1: Selecionamos apenas as regiões únicas e aplicamos a sua regra de tradução#(lf)    SELECT DISTINCT #(lf)        CASE #(lf)            WHEN RTRIM(GU9_NMREG) = 'CAP RJ BRASPRESS' THEN 'CAPITAL RJ'#(lf)            ELSE RTRIM(GU9_NMREG) #(lf)        END AS Nome_Regiao_Original#(lf)    FROM [STAGE].[gfe].[GU9]#(lf)    WHERE GU9_NMREG IS NOT NULL AND RTRIM(GU9_NMREG) <> ''#(lf))#(lf)-- Passo 2: Criamos a tabela final dividindo a coluna#(lf)SELECT #(lf)    Nome_Regiao_Original,#(lf)    #(lf)    -- Extrai os últimos 2 caracteres (Estado)#(lf)    RIGHT(Nome_Regiao_Original, 2) AS Estado,#(lf)    #(lf)    -- Extrai tudo o que vem antes dos últimos 3 caracteres (TipoMunicipio)#(lf)    -- O -3 remove o espaço e a sigla do estado#(lf)    LEFT(Nome_Regiao_Original, LEN(Nome_Regiao_Original) - 3) AS TipoMunicipio#(lf)#(lf)FROM CTE_RegioesPadronizadas#(lf)WHERE LEN(Nome_Regiao_Original) > 3; -- Filtro de segurança para evitar erro em nomes curtos"]),
+				    #"Linhas Filtradas" = Table.SelectRows(Fonte, each ([TipoMunicipio] = "CAPITAL" or [TipoMunicipio] = "INTERIOR"))
+				in
+				    #"Linhas Filtradas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

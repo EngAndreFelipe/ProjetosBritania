@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "b7f32b6d2b246bdb032a",
+  "position": {
+    "x": 104.8698315467075,
+    "y": 386.156202143951,
+    "z": 1000,
+    "height": 334.21133231240429,
+    "width": 184.25727411944871,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "advancedSlicerVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabelas_Transportadoras"
+                    }
+                  },
+                  "Property": "Nome_Transportadora"
+                }
+              },
+              "queryRef": "Tabelas_Transportadoras.Nome_Transportadora",
+              "nativeQueryRef": "Nome_Transportadora"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "columnCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            },
+            "rowCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "6L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

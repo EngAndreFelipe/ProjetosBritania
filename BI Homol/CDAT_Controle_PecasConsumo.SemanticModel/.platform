@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDAT_Controle_PecasConsumo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d53b4321-2a05-47d5-87b8-dacf474f05bd"
+  }
+}

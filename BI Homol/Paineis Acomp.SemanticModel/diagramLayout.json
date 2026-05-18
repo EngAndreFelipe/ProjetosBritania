@@ -1,0 +1,86 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 800.38305001469371,
+            "y": 37.585095630277351
+          },
+          "nodeIndex": "xAux_Feriados",
+          "nodeLineageTag": "0ab5c7a6-0071-41de-8504-123bfa7d5427",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 434.20156119318523,
+            "y": 0
+          },
+          "nodeIndex": "Calendario",
+          "nodeLineageTag": "5005914f-1786-4748-a8c0-0d75a15e9d46",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": -6.4297935901231256
+          },
+          "nodeIndex": "Estoque Meta",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 57.097840276702755,
+            "y": 413.32456051387646
+          },
+          "nodeIndex": "Att",
+          "nodeLineageTag": "fb27b48c-70bc-4ea8-ab64-a77da5949947",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 474.32456051387635,
+            "y": 389.45067011030841
+          },
+          "nodeIndex": "Depósito Aging",
+          "nodeLineageTag": "c91746a0-549a-47bc-b4fe-addc887f3778",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

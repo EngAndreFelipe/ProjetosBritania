@@ -1,0 +1,208 @@
+table Dim_Ressuprimento
+	lineageTag: fe92a680-fffb-43c8-b0e3-07c97ed41dd5
+
+	measure MensagensEmProcesso =
+			
+			COALESCE (
+			    CALCULATE (
+			        DISTINCTCOUNT ( Dim_Ressuprimento[IdMovto] ),
+			        Dim_Ressuprimento[SitMensagem] = "Em processo"
+			    ),
+			    0
+			)
+		formatString: 0
+		lineageTag: 34fd381f-d500-4441-acef-e3c9de7d2cec
+
+	measure MensagensNãoIniciadas =
+			
+			COALESCE(CALCULATE(
+			    DISTINCTCOUNT(Dim_Ressuprimento[IdMovto]),
+			    Dim_Ressuprimento[SitMensagem] = "Não Iniciado"
+			),0)
+		formatString: 0
+		lineageTag: 56d66cb4-1fd9-478e-920d-658ee8583172
+
+	measure PeçasFinalizadas =
+			
+			COALESCE(CALCULATE(
+			    SUM(Dim_Ressuprimento[QtdeItemMov]),
+			    Dim_Ressuprimento[SitMensagem] = "Finalizado"
+			),0)
+		formatString: 0
+		lineageTag: 92660984-e274-45c9-9577-f8073bb40089
+
+	measure MensagensFinalizadas =
+			
+			COALESCE(CALCULATE(
+			    DISTINCTCOUNT(Dim_Ressuprimento[IdMovto]),
+			    Dim_Ressuprimento[SitMensagem] = "Finalizado"
+			),0)
+		formatString: 0
+		lineageTag: d040f297-7a54-4308-8f6f-e37b586dfe3e
+
+	measure UltimaDataCargaMov = MAX(Dim_Ressuprimento[DataCarga])
+		formatString: General Date
+		lineageTag: 5e34c0af-dd58-4017-897b-39078a7085a0
+
+	column IdMovto
+		dataType: double
+		lineageTag: 2b3901d8-6eda-4e34-a053-7e6e73d593cd
+		summarizeBy: sum
+		sourceColumn: IdMovto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Documento
+		dataType: double
+		lineageTag: 55e600ed-9869-426f-b068-a2c244252d7a
+		summarizeBy: sum
+		sourceColumn: Documento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NumeroDocumento
+		dataType: string
+		lineageTag: a2efeef8-e6a1-4987-9cc2-5b196f7a5c74
+		summarizeBy: none
+		sourceColumn: NumeroDocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: de9a1f0d-773d-4d58-b7c6-06021d8e00f0
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: be24ca47-a243-4df9-9ec6-0ddc2cb30808
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdeItemMov
+		dataType: int64
+		formatString: 0
+		lineageTag: d97f1b76-6c0d-47ca-9880-fe339ff58391
+		summarizeBy: sum
+		sourceColumn: QtdeItemMov
+
+		annotation SummarizationSetBy = Automatic
+
+	column Usuario2
+		dataType: string
+		lineageTag: f5363764-4198-4f11-9275-b779b5b69970
+		summarizeBy: none
+		sourceColumn: Usuario2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitMensagem
+		dataType: string
+		lineageTag: 07ef8fe9-4cd1-4959-a97a-01f37d8b94d0
+		summarizeBy: none
+		sourceColumn: SitMensagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEnderecoEntrada
+		dataType: double
+		lineageTag: a91cb42f-555b-4717-82ac-5e2448584cb0
+		summarizeBy: sum
+		sourceColumn: IdEnderecoEntrada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EnderecoEntrada
+		dataType: string
+		lineageTag: 45bccc28-4747-4214-9ca6-8072c6304bda
+		summarizeBy: none
+		sourceColumn: EnderecoEntrada
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEnderecoSaida
+		dataType: double
+		lineageTag: a52fb8d4-c317-4dbf-854b-911d9b1691eb
+		summarizeBy: sum
+		sourceColumn: IdEnderecoSaida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EnderecoSaida
+		dataType: string
+		lineageTag: 85e0fa9a-4d31-4c64-b7e3-43601d550152
+		summarizeBy: none
+		sourceColumn: EnderecoSaida
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataExec
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2bed58fb-f05e-43df-baad-697a8642fb87
+		summarizeBy: none
+		sourceColumn: DataExec
+
+		variation Variation
+			isDefault
+			relationship: 3edf7ac1-b899-4cef-87e3-f91fb0de16b7
+			defaultHierarchy: LocalDateTable_5d867377-fb81-4981-b532-d789f414684c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e9e52b89-ba6c-4f1f-bd49-4dac2e2c85d5
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: cbb58372-3c02-483c-80a2-d189f1fbfe83
+			defaultHierarchy: LocalDateTable_f30013f7-7191-4820-a782-dd728939b330.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f8be5096-e362-4fd1-bb18-0cc790767a09
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 3833f707-9f04-4726-baae-c73c30ae8faf
+			defaultHierarchy: LocalDateTable_d9e1cf40-1ebe-4824-8f5b-2e15954213aa.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Ressuprimento = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT #(lf)    M.IdMovto,#(lf)    M.Documento,#(lf)    M.DataImplantacao,#(lf)    M.NumeroDocumento,#(lf)    M.DtInicioTarefa AS DataExec,#(lf)    M.Item,#(lf)    I.DescItem,#(lf)    M.QtdeItemMov,#(lf)    M.Usuario2,#(lf)    -- SitMensagem consolidada#(lf)    CASE #(lf)        WHEN MAX(CASE WHEN M.SituacaoItem = 'Concluído' THEN 1 END) = 1 THEN 'Finalizado'#(lf)        WHEN MAX(CASE WHEN M.SituacaoItem = 'Não iniciado' AND M.Usuario2 IS NULL THEN 1 END) = 1 THEN 'Não Iniciado'#(lf)        WHEN MAX(CASE WHEN M.SituacaoItem = 'Não iniciado' AND M.Usuario2 IS NOT NULL THEN 1 END) = 1 THEN 'Em processo'#(lf)        ELSE 'Outro status'#(lf)    END AS SitMensagem,#(lf)    -- Endereço de Entrada#(lf)    MAX(CASE WHEN M.Movimento = 'Entrada' THEN M.IdEndereco END) AS IdEnderecoEntrada,#(lf)    MAX(CASE WHEN M.Movimento = 'Entrada' THEN M.Endereco END) AS EnderecoEntrada,#(lf)    -- Endereço de Saída#(lf)    MAX(CASE WHEN M.Movimento = 'Saida' THEN M.IdEndereco END) AS IdEnderecoSaida,#(lf)    MAX(CASE WHEN M.Movimento = 'Saida' THEN M.Endereco END) AS EnderecoSaida,#(lf)    CAST(M.DataCarga AS DATETIME) AS DataCarga#(lf)FROM dw.logistica.Fato_Mov_Estoque_PA_AT AS M#(lf)LEFT JOIN STAGE.tot.WmBox AS E #(lf)    ON M.IdEndereco = E.[id-box]#(lf)LEFT JOIN DW.dbo.Dim_Item AS I#(lf)    ON I.CodItem = M.Item#(lf)WHERE #(lf)    M.Local = 'aat'#(lf)    AND M.NumeroDocumento LIKE 'Ressup-%'#(lf)    AND CAST(M.[DataImplantacao] AS DATE) >= DATEADD(MONTH, -3, GETDATE())#(lf)    AND E.[cod-local] = 'aat'#(lf)GROUP BY M.IdMovto, M.Documento, M.NumeroDocumento, M.Item, I.DescItem, M.QtdeItemMov, M.Usuario2, M.DtInicioTarefa, M.DataImplantacao, M.DataCarga#(lf)ORDER BY M.IdMovto ASC;"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataExec", type date}, {"DataCarga", type datetime}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

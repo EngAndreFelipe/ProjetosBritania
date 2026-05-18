@@ -1,0 +1,421 @@
+table Fato_CarteiraDCV
+	lineageTag: b1265cdd-2c4c-49f3-ad2e-807ed2460da8
+
+	measure ContagemItensCarteira = DISTINCTCOUNT(Fato_CarteiraDCV[CodItem])
+		formatString: 0
+		lineageTag: df7d37a8-b4bf-41ce-9556-be2e93201bac
+
+	measure QtdPendenteTotal = SUM(Fato_CarteiraDCV[QtdPendente])
+		formatString: 0
+		lineageTag: 8b49a516-1921-4c41-9789-2767346a8616
+
+	measure UltimaDataCargaCarteira = MAX(Fato_CarteiraDCV[DataCarga])
+		formatString: General Date
+		lineageTag: fda8d074-55f0-44c5-8365-32702f4cd6cd
+
+	column NumeroPedido
+		dataType: string
+		lineageTag: 427e751e-5cb5-4ada-9ac6-553145db575d
+		summarizeBy: none
+		sourceColumn: NumeroPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitPedido
+		dataType: string
+		lineageTag: 9e29a747-51a8-4a75-8c21-91b1296f33b5
+		summarizeBy: none
+		sourceColumn: SitPedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataImplantacao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5a002cfd-90ea-41a8-8c21-7d6a4aff6719
+		summarizeBy: none
+		sourceColumn: DataImplantacao
+
+		variation Variation
+			isDefault
+			relationship: 51322eec-7544-488c-82c4-e939cda5bc1d
+			defaultHierarchy: LocalDateTable_c8aac7cd-e790-4d3a-b7a5-4b96d8cf1fbc.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column NumeroOS
+		dataType: string
+		lineageTag: 402c5af5-c449-4e22-850d-086db418bbfb
+		summarizeBy: none
+		sourceColumn: NumeroOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataOS
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c087aa80-c675-4edf-a890-ab17bf395ffc
+		summarizeBy: none
+		sourceColumn: DataOS
+
+		variation Variation
+			isDefault
+			relationship: 5093be93-e1c3-4527-8c5c-3ada44f0e4f6
+			defaultHierarchy: LocalDateTable_597a01e5-bc5b-4f58-8f79-4510a13a2441.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CodEmitente
+		dataType: int64
+		formatString: 0
+		lineageTag: a4777f60-7114-4007-8b77-81d57e0d68e6
+		summarizeBy: sum
+		sourceColumn: CodEmitente
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeMatriz
+		dataType: string
+		lineageTag: 7228f060-0f53-46d1-93e1-415b75ae3ab1
+		summarizeBy: none
+		sourceColumn: NomeMatriz
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: 848b0e63-bd59-47f5-9298-fceeb7b003c6
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoEntrega
+		dataType: string
+		lineageTag: fe749b34-a834-4bb9-a56c-979ff143389e
+		summarizeBy: none
+		sourceColumn: EstadoEntrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitItem
+		dataType: string
+		lineageTag: cdb4d19c-ef02-4411-804f-251ce281eddf
+		summarizeBy: none
+		sourceColumn: SitItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodItem
+		dataType: string
+		lineageTag: 0775ce8e-17aa-448e-bca5-4d2f134b3c66
+		summarizeBy: none
+		sourceColumn: CodItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItem
+		dataType: string
+		lineageTag: d1ecf226-eb58-4fd0-b733-6678408bb54a
+		summarizeBy: none
+		sourceColumn: DescItem
+
+		annotation SummarizationSetBy = Automatic
+
+	column NatOperacao
+		dataType: string
+		lineageTag: dbb64fdb-9e66-4d53-94dd-ca5c6b453a6f
+		summarizeBy: none
+		sourceColumn: NatOperacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denominacao
+		dataType: string
+		lineageTag: b2b1ee11-08d1-479b-b966-8b9079daac74
+		summarizeBy: none
+		sourceColumn: Denominacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdPedida
+		dataType: int64
+		formatString: 0
+		lineageTag: 02f67ad3-f01a-4aef-adee-0e085311eb68
+		summarizeBy: sum
+		sourceColumn: QtdPedida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdAtendida
+		dataType: int64
+		formatString: 0
+		lineageTag: 83b16b99-aa33-478f-a438-126d4340e647
+		summarizeBy: sum
+		sourceColumn: QtdAtendida
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdAlocada
+		dataType: int64
+		formatString: 0
+		lineageTag: 8369e528-07e8-4f8a-87ed-ae19e5051a6f
+		summarizeBy: sum
+		sourceColumn: QtdAlocada
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdCarteira
+		dataType: int64
+		formatString: 0
+		lineageTag: 4001f869-6a7a-4990-8dd5-cf37c197d00f
+		summarizeBy: sum
+		sourceColumn: QtdCarteira
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtdPendente
+		dataType: int64
+		formatString: 0
+		lineageTag: 98f37f36-e472-4c5d-b396-e97e9f40abf3
+		summarizeBy: sum
+		sourceColumn: QtdPendente
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumEmbarque
+		dataType: double
+		lineageTag: 529a7d59-3523-42cf-a976-12137d7aa395
+		summarizeBy: sum
+		sourceColumn: NumEmbarque
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataEmbarque
+		dataType: string
+		lineageTag: ee482a2b-8c52-4c9d-b00e-cf0cc5446484
+		summarizeBy: none
+		sourceColumn: DataEmbarque
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFaturamento
+		dataType: string
+		lineageTag: 8c60b92e-9e91-48bf-a04c-2f87afad3c2e
+		summarizeBy: none
+		sourceColumn: DataFaturamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSaida
+		dataType: string
+		lineageTag: 3899a3fd-7715-46a6-bf6e-687b40555ea5
+		summarizeBy: none
+		sourceColumn: DataSaida
+
+		annotation SummarizationSetBy = Automatic
+
+	column NotaFiscal
+		dataType: string
+		lineageTag: f2780164-54cc-487a-97ef-50aed4c87622
+		summarizeBy: none
+		sourceColumn: NotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column SerieNotaFiscal
+		dataType: string
+		lineageTag: 9d398a9f-35a8-40a4-b079-f033653ef64c
+		summarizeBy: none
+		sourceColumn: SerieNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstabNotaFiscal
+		dataType: string
+		lineageTag: d17d144a-fd77-47c9-bbce-568d5b51958f
+		summarizeBy: none
+		sourceColumn: EstabNotaFiscal
+
+		annotation SummarizationSetBy = Automatic
+
+	column PedidoCompleto
+		dataType: string
+		lineageTag: dd36d231-b718-408e-88ec-f23ae058ee42
+		summarizeBy: none
+		sourceColumn: PedidoCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoAAT
+		dataType: int64
+		formatString: 0
+		lineageTag: f429872b-8a07-4143-af6e-ac015ff259d3
+		summarizeBy: sum
+		sourceColumn: SaldoAAT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoREC
+		dataType: int64
+		formatString: 0
+		lineageTag: e23a5629-b13f-4ce3-96e6-68dc35cadea9
+		summarizeBy: sum
+		sourceColumn: SaldoREC
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoFaturavel
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f387ec8-5139-488f-83ce-fd49094205b9
+		summarizeBy: sum
+		sourceColumn: SaldoFaturavel
+
+		annotation SummarizationSetBy = Automatic
+
+	column PendenteMenosSaldo
+		dataType: int64
+		formatString: 0
+		lineageTag: a70e72b0-5519-4c0e-b793-bd6388a3541f
+		summarizeBy: sum
+		sourceColumn: PendenteMenosSaldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaldoDCV
+		dataType: int64
+		formatString: 0
+		lineageTag: ccc20aaa-72b2-4b3d-bcca-0152243b2c9f
+		summarizeBy: sum
+		sourceColumn: SaldoDCV
+
+		annotation SummarizationSetBy = Automatic
+
+	column DispPreFat
+		dataType: string
+		lineageTag: 42cd3677-d3b9-48f0-b69f-6a424a8ccf58
+		summarizeBy: none
+		sourceColumn: DispPreFat
+
+		annotation SummarizationSetBy = Automatic
+
+	column SitCreditoPed
+		dataType: string
+		lineageTag: d2bb2d1b-c2d8-495a-9f2a-421df39df022
+		summarizeBy: none
+		sourceColumn: SitCreditoPed
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCarga
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 054f4c4b-bae6-4839-9929-66a9893d3c8b
+		summarizeBy: none
+		sourceColumn: DataCarga
+
+		variation Variation
+			isDefault
+			relationship: 4fd50d8d-4ef7-47f8-b72a-a58907bc12d9
+			defaultHierarchy: LocalDateTable_1500ad37-2d06-49b7-901a-718713d5a042.'Hierarquia de datas'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AcumuladoPendente
+		dataType: int64
+		formatString: 0
+		lineageTag: 6318f9be-5cec-46a0-b1e5-adbeac1958ee
+		summarizeBy: sum
+		sourceColumn: AcumuladoPendente
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasSemAtendimento = [HOJE] - Fato_CarteiraDCV[DataImplantacao]
+		dataType: int64
+		formatString: 0
+		lineageTag: b35e218b-15db-4ea6-a00e-12cecb80f2b0
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FaixadeDias = SWITCH(TRUE(),Fato_CarteiraDCV[DiasSemAtendimento] <= 10, "Até 10 dias",Fato_CarteiraDCV[DiasSemAtendimento] < 20, "Mais de 10 dias",Fato_CarteiraDCV[DiasSemAtendimento] >= 20, "Mais de 20 dias")
+		lineageTag: b038b476-cc1b-4df2-9727-985689a21bde
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidaOS =
+			IF(
+			    ISBLANK(Fato_CarteiraDCV[NumeroOS]) || Fato_CarteiraDCV[NumeroOS] = "",
+			    "Sem OS",
+			    "Com OS"
+			)
+		lineageTag: 3b06bbbb-d4df-4c7a-8438-de476edda34c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoPeça =
+			
+			VAR TextoLimpo = TRIM(Fato_CarteiraDCV[DescItemCorrigido])
+			VAR TextoSeparado = SUBSTITUTE(TextoLimpo, " ", "|")
+			RETURN PATHITEM(TextoSeparado, 1)
+		lineageTag: baa173da-34c1-4136-83ff-d37d70697f83
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DescItemCorrigido =
+			
+			SWITCH(
+			    TRUE(),
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 6) = "RESIST", "RESISTENCIA",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 4) = "ACAB", "ACABAMENTO",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 5) = "ACESS", "ACESSORIO",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 5) = "ACION", "ACIONAMENTO",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 9) = "ACESSORIOS", "ACESSORIO",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 9) = "ACIONADOR", "ACIONAMENTO",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 9) = "ADAPTADOR", "ADAPTADOR",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 5) = "ADAPT", "ADAPTADOR",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 4) = "ALAV", "ALAVANCA",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 6) = "ALETAS", "ALETA",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 4) = "ALOJ", "ALOJAMENTO",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 4) = "ALTO", "ALTO-FALANTE",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 8) = "ALTO-FAL", "ALTO-FALANTE",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 10) = "ALTO-FALAN", "ALTO-FALANTE",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 5) = "AMORT", "AMORTECEDOR",
+			    LEFT(UPPER(Fato_CarteiraDCV[DescItem]), 4) = "APAR", "APARELHO",
+			    Fato_CarteiraDCV[DescItem]
+			)
+		lineageTag: 82a3090d-214a-4037-a0c4-bb9018aa9b45
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_CarteiraDCV = m
+		mode: import
+		source =
+				let
+				    Fonte = Sql.Database("PR-S188\DW", "DW", [Query="SELECT PDB.NumeroPedido,#(lf)       CASE PDB.SitPedido#(lf)            WHEN 1 THEN 'Aberto'#(lf)            WHEN 2 THEN 'Atendido Parcial'#(lf)            WHEN 3 THEN 'Atendido Total'#(lf)            WHEN 4 THEN 'Pendente'#(lf)            WHEN 5 THEN 'Suspenso'#(lf)            WHEN 6 THEN 'Cancelado'#(lf)            WHEN 7 THEN 'Faturado Balcão'#(lf)            ELSE 'Desconhecido'#(lf)        END AS SitPedido,#(lf)        CONVERT(VARCHAR(10), PDB.DataImplantacao, 103) AS DataImplantacao,#(lf)        PDB.NumeroOS,#(lf)        CONVERT(VARCHAR(10), PDB.DataOS, 103) AS DataOS,#(lf)        PDB.CodEmitente,#(lf)        PDB.NomeMatriz,#(lf)        PDB.Cidade,#(lf)        PDB.EstadoEntrega,#(lf)        PDB.SitItem,#(lf)        PDB.CodItem,#(lf)        PDB.DescItem,#(lf)        PDB.NatOperacao,#(lf)        PDB.Denominacao,#(lf)        CAST(PDB.QuantidadePedida AS INT) AS QtdPedida,#(lf)        CAST(PDB.QuantidadeAtendida AS INT) AS QtdAtendida,#(lf)        CAST(PDB.QuantidadeAlocada AS INT) AS QtdAlocada,#(lf)        CAST(PDB.QuantidadeCarteira AS INT) AS QtdCarteira,#(lf)        CAST(PDB.QuantidadeCarteira - PDB.QuantidadeAlocada - PDB.QuantidadeAtendida AS INT) AS QtdPendente,#(lf)        PDB.Embarque AS NumEmbarque,#(lf)        CONVERT(VARCHAR(10), PDB.DataEmbarque, 103) AS DataEmbarque,#(lf)        CONVERT(VARCHAR(10), PDB.DtFaturamento, 103) AS DataFaturamento,#(lf)        CONVERT(VARCHAR(10), PDB.DataSaida, 103) AS DataSaida,#(lf)        PDB.NotaFiscal,#(lf)        PDB.SerieNotaFiscal,#(lf)        PDB.EstabNotaFiscal,#(lf)        PDB.PedidoCompleto,#(lf)        CAST(PDB.SaldoAAT AS INT) AS SaldoAAT,#(lf)        CAST(PDB.SaldoREC AS INT) AS SaldoREC,#(lf)        CAST(PDB.SaldoAAT + PDB.SaldoREC AS INT) AS SaldoFaturavel,#(lf)        CAST((PDB.QuantidadeCarteira - PDB.QuantidadeAlocada - PDB.QuantidadeAtendida) - (PDB.SaldoAAT + PDB.SaldoREC) AS INT) AS PendenteMenosSaldo,#(lf)        CAST(SalDep.[qtidade-atu] AS INT) AS SaldoDCV,#(lf)        PDB.DispPreFat,#(lf)        PDB.SitCreditoPed,#(lf)        SUM(CAST((PDB.QuantidadeCarteira - PDB.QuantidadeAlocada - PDB.QuantidadeAtendida) - (PDB.SaldoAAT + PDB.SaldoREC) AS INT))#(lf)            OVER (#(lf)                PARTITION BY PDB.CodItem#(lf)                ORDER BY PDB.DataImplantacao, PDB.DataOS#(lf)            ) AS AcumuladoPendente,#(lf)        CONVERT(VARCHAR(19), PDB.DataCarga, 120) AS DataCarga#(lf)        #(lf)FROM [DW].[logistica].[Fato_PDB381] AS PDB#(lf)LEFT JOIN STAGE.tot.SaldoEstoq AS SalDep#(lf)        ON PDB.CodItem = SalDep.[it-codigo]#(lf)WHERE #(lf)        PDB.DataImplantacao >= DATEADD(MONTH, -3,GETDATE())#(lf)        AND PDB.SitItem NOT LIKE 'Atendido Total'#(lf)        AND PDB.SitPedido IN (1, 2, 4)#(lf)        AND PDB.CodItem NOT LIKE '03%'#(lf)        AND PDB.CodItem NOT LIKE '04%'#(lf)        AND PDB.CodItem NOT LIKE '4%'#(lf)        AND PDB.CodItem NOT LIKE '3%'#(lf)        AND PDB.CodItem NOT LIKE '6%'#(lf)        AND PDB.CodItem NOT LIKE '05%'#(lf)        AND PDB.CodItem NOT LIKE '06%'#(lf)        AND PDB.CodItem NOT LIKE '114%'#(lf)        AND PDB.CodItem NOT LIKE '8%'#(lf)        AND PDB.CodItem NOT LIKE '9%'#(lf)        AND PDB.CodItem NOT LIKE '12%'#(lf)        AND PDB.CodItem NOT LIKE '7V%'#(lf)        AND PDB.CodItem NOT LIKE '0960%'#(lf)        AND PDB.CodItem NOT LIKE '10%'#(lf)        AND PDB.CodItem NOT LIKE '099%'#(lf)        AND PDB.CodItem NOT LIKE '1031%'#(lf)        AND SalDep.[cod-depos] = 'dcv'#(lf)        AND PDB.SitCreditoPed = 'Aprovado'#(lf)        AND CAST((PDB.QuantidadeCarteira - PDB.QuantidadeAlocada - PDB.QuantidadeAtendida) - (PDB.SaldoAAT + PDB.SaldoREC) AS INT) > 0#(lf)        AND CONVERT(INT, SalDep.[qtidade-atu], 0) > 0#(lf)        AND SalDep.[qtidade-atu] >= #(lf)            ((PDB.QuantidadeCarteira - PDB.QuantidadeAlocada - PDB.QuantidadeAtendida) #(lf)                - (PDB.SaldoAAT + PDB.SaldoREC))#(lf)#(lf)GROUP BY PDB.NumeroPedido,#(lf)         PDB.SitPedido,#(lf)         PDB.DataImplantacao,#(lf)         PDB.NumeroOS,#(lf)         PDB.DataOS,#(lf)         PDB.CodEmitente,#(lf)         PDB.NomeMatriz,#(lf)         PDB.Cidade,#(lf)         PDB.EstadoEntrega,#(lf)         PDB.SitItem,#(lf)         PDB.CodItem,#(lf)         PDB.DescItem,#(lf)         PDB.NatOperacao,#(lf)         PDB.Denominacao,#(lf)         PDB.QuantidadePedida,#(lf)         PDB.QuantidadeAtendida,#(lf)         PDB.QuantidadeAlocada,#(lf)         PDB.QuantidadeCarteira,#(lf)         PDB.Embarque,#(lf)         PDB.DataEmbarque,#(lf)         PDB.DtFaturamento,#(lf)         PDB.DataSaida,#(lf)         PDB.NotaFiscal,#(lf)         PDB.SerieNotaFiscal,#(lf)         PDB.EstabNotaFiscal,#(lf)         PDB.PedidoCompleto,#(lf)         PDB.SaldoAAT,#(lf)         PDB.SaldoREC,#(lf)         SalDep.[qtidade-atu],#(lf)         PDB.DispPreFat,#(lf)         PDB.SitCreditoPed,#(lf)         PDB.DataCarga"]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"DataImplantacao", type date}}),
+				    #"Filtrado" = Table.SelectRows(#"Tipo Alterado", each [AcumuladoPendente] <= [SaldoDCV])
+				in
+				    #"Filtrado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
